@@ -46,8 +46,8 @@ jobs:
     displayName: 'Prepare analysis on SonarCloud'
     inputs:
       SonarCloud: AsyncHubCloud
-      organization: 'Async-Hub'
-      projectKey: 'AuthZI'
+      organization: 'async-hub'
+      projectKey: AuthZI
       projectName: AuthZI
   # ...
   # Build Solution
