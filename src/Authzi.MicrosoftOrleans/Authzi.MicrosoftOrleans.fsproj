@@ -10,4 +10,13 @@
     <Compile Include="Library.fs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
+    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.2" />
+  </ItemGroup>
+
 </Project>
