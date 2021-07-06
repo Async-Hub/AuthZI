@@ -7,15 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="DiscoveryDocumentShortInfo.fs" />
+    <Compile Include="IdentityServer4Info.fs" />
+    <Compile Include="DiscoveryDocument.fs" />
+    <Compile Include="IdS4DiscoveryDocumentProvider.fs" />
     <Compile Include="JwtSecurityTokenVerifier.fs" />
+    <Compile Include="AccessTokenIntrospectionServiceDefault.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="4.3.*" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.5.*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.*" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.*" />
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.*" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Extensions.fs" />
     <Compile Include="ConfigurationKeys.fs" />
     <Compile Include="NotAuthorizedException.fs" />
     <Compile Include="LoggingEvents.fs" />
@@ -15,7 +14,6 @@
     <Compile Include="Caching\IAccessTokenCache.fs" />
     <Compile Include="Caching\AccessTokenCache.fs" />
     <Compile Include="IAccessTokenProvider.fs" />
-    <Compile Include="IdentityServer4Info.fs" />
     <Compile Include="AccessToken\InvalidAccessTokenException.fs" />
     <Compile Include="AccessToken\JwtSecurityTokenVerifier.fs" />
     <Compile Include="AccessToken\AccessTokenType.fs" />
@@ -30,7 +28,6 @@
     <Compile Include="AccessToken\AccessTokenVerifierWithCaching.fs" />
     <Compile Include="Configuration.fs" />
     <Compile Include="Authorization\IAuthorizationExecutor.fs" />
-    <Compile Include="Authorization\AuthorizationAdmission.fs" />
     <Compile Include="Authorization\AuthorizationExecutor.fs" />
   </ItemGroup>
 

@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="IdentityServer4" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.8" />
+    <PackageReference Include="nunit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="IdentityModel" Version="4.3.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.4.3" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="3.4.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Assembly.fs" />
+    <Compile Include="Initialization\GlobalConfig.fs" />
+    <Compile Include="Initialization\Users.fs" />
+    <Compile Include="Initialization\IdSClients.fs" />
+    <Compile Include="Initialization\IdSResources.fs" />
+    <Compile Include="Initialization\ProfileService.fs" />
+    <Compile Include="Initialization\IdentityServer.fs" />
+    <Compile Include="Initialization\IdSInstance.fs" />
+    <Compile Include="Initialization\IdSTokenFactory.fs" />
+    <Compile Include="Initialization\SiloHost.fs" />
+    <Compile Include="Initialization\ClusterSetup.fs" />
+    <Compile Include="Initialization\SiloClient.fs" />
+    <Compile Include="AccessTokenTests\AccessTokenVerificationTests.fs" />
+    <Compile Include="AuthorizationTests\SimpleAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\RoleBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\ClaimsBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\PolicyBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\ResourceBasedAuthorizationTests.fs" />
+    <Compile Include="TestsNUnit.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+    <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
+    <ProjectReference Include="..\Authzi.MicrosoftOrleans.Grains\Authzi.MicrosoftOrleans.Grains.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.2" />
+  </ItemGroup>
+
+</Project>

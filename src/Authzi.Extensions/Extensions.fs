@@ -1,8 +1,8 @@
-﻿namespace Authzi.Security
+﻿namespace Authzi.Extensions
 
 open System.Threading.Tasks
 
-module Extensions =
+module Tasks =
     let (|?) lhs rhs = (if isNull lhs then rhs else lhs)
 
     type Async with

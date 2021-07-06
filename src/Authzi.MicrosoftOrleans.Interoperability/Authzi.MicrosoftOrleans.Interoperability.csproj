@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>AsyncHub</Authors>
+    <Company>AsyncHub</Company>
+    <PackageProjectUrl>https://authzi.asynchub.org/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Async-Hub/AuthZI</RepositoryUrl>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>Authzi.MicrosoftOrleans</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.3.*" />
+    <PackageReference Include="JWT" Version="5.2.*" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.*" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[3.1.*,3.2)" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.*" />
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="[3.1.*,3.5)" />
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+    <ProjectReference Include="..\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
+    <ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
+    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
+  </ItemGroup>
+
+</Project>
