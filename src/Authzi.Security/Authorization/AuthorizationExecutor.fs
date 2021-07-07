@@ -3,6 +3,7 @@
 open System.Collections.Generic
 open System.Linq
 open System.Security.Claims
+open IdentityModel
 
 type internal AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider, 
         authorizationService : IAuthorizationService) =
@@ -12,7 +13,7 @@ type internal AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvide
                 grainMethodAuthorizeData : IEnumerable<IAuthorizeData>) = 
                 async {
                     let claimsIdentity = ClaimsIdentity(claims, "AccessToken",
-                                            ClaimTypes.Sid, ClaimTypes.Role)
+                                            JwtClaimTypes.Subject, JwtClaimTypes.Role)
 
                     let claimsPrincipal = new ClaimsPrincipal(claimsIdentity)
                     let mutable authorizationSucceeded = true

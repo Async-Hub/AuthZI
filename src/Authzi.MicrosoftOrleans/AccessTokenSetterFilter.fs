@@ -5,7 +5,7 @@ open Orleans.Runtime
 open Orleans
 open System.Threading.Tasks
 open Authzi.Security
-open Authzi.Extensions.Tasks
+open Authzi.Extensions.TaskExtensions
 
 type public AccessTokenSetterFilter(accessTokenProvider: IAccessTokenProvider)=
     let accessTokenProvider = accessTokenProvider

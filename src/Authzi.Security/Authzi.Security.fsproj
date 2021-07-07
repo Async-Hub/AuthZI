@@ -15,7 +15,6 @@
     <Compile Include="Caching\AccessTokenCache.fs" />
     <Compile Include="IAccessTokenProvider.fs" />
     <Compile Include="AccessToken\InvalidAccessTokenException.fs" />
-    <Compile Include="AccessToken\JwtSecurityTokenVerifier.fs" />
     <Compile Include="AccessToken\AccessTokenType.fs" />
     <Compile Include="AccessToken\AccessTokenAnalyzer.fs" />
     <Compile Include="AccessToken\AccessTokenIntrospectionResult.fs" />
@@ -33,6 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="JWT" Version="5.2.*" />
+    <PackageReference Include="IdentityModel" Version="4.3.*" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.*" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.*" />

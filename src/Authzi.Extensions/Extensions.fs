@@ -2,7 +2,7 @@
 
 open System.Threading.Tasks
 
-module Tasks =
+module TaskExtensions =
     let (|?) lhs rhs = (if isNull lhs then rhs else lhs)
 
     type Async with
