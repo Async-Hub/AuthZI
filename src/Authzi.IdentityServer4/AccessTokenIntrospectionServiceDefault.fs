@@ -6,10 +6,10 @@ open IdentityModel.Client
 open Microsoft.Extensions.Logging
 open System.Net.Http
 
-type public AccessTokenIntrospectionServiceDefault(httpClientFactory: IHttpClientFactory,
+type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactory,
                                                      identityServer4Info : IdentityServer4Info,
-                                                     discoveryDocumentProvider:IdS4DiscoveryDocumentProvider,
-                                                     logger: ILogger<AccessTokenIntrospectionServiceDefault> 
+                                                     discoveryDocumentProvider:DiscoveryDocumentProvider,
+                                                     logger: ILogger<AccessTokenIntrospectionService> 
                                                     )=
     let httpClient = httpClientFactory.CreateClient "IdS4"
     

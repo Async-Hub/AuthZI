@@ -1,5 +1,4 @@
-﻿using Authzi.IdentityServer4;
-using Authzi.MicrosoftOrleans.Authorization;
+﻿using Authzi.MicrosoftOrleans.Authorization;
 using Authzi.Security;
 using Microsoft.Extensions.DependencyInjection;
 using Orleans;
@@ -7,7 +6,7 @@ using System;
 
 namespace Authzi.MicrosoftOrleans.Clustering
 {
-    public static class OrleansClusterSecurityServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
         // For the testing purposes.
         internal static void AddOrleansClusteringAuthorization(this IServiceCollection services,
@@ -29,16 +28,11 @@ namespace Authzi.MicrosoftOrleans.Clustering
 
         // For the production usage.
         public static void AddOrleansClusteringAuthorization(this IServiceCollection services,
-            IdentityServer4Info identityServer4Info, Action<Configuration> configure)
+            Action<Configuration> configure)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
-            }
-
-            if (identityServer4Info == null)
-            {
-                throw new ArgumentNullException(nameof(identityServer4Info));
             }
 
             if (configure == null)
@@ -46,22 +40,16 @@ namespace Authzi.MicrosoftOrleans.Clustering
                 throw new ArgumentNullException(nameof(configure));
             }
 
-            services.AddSingleton(identityServer4Info);
             services.AddSingleton<IIncomingGrainCallFilter, IncomingGrainCallAuthorizationFilter>();
             services.AddOrleansClusterSecurityServices(configure);
         }
         
         public static void AddOrleansCoHostedClusterAuthorization(this IServiceCollection services,
-            IdentityServer4Info identityServer4Info, Action<Configuration> configure)
+            Action<Configuration> configure)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
-            }
-
-            if (identityServer4Info == null)
-            {
-                throw new ArgumentNullException(nameof(identityServer4Info));
             }
 
             if (configure == null)
@@ -69,7 +57,6 @@ namespace Authzi.MicrosoftOrleans.Clustering
                 throw new ArgumentNullException(nameof(configure));
             }
 
-            services.AddSingleton(identityServer4Info);
             services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>();
             services.AddSingleton<IIncomingGrainCallFilter, IncomingGrainCallAuthorizationFilter>();
             services.AddOrleansClusterSecurityServices(configure);

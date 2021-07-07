@@ -5,7 +5,7 @@ open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open IdentityServer4.Services
-open Orleans.Security.IntegrationTests.FSharp
+open Authzi.MicrosoftOrleans.IdentityServer4.Tests
 
 type Startup() =
     member this.ConfigureServices(services: IServiceCollection) =

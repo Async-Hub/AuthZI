@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using Authzi.IdentityServer4;
 using Authzi.Security;
 using Authzi.Security.AccessToken;
 using Authzi.Security.Authorization;
@@ -33,7 +32,6 @@ namespace Authzi.MicrosoftOrleans
             configureServices?.Invoke(services);
 
             // Configure Security
-
             var securityOptions = new SecurityOptions();
             configuration.ConfigureSecurityOptions?.Invoke(securityOptions);
             services.Add(ServiceDescriptor.Singleton(securityOptions));
@@ -44,7 +42,6 @@ namespace Authzi.MicrosoftOrleans
             services.Add(ServiceDescriptor.Singleton(accessTokenVerifierOptions));
 
             services.TryAddSingleton<DefaultAccessTokenVerifier>();
-            services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionServiceDefault>();
 
             //TODO: Maybe there is a better solution to split configuration for testing purposes.
             // If the environment is not in testing mode.
@@ -104,10 +101,6 @@ namespace Authzi.MicrosoftOrleans
 
             var memoryCacheOptions = new MemoryCacheOptions();
             services.AddSingleton<IAccessTokenCache>(serviceProvider => new AccessTokenCache(memoryCacheOptions));
-            services.AddSingleton(provider => new
-                IdS4DiscoveryDocumentProvider(provider.GetRequiredService<IHttpClientFactory>(),
-                    provider.GetRequiredService<IdentityServer4Info>().DiscoveryEndpointUrl,
-                    securityOptions));
         }
     }
 }

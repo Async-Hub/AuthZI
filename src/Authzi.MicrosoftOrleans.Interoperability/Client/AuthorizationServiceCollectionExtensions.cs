@@ -1,5 +1,4 @@
-﻿using Authzi.IdentityServer4;
-using Authzi.MicrosoftOrleans.Authorization;
+﻿using Authzi.MicrosoftOrleans.Authorization;
 using Authzi.Security;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -30,17 +29,12 @@ namespace Authzi.MicrosoftOrleans.Client
         }
 
         // For the production usage.
-        public static void AddOrleansClusteringAuthorization(this IServiceCollection services,
-            IdentityServer4Info identityServer4Info, Action<Configuration> configure)
+        public static void AddOrleansClientAuthorization(this IServiceCollection services,
+            Action<Configuration> configure)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
-            }
-
-            if (identityServer4Info == null)
-            {
-                throw new ArgumentNullException(nameof(identityServer4Info));
             }
 
             if (configure == null)
@@ -48,7 +42,6 @@ namespace Authzi.MicrosoftOrleans.Client
                 throw new ArgumentNullException(nameof(configure));
             }
 
-            services.AddSingleton(identityServer4Info);
             services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>();
             services.AddSingleton<IOutgoingGrainCallFilter, OutgoingGrainCallAuthorizationFilter>();
             services.AddOrleansClusterSecurityServices(configure);

@@ -9,9 +9,10 @@
   <ItemGroup>
     <Compile Include="IdentityServer4Info.fs" />
     <Compile Include="DiscoveryDocument.fs" />
-    <Compile Include="IdS4DiscoveryDocumentProvider.fs" />
+    <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="JwtSecurityTokenVerifier.fs" />
     <Compile Include="AccessTokenIntrospectionServiceDefault.fs" />
+    <Compile Include="MicrosoftOrleans\IdentityServer4ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>

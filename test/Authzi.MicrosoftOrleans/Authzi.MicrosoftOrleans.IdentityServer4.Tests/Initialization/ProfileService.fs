@@ -1,4 +1,4 @@
-namespace Orleans.Security.IntegrationTests.FSharp
+namespace Authzi.MicrosoftOrleans.IdentityServer4.Tests
 
 open IdentityModel
 open IdentityServer4.Models

@@ -1,12 +1,13 @@
 ﻿module SiloHost
 
-open Microsoft.Extensions.Hosting               
-open Orleans.Configuration;
-open Orleans.Hosting;
-open Authzi.Security.Authorization
 open Authzi.MicrosoftOrleans.Clustering;
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.IdentityServer4.MicrosoftOrleans
+open Authzi.Security.Authorization
+open Microsoft.Extensions.Hosting               
+open Orleans.Configuration;
+open Orleans.Hosting;
 open Orleans;
 open System
 open System.Net
@@ -29,11 +30,12 @@ let startSilo () =
                        parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences()         
                        |> ignore)
                    .AddMemoryGrainStorage("MemoryGrainStorage")
-                   .ConfigureServices(fun services ->         
-                       services.AddOrleansClusteringAuthorization(GlobalConfig.identityServer4Info,         
+                   .ConfigureServices(fun services ->
+                       services.AddOrleansIdentityServer4Authorization(GlobalConfig.identityServer4Info)
+                       services.AddOrleansClusteringAuthorization(       
                            fun (config:Authzi.Security.Configuration) ->         
-                           config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(fun options ->         
-                               AuthorizationConfig.ConfigureOptions(options) |> ignore)         
+                           config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
+                               AuthorizationConfig.ConfigureOptions)         
                            ignore())
                        // Some custom authorization services.
                        AuthorizationConfig.ConfigureServices(services)
