@@ -1,0 +1,2 @@
+{"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-07-08T09:54:54.8189864Z","message_severity":"warning","correlation_id":"1E1B52ED-DE1D-4DD9-9EAB-49FDA389F052.1.1.11"}
+{"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-07-08T09:56:10.60969Z","message_severity":"warning","correlation_id":"D3CEA269-D41D-409E-87D0-EEE7A0D8E062.1.1.166"}
