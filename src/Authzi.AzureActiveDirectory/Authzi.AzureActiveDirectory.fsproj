@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="AzureActiveDirectoryApp.fs" />
+    <Compile Include="AccessTokenProvider.fs" />
+    <Compile Include="MicrosoftOrleans\IdentityServer4ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.*" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.34.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
   </ItemGroup>
 
 </Project>
