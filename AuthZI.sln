@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7AA3335-A50B-469F-A858-EFC319A34BC2}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory", "src\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj", "{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1}"
-EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Security", "src\Authzi.Security\Authzi.Security.fsproj", "{6CE2AAD6-D6E6-413A-AD2B-CDFA073E8AAA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.Security.Authorization", "src\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj", "{2AB1D5CF-FA62-4906-B6E6-9F24CCCE3CCA}"
@@ -22,8 +20,6 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans", "src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj", "{1486ADB8-5750-4500-9B29-6279EBEC0DA2}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Security.IntegrationTests", "test\Authzi.Security.IntegrationTests\Authzi.Security.IntegrationTests.fsproj", "{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.IdentityServer4", "src\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj", "{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authzi.MicrosoftOrleans", "Authzi.MicrosoftOrleans", "{847F61AF-DFE5-4174-9159-C4F6E38DDEBE}"
 EndProject
@@ -49,7 +45,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctions", "AzureFunc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftOrleans", "MicrosoftOrleans", "{EAB45ACE-F4DA-4F32-AE4E-562749D210D3}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.fsproj", "{CF9FD5DC-4134-4440-98D9-2BB0E544F768}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.fsproj", "{CF9FD5DC-4134-4440-98D9-2BB0E544F768}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.AzureActiveDirectory.MicrosoftOrleans", "src\Identity\Authzi.AzureActiveDirectory.MicrosoftOrleans\Authzi.AzureActiveDirectory.MicrosoftOrleans.fsproj", "{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory", "src\Identity\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj", "{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.IdentityServer4", "src\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj", "{0CE11522-6A81-4455-9910-FB0A50D346E8}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.IdentityServer4.MicrosoftOrleans", "src\Identity\Authzi.IdentityServer4.MicrosoftOrleans\Authzi.IdentityServer4.MicrosoftOrleans.fsproj", "{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.AzureActiveDirectory.AzureFunctions", "src\Identity\Authzi.AzureActiveDirectory.AzureFunctions\Authzi.AzureActiveDirectory.AzureFunctions.fsproj", "{211E2653-F784-490E-B158-5269F64334C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +63,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CE2AAD6-D6E6-413A-AD2B-CDFA073E8AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CE2AAD6-D6E6-413A-AD2B-CDFA073E8AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CE2AAD6-D6E6-413A-AD2B-CDFA073E8AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,10 +83,6 @@ Global
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,12 +111,31 @@ Global
 		{CF9FD5DC-4134-4440-98D9-2BB0E544F768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF9FD5DC-4134-4440-98D9-2BB0E544F768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF9FD5DC-4134-4440-98D9-2BB0E544F768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CE11522-6A81-4455-9910-FB0A50D346E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE11522-6A81-4455-9910-FB0A50D346E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE11522-6A81-4455-9910-FB0A50D346E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE11522-6A81-4455-9910-FB0A50D346E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211E2653-F784-490E-B158-5269F64334C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211E2653-F784-490E-B158-5269F64334C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211E2653-F784-490E-B158-5269F64334C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211E2653-F784-490E-B158-5269F64334C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A0F0AE60-6A9B-49F0-81CE-9AAB64C6D9E1} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
 		{6CE2AAD6-D6E6-413A-AD2B-CDFA073E8AAA} = {02F2165E-0E82-4ED3-A80B-F04F926BD439}
 		{2AB1D5CF-FA62-4906-B6E6-9F24CCCE3CCA} = {02F2165E-0E82-4ED3-A80B-F04F926BD439}
 		{0B6E2A06-C13E-4AEF-89D3-5A7BA1232084} = {E7AA3335-A50B-469F-A858-EFC319A34BC2}
@@ -126,7 +143,6 @@ Global
 		{3B125497-07AA-43C9-A882-E0879E763BDB} = {544517DE-EE7B-4C9D-925C-5E2C83FB9CFB}
 		{1486ADB8-5750-4500-9B29-6279EBEC0DA2} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
-		{EE6F6A86-D1B1-4F17-A2A1-BFA7FE0D89D8} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
 		{847F61AF-DFE5-4174-9159-C4F6E38DDEBE} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
 		{9D659389-E038-4F5B-AA55-557D2007F879} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
 		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
@@ -139,6 +155,11 @@ Global
 		{544517DE-EE7B-4C9D-925C-5E2C83FB9CFB} = {E7AA3335-A50B-469F-A858-EFC319A34BC2}
 		{EAB45ACE-F4DA-4F32-AE4E-562749D210D3} = {E7AA3335-A50B-469F-A858-EFC319A34BC2}
 		{CF9FD5DC-4134-4440-98D9-2BB0E544F768} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{FCBA8547-6A9D-4E20-B724-92E97ACED2C9} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
+		{AAB2FC62-921D-4DB7-AF12-68DC63D49A59} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
+		{0CE11522-6A81-4455-9910-FB0A50D346E8} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
+		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
+		{211E2653-F784-490E-B158-5269F64334C3} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

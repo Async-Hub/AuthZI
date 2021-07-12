@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+    <ProjectReference Include="..\..\..\src\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
   </ItemGroup>
 
 </Project>

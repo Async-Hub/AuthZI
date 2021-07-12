@@ -9,7 +9,7 @@ module AccessTokenProvider =
     let getToken =
         let appConfig = new PublicClientApplicationOptions()
         
-        appConfig.ClientId <- "xxx-eaef-xxx-f25dba1fxxx"
+        appConfig.ClientId <- "e64ef6f7-eaef-4e43-92af-f25dba1f2de2"
         appConfig.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMultipleOrgs
         appConfig.AzureCloudInstance <- AzureCloudInstance.AzurePublic
 
@@ -23,6 +23,6 @@ module AccessTokenProvider =
         "Passw@rd+1" |> Seq.iter (fun char -> password.AppendChar(char))
 
         let result = app.AcquireTokenByUsernamePassword(scopes, 
-                        "xxx@xxx.onmicrosoft.com", password).ExecuteAsync().Result
+                        "AdeleV@asynchub.onmicrosoft.com", password).ExecuteAsync().Result
 
         result.AccessToken

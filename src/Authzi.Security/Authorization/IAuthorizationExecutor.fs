@@ -7,5 +7,5 @@ open System.Threading.Tasks
 type internal IAuthorizationExecutor =
     abstract member AuthorizeAsync : 
         claims: IEnumerable<Claim> * 
-        grainInterfaceAuthorizeData: IEnumerable<IAuthorizeData> * 
-        grainMethodAuthorizeData: IEnumerable<IAuthorizeData> -> Task<bool>
+        typeAuthorizeData: IEnumerable<IAuthorizeData> * 
+        methodAuthorizeData: IEnumerable<IAuthorizeData> -> Task<bool>

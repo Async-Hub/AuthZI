@@ -11,7 +11,7 @@ open System.Net.Http
 [<Extension>]
 type IdentityServer4ServiceCollectionExtensions = 
     [<Extension>]
-    static member inline AddOrleansIdentityServer4Authorization(services: IServiceCollection,
+    static member AddIdentityServer4Authorization(services: IServiceCollection,
         identityServer4Info: IdentityServer4Info(*, configure: Action<Configuration>*)) =
             if isNull (box identityServer4Info) then nullArg(nameof identityServer4Info)
             //if isNull configure then nullArg(nameof configure)

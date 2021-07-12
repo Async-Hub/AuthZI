@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ServiceCollectionExtensions.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
   </ItemGroup>
 

@@ -1,8 +1,8 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using Authzi.IdentityServer4.AccessToken;
+﻿using Authzi.IdentityServer4.AccessToken;
 using Authzi.IdentityServer4.IntegrationTests.Configuration;
 using IdentityModel.Client;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Authzi.IdentityServer4.IntegrationTests
 {

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
+    <ProjectReference Include="..\..\Authzi.Security\Authzi.Security.fsproj" />
   </ItemGroup>
 
 </Project>

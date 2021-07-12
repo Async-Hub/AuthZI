@@ -9,8 +9,8 @@ type internal AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvide
         authorizationService : IAuthorizationService) =
         interface IAuthorizationExecutor with
             member _.AuthorizeAsync(claims : IEnumerable<Claim>, 
-                grainInterfaceAuthorizeData : IEnumerable<IAuthorizeData>,
-                grainMethodAuthorizeData : IEnumerable<IAuthorizeData>) = 
+                typeAuthorizeData : IEnumerable<IAuthorizeData>,
+                methodAuthorizeData : IEnumerable<IAuthorizeData>) = 
                 async {
                     let claimsIdentity = ClaimsIdentity(claims, "AccessToken",
                                             JwtClaimTypes.Subject, JwtClaimTypes.Role)
@@ -18,17 +18,17 @@ type internal AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvide
                     let claimsPrincipal = new ClaimsPrincipal(claimsIdentity)
                     let mutable authorizationSucceeded = true
 
-                    if not (isNull grainMethodAuthorizeData) && 
-                        grainMethodAuthorizeData.Any() then
-                        let! policy = AuthorizationPolicy.CombineAsync(policyProvider, grainMethodAuthorizeData) |> Async.AwaitTask
+                    if not (isNull methodAuthorizeData) && 
+                        methodAuthorizeData.Any() then
+                        let! policy = AuthorizationPolicy.CombineAsync(policyProvider, methodAuthorizeData) |> Async.AwaitTask
                         let! authorizationResult = authorizationService
                                                     .AuthorizeAsync(claimsPrincipal, policy) |> Async.AwaitTask
                         
                         authorizationSucceeded <- authorizationResult.Succeeded
 
-                    if not (isNull grainInterfaceAuthorizeData) && 
-                        grainInterfaceAuthorizeData.Any() && authorizationSucceeded then
-                        let! policy = AuthorizationPolicy.CombineAsync(policyProvider, grainInterfaceAuthorizeData) |> Async.AwaitTask
+                    if not (isNull typeAuthorizeData) && 
+                        typeAuthorizeData.Any() && authorizationSucceeded then
+                        let! policy = AuthorizationPolicy.CombineAsync(policyProvider, typeAuthorizeData) |> Async.AwaitTask
                         let! authorizationResult = authorizationService
                                                     .AuthorizeAsync(claimsPrincipal, policy) |> Async.AwaitTask
                     
