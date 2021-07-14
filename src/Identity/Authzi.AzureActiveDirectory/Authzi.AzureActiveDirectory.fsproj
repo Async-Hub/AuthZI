@@ -9,7 +9,7 @@
   <ItemGroup>
     <Compile Include="AzureActiveDirectoryApp.fs" />
     <Compile Include="AccessTokenProvider.fs" />
-    <Compile Include="MicrosoftOrleans\IdentityServer4ServiceCollectionExtensions.fs" />
+    <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>

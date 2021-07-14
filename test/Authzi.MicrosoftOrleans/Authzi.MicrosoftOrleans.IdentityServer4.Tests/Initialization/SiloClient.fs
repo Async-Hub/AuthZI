@@ -1,7 +1,7 @@
 module SiloClient
 
 open Authzi.IdentityServer4.MicrosoftOrleans
-open Authzi.MicrosoftOrleans.Client
+open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security

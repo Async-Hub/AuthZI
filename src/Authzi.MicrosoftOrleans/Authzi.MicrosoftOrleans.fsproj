@@ -9,10 +9,12 @@
   <ItemGroup>
     <Compile Include="AuthorizationAdmission.fs" />
     <Compile Include="AccessTokenSetterFilter.fs" />
+    <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Authzi.Extensions\Authzi.Extensions.fsproj" />
+    <ProjectReference Include="..\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
     <ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
     <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
   </ItemGroup>

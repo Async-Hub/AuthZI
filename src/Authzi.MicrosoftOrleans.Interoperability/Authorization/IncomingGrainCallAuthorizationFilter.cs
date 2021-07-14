@@ -11,7 +11,7 @@ using Orleans.Runtime;
 namespace Authzi.MicrosoftOrleans.Authorization
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    internal class IncomingGrainCallAuthorizationFilter : GrainAuthorizationFilterBase, IIncomingGrainCallFilter
+    public class IncomingGrainCallAuthorizationFilter : GrainAuthorizationFilterBase, IIncomingGrainCallFilter
     {
         public IncomingGrainCallAuthorizationFilter(IAccessTokenVerifier accessTokenVerifier,
             // ReSharper disable once SuggestBaseTypeForParameter

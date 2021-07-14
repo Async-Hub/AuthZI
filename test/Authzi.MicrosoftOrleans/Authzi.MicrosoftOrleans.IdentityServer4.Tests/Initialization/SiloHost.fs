@@ -1,6 +1,6 @@
 ﻿module SiloHost
 
-open Authzi.MicrosoftOrleans.Clustering;
+open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.IdentityServer4.MicrosoftOrleans

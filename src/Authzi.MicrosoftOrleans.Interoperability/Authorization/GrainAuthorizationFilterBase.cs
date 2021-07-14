@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Authzi.MicrosoftOrleans.Authorization
 {
-    internal abstract class GrainAuthorizationFilterBase
+    public abstract class GrainAuthorizationFilterBase
     {
         private readonly IAuthorizationExecutor _authorizeHandler;
 

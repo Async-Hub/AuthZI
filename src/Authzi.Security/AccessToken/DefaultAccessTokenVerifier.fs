@@ -2,10 +2,10 @@ namespace Authzi.Security.AccessToken
 
 open System
 
-type internal DefaultAccessTokenVerifier(options: AccessTokenVerifierOptions,
+type DefaultAccessTokenVerifier(options: AccessTokenVerifierOptions,
                                          introspectionService: IAccessTokenIntrospectionService) =
     interface IAccessTokenVerifier with
-        member this.Verify accessToken =
+        member _.Verify accessToken =
             async {
                 if String.IsNullOrWhiteSpace accessToken then
                     raise (ArgumentException("The value of accessToken can't be null or empty."))

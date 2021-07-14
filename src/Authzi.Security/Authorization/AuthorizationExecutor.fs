@@ -5,7 +5,7 @@ open System.Linq
 open System.Security.Claims
 open IdentityModel
 
-type internal AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider, 
+type AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider, 
         authorizationService : IAuthorizationService) =
         interface IAuthorizationExecutor with
             member _.AuthorizeAsync(claims : IEnumerable<Claim>, 

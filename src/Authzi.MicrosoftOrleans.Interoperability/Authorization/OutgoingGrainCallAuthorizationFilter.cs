@@ -7,7 +7,7 @@ using Orleans;
 
 namespace Authzi.MicrosoftOrleans.Authorization
 {
-    internal class OutgoingGrainCallAuthorizationFilter : GrainAuthorizationFilterBase, IOutgoingGrainCallFilter
+    public class OutgoingGrainCallAuthorizationFilter : GrainAuthorizationFilterBase, IOutgoingGrainCallFilter
     {
         public OutgoingGrainCallAuthorizationFilter(IAccessTokenVerifier accessTokenVerifier, 
             IAuthorizationExecutor authorizeHandler,

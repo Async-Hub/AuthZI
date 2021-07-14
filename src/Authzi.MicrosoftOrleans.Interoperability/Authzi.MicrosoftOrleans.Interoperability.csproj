@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
     <ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
     <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
   </ItemGroup>
