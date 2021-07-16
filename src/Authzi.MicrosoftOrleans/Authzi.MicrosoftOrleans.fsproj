@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Compile Include="AuthorizationAdmission.fs" />
+    <Compile Include="IncomingGrainCallAuthorizationFilter.fs" />
+    <Compile Include="OutgoingGrainCallAuthorizationFilter.fs" />
     <Compile Include="AccessTokenSetterFilter.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
