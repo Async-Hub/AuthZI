@@ -1,16 +1,16 @@
 ﻿namespace Authzi.MicrosoftOrleans.Authorization
 
-open System.Threading.Tasks
-open System.Security.Claims
-open Orleans.Runtime
-open Orleans
-open Microsoft.Extensions.Logging
-open IdentityModel
-open Authzi.Extensions.TaskExtensions
-open Authzi.Security;
-open Authzi.Security.Authorization
-open Authzi.Security.AccessToken
 open Authzi.MicrosoftOrleans
+open Authzi.Security.AccessToken
+open Authzi.Security.Authorization
+open Authzi.Security;
+open FSharp.Control.Tasks.V2
+open IdentityModel
+open Microsoft.Extensions.Logging
+open Orleans
+open Orleans.Runtime
+open System.Security.Claims
+open System.Threading.Tasks
 
 type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerifier,
     authorizeHandler: IAuthorizationExecutor, logger: ILogger<IncomingGrainCallAuthorizationFilter>) as this =
@@ -20,18 +20,17 @@ type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerif
     member _.Log(eventId, grainTypeName, interfaceMethodName) = base.Log(eventId, grainTypeName, interfaceMethodName)
     interface IIncomingGrainCallFilter with
         member _.Invoke(context: IIncomingGrainCallContext) =
-            async {
+            task {
                 if AuthorizationAdmission.IsRequired context then
-                    let! claims = this.AuthorizeAsync(context) |> Async.AwaitTask
+                    let! claims = this.AuthorizeAsync(context)
                     let grainType = context.Grain.GetType()
                     if grainType.BaseType = typeof<GrainWithClaimsPrincipal> then
-                        let claimsIdentity = new ClaimsIdentity(claims, 
-                                                "", JwtClaimTypes.Subject, JwtClaimTypes.Role)
-                        let claimsPrincipal = new ClaimsPrincipal(claimsIdentity)
+                        let claimsIdentity = ClaimsIdentity(claims, "", JwtClaimTypes.Subject, JwtClaimTypes.Role)
+                        let claimsPrincipal = ClaimsPrincipal(claimsIdentity)
                         RequestContext.Set(ConfigurationKeys.ClaimsPrincipalKey, claimsPrincipal)
                     
                     this.Log(LoggingEvents.IncomingGrainCallAuthorizationPassed,
                         grainType.Name, context.InterfaceMethod.Name)
 
-                do! context.Invoke() |> Async.AwaitTaskAndTryToUnwrapException
-            } |> Async.StartAsTask :> Task
+                do! context.Invoke()
+            } :> Task

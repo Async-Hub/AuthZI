@@ -1,10 +1,10 @@
 ﻿namespace Authzi.MicrosoftOrleans.Authorization
 
-open Authzi.Extensions.TaskExtensions
 open Authzi.MicrosoftOrleans
 open Authzi.Security.AccessToken
 open Authzi.Security.Authorization
 open Authzi.Security;
+open FSharp.Control.Tasks.V2
 open Microsoft.Extensions.Logging
 open Orleans
 open System.Threading.Tasks
@@ -17,13 +17,13 @@ type OutgoingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerif
     member _.Log(eventId, grainTypeName, interfaceMethodName) = base.Log(eventId, grainTypeName, interfaceMethodName)
     interface IOutgoingGrainCallFilter with
         member _.Invoke(context: IOutgoingGrainCallContext) =
-            async {
+            task {
                 if AuthorizationAdmission.IsRequired context then
-                    this.AuthorizeAsync(context) |> Async.AwaitTask |> ignore
+                    let! claims = this.AuthorizeAsync(context)
                     let grainType = context.Grain.GetType()
 
                     this.Log(LoggingEvents.OutgoingGrainCallAuthorizationPassed,
                         grainType.Name, context.InterfaceMethod.Name)
 
-                do! context.Invoke() |> Async.AwaitTaskAndTryToUnwrapException
-            } |> Async.StartAsTask :> Task
+                do! context.Invoke()
+            } :> Task
