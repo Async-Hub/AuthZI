@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Initialization\Credentials.fs" />
     <Compile Include="Initialization\GlobalConfig.fs" />
     <Compile Include="Initialization\AccessTokenFactory.fs" />
     <Compile Include="Initialization\SiloHost.fs" />
@@ -19,6 +20,7 @@
     <PackageReference Include="Microsoft.Orleans.Client" Version="3.4.3" />
     <PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.4.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
   </ItemGroup>
 
   <ItemGroup>
