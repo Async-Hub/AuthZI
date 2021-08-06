@@ -1,19 +1,21 @@
 ﻿namespace Authzi.Security.Authorization
 
+open Authzi.Security
+open Microsoft.FSharp.Core
 open System.Collections.Generic
 open System.Linq
 open System.Security.Claims
-open IdentityModel
 
 type AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider, 
-        authorizationService : IAuthorizationService) =
+        authorizationService : IAuthorizationService, claimTypeResolver: IClaimTypeResolver) =
         interface IAuthorizationExecutor with
             member _.AuthorizeAsync(claims : IEnumerable<Claim>, 
                 typeAuthorizeData : IEnumerable<IAuthorizeData>,
                 methodAuthorizeData : IEnumerable<IAuthorizeData>) = 
                 async {
                     let claimsIdentity = ClaimsIdentity(claims, "AccessToken",
-                                            JwtClaimTypes.Subject, JwtClaimTypes.Role)
+                                            claimTypeResolver.Resolve ClaimType.Subject, 
+                                            claimTypeResolver.Resolve ClaimType.Role)
 
                     let claimsPrincipal = new ClaimsPrincipal(claimsIdentity)
                     let mutable authorizationSucceeded = true

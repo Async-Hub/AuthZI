@@ -2,8 +2,8 @@ module GlobalConfig
 
 open Authzi.AzureActiveDirectory
 
-let identityServer4Url = "http://localhost:5001"
-let identityServer4Info = AzureActiveDirectoryApp(identityServer4Url,
+let azureActiveDirectoryUrl = "https://login.microsoftonline.com/common/v2.0/"
+let azureActiveDirectoryApp = AzureActiveDirectoryApp(azureActiveDirectoryUrl,
                                 "Orleans", "@3x3g*RLez$TNU!_7!QW", "Orleans")
 [<Literal>]
 let WebClient1 = "WebClient1"

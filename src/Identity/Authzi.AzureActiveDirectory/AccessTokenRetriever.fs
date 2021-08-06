@@ -1,11 +1,11 @@
 ﻿namespace Authzi.AzureActiveDirectory
 
-open System.Security
-open System.Collections.Generic
 open Microsoft.Identity.Client
+open System.Collections.Generic
+open System.Security
 
-module AccessTokenProvider =
-    let getTokenByUsernamePassword clientId userName password: string =
+module AccessTokenRetriever =
+    let getTokenByUserNameAndPassword clientId userName password: string =
         let appConfig = new PublicClientApplicationOptions()
         appConfig.ClientId <- clientId
         appConfig.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMultipleOrgs

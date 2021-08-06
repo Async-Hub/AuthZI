@@ -1,24 +1,42 @@
 ﻿module ConnectionTests
 
-open AccessTokenFactory
-open Credentials.AzureActiveDirectoryB2B1
+open AccessTokenProvider
 open System
 open Xunit
 open Xunit.Abstractions
 
-type ConnectionTests(output: ITestOutputHelper) =
+open Credentials.AzureActiveDirectoryB2B1
+
+type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = [[| AdeleV.UserName; AdeleV.Password |]]
     
     [<Theory>]
-    [<MemberData(nameof(ConnectionTests.Input))>] 
-    member _.``The system can obtain Access Token from Azure AD endpoint``
+    [<MemberData(nameof(AzureActiveDirectoryB2BTests.Input))>] 
+    member _.``The system can obtain Access Token from Azure AD B2B endpoint``
         (userName: string) (password: string) =
         async {
             // Arrange
-            let! accessToken = getAccessTokenForUserOnWebClient1Async userName password |> Async.AwaitTask
+            let! accessToken = getAccessTokenForUserOnB2BWebClient1Async userName password |> Async.AwaitTask
             output.WriteLine(accessToken)
             
             // Act
             Assert.False(String.IsNullOrWhiteSpace(accessToken))
     }
 
+open Credentials.AzureActiveDirectoryB2C1
+
+type AzureActiveDirectoryB2CTests(output: ITestOutputHelper) =
+    static member Input with get() : obj[] list = [[| AdeleV.UserName; AdeleV.Password |]]
+    
+    [<Theory>]
+    [<MemberData(nameof(AzureActiveDirectoryB2CTests.Input))>] 
+    member _.``The system can obtain Access Token from Azure AD B2C endpoint``
+        (userName: string) (password: string) =
+        async {
+            // Arrange
+            let! accessToken = getAccessTokenForUserOnB2CWebClient1Async userName password |> Async.AwaitTask
+            output.WriteLine(accessToken)
+            
+            // Act
+            Assert.False(String.IsNullOrWhiteSpace(accessToken))
+    }

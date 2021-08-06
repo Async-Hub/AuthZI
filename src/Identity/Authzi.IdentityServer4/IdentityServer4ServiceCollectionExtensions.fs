@@ -17,6 +17,7 @@ type IdentityServer4ServiceCollectionExtensions =
             //if isNull configure then nullArg(nameof configure)
             
             services.AddSingleton(identityServer4Info) |> ignore
+            services.AddSingleton<IClaimTypeResolver, ClaimTypeResolver>() |> ignore
             services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
 
             // Add Discovery document provider.

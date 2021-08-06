@@ -1,32 +1,34 @@
-﻿namespace Authzi.AzureActiveDirectory.MicrosoftOrleans
+﻿namespace Authzi.AzureActiveDirectory
 
+open Authzi.AzureActiveDirectory
 open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
 open System
-open System.Runtime.CompilerServices
 open System.Net.Http
-open Authzi.AzureActiveDirectory
+open System.Runtime.CompilerServices
 
 [<Extension>]
 type IdentityServer4ServiceCollectionExtensions = 
     [<Extension>]
-    static member inline AddOrleansAzureActiveDirectoryAuthorization(services: IServiceCollection,
-        azureActiveDirectoryApp: AzureActiveDirectoryApp(*, configure: Action<Configuration>*)) =
+    static member inline AddAzureActiveDirectoryAuthorization(services: IServiceCollection,
+        azureActiveDirectoryApp: AzureActiveDirectoryApp) =
+            // Check parameters that might come from C#
             if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
-            //if isNull configure then nullArg(nameof configure)
             
             services.AddSingleton(azureActiveDirectoryApp) |> ignore
-            //services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
+            services.AddSingleton<IClaimTypeResolver, ClaimTypeResolver>() |> ignore
+            services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
 
             // Add Discovery document provider.
-            //let providerFunc (provider: IServiceProvider) =
-            //    let httpClientFactory = provider.GetRequiredService<IHttpClientFactory>()
-            //    let discoveryEndpointUrl = provider.GetRequiredService<IdentityServer4Info>().DiscoveryEndpointUrl
-            //    let securityOptions = provider.GetRequiredService<SecurityOptions>()
-            //    DiscoveryDocumentProvider(httpClientFactory, discoveryEndpointUrl, securityOptions)
+            // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
+            let providerFunc (provider: IServiceProvider) =
+                let httpClientFactory = provider.GetRequiredService<IHttpClientFactory>()
+                let discoveryEndpointUrl = provider.GetRequiredService<AzureActiveDirectoryApp>().DiscoveryEndpointUrl
 
-            //services.AddSingleton<DiscoveryDocumentProvider>(fun provider -> providerFunc(provider)) |> ignore
+                DiscoveryDocumentProvider(httpClientFactory, discoveryEndpointUrl)
+
+            services.AddSingleton<DiscoveryDocumentProvider>(fun provider -> providerFunc(provider)) |> ignore
 
 
                 

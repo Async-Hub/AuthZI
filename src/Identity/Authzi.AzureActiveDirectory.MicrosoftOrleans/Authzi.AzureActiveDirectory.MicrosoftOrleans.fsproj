@@ -6,4 +6,16 @@
     <WarnOn>3390;$(WarnOn)</WarnOn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="ServiceCollectionExtensions.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.2" />
+  </ItemGroup>
+
 </Project>

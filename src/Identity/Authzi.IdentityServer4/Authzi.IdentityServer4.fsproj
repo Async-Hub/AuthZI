@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="ClaimTypeResolver.fs" />
     <Compile Include="IdentityServer4Info.fs" />
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="JwtSecurityTokenVerifier.fs" />
-    <Compile Include="AccessTokenIntrospectionServiceDefault.fs" />
+    <Compile Include="AccessTokenIntrospectionService.fs" />
     <Compile Include="IdentityServer4ServiceCollectionExtensions.fs" />
   </ItemGroup>
 

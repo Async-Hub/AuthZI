@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <WarnOn>3390;$(WarnOn)</WarnOn>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="DiscoveryDocument.fs" />
+    <Compile Include="DiscoveryDocumentProvider.fs" />
+    <Compile Include="AccessTokenIntrospectionService.fs" />
+    <Compile Include="ClaimTypeResolver.fs" />
     <Compile Include="AzureActiveDirectoryApp.fs" />
-    <Compile Include="AccessTokenProvider.fs" />
+    <Compile Include="AccessTokenRetriever.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
