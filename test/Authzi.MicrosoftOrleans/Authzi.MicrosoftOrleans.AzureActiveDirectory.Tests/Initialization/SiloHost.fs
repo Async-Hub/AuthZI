@@ -32,7 +32,7 @@ let startSilo () =
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
                        // Add Azure Active Directory authorization for Orleans client.
-                       services.AddOrleansAzureActiveDirectoryAuthorization(GlobalConfig.azureActiveDirectoryApp)
+                       services.AddOrleansAzureActiveDirectoryAuthorization(GlobalConfig.azureActiveDirectoryAppB2B1)
                        services.AddOrleansClusteringAuthorization(       
                            fun (config:Authzi.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         

@@ -8,7 +8,7 @@ open Xunit.Abstractions
 open Credentials.AzureActiveDirectoryB2B1
 
 type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
-    static member Input with get() : obj[] list = [[| AdeleV.UserName; AdeleV.Password |]]
+    static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
     
     [<Theory>]
     [<MemberData(nameof(AzureActiveDirectoryB2BTests.Input))>] 
@@ -26,7 +26,7 @@ type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
 open Credentials.AzureActiveDirectoryB2C1
 
 type AzureActiveDirectoryB2CTests(output: ITestOutputHelper) =
-    static member Input with get() : obj[] list = [[| AdeleV.UserName; AdeleV.Password |]]
+    static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
     
     [<Theory>]
     [<MemberData(nameof(AzureActiveDirectoryB2CTests.Input))>] 

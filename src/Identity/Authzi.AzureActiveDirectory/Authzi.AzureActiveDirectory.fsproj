@@ -8,19 +8,22 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="AzureActiveDirectoryApp.fs" />
+    <Compile Include="OpenIdConfiguration.fs" />
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="AccessTokenIntrospectionService.fs" />
     <Compile Include="ClaimTypeResolver.fs" />
-    <Compile Include="AzureActiveDirectoryApp.fs" />
     <Compile Include="AccessTokenRetriever.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
+    <PackageReference Include="FSharp.Data" Version="4.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.*" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.34.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="6.12.0" />
   </ItemGroup>
 
   <ItemGroup>

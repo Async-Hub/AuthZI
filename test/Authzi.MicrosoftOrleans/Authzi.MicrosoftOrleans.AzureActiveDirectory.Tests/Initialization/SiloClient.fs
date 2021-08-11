@@ -11,6 +11,7 @@ open Orleans.Configuration;
 open Orleans;
 open System
 open System.Threading.Tasks
+open System.Net.Http
 
 type AccessTokenProvider() =
     let mutable accessToken = String.Empty
@@ -32,7 +33,7 @@ let private clusterClient =
             AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
         // Add Azure Active Directory authorization for Orleans client.
-        services.AddOrleansAzureActiveDirectoryAuthorization(GlobalConfig.azureActiveDirectoryApp)
+        services.AddOrleansAzureActiveDirectoryAuthorization(GlobalConfig.azureActiveDirectoryAppB2B1)
         services.AddOrleansClientAuthorization(fun config -> configureCluster(config)) |> ignore
 
     let builder = 
@@ -55,3 +56,5 @@ let private clusterClient =
 let getClusterClient (accessToken: string) =
     globalAccessToken.AccessToken <- accessToken
     clusterClient
+
+let getIHttpClientFactory = clusterClient.ServiceProvider.GetService<IHttpClientFactory>()

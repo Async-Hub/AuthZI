@@ -1,11 +1,12 @@
 ﻿namespace Authzi.AzureActiveDirectory
 
 open Microsoft.Identity.Client
-open System.Collections.Generic
 open System.Security
 
 module AccessTokenRetriever =
-    let getTokenByUserNameAndPassword clientId userName password: string =
+    // Username/Password flow to acquire a token silently. For testing purposes only!
+    // https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Username-Password-Authentication
+    let getTokenByUserNameAndPassword clientId scopes userName password: string =
         let appConfig = new PublicClientApplicationOptions()
         appConfig.ClientId <- clientId
         appConfig.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMultipleOrgs
@@ -13,7 +14,6 @@ module AccessTokenRetriever =
 
         let app = PublicClientApplicationBuilder.CreateWithApplicationOptions(appConfig).Build();
 
-        let scopes = new List<string>()
         let securePassword = new SecureString()
 
         password |> Seq.iter (fun char -> securePassword.AppendChar(char))

@@ -1,15 +1,22 @@
 ﻿namespace Authzi.AzureActiveDirectory
 
-open System.Runtime.InteropServices
-
-module Path=
+module Configuration =
     [<Literal>]
-    let Url = ".well-known/openid-configuration"
+    let DiscoveryEndpointPath = ".well-known/openid-configuration"
+    [<Literal>]
+    let Url = "https://login.microsoftonline.com/{DirectoryId}/v2.0"
+    [<Literal>]
+    let IssuerUrl = "https://sts.windows.net/{DirectoryId}/"
+    [<Literal>]
+    let JwksUri = "https://login.microsoftonline.com/common/discovery/v2.0/keys"
 
-type AzureActiveDirectoryApp(url: string, clientId: string, clientSecret: string, allowedScope: string,
-    [<Optional; DefaultParameterValue(Path.Url)>]discoveryEndpointEndpointPath: string)=
-    member this.Url = url
-    member this.ClientId = clientId
-    member this.ClientSecret = clientSecret
-    member this.AllowedScope = allowedScope
-    member this.DiscoveryEndpointUrl = url + "/" + discoveryEndpointEndpointPath
+    let issuerUrl directoryId = IssuerUrl.Replace("{DirectoryId}", directoryId)
+
+type AzureActiveDirectoryApp(directoryId: string, clientId: string, 
+    clientSecret: string, allowedScopes: string list) =
+    member _.DirectoryId = directoryId
+    member _.Url = Configuration.Url.Replace("{DirectoryId}", directoryId)
+    member _.ClientId = clientId
+    member _.ClientSecret = clientSecret
+    member _.AllowedScopes = allowedScopes
+    member this.DiscoveryEndpointUrl = this.Url + "/" + Configuration.DiscoveryEndpointPath

@@ -1,22 +1,39 @@
 namespace Authzi.AzureActiveDirectory
 
+open Authzi.Security
 open Authzi.Security.AccessToken
-open Microsoft.Extensions.Logging
-open System.Net.Http
+open Microsoft.IdentityModel.Tokens
+open System.IdentityModel.Tokens.Jwt
+open System.Text
 
-type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactory,
-    discoveryDocumentProvider:DiscoveryDocumentProvider,
-    logger: ILogger<AccessTokenIntrospectionService>) =
+type public AccessTokenIntrospectionService(azureActiveDirectoryApp: AzureActiveDirectoryApp,
+    discoveryDocumentProvider: DiscoveryDocumentProvider, claimTypeResolver : IClaimTypeResolver) =
     
+    let verify (jwtToken: string) (app: AzureActiveDirectoryApp) (discoveryDocument: DiscoveryDocument)
+           (claimTypeResolver: IClaimTypeResolver) =
+               let parameters = TokenValidationParameters()
+               parameters.ValidIssuer <- Configuration.issuerUrl app.DirectoryId
+               parameters.ValidAudience <- app.ClientId
+               parameters.IssuerSigningKeys <- discoveryDocument.SigningKeys
+               parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name
+               parameters.RoleClaimType <- claimTypeResolver.Resolve ClaimType.Role
+               parameters.RequireSignedTokens <- true
+               parameters.ValidateAudience <- false
+               parameters.IssuerSigningKey <- SymmetricSecurityKey(Encoding.ASCII.GetBytes(app.ClientSecret))
+           
+               let handler = JwtSecurityTokenHandler()
+               handler.InboundClaimTypeMap.Clear()
+               let mutable validatedToken : SecurityToken = null
+               let claimsPrincipal = handler.ValidateToken(jwtToken, parameters, &validatedToken)
+               claimsPrincipal.Claims
+
     interface IAccessTokenIntrospectionService with
-        member this.IntrospectTokenAsync accessToken allowOfflineValidation =
+        member _.IntrospectTokenAsync accessToken allowOfflineValidation =
           async {
               let accessTokenType = AccessTokenAnalyzer.GetTokenType accessToken
-              let! discoveryResponse = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
+              let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
               
-              let claims = []
-              
-              // TODO: Implement Access Token validation here.
+              let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
 
               return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
           } |> Async.StartAsTask

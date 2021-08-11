@@ -1,24 +1,21 @@
 namespace Authzi.AzureActiveDirectory
 
-open Authzi.Security
-open System
-open System.Net.Http
+open Microsoft.IdentityModel.Protocols;  
+open Microsoft.IdentityModel.Protocols.OpenIdConnect
 
-type DiscoveryDocumentProvider(clientFactory: IHttpClientFactory, discoveryEndpointUrl: string) =
-    let httpClient = clientFactory.CreateClient("ActiveDirectoryClientConfig")
-    let mutable discoveryDocument: DiscoveryDocument = null
+type DiscoveryDocumentProvider(discoveryEndpointUrl: string) =
+    let mutable discoveryDocument: DiscoveryDocument option = None
 
     member _.GetDiscoveryDocumentAsync() =
         async {
-            if not (isNull discoveryDocument) then
+            if discoveryDocument.IsSome then
                 return discoveryDocument
             else
-                
-                let! discoveryResponse = httpClient.GetAsync(discoveryEndpointUrl) |> Async.AwaitTask
-                
-                if not discoveryResponse.IsSuccessStatusCode then raise (Exception(""))
+               let configManager = ConfigurationManager<OpenIdConnectConfiguration>(discoveryEndpointUrl, 
+                                    new OpenIdConnectConfigurationRetriever())
 
-                let discoveryDocument = DiscoveryDocument()
+               let! config = configManager.GetConfigurationAsync() |> Async.AwaitTask
+               discoveryDocument <- Some(DiscoveryDocument(discoveryEndpointUrl, config.SigningKeys))
 
-                return discoveryDocument
+               return discoveryDocument
         } |> Async.StartAsTask

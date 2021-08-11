@@ -1,11 +1,7 @@
 module GlobalConfig
 
 open Authzi.AzureActiveDirectory
+open Credentials.AzureActiveDirectoryB2B1
 
-let azureActiveDirectoryUrl = "https://login.microsoftonline.com/common/v2.0/"
-let azureActiveDirectoryApp = AzureActiveDirectoryApp(azureActiveDirectoryUrl,
-                                "Orleans", "@3x3g*RLez$TNU!_7!QW", "Orleans")
-[<Literal>]
-let WebClient1 = "WebClient1"
-[<Literal>]
-let WebClient2 = "WebClient2"
+let azureActiveDirectoryAppB2B1 =
+    AzureActiveDirectoryApp(DirectoryId, WebClient1.Id, WebClient1.Secret, WebClient1.AllowedScopes)

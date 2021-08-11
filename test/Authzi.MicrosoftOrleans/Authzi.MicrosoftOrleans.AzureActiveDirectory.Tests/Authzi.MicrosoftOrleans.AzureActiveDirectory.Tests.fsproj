@@ -12,8 +12,10 @@
     <Compile Include="Initialization\AccessTokenProvider.fs" />
     <Compile Include="Initialization\SiloHost.fs" />
     <Compile Include="Initialization\SiloClient.fs" />
-    <Compile Include="AuthorizationTests\SimpleAuthorizationTests.fs" />
+    <Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
+    <Compile Include="Authorization\SimpleAuthorizationTests.fs" />
     <Compile Include="ConnectionTests.fs" />
+    <Compile Include="DiscoveryDocumentProviderTests.fs" />
   </ItemGroup>
 
   <ItemGroup>
