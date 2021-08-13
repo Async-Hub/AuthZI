@@ -1,0 +1,13 @@
+{
+    "location": "United States",
+    "sku": {
+      "name": "Standard",
+      "tier": "A0"
+    },
+    "properties": {
+      "createTenantProperties": {
+        "displayName": "AsyncHub",
+        "countryCode": "US"
+      }
+    }
+}

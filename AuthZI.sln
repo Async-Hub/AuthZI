@@ -47,15 +47,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftOrleans", "Microso
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.fsproj", "{CF9FD5DC-4134-4440-98D9-2BB0E544F768}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.AzureActiveDirectory.MicrosoftOrleans", "src\Identity\Authzi.AzureActiveDirectory.MicrosoftOrleans\Authzi.AzureActiveDirectory.MicrosoftOrleans.fsproj", "{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory.MicrosoftOrleans", "src\Identity\Authzi.AzureActiveDirectory.MicrosoftOrleans\Authzi.AzureActiveDirectory.MicrosoftOrleans.fsproj", "{FCBA8547-6A9D-4E20-B724-92E97ACED2C9}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory", "src\Identity\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj", "{AAB2FC62-921D-4DB7-AF12-68DC63D49A59}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.IdentityServer4", "src\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj", "{0CE11522-6A81-4455-9910-FB0A50D346E8}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.IdentityServer4.MicrosoftOrleans", "src\Identity\Authzi.IdentityServer4.MicrosoftOrleans\Authzi.IdentityServer4.MicrosoftOrleans.fsproj", "{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.IdentityServer4.MicrosoftOrleans", "src\Identity\Authzi.IdentityServer4.MicrosoftOrleans\Authzi.IdentityServer4.MicrosoftOrleans.fsproj", "{C30AABAB-0C0A-46CF-BAC3-37547D99D41C}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Authzi.AzureActiveDirectory.AzureFunctions", "src\Identity\Authzi.AzureActiveDirectory.AzureFunctions\Authzi.AzureActiveDirectory.AzureFunctions.fsproj", "{211E2653-F784-490E-B158-5269F64334C3}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory.AzureFunctions", "src\Identity\Authzi.AzureActiveDirectory.AzureFunctions\Authzi.AzureActiveDirectory.AzureFunctions.fsproj", "{211E2653-F784-490E-B158-5269F64334C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{76494F63-19A9-4AFB-BEA6-4028E594FF2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureActiveDirectory", "AzureActiveDirectory", "{56A13D7D-B100-4B3C-B295-E9E7772EF7C8}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\AzureActiveDirectory\AzureActiveDirectoryB2B1.azcli = deploy\AzureActiveDirectory\AzureActiveDirectoryB2B1.azcli
+		deploy\AzureActiveDirectory\AzureActiveDirectoryB2C1.azcli = deploy\AzureActiveDirectory\AzureActiveDirectoryB2C1.azcli
+		deploy\AzureActiveDirectory\AzureActiveDirectoryB2C1.json = deploy\AzureActiveDirectory\AzureActiveDirectoryB2C1.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -160,6 +169,7 @@ Global
 		{0CE11522-6A81-4455-9910-FB0A50D346E8} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
 		{C30AABAB-0C0A-46CF-BAC3-37547D99D41C} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
 		{211E2653-F784-490E-B158-5269F64334C3} = {0B6E2A06-C13E-4AEF-89D3-5A7BA1232084}
+		{56A13D7D-B100-4B3C-B295-E9E7772EF7C8} = {76494F63-19A9-4AFB-BEA6-4028E594FF2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

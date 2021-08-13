@@ -1,0 +1,25 @@
+# Use Azure CLI effectively
+# https://docs.microsoft.com/en-us/cli/azure/use-cli-effectively
+#az login
+$subscription="xxx"
+
+az account list --output table
+az account set --subscription $subscription
+az account show --output table
+
+$rgName="rg-aad-samples"
+$dnsName="asynchub3"
+
+az group create --name $rgName --location "westeurope"
+ 
+$url="https://management.azure.com/subscriptions/${subscription}/resourceGroups/${rgName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/${dnsName}.onmicrosoft.com?api-version=2019-01-01-preview"
+
+Write-Output $url
+az rest --method put --headers Content-Type=application/json --uri $url --body `@AzureActiveDirectoryB2C1.json
+
+# Switch to newly created Azure AD tenant
+az login --tenant xxx --allow-no-subscriptions
+
+az ad app create --display-name WebClient1
+az ad app create --display-name Api1
+az ad app create --display-name Orleans
