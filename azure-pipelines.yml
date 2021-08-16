@@ -81,3 +81,35 @@ jobs:
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
   # ...
+
+# Deploy to the CI feed (https://pkgs.dev.azure.com/async-hub/AuthZI/_packaging/AuthZI/nuget/v3/index.json).
+- job: Deploy_Packages_CI_Feed
+  dependsOn: General_Build
+  variables:
+    - group: Default
+    - name: GitVersion.SemVer
+      value: $[ dependencies.General_Build.outputs['gitVersionNumber.GitVersionSemVer'] ]
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  steps:
+  # ...
+  # Print SemVer Number
+  - script: echo $(GitVersion.SemVer)
+    displayName: 'Print SemVer Number'
+  # ...
+  # NuGet pack AuthZI.Build.sln
+  - task: DotNetCoreCLI@2
+    displayName: 'NuGet pack AuthZI.Build.sln'
+    inputs:
+      command: pack
+      versioningScheme: byEnvVar
+      versionEnvVar: GitVersion.SemVer
+      packagesToPack: AuthZI.Build.sln
+  # ...
+  # Push NuGet packs to Azure Artifacts feed
+  - task: NuGetCommand@2
+    displayName: 'NuGet push to Azure Artifacts'
+    inputs:
+      command: push
+      publishVstsFeed: 'AuthZI/AuthZI'
+      allowPackageConflicts: true
+    continueOnError: true
