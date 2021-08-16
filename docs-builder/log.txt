@@ -97,3 +97,5 @@
 {"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-08-11T14:33:30.8034919Z","message_severity":"warning","correlation_id":"B1095066-49FB-4475-AF7B-4185A0B67E3A.1.1.11"}
 {"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-08-13T09:01:19.0733427Z","message_severity":"warning","correlation_id":"0EE89C9A-B4DB-4E90-B754-41ADD62A4350.1.1.11"}
 {"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-08-13T14:00:54.6841148Z","message_severity":"warning","correlation_id":"AE93D018-7A33-4EB9-B6DF-AC015DE4946A.1.1.166"}
+{"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-08-16T09:21:04.0533096Z","message_severity":"warning","correlation_id":"E8D4A9E1-7525-4786-A64F-88AB088A0772.1.1.11"}
+{"message":"No metadata is generated for DocsBuilder.","source":"MetadataCommand.ExtractMetadata","date_time":"2021-08-16T09:31:43.5064683Z","message_severity":"warning","correlation_id":"ABBCA727-CE2B-4558-A0B9-2886D1AAC0D6.1.1.11"}
