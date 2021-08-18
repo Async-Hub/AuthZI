@@ -1,5 +1,7 @@
 ﻿namespace Authzi.AzureActiveDirectory
 
+open System.Collections.Generic
+
 module Configuration =
     [<Literal>]
     let DiscoveryEndpointPath = ".well-known/openid-configuration"
@@ -13,7 +15,7 @@ module Configuration =
     let issuerUrl directoryId = IssuerUrl.Replace("{DirectoryId}", directoryId)
 
 type AzureActiveDirectoryApp(directoryId: string, clientId: string, 
-    clientSecret: string, allowedScopes: string list) =
+    clientSecret: string, allowedScopes: IEnumerable<string>) =
     member _.DirectoryId = directoryId
     member _.Url = Configuration.Url.Replace("{DirectoryId}", directoryId)
     member _.ClientId = clientId

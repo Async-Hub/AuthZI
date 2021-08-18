@@ -8,9 +8,9 @@ open System
 open System.Runtime.CompilerServices
 
 [<Extension>]
-type IdentityServer4ServiceCollectionExtensions = 
+type ServiceCollectionExtensions = 
     [<Extension>]
-    static member inline AddAzureActiveDirectoryAuthorization(services: IServiceCollection,
+    static member AddAzureActiveDirectoryAuthorization(services: IServiceCollection,
         azureActiveDirectoryApp: AzureActiveDirectoryApp) =
             // Check parameters that might come from C#
             if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
