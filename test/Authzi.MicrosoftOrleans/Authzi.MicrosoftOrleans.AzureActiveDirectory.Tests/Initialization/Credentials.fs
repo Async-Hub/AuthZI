@@ -11,6 +11,9 @@ module Users =
     let AdeleVB2B1 = "AdeleV@xxx.onmicrosoft.com"
 
     [<Literal>]
+    let AlexWB2B1 = "AlexW@xxx.onmicrosoft.com"
+
+    [<Literal>]
     let AdeleVB2C1 = "AdeleV@xxx.onmicrosoft.com"
 
 open Users
@@ -28,6 +31,10 @@ module AzureActiveDirectoryB2B1 =
 
     let AdeleV =
         { Name = AdeleVB2B1
+          Password = GeneralPassword }
+
+    let AlexW =
+        { Name = AlexWB2B1
           Password = GeneralPassword }
 
 module AzureActiveDirectoryB2C1 =

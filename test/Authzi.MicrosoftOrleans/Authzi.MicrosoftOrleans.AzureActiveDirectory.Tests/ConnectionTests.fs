@@ -8,7 +8,11 @@ open Xunit.Abstractions
 open Credentials.AzureActiveDirectoryB2B1
 
 type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
-    static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
+    static member Input with get() : obj[] list = 
+        [
+            [| AdeleV.Name; AdeleV.Password |]; 
+            [| AlexW.Name; AlexW.Password |]
+        ]
     
     [<Theory>]
     [<MemberData(nameof(AzureActiveDirectoryB2BTests.Input))>] 

@@ -24,7 +24,7 @@ type AccessTokenVerificationTests(output: ITestOutputHelper) =
             output.WriteLine(accessToken)
 
             let accessTokenIntrospectionService = AccessTokenIntrospectionService(GlobalConfig.azureActiveDirectoryAppB2B1,
-                                                    discoveryDocumentProvider, ClaimTypeResolver()) :> IAccessTokenIntrospectionService
+                                                    discoveryDocumentProvider, ClaimTypeResolverDefault()) :> IAccessTokenIntrospectionService
 
             let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false |> Async.AwaitTask
             

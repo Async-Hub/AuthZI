@@ -16,7 +16,7 @@ type ServiceCollectionExtensions =
             if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
             
             services.AddSingleton(azureActiveDirectoryApp) |> ignore
-            services.AddSingleton<IClaimTypeResolver, ClaimTypeResolver>() |> ignore
+            services.AddSingleton<IClaimTypeResolver, ClaimTypeResolverDefault>() |> ignore
             services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
 
             // Add Discovery document provider.

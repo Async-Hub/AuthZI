@@ -18,13 +18,14 @@ namespace Authzi.MicrosoftOrleans.Authorization
 
         private readonly IAccessTokenVerifier _accessTokenVerifier;
 
-        protected ILogger Logger;
+        protected readonly ILogger Logger;
 
         protected GrainAuthorizationFilterBase(IAccessTokenVerifier accessTokenVerifier, 
-            IAuthorizationExecutor authorizeHandler)
+            IAuthorizationExecutor authorizeHandler, ILogger logger)
         {
             _authorizeHandler = authorizeHandler;
             _accessTokenVerifier = accessTokenVerifier;
+            Logger = logger;
         }
 
         protected async Task<IEnumerable<Claim>> AuthorizeAsync(IGrainCallContext grainCallContext)

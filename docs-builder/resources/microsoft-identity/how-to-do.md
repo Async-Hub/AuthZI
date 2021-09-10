@@ -7,3 +7,4 @@
 - ### [Microsoft identity platform best practices and recommendations](https://docs.microsoft.com/en-us/azure/active-directory/develop/identity-platform-integration-checklist)
 - ### [Permissions and consent in the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
 - ### [Token cache serialization in MSAL.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-net-token-cache-serialization?tabs=aspnetcore)
+- ### [Add app roles to your application and receive them in the token](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)

@@ -6,10 +6,11 @@ open System.Security
 module AccessTokenRetriever =
     // Username/Password flow to acquire a token silently. For testing purposes only!
     // https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Username-Password-Authentication
-    let getTokenByUserNameAndPassword clientId scopes userName password: string =
+    let getTokenByUserNameAndPassword directoryId clientId scopes userName password: string =
         let appConfig = new PublicClientApplicationOptions()
+        appConfig.TenantId <- directoryId
         appConfig.ClientId <- clientId
-        appConfig.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMultipleOrgs
+        appConfig.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMyOrg
         appConfig.AzureCloudInstance <- AzureCloudInstance.AzurePublic
 
         let app = PublicClientApplicationBuilder.CreateWithApplicationOptions(appConfig).Build();

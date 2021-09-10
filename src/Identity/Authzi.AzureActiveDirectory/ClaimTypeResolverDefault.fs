@@ -2,10 +2,10 @@
 
 open Authzi.Security
 
-type ClaimTypeResolver() =
+type ClaimTypeResolverDefault() =
     interface IClaimTypeResolver with
         member _.Resolve(claimType: ClaimType) =
             match claimType with
             | Name -> "name"
-            | Role -> "role"
+            | Role -> "roles"
             | Subject -> "sub"

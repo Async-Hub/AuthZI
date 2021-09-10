@@ -13,7 +13,7 @@
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="AccessTokenIntrospectionService.fs" />
-    <Compile Include="ClaimTypeResolver.fs" />
+    <Compile Include="ClaimTypeResolverDefault.fs" />
     <Compile Include="AccessTokenRetriever.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>

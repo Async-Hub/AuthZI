@@ -14,6 +14,7 @@
     <Compile Include="Initialization\SiloClient.fs" />
     <Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
     <Compile Include="Authorization\SimpleAuthorizationTests.fs" />
+    <Compile Include="Authorization\RoleBasedAuthorizationTests.fs" />
     <Compile Include="ConnectionTests.fs" />
     <Compile Include="DiscoveryDocumentProviderTests.fs" />
   </ItemGroup>
