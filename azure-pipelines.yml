@@ -102,10 +102,9 @@ jobs:
     inputs:
       command: custom
       custom: pack
-      arguments: '--configuration release /p:SourceLinkCreate=true'
+      arguments: 'AuthZI.Build.sln --configuration release /p:SourceLinkCreate=true'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
-      packagesToPack: AuthZI.Build.sln
       includesymbols: true
       includesource: true
   # ...
