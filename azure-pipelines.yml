@@ -100,8 +100,9 @@ jobs:
   - task: DotNetCoreCLI@2
     displayName: 'NuGet pack AuthZI.Build.sln'
     inputs:
-      command: pack
-      arguments: '--configuration release'
+      command: custom
+      custom: pack
+      arguments: '--configuration release /p:SourceLinkCreate=true'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
       packagesToPack: AuthZI.Build.sln
@@ -122,6 +123,6 @@ jobs:
     inputs:
       symbolsFolder: '$Build.SourcesDirectory/src'
       searchPattern: '**/bin/**/*.pdb' 
-      indexSources: true
+      indexSources: false
       publishSymbols: true
       symbolServerType: teamServices
