@@ -104,6 +104,8 @@ jobs:
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
       packagesToPack: AuthZI.Build.sln
+      includesymbols: true
+      includesource: true
   # ...
   # Push NuGet packs to Azure Artifacts feed
   - task: NuGetCommand@2
