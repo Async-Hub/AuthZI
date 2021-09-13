@@ -100,11 +100,12 @@ jobs:
   - task: DotNetCoreCLI@2
     displayName: 'NuGet pack AuthZI.Build.sln'
     inputs:
-      command: custom
-      custom: pack
-      arguments: 'AuthZI.Build.sln --configuration release /p:SourceLinkCreate=true'
+      command: pack
+      packagesToPack: AuthZI.Build.sln
+      configuration: 'Release'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
+      buildProperties: SourceLinkCreate = true
       includesymbols: true
       includesource: true
   # ...
@@ -116,12 +117,16 @@ jobs:
       publishVstsFeed: 'AuthZI/AuthZI'
       allowPackageConflicts: true
     continueOnError: true
+  # Print Symbols Folder
+  - script: echo '$Build.SourcesDirectory/src'
+    displayName: 'Print Symbols Folderr'
+  # ...
   # ...
   # Index source code and publish symbols to Azure Artifacts symbol server
-  - task: PublishSymbols@2
-    inputs:
-      symbolsFolder: '$Build.SourcesDirectory/src'
-      searchPattern: '**/bin/**/*.pdb' 
-      indexSources: false
-      publishSymbols: true
-      symbolServerType: teamServices
+  # - task: PublishSymbols@2
+  #   inputs:
+  #     symbolsFolder: '$Build.SourcesDirectory/src'
+  #     searchPattern: '**/bin/**/*.pdb' 
+  #     indexSources: false
+  #     publishSymbols: true
+  #     symbolServerType: teamServices
