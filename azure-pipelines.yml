@@ -115,3 +115,12 @@ jobs:
       publishVstsFeed: 'AuthZI/AuthZI'
       allowPackageConflicts: true
     continueOnError: true
+  # ...
+  # Index source code and publish symbols to Azure Artifacts symbol server
+  - task: PublishSymbols@2
+    inputs:
+      symbolsFolder: join(variables['Build.SourcesDirectory'], '/src')
+      searchPattern: '**/bin/**/*.pdb' 
+      indexSources: true
+      publishSymbols: true
+      symbolServerType: teamServices
