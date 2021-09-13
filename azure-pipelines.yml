@@ -101,6 +101,7 @@ jobs:
     displayName: 'NuGet pack AuthZI.Build.sln'
     inputs:
       command: pack
+      arguments: '--configuration release'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
       packagesToPack: AuthZI.Build.sln
@@ -119,7 +120,7 @@ jobs:
   # Index source code and publish symbols to Azure Artifacts symbol server
   - task: PublishSymbols@2
     inputs:
-      symbolsFolder: join(variables['Build.SourcesDirectory'], '/src')
+      symbolsFolder: '$Build.SourcesDirectory/src'
       searchPattern: '**/bin/**/*.pdb' 
       indexSources: true
       publishSymbols: true
