@@ -96,6 +96,16 @@ jobs:
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
   # ...
+  # Build AuthZI.Build.sln Solution
+  - task: VSBuild@1
+    displayName: 'Build solution AuthZI.Build.sln'
+    inputs:
+      solution: AuthZI.Build.sln
+      platform: 'any cpu'
+      configuration: release
+      msbuildArgs: /p:SourceLinkCreate=true
+      clean: true
+  # ...
   # NuGet pack AuthZI.Build.sln
   - task: DotNetCoreCLI@2
     displayName: 'NuGet pack AuthZI.Build.sln'
@@ -104,6 +114,7 @@ jobs:
       packagesToPack: AuthZI.Build.sln
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
+      nobuild: true
       includesymbols: true
       includesource: true
   # ...
@@ -115,16 +126,13 @@ jobs:
       publishVstsFeed: 'AuthZI/AuthZI'
       allowPackageConflicts: true
     continueOnError: true
-  # Print Symbols Folder
-  - script: echo '$Build.SourcesDirectory/src'
-    displayName: 'Print Symbols Folderr'
-  # ...
   # ...
   # Index source code and publish symbols to Azure Artifacts symbol server
-  # - task: PublishSymbols@2
-  #   inputs:
-  #     symbolsFolder: '$Build.SourcesDirectory/src'
-  #     searchPattern: '**/bin/**/*.pdb' 
-  #     indexSources: false
-  #     publishSymbols: true
-  #     symbolServerType: teamServices
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops#set-up-the-publish-task
+  - task: PublishSymbols@2
+    inputs:
+      symbolsFolder: '$Build.SourcesDirectory/src'
+      searchPattern: '**/bin/**/*.pdb' 
+      indexSources: false
+      publishSymbols: true
+      symbolServerType: teamServices
