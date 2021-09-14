@@ -117,8 +117,9 @@ jobs:
   # Index source code and publish symbols to Azure Artifacts symbol server
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops#set-up-the-publish-task
   - task: PublishSymbols@2
+    displayName: 'Publish symbols path'
     inputs:
-      symbolsFolder: '$Build.SourcesDirectory/src'
+      SymbolsFolder: '$(Build.SourcesDirectory)/src'
+      SymbolServerType: TeamServices
       indexSources: false
       publishSymbols: true
-      symbolServerType: teamServices
