@@ -102,7 +102,6 @@ jobs:
     inputs:
       command: pack
       packagesToPack: AuthZI.Build.sln
-      configuration: 'Release'
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
       buildProperties: SourceLinkCreate = true
