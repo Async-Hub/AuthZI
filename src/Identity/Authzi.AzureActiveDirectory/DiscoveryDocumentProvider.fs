@@ -5,6 +5,7 @@ open Microsoft.IdentityModel.Protocols.OpenIdConnect
 
 type DiscoveryDocumentProvider(discoveryEndpointUrl: string) =
     let mutable discoveryDocument: DiscoveryDocument option = None
+    let discoveryEndpointUrl = discoveryEndpointUrl
 
     member _.GetDiscoveryDocumentAsync() =
         async {
