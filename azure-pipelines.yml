@@ -11,11 +11,7 @@ trigger:
 variables:
   shouldDeploy: true
 
-pool:
-  vmImage: 'windows-latest'
-  demands:
-  - msbuild
-  - visualstudio
+pool: Default
 
 jobs:
 - job: General_Build
