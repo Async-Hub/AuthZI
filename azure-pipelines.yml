@@ -96,6 +96,12 @@ jobs:
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
   # ...
+  # Restore NuGet packages.
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      feedsToUse: config
+  # ...
   # Build AuthZI.Build.sln Solution
   - task: VSBuild@1
     displayName: 'Build solution AuthZI.Build.sln'
