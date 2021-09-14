@@ -92,36 +92,17 @@ jobs:
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   steps:
   # ...
-  # Print SemVer Number
-  - script: echo $(GitVersion.SemVer)
-    displayName: 'Print SemVer Number'
-  # ...
-  # Restore NuGet packages.
-  - task: DotNetCoreCLI@2
-    displayName: 'NuGet restore'
-    inputs:
-      command: 'restore'
-      projects: AuthZI.Build.sln
-      feedsToUse: config
-  # ...
-  # Build AuthZI.Build.sln Solution
-  - task: DotNetCoreCLI@2
-    displayName: 'Build solution AuthZI.Build.sln'
-    inputs:
-      projects: AuthZI.Build.sln
-      configuration: Release
-      arguments: /p:SourceLinkCreate=true
-  # ...
   # NuGet pack AuthZI.Build.sln
   - task: DotNetCoreCLI@2
     displayName: 'NuGet pack AuthZI.Build.sln'
     inputs:
       command: pack
       packagesToPack: AuthZI.Build.sln
+      includesymbols: true
+      includesource: true
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
-      nobuild: true
-      includesymbols: true
+      buildProperties: 'SourceLinkCreate=true'
   # ...
   # Push NuGet packs to Azure Artifacts feed
   - task: NuGetCommand@2
