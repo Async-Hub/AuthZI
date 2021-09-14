@@ -109,14 +109,12 @@ jobs:
       feedsToUse: config
   # ...
   # Build AuthZI.Build.sln Solution
-  - task: VSBuild@1
+  - task: DotNetCoreCLI@2
     displayName: 'Build solution AuthZI.Build.sln'
     inputs:
-      solution: AuthZI.Build.sln
-      platform: 'any cpu'
-      configuration: release
-      msbuildArgs: /p:SourceLinkCreate=true
-      clean: true
+      projects: AuthZI.Build.sln
+      configuration: Release
+      arguments: /p:SourceLinkCreate=true
   # ...
   # NuGet pack AuthZI.Build.sln
   - task: DotNetCoreCLI@2
