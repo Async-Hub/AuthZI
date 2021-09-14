@@ -10,6 +10,7 @@ trigger:
 
 variables:
   shouldDeploy: true
+  BuildConfiguration: Release
 
 pool:
   name: Default
@@ -118,7 +119,6 @@ jobs:
   - task: PublishSymbols@2
     inputs:
       symbolsFolder: '$Build.SourcesDirectory/src'
-      searchPattern: '**/bin/**/*.pdb' 
       indexSources: false
       publishSymbols: true
       symbolServerType: teamServices
