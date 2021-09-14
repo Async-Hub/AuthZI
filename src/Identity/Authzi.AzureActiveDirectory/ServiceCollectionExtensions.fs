@@ -4,7 +4,6 @@ open Authzi.AzureActiveDirectory
 open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
-open System
 open System.Runtime.CompilerServices
 
 [<Extension>]
@@ -21,13 +20,9 @@ type ServiceCollectionExtensions =
 
             // Add Discovery document provider.
             // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
-            let providerFunc (provider: IServiceProvider) =
-                let discoveryEndpointUrl = 
-                    provider.GetRequiredService<AzureActiveDirectoryApp>().DiscoveryEndpointUrl
+            let discoveryDocumentProvider = DiscoveryDocumentProvider(azureActiveDirectoryApp.DiscoveryEndpointUrl)
 
-                DiscoveryDocumentProvider(discoveryEndpointUrl)
-
-            services.AddSingleton<DiscoveryDocumentProvider>(fun provider -> providerFunc(provider)) |> ignore
+            services.AddSingleton<DiscoveryDocumentProvider>(discoveryDocumentProvider) |> ignore
 
 
                 
