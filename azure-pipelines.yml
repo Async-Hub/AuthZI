@@ -96,16 +96,12 @@ jobs:
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
   # ...
-  # Use NuGet 5.x
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 5.x'
-    inputs:
-      versionSpec: 5.x
-  # ...
   # Restore NuGet packages.
-  - task: NuGetCommand@2
+  - task: DotNetCoreCLI@2
     displayName: 'NuGet restore'
     inputs:
+      command: 'restore'
+      projects: AuthZI.Build.sln
       feedsToUse: config
   # ...
   # Build AuthZI.Build.sln Solution
