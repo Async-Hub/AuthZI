@@ -104,7 +104,6 @@ jobs:
       packagesToPack: AuthZI.Build.sln
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
-      buildProperties: SourceLinkCreate = true
       includesymbols: true
       includesource: true
   # ...
