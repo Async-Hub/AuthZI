@@ -96,6 +96,12 @@ jobs:
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
   # ...
+  # Use NuGet 5.x
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: 5.x
+  # ...
   # Restore NuGet packages.
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
@@ -113,16 +119,14 @@ jobs:
       clean: true
   # ...
   # NuGet pack AuthZI.Build.sln
-  - task: DotNetCoreCLI@2
+  - task: NuGetCommand@2
     displayName: 'NuGet pack AuthZI.Build.sln'
     inputs:
       command: pack
       packagesToPack: AuthZI.Build.sln
       versioningScheme: byEnvVar
       versionEnvVar: GitVersion.SemVer
-      nobuild: true
       includesymbols: true
-      includesource: true
   # ...
   # Push NuGet packs to Azure Artifacts feed
   - task: NuGetCommand@2
