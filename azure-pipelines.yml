@@ -11,7 +11,11 @@ trigger:
 variables:
   shouldDeploy: true
 
-pool: Default
+pool:
+  name: Default
+  demands:
+    - msbuild
+    - visualstudio
 
 jobs:
 - job: General_Build
