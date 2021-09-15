@@ -1,4 +1,4 @@
-﻿namespace Authzi.IdentityServer4.MicrosoftOrleans
+﻿namespace Authzi.MicrosoftOrleans.IdentityServer4
 
 open Authzi.IdentityServer4
 open Microsoft.Extensions.DependencyInjection

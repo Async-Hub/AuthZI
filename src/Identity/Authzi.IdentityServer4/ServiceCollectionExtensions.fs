@@ -1,4 +1,4 @@
-﻿namespace Authzi.IdentityServer4.MicrosoftOrleans
+﻿namespace Authzi.IdentityServer4
 
 open Authzi.IdentityServer4
 open Authzi.Security
@@ -9,7 +9,7 @@ open System.Runtime.CompilerServices
 open System.Net.Http
 
 [<Extension>]
-type IdentityServer4ServiceCollectionExtensions = 
+type ServiceCollectionExtensions = 
     [<Extension>]
     static member AddIdentityServer4Authorization(services: IServiceCollection,
         identityServer4Info: IdentityServer4Info(*, configure: Action<Configuration>*)) =

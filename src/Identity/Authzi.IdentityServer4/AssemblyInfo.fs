@@ -2,5 +2,5 @@
 
 open System.Runtime.CompilerServices
 
-[<assembly: InternalsVisibleTo("Authzi.IdentityServer4.MicrosoftOrleans")>]
+[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.IdentityServer4")>]
 do()

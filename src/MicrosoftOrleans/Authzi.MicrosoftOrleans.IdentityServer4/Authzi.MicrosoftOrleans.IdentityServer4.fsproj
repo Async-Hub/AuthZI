@@ -11,11 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+    <ProjectReference Include="..\..\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
+	 <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

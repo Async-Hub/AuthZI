@@ -3,7 +3,7 @@
 open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
-open Authzi.IdentityServer4.MicrosoftOrleans
+open Authzi.MicrosoftOrleans.IdentityServer4
 open Authzi.Security.Authorization
 open Microsoft.Extensions.Hosting               
 open Orleans.Configuration;

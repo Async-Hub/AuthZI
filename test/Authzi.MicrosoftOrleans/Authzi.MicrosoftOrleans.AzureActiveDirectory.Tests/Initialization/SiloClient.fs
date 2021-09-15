@@ -1,6 +1,6 @@
 module SiloClient
 
-open Authzi.AzureActiveDirectory.MicrosoftOrleans
+open Authzi.MicrosoftOrleans.AzureActiveDirectory
 open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization

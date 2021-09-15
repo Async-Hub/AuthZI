@@ -56,8 +56,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
-    <ProjectReference Include="..\..\..\src\Identity\Authzi.IdentityServer4.MicrosoftOrleans\Authzi.IdentityServer4.MicrosoftOrleans.fsproj" />
     <ProjectReference Include="..\..\..\src\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+    <ProjectReference Include="..\..\..\src\MicrosoftOrleans\Authzi.MicrosoftOrleans.IdentityServer4\Authzi.MicrosoftOrleans.IdentityServer4.fsproj" />
     <ProjectReference Include="..\Authzi.MicrosoftOrleans.Grains\Authzi.MicrosoftOrleans.Grains.csproj" />
   </ItemGroup>
 

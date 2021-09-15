@@ -16,8 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-    <ProjectReference Include="..\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Identity\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

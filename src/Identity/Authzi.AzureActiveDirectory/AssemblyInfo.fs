@@ -2,5 +2,5 @@
 
 open System.Runtime.CompilerServices
 
-[<assembly: InternalsVisibleTo("Authzi.AzureActiveDirectory.MicrosoftOrleans")>]
+[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.AzureActiveDirectory")>]
 do()

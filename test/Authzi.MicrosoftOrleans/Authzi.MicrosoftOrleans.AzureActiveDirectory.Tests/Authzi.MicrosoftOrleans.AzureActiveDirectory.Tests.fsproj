@@ -31,7 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
     <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
-    <ProjectReference Include="..\..\..\src\Identity\Authzi.AzureActiveDirectory.MicrosoftOrleans\Authzi.AzureActiveDirectory.MicrosoftOrleans.fsproj" />
+    <ProjectReference Include="..\..\..\src\MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory\Authzi.MicrosoftOrleans.AzureActiveDirectory.fsproj" />
     <ProjectReference Include="..\Authzi.MicrosoftOrleans.Grains\Authzi.MicrosoftOrleans.Grains.csproj" />
   </ItemGroup>
 
