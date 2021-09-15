@@ -1,7 +1,6 @@
 module SiloClient
 
 open Authzi.MicrosoftOrleans.IdentityServer4
-open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
@@ -31,8 +30,10 @@ let private clusterClient =
                 Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)
             AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
-        services.AddOrleansIdentityServer4Authorization(GlobalConfig.identityServer4Info)
-        services.AddOrleansClientAuthorization(fun config -> configureCluster(config)) |> ignore
+        
+        // Add IdentityServer4 authorization.
+        services.AddOrleansClientAuthorization(GlobalConfig.identityServer4Info, 
+            fun config -> configureCluster(config)) |> ignore
 
     let builder = 
         ClientBuilder().UseLocalhostClustering()

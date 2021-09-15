@@ -5,16 +5,17 @@ open Authzi.Security
 open Authzi.Security.AccessToken
 open Authzi.Security.Authorization
 open Authzi.Security.Caching
+open Microsoft.Extensions.Caching.Memory
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.DependencyInjection.Extensions
+open Microsoft.Extensions.Http
 open Orleans
 open System
 open System.Net.Http
-open System.Runtime.CompilerServices
-open Microsoft.Extensions.Http
-open Microsoft.Extensions.Caching.Memory
-open System.Security.Cryptography.X509Certificates
 open System.Net.Security
+open System.Runtime.CompilerServices
+open System.Runtime.InteropServices
+open System.Security.Cryptography.X509Certificates
 
 module HttpClientConfiguration =
     let configureHttpMessageHandlerBuilder (builder: HttpMessageHandlerBuilder, securityOptions: SecurityOptions) =
@@ -27,8 +28,7 @@ module HttpClientConfiguration =
 
 [<Extension>]
 type ServiceCollectionExtensions = 
-    [<Extension>]
-    static member inline AddOrleansClusterSecurityServices(services: IServiceCollection,
+    static member inline private RegisterServices(services: IServiceCollection,
         configure: Action<Configuration>, configureServices:  Action<IServiceCollection>) =
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)
@@ -61,44 +61,28 @@ type ServiceCollectionExtensions =
         services.AddSingleton<IAccessTokenCache>(new Func<IServiceProvider, IAccessTokenCache>(fun _ -> 
             new AccessTokenCache(memoryCacheOptions) :> IAccessTokenCache)) |> ignore
 
-    //// For the testing purposes.
-    //[<Extension>]
-    //static member inline AddOrleansClusteringAuthorization(services: IServiceCollection,
-    //    configure: Action<Configuration>, configureServices:  Action<IServiceCollection>) =
-    //    if isNull (box services) then nullArg(nameof services)
-    //    if isNull (box configure) then nullArg(nameof configure)
-
-    //    services.AddSingleton<IIncomingGrainCallFilter, IncomingGrainCallAuthorizationFilter>() |> ignore
-    //    services.AddOrleansClusterSecurityServices(configure, configureServices)
-
-    // For the production usage.
     [<Extension>]
-    static member inline AddOrleansClusteringAuthorization(services: IServiceCollection,
-        configure: Action<Configuration>) =
+    static member inline AddAuthorization(services: IServiceCollection,
+        configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
+        
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)
 
+        // For the Orleans co-hosted clients usage.
+        // https://dotnet.github.io/orleans/docs/host/client.html
+        if isCoHostedClient then
+            services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>() |> ignore
+
         services.AddSingleton<IIncomingGrainCallFilter, IncomingGrainCallAuthorizationFilter>() |> ignore
-        services.AddOrleansClusterSecurityServices(configure, null)
+        ServiceCollectionExtensions.RegisterServices(services, configure, null)
 
-    // For the Orleans CoHosted Cluster usage.
     [<Extension>]
-    static member inline AddOrleansCoHostedClusterAuthorization(services: IServiceCollection,
-        configure: Action<Configuration>) =
-        if isNull (box services) then nullArg(nameof services)
-        if isNull (box configure) then nullArg(nameof configure)
-
-        services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>() |> ignore
-        services.AddSingleton<IIncomingGrainCallFilter, IncomingGrainCallAuthorizationFilter>() |> ignore
-        services.AddOrleansClusterSecurityServices(configure, null)
-
-    // For the production usage.
-    [<Extension>]
-    static member inline AddOrleansClientAuthorization(services: IServiceCollection,
+    static member inline AddClientAuthorization(services: IServiceCollection,
         configure: Action<Configuration>) =
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)
 
         services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>() |> ignore
         services.AddSingleton<IOutgoingGrainCallFilter, OutgoingGrainCallAuthorizationFilter>() |> ignore
-        services.AddOrleansClusterSecurityServices(configure, null)
+        
+        ServiceCollectionExtensions.RegisterServices(services, configure, null)

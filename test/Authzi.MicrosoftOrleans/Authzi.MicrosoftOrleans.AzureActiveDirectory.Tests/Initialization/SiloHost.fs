@@ -1,7 +1,6 @@
 ﻿module SiloHost
 
 open Authzi.MicrosoftOrleans.AzureActiveDirectory
-open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security.Authorization
@@ -31,9 +30,8 @@ let startSilo () =
                        |> ignore)
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
-                       // Add Azure Active Directory authorization for Orleans client.
-                       services.AddOrleansAzureActiveDirectoryAuthorization(GlobalConfig.azureActiveDirectoryAppB2B1)
-                       services.AddOrleansClusteringAuthorization(       
+                       // Add Azure Active Directory authorization.
+                       services.AddOrleansAuthorization(GlobalConfig.azureActiveDirectoryAppB2B1,       
                            fun (config:Authzi.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                AuthorizationConfig.ConfigureOptions)         

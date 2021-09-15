@@ -1,6 +1,5 @@
 ﻿module SiloHost
 
-open Authzi.MicrosoftOrleans
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.MicrosoftOrleans.IdentityServer4
@@ -31,8 +30,8 @@ let startSilo () =
                        |> ignore)
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
-                       services.AddOrleansIdentityServer4Authorization(GlobalConfig.identityServer4Info)
-                       services.AddOrleansClusteringAuthorization(       
+                       // Add IdentityServer4 authorization.
+                       services.AddOrleansAuthorization(GlobalConfig.identityServer4Info,      
                            fun (config:Authzi.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                AuthorizationConfig.ConfigureOptions)         
