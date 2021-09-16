@@ -69,7 +69,8 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="authorization-functionality-for-microsoft-orleans">Authorization functionality for Microsoft Orleans</h1>
 
-<p>The set of security packages for Microsoft Orleans 2.x.x/3.1.x provide the ability to use the same authorization functionality which is used in ASP.NET Core 2.x/3.x. It allows sharing IdentityServer4 (version 2 or version 3) with MS Orleans grains and any ASP.NET Core 2.x/3.x application.</p>
+<p>The set of security packages for Microsoft Orleans 3.* provide the ability to use the same authorization functionality which is used in ASP.NET Core
+It allows to use Azure Active Directory or IdentityServer4 v4.0 with MS Orleans grains and any ASP.NET Core 3.* or 5.* application.</p>
 <p><img src="Index1.jpg" alt="Image 1"></p>
 <p>The image below shows a round trip to the protected grain.</p>
 <p><img src="Index2.jpg" alt="Image 2"></p>
@@ -79,12 +80,12 @@
 <h3 id="dependencies">Dependencies</h3>
 <p>There are two packages: <em>Orleans.Security.Cluster</em> and <em>Orleans.Security.ClusterClient</em>. The first is for a silo host project and the seccond for an Orleans cluster client.</p>
 <h3 id="quick-start">Quick start</h3>
-<p>Please <a href="https://github.com/Async-Hub/Orleans.Security/tree/master/samples">see sample</a> solution for more details.</p>
+<p>Please <a href="https://github.com/Async-Hub/AuthZI/tree/master/src/Authzi.MicrosoftOrleans">see sample</a> solutions for more details.</p>
 <hr>
 <h3 id="license">License</h3>
-<p>Orleans.Security is distributed by an MIT license.</p>
+<p>AuthZI is distributed by an MIT license.</p>
 <h3 id="contributing">Contributing</h3>
-<p>Contributions are welcome, please contact <a href="https://dev.azure.com/asynchub/Orleans.Security/_workitems/recentlyupdated/">via Azure DevOps</a>, email <a href="mailto:admin@asynchub.org">admin@asynchub.org</a>, or any other method with the owners of this repository.</p>
+<p>Contributions are welcome, please contact <a href="https://dev.azure.com/async-hub/AuthZI/_workitems/recentlyupdated/">via Azure DevOps</a>, email <a href="mailto:admin@asynchub.org">admin@asynchub.org</a>, or any other method with the owners of this repository.</p>
 </article>
           </div>
           

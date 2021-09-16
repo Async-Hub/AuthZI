@@ -1,6 +1,7 @@
 # Authorization functionality for Microsoft Orleans
 
-The set of security packages for Microsoft Orleans 2.x.x/3.1.x provide the ability to use the same authorization functionality which is used in ASP.NET Core 2.x/3.x. It allows sharing IdentityServer4 (version 2 or version 3) with MS Orleans grains and any ASP.NET Core 2.x/3.x application.
+The set of security packages for Microsoft Orleans 3.* provide the ability to use the same authorization functionality which is used in ASP.NET Core 
+It allows to use Azure Active Directory or IdentityServer4 v4.0 with MS Orleans grains and any ASP.NET Core 3.* or 5.* application.
 
 ![Image 1](Index1.jpg)
 
@@ -18,14 +19,14 @@ There are two packages: *Orleans.Security.Cluster* and *Orleans.Security.Cluster
 
 ### Quick start
 
-Please [see sample](https://github.com/Async-Hub/Orleans.Security/tree/master/samples) solution for more details.
+Please [see sample](https://github.com/Async-Hub/AuthZI/tree/master/src/Authzi.MicrosoftOrleans) solutions for more details.
 
 ---
 
 ### License
 
-Orleans.Security is distributed by an MIT license.
+AuthZI is distributed by an MIT license.
 
 ### Contributing
 
-Contributions are welcome, please contact [via Azure DevOps](https://dev.azure.com/asynchub/Orleans.Security/_workitems/recentlyupdated/), email <admin@asynchub.org>, or any other method with the owners of this repository.
+Contributions are welcome, please contact [via Azure DevOps](https://dev.azure.com/async-hub/AuthZI/_workitems/recentlyupdated/), email <admin@asynchub.org>, or any other method with the owners of this repository.
