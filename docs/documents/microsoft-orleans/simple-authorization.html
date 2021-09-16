@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Authorization functionality for Microsoft Orleans </title>
+    <title>Simple authorization in MS Orleans cluster </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Authorization functionality for Microsoft Orleans ">
+    <meta name="title" content="Simple authorization in MS Orleans cluster ">
     <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -67,24 +67,41 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="authorization-functionality-for-microsoft-orleans">Authorization functionality for Microsoft Orleans</h1>
+<h1 id="simple-authorization-in-ms-orleans-cluster">Simple authorization in MS Orleans cluster</h1>
 
-<p>The set of security packages for Microsoft Orleans 2.x.x/3.1.x provide the ability to use the same authorization functionality which is used in ASP.NET Core 2.x/3.x. It allows sharing IdentityServer4 (version 2 or version 3) with MS Orleans grains and any ASP.NET Core 2.x/3.x application.</p>
-<p><img src="Index1.jpg" alt="Image 1"></p>
-<p>The image below shows a round trip to the protected grain.</p>
-<p><img src="Index2.jpg" alt="Image 2"></p>
-<p><a href="#getting-started">Get started now</a> <a href="https://github.com/Async-Hub/Orleans.Security">View it on GitHub</a></p>
-<hr>
-<h2 id="getting-started">Getting started</h2>
-<h3 id="dependencies">Dependencies</h3>
-<p>There are two packages: <em>Orleans.Security.Cluster</em> and <em>Orleans.Security.ClusterClient</em>. The first is for a silo host project and the seccond for an Orleans cluster client.</p>
-<h3 id="quick-start">Quick start</h3>
-<p>Please <a href="https://github.com/Async-Hub/Orleans.Security/tree/master/samples">see sample</a> solution for more details.</p>
-<hr>
-<h3 id="license">License</h3>
-<p>Orleans.Security is distributed by an MIT license.</p>
-<h3 id="contributing">Contributing</h3>
-<p>Contributions are welcome, please contact <a href="https://dev.azure.com/asynchub/Orleans.Security/_workitems/recentlyupdated/">via Azure DevOps</a>, email <a href="mailto:admin@asynchub.org">admin@asynchub.org</a>, or any other method with the owners of this repository.</p>
+<p>Authorization in Orleans is controlled through the <strong><code>AuthorizeAttribute</code></strong> attribute and its various parameters. At its simplest, applying the <strong><code>AuthorizeAttribute</code></strong> attribute to a <strong>Grain Interface</strong> or <strong>Grain Interface Method</strong> limits access to the grain or method to any authenticated user.</p>
+<p>For example, the following code limits access to the <strong><code>UserGrain</code></strong> to any authenticated user.</p>
+<pre><code class="lang-csharp">[Authorize]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>If you want to apply authorization to a method rather than the grain, apply the <strong><code>AuthorizeAttribute</code></strong> attribute to the method itself:</p>
+<pre><code class="lang-csharp">public interface IUserGrain : IGrainWithStringKey
+{
+    [Authorize]
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>Now only authenticated users can access the <strong><code>DoSomething</code></strong> method and everyone can access <strong><code>DoSomethingElse</code></strong> method.</p>
+<p>You can also use the <strong><code>AllowAnonymous</code></strong> attribute to allow access by non-authenticated users to individual actions. For example:</p>
+<pre><code class="lang-csharp">[Authorize]
+public interface IUserGrain : IGrainWithStringKey
+{
+    [AllowAnonymous]
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>This would allow only authenticated users to the <strong><code>UserGrain</code></strong>, except for the <strong><code>DoSomething</code></strong> method, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</p>
+<h3 id="warning">Warning</h3>
+<p><strong><code>[AllowAnonymous]</code> bypasses all authorization statements. If you combine <code>[AllowAnonymous]</code> and any <code>[Authorize]</code> attribute, the <code>[Authorize]</code> attributes are ignored. For example if you apply <code>[AllowAnonymous]</code> at the grain level, any <code>[Authorize]</code> attributes on the same grain (or on any method within it) is ignored.</strong></p>
 </article>
           </div>
           
@@ -93,7 +110,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Async-Hub/AuthZI/blob/master/docs-builder/documents/microsoft-orleans/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Async-Hub/AuthZI/blob/master/docs-builder/documents/microsoft-orleans/simple-authorization.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

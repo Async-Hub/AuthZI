@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Authorization functionality for Microsoft Orleans </title>
+    <title>Role-based authorization </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Authorization functionality for Microsoft Orleans ">
+    <meta name="title" content="Role-based authorization ">
     <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -67,24 +67,61 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="authorization-functionality-for-microsoft-orleans">Authorization functionality for Microsoft Orleans</h1>
+<h1 id="role-based-authorization">Role-based authorization</h1>
 
-<p>The set of security packages for Microsoft Orleans 2.x.x/3.1.x provide the ability to use the same authorization functionality which is used in ASP.NET Core 2.x/3.x. It allows sharing IdentityServer4 (version 2 or version 3) with MS Orleans grains and any ASP.NET Core 2.x/3.x application.</p>
-<p><img src="Index1.jpg" alt="Image 1"></p>
-<p>The image below shows a round trip to the protected grain.</p>
-<p><img src="Index2.jpg" alt="Image 2"></p>
-<p><a href="#getting-started">Get started now</a> <a href="https://github.com/Async-Hub/Orleans.Security">View it on GitHub</a></p>
-<hr>
-<h2 id="getting-started">Getting started</h2>
-<h3 id="dependencies">Dependencies</h3>
-<p>There are two packages: <em>Orleans.Security.Cluster</em> and <em>Orleans.Security.ClusterClient</em>. The first is for a silo host project and the seccond for an Orleans cluster client.</p>
-<h3 id="quick-start">Quick start</h3>
-<p>Please <a href="https://github.com/Async-Hub/Orleans.Security/tree/master/samples">see sample</a> solution for more details.</p>
-<hr>
-<h3 id="license">License</h3>
-<p>Orleans.Security is distributed by an MIT license.</p>
-<h3 id="contributing">Contributing</h3>
-<p>Contributions are welcome, please contact <a href="https://dev.azure.com/asynchub/Orleans.Security/_workitems/recentlyupdated/">via Azure DevOps</a>, email <a href="mailto:admin@asynchub.org">admin@asynchub.org</a>, or any other method with the owners of this repository.</p>
+<p>When an identity is created it may belong to one or more roles. For example, Alice may belong to the Administrator and User roles whilst Bob may only belong to the User role. How these roles are created and managed depends on the IdentityServer4 of the authorization process.</p>
+<p>Role-based authorization checks are declarative—the developer embeds them within their code, against a grain interface or an method within a grain interface, specifying roles which the current <em>user</em> or <em>client</em> (please <a href="http://docs.identityserver.io/en/latest/intro/terminology.html">see</a> IdentityServer4 terminology) must be a member of to access the requested resource.</p>
+<p>For example, the following code limits access to any methods on the implementation of <strong><code>IUserGrain</code></strong> to users/clients who are a member of the Administrator role:</p>
+<pre><code class="lang-csharp">[Authorize(Roles = &quot;Administrator&quot;)]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>You can specify multiple roles as a comma separated list:</p>
+<pre><code class="lang-csharp">[Authorize(Roles = &quot;Administrator, Manager&quot;)]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>This grain would be only accessible by users/clients who are members of the <code>Administrator</code> role or the <code>Manager</code> role.</p>
+<p>If you apply multiple attributes then an accessing user/client must be a member of all the roles specified; the following sample requires that a user must be a member of both the <code>Developer</code> and <code>Manager</code> role.</p>
+<pre><code class="lang-csharp">[Authorize(Roles = &quot;Developer&quot;)]
+[Authorize(Roles = &quot;Manager&quot;)]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>You can further limit access by applying additional role authorization attributes at the method level:</p>
+<pre><code class="lang-csharp">[Authorize(Roles = &quot;Developer&quot;)]
+[Authorize(Roles = &quot;Manager&quot;)]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    [Authorize(Roles = &quot;Manager&quot;)]
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
+<p>In the previous code snippet members of the <code>Developer</code> role or the <code>Manager</code> role can access the grain and the <strong><code>DoSomething</code></strong> method, but only members of the <code>Manager</code> role can access the <strong><code>DoSomethingElse</code></strong> method.</p>
+<p>You can also lock down a grain but allow anonymous, unauthenticated access to individual methods.</p>
+<pre><code class="lang-csharp">[Authorize]
+public interface IUserGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; DoSomething();
+
+    [AllowAnonymous]
+    Task&lt;string&gt; DoSomethingElse();
+}
+</code></pre>
 </article>
           </div>
           
@@ -93,7 +130,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Async-Hub/AuthZI/blob/master/docs-builder/documents/microsoft-orleans/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Async-Hub/AuthZI/blob/master/docs-builder/documents/microsoft-orleans/role-based-authorization.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -3,5 +3,13 @@
 - name: Microsoft Orleans
   href: microsoft-orleans/index.md
   items:
-    - name: How To Do?
-      href: microsoft-orleans/how-to-do.md
+    - name: Simple authorization
+      href: microsoft-orleans/simple-authorization.md
+    - name: Role-based authorization
+      href: microsoft-orleans/role-based-authorization.md
+    - name: Claims-based authorization
+      href: microsoft-orleans/claims-based-authorization.md
+    - name: Policy-based authorization
+      href: microsoft-orleans/policy-based-authorization.md
+    - name: Resource-based authorization
+      href: microsoft-orleans/resource-based-authorization.md

@@ -57,7 +57,19 @@
       "output": {
         ".html": {
           "relative_path": "documents/index.html",
-          "hash": "zvkeNsDgrJQpdZME+zn1yMiTJCG10N/3tXAV9m4I++4="
+          "hash": "/wO2X6uhHkrg5bg/NeOL5fJT3A5ZAcM2gourgWA37LU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/claims-based-authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/claims-based-authorization.html",
+          "hash": "W5PrZuOVr3CcOZDtMzl5+WyUJqYG8k+PoZyf/ESctdI="
         }
       },
       "is_incremental": false,
@@ -72,22 +84,67 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/index.html",
-          "hash": "AJxkhYorr2CHt3EjMHGfMbkh0kYsW4A4Bpn2WIHvnZE="
+          "hash": "I/4FRXK13/1N8qr/j6hH8ADPtYMIi6RjwOydU9l+sBM="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/policy-based-authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/policy-based-authorization.html",
+          "hash": "Rqe285PtwGQRwSWJpzbWQYMxTC4smrK13JpyUSlv+g8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/resource-based-authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/resource-based-authorization.html",
+          "hash": "m2dsSth5/uFIzT5SmlMpDzGKEbx8RX8mFkexVvi8oiU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/role-based-authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/role-based-authorization.html",
+          "hash": "VwMEv6DHgDi/1Jc00J9n87R+F7uIULD0i5C3ipzDuZ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/simple-authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/simple-authorization.html",
+          "hash": "vr/2pDNZZUG92wJ9AWv9eK15GyooioyzB28hjPD+W9M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "documents/toc.yml",
       "output": {
         ".html": {
           "relative_path": "documents/toc.html",
-          "hash": "GkCwe/leiL7UGZ3/b1qzj2m/lPn+MNdGAQPeswF6sSg="
+          "hash": "Vu+RnxekNJQRCOz2VmzuTVPWKWhGuVu9QSF6mcT6dtM="
         }
       },
       "is_incremental": false,
@@ -180,7 +237,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 8,
+          "total_file_count": 13,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
