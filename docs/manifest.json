@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Repos/AuthZI/docs-builder",
+  "source_base_path": "C:/Repos/AsyncHub/AuthZI/docs-builder",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,19 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "G+23jLRz7QJBTeLEbrzoHA2mIUMgPRUDSgY4PJXvV1c="
+          "hash": "Qmwxg4Z+h43WqfxvTZ4+RSx1vORNnGRTLef4fj53P9c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "53cDPdjyKTmYSaPMwcMYYJO/bYpeY21eGi/JWyVQBqE="
         }
       },
       "is_incremental": false,
@@ -34,6 +46,48 @@
         ".html": {
           "relative_path": "articles/toc.html",
           "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documents/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/index.html",
+          "hash": "zvkeNsDgrJQpdZME+zn1yMiTJCG10N/3tXAV9m4I++4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "documents/microsoft-orleans/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "documents/microsoft-orleans/index.html",
+          "hash": "AJxkhYorr2CHt3EjMHGfMbkh0kYsW4A4Bpn2WIHvnZE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "documents/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documents/toc.html",
+          "hash": "GkCwe/leiL7UGZ3/b1qzj2m/lPn+MNdGAQPeswF6sSg="
         }
       },
       "is_incremental": false,
@@ -105,7 +159,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "z83jiikiizkPeJv0xXFjapZbKyGdKBC8WvX5vhN1Ey4="
+          "hash": "3TdPyCqozVq7btcH6nalQFOfmFibk4MhDMwQgwCkc4Q="
         }
       },
       "is_incremental": false,
@@ -126,7 +180,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 6,
+          "total_file_count": 8,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
