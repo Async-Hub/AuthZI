@@ -7,6 +7,14 @@ namespace Authzi.IdentityServer4.IntegrationTests.Configuration
 {
     public static class IdentityServerConfig
     {
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new List<ApiScope>
+            {
+                new ApiScope(name: "Api1",   displayName: "Api1")
+            };
+        }
+
         public static IEnumerable<ApiResource> GetApiResources()
         {
             var resources = new List<ApiResource>();
@@ -14,6 +22,7 @@ namespace Authzi.IdentityServer4.IntegrationTests.Configuration
             var api1 = new ApiResource("Api1", new[] { JwtClaimTypes.Email, JwtClaimTypes.Role });
             api1.ApiSecrets.Add(new Secret("Secret".Sha256()));
             resources.Add(api1);
+            api1.Scopes.Add("Api1");
 
             return resources;
         }

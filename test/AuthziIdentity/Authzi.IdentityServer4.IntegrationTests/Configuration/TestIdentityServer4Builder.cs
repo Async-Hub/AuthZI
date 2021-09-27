@@ -21,6 +21,7 @@ namespace Authzi.IdentityServer4.IntegrationTests.Configuration
                         {
                             services.AddIdentityServer()
                                 .AddDeveloperSigningCredential()
+                                .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
                                 .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
                                 .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
                                 .AddInMemoryClients(IdentityServerConfig.GetClients())
