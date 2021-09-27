@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.1.0" />
-    <PackageReference Include="IdentityServer4" Version="3.1.4" />
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.8" />
     <PackageReference Include="nunit" Version="3.13.2" />
@@ -20,7 +20,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="IdentityModel" Version="4.3.1" />
+    <PackageReference Include="IdentityModel" Version="4.4.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
     <PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.5.0" />
@@ -35,8 +35,8 @@
     <Compile Include="Assembly.fs" />
     <Compile Include="Initialization\GlobalConfig.fs" />
     <Compile Include="Initialization\Users.fs" />
+    <Compile Include="Initialization\IdentityServer4Resources.fs" />
     <Compile Include="Initialization\IdSClients.fs" />
-    <Compile Include="Initialization\IdSResources.fs" />
     <Compile Include="Initialization\ProfileService.fs" />
     <Compile Include="Initialization\IdentityServer.fs" />
     <Compile Include="Initialization\IdSInstance.fs" />
