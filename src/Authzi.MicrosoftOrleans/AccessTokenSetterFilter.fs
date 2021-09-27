@@ -2,7 +2,6 @@
 
 open Authzi.Extensions.TaskExtensions
 open Authzi.Security
-open FSharp.Control.Tasks.V2
 open Orleans
 open Orleans.Runtime
 open System

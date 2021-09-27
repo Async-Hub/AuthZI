@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Repos/AsyncHub/AuthZI/docs-builder",
+  "source_base_path": "C:/Repos/AuthZI/docs-builder",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,19 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "Qmwxg4Z+h43WqfxvTZ4+RSx1vORNnGRTLef4fj53P9c="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "api/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "53cDPdjyKTmYSaPMwcMYYJO/bYpeY21eGi/JWyVQBqE="
+          "hash": "G+23jLRz7QJBTeLEbrzoHA2mIUMgPRUDSgY4PJXvV1c="
         }
       },
       "is_incremental": false,

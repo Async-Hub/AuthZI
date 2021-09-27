@@ -4,7 +4,6 @@ open Authzi.MicrosoftOrleans
 open Authzi.Security.AccessToken
 open Authzi.Security.Authorization
 open Authzi.Security;
-open FSharp.Control.Tasks.V2
 open Microsoft.Extensions.Logging
 open Orleans
 open Orleans.Runtime

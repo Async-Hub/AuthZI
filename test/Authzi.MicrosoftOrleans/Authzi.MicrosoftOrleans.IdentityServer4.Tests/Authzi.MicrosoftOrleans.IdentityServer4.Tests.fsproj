@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="FluentAssertions" Version="6.1.0" />
     <PackageReference Include="IdentityServer4" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.8" />
@@ -18,7 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="IdentityModel" Version="4.3.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
@@ -62,7 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="5.0.2" />
+    <PackageReference Update="FSharp.Core" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

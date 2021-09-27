@@ -6,4 +6,8 @@
     <WarnOn>3390;$(WarnOn)</WarnOn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="6.0.0" />
+  </ItemGroup>
+
 </Project>
