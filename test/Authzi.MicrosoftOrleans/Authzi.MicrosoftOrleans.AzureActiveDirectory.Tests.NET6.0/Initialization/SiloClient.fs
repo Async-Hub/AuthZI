@@ -8,19 +8,9 @@ open Authzi.Security.Authorization
 open Microsoft.Extensions.DependencyInjection
 open Orleans.Configuration;
 open Orleans;
+open RootConfiguration;
 open System
-open System.Threading.Tasks
 open System.Net.Http
-
-type AccessTokenProvider() =
-    let mutable accessToken = String.Empty
-    member _.AccessToken with set (value) = accessToken <- value
-    
-    interface IAccessTokenProvider with
-        member _.RetrieveTokenAsync() = Task.FromResult(accessToken);
-
-let private globalAccessToken = AccessTokenProvider()
-let accessTokenProvider = globalAccessToken :> IAccessTokenProvider
 
 let private clusterClient =
     SiloHost.startSilo() |> ignore
@@ -46,14 +36,8 @@ let private clusterClient =
 
     let clusterClient = builder.Build()
     clusterClient.Connect().Wait()
-    //ClusterSetup.initDocumentsRegistry (fun accessToken ->
-    //    globalAccessToken.AccessToken <- accessToken
-    //    clusterClient)
-    
     clusterClient
     
-let getClusterClient (accessToken: string) =
-    globalAccessToken.AccessToken <- accessToken
-    clusterClient
+let getClusterClient() = clusterClient
 
 let getIHttpClientFactory = clusterClient.ServiceProvider.GetService<IHttpClientFactory>()

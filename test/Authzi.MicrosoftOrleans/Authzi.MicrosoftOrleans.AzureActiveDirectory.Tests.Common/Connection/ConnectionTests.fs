@@ -1,4 +1,4 @@
-﻿module ConnectionTests
+﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Connection
 
 open AccessTokenProvider
 open System
@@ -7,7 +7,7 @@ open Xunit.Abstractions
 
 open Credentials.AzureActiveDirectoryB2B1
 
-type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
+type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = 
         [
             [| AdeleV.Name; AdeleV.Password |]; 
@@ -15,7 +15,7 @@ type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
         ]
     
     [<Theory>]
-    [<MemberData(nameof(AzureActiveDirectoryB2BTests.Input))>] 
+    [<MemberData(nameof(AzureActiveDirectoryB2BTestsBase.Input))>] 
     member _.``The system can obtain Access Token from Azure AD B2B endpoint``
         (userName: string) (password: string) =
         async {
@@ -29,11 +29,11 @@ type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
 
 open Credentials.AzureActiveDirectoryB2C1
 
-type AzureActiveDirectoryB2CTests(output: ITestOutputHelper) =
+type AzureActiveDirectoryB2CTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
     
     [<Theory>]
-    [<MemberData(nameof(AzureActiveDirectoryB2CTests.Input))>] 
+    [<MemberData(nameof(AzureActiveDirectoryB2CTestsBase.Input))>] 
     member _.``The system can obtain Access Token from Azure AD B2C endpoint``
         (userName: string) (password: string) =
         async {

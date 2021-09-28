@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NETCore3._1</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Initialization\SiloHost.fs" />
+    <Compile Include="Initialization\SiloClient.fs" />
+    <Compile Include="Initialization\Starter.fs" />
+    <Compile Include="All.fs" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.*" />
+		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common.fsproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="6.0.0" />
+	</ItemGroup>
+
+</Project>

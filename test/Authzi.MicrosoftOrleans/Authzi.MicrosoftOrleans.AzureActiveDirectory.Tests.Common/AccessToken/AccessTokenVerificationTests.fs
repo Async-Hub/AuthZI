@@ -8,11 +8,11 @@ open AccessTokenProvider
 open Credentials.AzureActiveDirectoryB2B1
 open Authzi.Security.AccessToken
 
-type AccessTokenVerificationTests(output: ITestOutputHelper) =
+type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
     
     [<Theory>]
-    [<MemberData(nameof(AccessTokenVerificationTests.Input))>] 
+    [<MemberData(nameof(AccessTokenVerificationTestsBase.Input))>] 
     member _.``The system can verify JWT Token from Azure AD endpoint`` 
         (userName: string) (password: string) =
         async {
