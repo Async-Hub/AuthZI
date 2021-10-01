@@ -3,7 +3,7 @@
 open System
 
 [<Serializable>]
-type NotAuthorizedException =
+type AuthorizationException =
     inherit Exception
 
     new() = {inherit Exception();}

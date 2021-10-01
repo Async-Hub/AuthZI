@@ -1,7 +1,7 @@
 - name: Introduction
-  href: index.md
+  href: introduction.md
 - name: Microsoft Identity
-  href: microsoft-identity/introduction.md
+  href: microsoft-identity.md
   items:
     - name: How To Do?
       href: microsoft-identity/how-to-do.md

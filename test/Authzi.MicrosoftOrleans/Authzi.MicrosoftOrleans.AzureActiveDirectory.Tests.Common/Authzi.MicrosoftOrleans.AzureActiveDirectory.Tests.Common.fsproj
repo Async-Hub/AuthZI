@@ -15,6 +15,7 @@
 		<Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
 		<Compile Include="Authorization\SimpleAuthorizationTests.fs" />
 		<Compile Include="Authorization\RoleBasedAuthorizationTests.fs" />
+		<Compile Include="Authorization\ClaimsBasedAuthorizationTests.fs" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -56,13 +56,13 @@ namespace Authzi.MicrosoftOrleans.Authorization
 
                 if (!authorizationSucceeded)
                 {
-                    throw new NotAuthorizedException("Access to the requested grain denied.");
+                    throw new AuthorizationException("Access to the requested grain denied.");
                 }
 
                 return accessTokenVerificationResult.Claims;
             }
 
-            throw new NotAuthorizedException("Access token verification failed.",
+            throw new AuthorizationException("Access token verification failed.",
                 new InvalidAccessTokenException(accessTokenVerificationResult.InvalidValidationMessage));
         }
 

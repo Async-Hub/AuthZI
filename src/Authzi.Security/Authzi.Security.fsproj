@@ -15,7 +15,7 @@
     <Compile Include="IAccessTokenProvider.fs" />
     <Compile Include="IClaimTypeResolver.fs" />
     <Compile Include="ConfigurationKeys.fs" />
-    <Compile Include="NotAuthorizedException.fs" />
+    <Compile Include="AuthorizationException.fs" />
     <Compile Include="LoggingEvents.fs" />
     <Compile Include="GlobalSettings.fs" />
     <Compile Include="Caching\IAccessTokenCache.fs" />

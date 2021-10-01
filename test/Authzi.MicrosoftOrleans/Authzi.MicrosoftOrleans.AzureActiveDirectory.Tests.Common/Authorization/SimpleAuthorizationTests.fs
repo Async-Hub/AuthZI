@@ -62,7 +62,7 @@ type SimpleAuthorizationTestsBase() =
                     let! value = simpleGrain.GetWithAuthenticatedUser(String.Empty) |> Async.AwaitTask
                     return value } |> Async.StartAsTask :> Task
 
-            Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+            Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }
 
     [<Fact>]

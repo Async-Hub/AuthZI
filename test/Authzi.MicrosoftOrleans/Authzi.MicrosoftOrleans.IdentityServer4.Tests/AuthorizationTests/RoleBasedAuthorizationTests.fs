@@ -40,7 +40,7 @@ let ``Multiple roles as a comma separated list shouldn't work when the user has 
                 let! value = userGrain.GetWithCommaSeparatedRoles("Secret") |> Async.AwaitTask
                 return value } |> Async.StartAsTask :> Task
 
-        Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+        Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
     }
 
 [<Theory>]
@@ -77,5 +77,5 @@ let ``Multiple roles applied as multiple attributes shouldn't work when the user
                 let! value = userGrain.GetWithMultipleRoleAttributes("Secret") |> Async.AwaitTask
                 return value } |> Async.StartAsTask :> Task
 
-        Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+        Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
     }

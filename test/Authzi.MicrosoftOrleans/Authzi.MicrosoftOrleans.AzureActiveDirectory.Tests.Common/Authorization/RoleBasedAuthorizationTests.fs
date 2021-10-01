@@ -42,7 +42,7 @@ type RoleBasedAuthorizationTestsBase() =
                     let! value = userGrain.GetWithCommaSeparatedRoles("Secret") |> Async.AwaitTask
                     return value } |> Async.StartAsTask :> Task
 
-            Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+            Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }
 
     [<Theory>]
@@ -79,5 +79,5 @@ type RoleBasedAuthorizationTestsBase() =
                     let! value = userGrain.GetWithMultipleRoleAttributes("Secret") |> Async.AwaitTask
                     return value } |> Async.StartAsTask :> Task
 
-            Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+            Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }

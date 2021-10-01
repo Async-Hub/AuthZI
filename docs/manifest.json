@@ -152,11 +152,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "resources/index.md",
+      "source_relative_path": "resources/introduction.md",
       "output": {
         ".html": {
-          "relative_path": "resources/index.html",
-          "hash": "RWcgbTOtzvsmWqkGZLVljqhlTZMsuZz5gG6VoXVn7+I="
+          "relative_path": "resources/introduction.html",
+          "hash": "6J+GwVKsq5oyPO1VZTtYSazZxj48Nr0THwol/gtfH/k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "resources/microsoft-identity.md",
+      "output": {
+        ".html": {
+          "relative_path": "resources/microsoft-identity.html",
+          "hash": "FKr/u0r9wZObz+lvNxgHZtGVifB+LBWBFFdokSDKk9o="
         }
       },
       "is_incremental": false,
@@ -168,19 +180,7 @@
       "output": {
         ".html": {
           "relative_path": "resources/microsoft-identity/how-to-do.html",
-          "hash": "J4efkJIIaBVSnn+1C0h8ZKZwAXmTKdY86jYv9qngcFM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "resources/microsoft-identity/introduction.md",
-      "output": {
-        ".html": {
-          "relative_path": "resources/microsoft-identity/introduction.html",
-          "hash": "GFPNJraNbuHpyvdDoOIbH2v1weIeUB4g+LxA7au3EF0="
+          "hash": "ZP2znEP+5evgGt0BSmk2Hs2fqlj5XiM3vU0v0D45Vo8="
         }
       },
       "is_incremental": false,
@@ -192,7 +192,7 @@
       "output": {
         ".html": {
           "relative_path": "resources/toc.html",
-          "hash": "rFem6DR6DUwCkd/7GE+Qclg/bvgqYdA78QgqI+RO8Bo="
+          "hash": "G9NvmZqLsOPCSCkD1rZbyNxe8YWwOpxcJq4azt1Gwmc="
         }
       },
       "is_incremental": false,
@@ -204,7 +204,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "3TdPyCqozVq7btcH6nalQFOfmFibk4MhDMwQgwCkc4Q="
+          "hash": "89txWoQZk665CHlJoulSJ7W7d4V+mczluu/6USG4v9U="
         }
       },
       "is_incremental": false,

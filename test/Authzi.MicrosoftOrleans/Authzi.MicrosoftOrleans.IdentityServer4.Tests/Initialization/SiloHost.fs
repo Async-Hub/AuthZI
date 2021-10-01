@@ -31,7 +31,7 @@ let startSilo () =
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
                        // Add IdentityServer4 authorization.
-                       services.AddOrleansAuthorization(GlobalConfig.identityServer4Info,      
+                       services.AddOrleansAuthorization(GlobalConfig.identityServer4InfoCluster,      
                            fun (config:Authzi.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                AuthorizationConfig.ConfigureOptions)         

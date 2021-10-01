@@ -41,6 +41,6 @@ let ``A user without an appropriate role shouldn't have access to the method``
                 let! value = userGrain.GetWithMangerPolicy(String.Empty) |> Async.AwaitTask
                 return value } |> Async.StartAsTask :> Task
 
-        Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+        Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
     }
 

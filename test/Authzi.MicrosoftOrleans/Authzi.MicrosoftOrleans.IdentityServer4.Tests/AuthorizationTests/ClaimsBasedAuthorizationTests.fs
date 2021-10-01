@@ -1,6 +1,5 @@
 module ClaimsBasedAuthorizationTests
 
-open FluentAssertions
 open Authzi.Security
 open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
@@ -43,7 +42,7 @@ let ``A user without an appropriate claim shouldn't have access to the method`` 
                 let! value = userGrain.GetWithMangerPolicy(String.Empty) |> Async.AwaitTask
                 return value } |> Async.StartAsTask :> Task
 
-        Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+        Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
     }
 
 [<Theory>]
@@ -65,5 +64,5 @@ let ``A user with an appropriate claim and without an appropriate claim value sh
             } |> Async.StartAsTask :> Task
 
 
-        Assert.ThrowsAsync<NotAuthorizedException>(fun () -> action) |> ignore
+        Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
     }
