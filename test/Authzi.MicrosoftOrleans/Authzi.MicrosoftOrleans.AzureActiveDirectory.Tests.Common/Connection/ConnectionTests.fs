@@ -20,7 +20,7 @@ type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
         (userName: string) (password: string) =
         async {
             // Arrange
-            let! accessToken = getAccessTokenForUserOnB2BWebClient1Async userName password |> Async.AwaitTask
+            let! accessToken = getAccessTokenForUserOnWebClient1Async userName password |> Async.AwaitTask
             output.WriteLine(accessToken)
             
             // Act
@@ -38,7 +38,7 @@ type AzureActiveDirectoryB2CTestsBase(output: ITestOutputHelper) =
         (userName: string) (password: string) =
         async {
             // Arrange
-            let! accessToken = getAccessTokenForUserOnB2CWebClient1Async userName password |> Async.AwaitTask
+            let! accessToken = getAccessTokenForUserOnWebClient1Async userName password |> Async.AwaitTask
             output.WriteLine(accessToken)
             
             // Act

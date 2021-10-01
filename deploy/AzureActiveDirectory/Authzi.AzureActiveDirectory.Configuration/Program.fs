@@ -4,8 +4,8 @@ open System.Security
 let applicationOptions = new PublicClientApplicationOptions()
 
 applicationOptions.AadAuthorityAudience <- AadAuthorityAudience.AzureAdMyOrg
-applicationOptions.TenantId <- "1c59e6e7-0a62-4dfe-bfbc-38aeb089b0b9"
-applicationOptions.ClientId <- "218bd76c-5f54-43d0-a564-88164cc9f398"
+applicationOptions.TenantId <- "xxx"
+applicationOptions.ClientId <- "xxx"
 
 let app = PublicClientApplicationBuilder
             .CreateWithApplicationOptions(applicationOptions).Build();

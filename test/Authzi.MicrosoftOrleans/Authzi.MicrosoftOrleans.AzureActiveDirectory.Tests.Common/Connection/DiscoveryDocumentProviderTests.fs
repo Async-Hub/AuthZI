@@ -10,7 +10,7 @@ type DiscoveryDocumentProviderTests(output: ITestOutputHelper) =
         async {
             // Arrange
             let discoveryDocumentProvider = 
-                DiscoveryDocumentProvider(GlobalConfig.azureActiveDirectoryAppB2B1.DiscoveryEndpointUrl)
+                DiscoveryDocumentProvider(TestData.AzureActiveDirectoryApp.DiscoveryEndpointUrl)
 
 
             let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask

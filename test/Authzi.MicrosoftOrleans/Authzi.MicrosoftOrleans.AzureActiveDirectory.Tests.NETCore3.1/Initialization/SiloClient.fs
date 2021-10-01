@@ -1,6 +1,7 @@
 module SiloClient
 
 open Authzi.MicrosoftOrleans.AzureActiveDirectory
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
@@ -22,7 +23,7 @@ let private clusterClient =
             AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
         // Add Azure Active Directory authorization.
-        services.AddOrleansClientAuthorization(GlobalConfig.azureActiveDirectoryAppB2B1,
+        services.AddOrleansClientAuthorization(TestData.AzureActiveDirectoryApp,
             fun config -> configureCluster(config)) |> ignore
 
     let builder = 

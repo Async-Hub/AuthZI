@@ -8,15 +8,16 @@ open RootConfiguration
 open System
 open System.Threading.Tasks
 open Xunit
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 
 type ClaimsBasedAuthorizationTestsBase() =
     [<Theory>]
-    [<InlineData(AdeleVB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>]
     member _.``A user with an appropriate claim should have access to the method`` (userName: string) (password: string)
-        (scope: string) =
+        (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             // Act
@@ -28,12 +29,12 @@ type ClaimsBasedAuthorizationTestsBase() =
         }
 
     [<Theory>]
-    [<InlineData(AlexWB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAlexW), MemberType = typeof<TestData>)>]
     member _.``A user without an appropriate claim shouldn't have access to the method`` (userName: string) (password: string)
-        (scope: string) =
+        (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken
@@ -49,12 +50,12 @@ type ClaimsBasedAuthorizationTestsBase() =
         }
 
     [<Theory>]
-    [<InlineData(AlexWB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAlexW), MemberType = typeof<TestData>)>]
     member _.``A user with an appropriate claim and without an appropriate claim value shouldn't have access to the method``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             // Act

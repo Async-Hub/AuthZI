@@ -7,7 +7,7 @@
 
 	<ItemGroup>
 		<Compile Include="Initialization\Credentials.fs" />
-		<Compile Include="Initialization\GlobalConfig.fs" />
+		<Compile Include="Initialization\TestData.fs" />
 		<Compile Include="Initialization\AccessTokenProvider.fs" />
 		<Compile Include="Initialization\RootConfiguration.fs" />
 		<Compile Include="Connection\ConnectionTests.fs" />

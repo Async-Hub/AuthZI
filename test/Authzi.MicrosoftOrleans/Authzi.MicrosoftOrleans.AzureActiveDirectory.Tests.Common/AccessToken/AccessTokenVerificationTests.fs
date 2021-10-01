@@ -1,29 +1,26 @@
 ﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 
+open AccessTokenProvider
 open Authzi.AzureActiveDirectory
+open Authzi.Security.AccessToken
 open Xunit
 open Xunit.Abstractions
 
-open AccessTokenProvider
-open Credentials.AzureActiveDirectoryB2B1
-open Authzi.Security.AccessToken
-
 type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
-    static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]
-    
+
     [<Theory>]
-    [<MemberData(nameof(AccessTokenVerificationTestsBase.Input))>] 
+    [<MemberData(nameof(TestData.Users), MemberType = typeof<TestData>)>] 
     member _.``The system can verify JWT Token from Azure AD endpoint`` 
         (userName: string) (password: string) =
         async {
             // Arrange
             let discoveryDocumentProvider = 
-                DiscoveryDocumentProvider(GlobalConfig.azureActiveDirectoryAppB2B1.DiscoveryEndpointUrl)
+                DiscoveryDocumentProvider(TestData.AzureActiveDirectoryApp.DiscoveryEndpointUrl)
             
-            let! accessToken = getAccessTokenForUserOnB2BWebClient1Async userName password |> Async.AwaitTask
+            let! accessToken = getAccessTokenForUserOnWebClient1Async userName password |> Async.AwaitTask
             output.WriteLine(accessToken)
 
-            let accessTokenIntrospectionService = AccessTokenIntrospectionService(GlobalConfig.azureActiveDirectoryAppB2B1,
+            let accessTokenIntrospectionService = AccessTokenIntrospectionService(TestData.AzureActiveDirectoryApp,
                                                     discoveryDocumentProvider, ClaimTypeResolverDefault()) :> IAccessTokenIntrospectionService
 
             let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false |> Async.AwaitTask

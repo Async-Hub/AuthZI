@@ -1,8 +1,8 @@
 namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
 
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
-open Credentials.Users
 open RootConfiguration
 open System
 open System.Threading.Tasks
@@ -10,12 +10,12 @@ open Xunit
 
 type SimpleAuthorizationTestsBase() =
     [<Theory>]
-    [<InlineData(AdeleVB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>] 
     member _.``An authenticated user can invoke the grain method``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken

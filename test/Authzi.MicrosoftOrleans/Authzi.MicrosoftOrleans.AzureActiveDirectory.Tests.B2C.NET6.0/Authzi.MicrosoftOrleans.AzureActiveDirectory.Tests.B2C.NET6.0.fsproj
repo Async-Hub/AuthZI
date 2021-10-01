@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<RootNamespace>Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET6._0</RootNamespace>
+		<RootNamespace>Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET6._0</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 

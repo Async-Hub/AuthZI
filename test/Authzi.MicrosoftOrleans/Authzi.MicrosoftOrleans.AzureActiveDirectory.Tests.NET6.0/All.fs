@@ -8,9 +8,6 @@ open Xunit.Abstractions
 type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
     inherit AzureActiveDirectoryB2BTestsBase(output)
 
-type AzureActiveDirectoryB2CTests(output: ITestOutputHelper) =
-    inherit AzureActiveDirectoryB2CTestsBase(output)
-
 type AccessTokenVerificationTests(output: ITestOutputHelper) =
     inherit AccessTokenVerificationTestsBase(output)
 

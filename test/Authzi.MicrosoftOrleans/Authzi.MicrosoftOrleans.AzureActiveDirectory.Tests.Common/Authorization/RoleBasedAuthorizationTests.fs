@@ -1,5 +1,6 @@
 namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
 
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open Authzi.MicrosoftOrleans.Grains.RoleBasedAuthorization
 open Authzi.Security
 open Credentials.Users
@@ -9,12 +10,12 @@ open Xunit
 
 type RoleBasedAuthorizationTestsBase() =
     [<Theory>]
-    [<InlineData(AdeleVB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>] 
     member _.``Multiple roles as a comma separated list should work when the user has both roles``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken
@@ -25,12 +26,12 @@ type RoleBasedAuthorizationTestsBase() =
         }
 
     [<Theory>]
-    [<InlineData(AlexWB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAlexW), MemberType = typeof<TestData>)>] 
     member _.``Multiple roles as a comma separated list shouldn't work when the user has only one role``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken
@@ -46,12 +47,12 @@ type RoleBasedAuthorizationTestsBase() =
         }
 
     [<Theory>]
-    [<InlineData(AdeleVB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>]
     member _.``Multiple roles applied as multiple attributes should work when the user has both roles``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken
@@ -62,12 +63,12 @@ type RoleBasedAuthorizationTestsBase() =
         }
 
     [<Theory>]
-    [<InlineData(AlexWB2B1, GeneralPassword, "Api1 Orleans")>]
+    [<MemberData(nameof(TestData.UserWithScopeAlexW), MemberType = typeof<TestData>)>]
     member _.``Multiple roles applied as multiple attributes shouldn't work when the user has only one role``
-        (userName: string) (password: string) (scope: string) =
+        (userName: string) (password: string) (scope: string list) =
         async {
             // Arrange
-            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnB2BWebClient1Async
+            let! accessToken = AccessTokenProvider.getAccessTokenForUserOnWebClient1Async
                                            userName password |> Async.AwaitTask
 
             let clusterClient = getClusterClient accessToken
