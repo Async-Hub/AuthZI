@@ -1,10 +1,11 @@
 ﻿namespace Initialization
 
+open Authzi.AzureActiveDirectory.Configuration.Common
+open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open RootConfiguration
-open Credentials.AzureActiveDirectoryB2C1
 open Xunit.Abstractions
 open Xunit.Sdk
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 
 type Starter(messageSink: IMessageSink) =
     inherit XunitTestFramework(messageSink)
@@ -13,7 +14,7 @@ type Starter(messageSink: IMessageSink) =
         TestData.UserWithScopeAdeleV <- [[|AdeleV.Name; AdeleV.Password; ["Api1"; "Orleans"]|]]
         TestData.UserWithScopeAlexW <- [[|AlexW.Name; AlexW.Password; ["Api1"; "Orleans"]|]]
         TestData.Users <- [[| AdeleV.Name; AdeleV.Password |]]
-        TestData.AzureActiveDirectoryApp <- Credentials.GlobalConfig.azureActiveDirectoryAppB2C1
+        TestData.AzureActiveDirectoryApp <- Directories.azureActiveDirectoryAppB2C1
         TestData.Web1Client <- Credentials.AzureActiveDirectoryB2C1.WebClient1
 
         siloClientProvider.SiloClient <- SiloClient.getClusterClient()

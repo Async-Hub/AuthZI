@@ -3,7 +3,6 @@ namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
 open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 open Authzi.Security
-open Credentials.Users
 open RootConfiguration
 open System
 open System.Threading.Tasks

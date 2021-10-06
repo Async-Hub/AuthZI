@@ -1,10 +1,10 @@
 ﻿namespace Initialization
 
+open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
+open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open RootConfiguration
-open Credentials.AzureActiveDirectoryB2B1
 open Xunit.Abstractions
 open Xunit.Sdk
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 
 type Starter(messageSink: IMessageSink) =
     inherit XunitTestFramework(messageSink)
