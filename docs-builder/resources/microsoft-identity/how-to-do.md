@@ -11,3 +11,4 @@
 - ### [Resource Owner Password Credentials](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth-ropc)
 - ### [Token cache serialization in MSAL.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-net-token-cache-serialization?tabs=aspnetcore)
 - ### [Using directory schema extension attributes in claims](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-schema-extensions)
+- ### [Provide optional claims to your app] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims)

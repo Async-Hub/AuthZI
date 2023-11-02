@@ -19,4 +19,3 @@ type RoleBasedAuthorizationTests() =
 
 type ClaimsBasedAuthorizationTests() =
     inherit ClaimsBasedAuthorizationTestsBase()
-    
