@@ -14,8 +14,8 @@ namespace Authzi.MicrosoftOrleans.Grains
         {
             options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
             options.AddPolicy("ManagerPolicy", policy => policy.RequireRole("Manager"));
-            options.AddPolicy("NewYorkCityOnly", 
-                policy => policy.RequireClaim("City", "New York"));
+            options.AddPolicy("ArmeniaCountryOnly", 
+                policy => policy.RequireClaim("Country", "AM"));
             
             options.AddPolicy("DocRegistryAccess", 
                 policy => policy.AddRequirements(new DocRegistryAccessRequirement()));

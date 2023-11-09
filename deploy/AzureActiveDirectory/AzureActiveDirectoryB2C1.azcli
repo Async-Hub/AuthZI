@@ -1,25 +1,38 @@
 # Use Azure CLI effectively
 # https://docs.microsoft.com/en-us/cli/azure/use-cli-effectively
 #az login
-$subscription="xxx"
+$subscriptionId="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 az account list --output table
-az account set --subscription $subscription
+az account set --subscriptionId $subscription
 az account show --output table
 
 $rgName="rg-aad-samples"
-$dnsName="asynchub3"
+$dnsName="dns-name"
 
 az group create --name $rgName --location "westeurope"
- 
-$url="https://management.azure.com/subscriptions/${subscription}/resourceGroups/${rgName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/${dnsName}.onmicrosoft.com?api-version=2019-01-01-preview"
 
-Write-Output $url
-az rest --method put --headers Content-Type=application/json --uri $url --body `@AzureActiveDirectoryB2C1.json
+# Create Azure AD B2C tenant
+# https://learn.microsoft.com/en-us/rest/api/activedirectory/b2c-tenants/create?view=rest-activedirectory-2021-04-01&tabs=HTTP 
+$createUrl="https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${rgName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/${dnsName}?api-version=2021-04-01"
+Write-Output $createUrl
+az rest --method put --headers Content-Type=application/json --uri $createUrl --body `@AzureActiveDirectoryB2C1.json --debug
 
 # Switch to newly created Azure AD tenant
-az login --tenant xxx --allow-no-subscriptions
+az login --tenant xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx --allow-no-subscriptions
 
 az ad app create --display-name WebClient1
 az ad app create --display-name Api1
 az ad app create --display-name Orleans
+
+# List all directories
+# https://learn.microsoft.com/en-us/rest/api/activedirectory/b2c-tenants/list-by-subscription?view=rest-activedirectory-2023-05-17-preview&tabs=HTTP
+$listUrl="https://management.azure.com/subscriptions/${subscriptionId}/providers/Microsoft.AzureActiveDirectory/b2cDirectories?api-version=2021-04-01"
+Write-Output $listUrl
+az rest --method get --uri $listUrl --output json
+
+# Remove Azure AD B2C tenant
+# https://learn.microsoft.com/en-us/rest/api/activedirectory/b2c-tenants/delete?view=rest-activedirectory-2021-04-01&tabs=HTTP
+$deleteUrl="https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${rgName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/${dnsName}?api-version=2021-04-01"
+Write-Output $deleteUrl
+az rest --method delete --uri $deleteUrl --debug

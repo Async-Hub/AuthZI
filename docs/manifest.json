@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "G+23jLRz7QJBTeLEbrzoHA2mIUMgPRUDSgY4PJXvV1c="
+          "hash": "J/0f13Q6+B/K5C14ka4ameBxuvbM7VzcCi0ST9FnkaM="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "z8jiyCWIFhIJRE6X5j/8JoQDgP35qOjYhgzAuBKuzx8="
+          "hash": "IlCjJqeYuM40fs2tqh4StNsxeIIddt5snoQZBx6j/9k="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/index.html",
-          "hash": "/wO2X6uhHkrg5bg/NeOL5fJT3A5ZAcM2gourgWA37LU="
+          "hash": "+ns8MfN13Ssqs9dKas32CBbpkB1dVegJaLiAYh+p6bE="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/claims-based-authorization.html",
-          "hash": "W5PrZuOVr3CcOZDtMzl5+WyUJqYG8k+PoZyf/ESctdI="
+          "hash": "86+WAl1VN0nu1Vl5o/lD2h7rIudwRWqjPzryP2NqQNk="
         }
       },
       "is_incremental": false,
@@ -72,7 +72,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/index.html",
-          "hash": "GCKkmSB4G5lZNFnEwjmKgdhEetT3DP4Kof3qjA7u3TI="
+          "hash": "Ju2gF9a3+SOLFEZSA0aKQ/CfCVcTcozIR6OcRw3gHHI="
         }
       },
       "is_incremental": false,
@@ -84,7 +84,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/policy-based-authorization.html",
-          "hash": "Rqe285PtwGQRwSWJpzbWQYMxTC4smrK13JpyUSlv+g8="
+          "hash": "ftP4fC+A7mLVlc6gA7cR9setL/DSLc6/T41Zn5Jlv8E="
         }
       },
       "is_incremental": false,
@@ -96,7 +96,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/resource-based-authorization.html",
-          "hash": "m2dsSth5/uFIzT5SmlMpDzGKEbx8RX8mFkexVvi8oiU="
+          "hash": "iRhv0W37XXInjQecKgIaGDBDq7ngETUGDdzYkapwXkU="
         }
       },
       "is_incremental": false,
@@ -108,7 +108,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/role-based-authorization.html",
-          "hash": "VwMEv6DHgDi/1Jc00J9n87R+F7uIULD0i5C3ipzDuZ4="
+          "hash": "1I9au/ISPTcmR5BOqzwZUPe7LB+S8cfarirjmlJ1IJM="
         }
       },
       "is_incremental": false,
@@ -120,7 +120,7 @@
       "output": {
         ".html": {
           "relative_path": "documents/microsoft-orleans/simple-authorization.html",
-          "hash": "vr/2pDNZZUG92wJ9AWv9eK15GyooioyzB28hjPD+W9M="
+          "hash": "ylvkMBwl9smKZP7yu//pNUIw2y81olQCUV0m9MDL4/E="
         }
       },
       "is_incremental": false,
@@ -144,7 +144,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Nkm8b25XpoXHc2S4ORxaiI7BJ4sF8e7XU8j5yjeZTjA="
+          "hash": "Uenh3bhWG34RFViLUvuzG1ekAEms1YuSmkqDVEKsS7A="
         }
       },
       "is_incremental": false,
@@ -156,7 +156,7 @@
       "output": {
         ".html": {
           "relative_path": "resources/introduction.html",
-          "hash": "6J+GwVKsq5oyPO1VZTtYSazZxj48Nr0THwol/gtfH/k="
+          "hash": "fbBU14IUEpJDIx/mXKMRe7V5kr/e9MwEnpCofpomo6o="
         }
       },
       "is_incremental": false,
@@ -168,7 +168,7 @@
       "output": {
         ".html": {
           "relative_path": "resources/microsoft-identity.html",
-          "hash": "FKr/u0r9wZObz+lvNxgHZtGVifB+LBWBFFdokSDKk9o="
+          "hash": "AlcYWmup3W/wzaD1AQ/fmhgJoxYjfMHrRq3On7K70eY="
         }
       },
       "is_incremental": false,
@@ -180,7 +180,7 @@
       "output": {
         ".html": {
           "relative_path": "resources/microsoft-identity/how-to-do.html",
-          "hash": "qtjPEy/oeUp6rheBwbWfAYOuhK9zJF8evrSnCMGOwKE="
+          "hash": "prZcJA3/seO7kWe2hYcpymnqEbGWRN6h6hUWnhvzUso="
         }
       },
       "is_incremental": false,

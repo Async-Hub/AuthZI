@@ -2,7 +2,7 @@ module GlobalConfig
 
 open Authzi.IdentityServer4
 
-let identityServer4Url = "http://localhost:5001"
+let identityServer4Url = "http://localhost:5005"
 let identityServer4Info = IdentityServer4Info(identityServer4Url,
                                 "Api1", "Secret", "Orleans")
 

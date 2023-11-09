@@ -1,12 +1,11 @@
-using System.Threading.Tasks;
 using Authzi.Security.Authorization;
 using Orleans;
+using System.Threading.Tasks;
 
-namespace Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+namespace Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization;
+
+public interface IClaimGrain : IGrainWithStringKey
 {
-    public interface IClaimGrain : IGrainWithStringKey
-    {
-        [Authorize(Policy = "NewYorkCityOnly")]
-        Task<string> DoSomething(string someInput);
-    }
+    [Authorize(Policy = "ArmeniaCountryOnly")]
+    Task<string> DoSomething(string someInput);
 }
