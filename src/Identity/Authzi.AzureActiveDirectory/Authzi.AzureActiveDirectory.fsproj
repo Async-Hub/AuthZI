@@ -26,7 +26,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="FSharp.Data" Version="6.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="[6.0.*,7.1)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="[7.0.*,8.0)" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.57.0" />
     <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.0.3" />
   </ItemGroup>

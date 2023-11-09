@@ -1,4 +1,4 @@
-﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET6._0
+﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET7
 
 open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization

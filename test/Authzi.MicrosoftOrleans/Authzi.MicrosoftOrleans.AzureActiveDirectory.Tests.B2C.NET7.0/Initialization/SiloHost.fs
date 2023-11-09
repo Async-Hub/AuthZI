@@ -45,8 +45,3 @@ let startSilo () =
     let host  = builder.Build()
     host.StartAsync().Wait()
     host
-
-
-
-    
-    
