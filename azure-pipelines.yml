@@ -17,9 +17,6 @@ stages:
     displayName: Build stage
     pool:
       name: Azure Pipelines
-      demands:
-        - msbuild
-        - visualstudio
     jobs:
     - job: Build_Solution
       displayName: Whole solution build process
