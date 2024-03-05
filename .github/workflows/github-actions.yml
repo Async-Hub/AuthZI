@@ -1,0 +1,12 @@
+name: Default CI Workflow
+run-name: Default CI Workflow by ${{ github.actor }}
+on: [push]
+jobs:
+  Build_Solution:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: dotnet restore AuthZI.sln
+      - name: Build_Solution
+        run: dotnet build AuthZI.sln --configuration Release --no-restore
