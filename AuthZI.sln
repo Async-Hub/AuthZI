@@ -72,9 +72,9 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory.Configuration.Common", "deploy\AzureActiveDirectory\Authzi.AzureActiveDirectory.Configuration.Common\Authzi.AzureActiveDirectory.Configuration.Common.fsproj", "{1C70A444-711F-427B-8CAF-08360275C9F5}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET7.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET7.0\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET7.0.fsproj", "{43A08B65-B26D-4DC0-A0CD-AE45778B3F66}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0\Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0.fsproj", "{170C3909-22EB-42DB-A559-F43BACA3017B}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET7.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET7.0\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET7.0.fsproj", "{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0.fsproj", "{A2268F34-A4CF-45A9-AA7C-522EC498CD79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,14 +162,14 @@ Global
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43A08B65-B26D-4DC0-A0CD-AE45778B3F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43A08B65-B26D-4DC0-A0CD-AE45778B3F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43A08B65-B26D-4DC0-A0CD-AE45778B3F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43A08B65-B26D-4DC0-A0CD-AE45778B3F66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170C3909-22EB-42DB-A559-F43BACA3017B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170C3909-22EB-42DB-A559-F43BACA3017B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170C3909-22EB-42DB-A559-F43BACA3017B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170C3909-22EB-42DB-A559-F43BACA3017B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,8 +203,8 @@ Global
 		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
 		{F3E433E3-1C2B-4F24-8344-B63EB19FB581} = {56A13D7D-B100-4B3C-B295-E9E7772EF7C8}
 		{1C70A444-711F-427B-8CAF-08360275C9F5} = {56A13D7D-B100-4B3C-B295-E9E7772EF7C8}
-		{43A08B65-B26D-4DC0-A0CD-AE45778B3F66} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
-		{6DF9BF5C-D182-46B8-A2A2-38E5CB5EC9BE} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{170C3909-22EB-42DB-A559-F43BACA3017B} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{A2268F34-A4CF-45A9-AA7C-522EC498CD79} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

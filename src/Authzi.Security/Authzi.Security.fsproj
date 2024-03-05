@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<!-- Publish symbols for debugging -->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -36,18 +36,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-		<PackageReference Include="JWT" Version="5.2.*" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="JWT" Version="10.1.1" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="[7.0.*,8.0)" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="[7.0.*,8.0)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[7.0.*,8.0)" />
-		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.20.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="[8.0.*,9.0)" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.*,9.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.4.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="8.0.200" />
 	</ItemGroup>
 
 </Project>

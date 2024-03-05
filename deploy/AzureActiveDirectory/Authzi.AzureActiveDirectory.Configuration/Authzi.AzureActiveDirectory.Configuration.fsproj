@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -13,11 +13,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Graph" Version="4.6.0" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.57.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.59.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Authzi.AzureActiveDirectory.Configuration.Common\Authzi.AzureActiveDirectory.Configuration.Common.fsproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="8.0.200" />
 	</ItemGroup>
 
 </Project>
