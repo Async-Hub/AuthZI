@@ -1,6 +1,6 @@
 ﻿module SiloHost
 
-open Authzi.MicrosoftOrleans.AzureActiveDirectory
+open Authzi.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization

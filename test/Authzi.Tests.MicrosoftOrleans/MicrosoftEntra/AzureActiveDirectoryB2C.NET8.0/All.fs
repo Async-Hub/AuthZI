@@ -1,4 +1,4 @@
-﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET8
+﻿namespace Authzi.MicrosoftOrleans.MicrosoftEntra.Tests.NET8
 
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization

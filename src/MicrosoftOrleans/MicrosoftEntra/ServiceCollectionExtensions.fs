@@ -1,4 +1,4 @@
-﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory
+﻿namespace Authzi.MicrosoftOrleans.MicrosoftEntra
 
 open Authzi.MicrosoftEntra
 open Authzi.MicrosoftOrleans
