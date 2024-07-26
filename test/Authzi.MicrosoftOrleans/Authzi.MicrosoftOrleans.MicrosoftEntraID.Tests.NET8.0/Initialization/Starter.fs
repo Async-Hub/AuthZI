@@ -16,7 +16,7 @@ module CurrentAssembly =
     [<Literal>]
     let TypeName = "Initialization.Starter"
     [<Literal>]
-    let Name = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NET6.0"
+    let Name = "Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
 do()
