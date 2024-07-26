@@ -25,8 +25,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration.Common\Authzi.Deploy.MicrosoftEntra.Configuration.Common.fsproj" />
 		<ProjectReference Include="..\..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
-		<ProjectReference Include="..\..\..\..\deploy\AzureActiveDirectory\Authzi.AzureActiveDirectory.Configuration.Common\Authzi.AzureActiveDirectory.Configuration.Common.fsproj" />
 		<ProjectReference Include="..\..\..\..\src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
 		<ProjectReference Include="..\..\..\..\src\MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory\Authzi.MicrosoftOrleans.AzureActiveDirectory.fsproj" />
 		<ProjectReference Include="..\..\Grains\Authzi.Tests.MicrosoftOrleans.Grains.csproj" />

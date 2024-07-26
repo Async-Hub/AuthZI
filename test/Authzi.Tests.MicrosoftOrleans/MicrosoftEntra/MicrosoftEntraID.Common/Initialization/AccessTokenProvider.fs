@@ -1,7 +1,7 @@
 ﻿module AccessTokenProvider
 
 open Authzi.AzureActiveDirectory
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System.Threading.Tasks
 
 let getAccessTokenForUserAsync directoryId clientId scopes userName password =

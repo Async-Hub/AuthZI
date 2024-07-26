@@ -1,4 +1,4 @@
-namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
+namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
 open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
@@ -7,7 +7,7 @@ open RootConfiguration
 open System
 open System.Threading.Tasks
 open Xunit
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 type ClaimsBasedAuthorizationTestsBase() =
     [<Theory>]

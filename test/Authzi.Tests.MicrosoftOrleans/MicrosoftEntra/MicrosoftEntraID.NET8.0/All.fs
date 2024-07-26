@@ -1,8 +1,8 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8
 
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Connection
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
 open Xunit.Abstractions
 
 type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =

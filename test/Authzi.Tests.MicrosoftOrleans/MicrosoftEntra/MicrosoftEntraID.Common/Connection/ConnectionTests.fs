@@ -1,11 +1,11 @@
-﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Connection
+﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
 
 open AccessTokenProvider
 open System
 open Xunit
 open Xunit.Abstractions
 
-open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
 
 type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = 
@@ -27,7 +27,7 @@ type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
             Assert.False(String.IsNullOrWhiteSpace(accessToken))
     }
 
-open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
 
 type AzureActiveDirectoryB2CTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]

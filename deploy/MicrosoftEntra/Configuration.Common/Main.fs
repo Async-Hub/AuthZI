@@ -1,4 +1,4 @@
-﻿namespace Authzi.AzureActiveDirectory.Configuration.Common
+﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.Common
 
 type User = { Name: string; Password: string }
 type Client = { Id: string; Secret: string; AllowedScopes: string list }

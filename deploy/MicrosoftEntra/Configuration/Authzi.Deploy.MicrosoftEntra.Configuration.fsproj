@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Authzi.AzureActiveDirectory.Configuration.Common\Authzi.AzureActiveDirectory.Configuration.Common.fsproj" />
+	  <ProjectReference Include="..\Configuration.Common\Authzi.Deploy.MicrosoftEntra.Configuration.Common.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>

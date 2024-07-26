@@ -1,8 +1,8 @@
 ﻿namespace Initialization
 
-open Authzi.AzureActiveDirectory.Configuration.Common
-open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open Xunit.Abstractions
 open Xunit.Sdk
@@ -23,7 +23,7 @@ module CurrentAssembly =
     [<Literal>]
     let TypeName = "Initialization.Starter"
     [<Literal>]
-    let Name = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET6.0"
+    let Name = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
 do()

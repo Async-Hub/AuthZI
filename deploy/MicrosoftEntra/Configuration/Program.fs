@@ -3,7 +3,7 @@ open Microsoft.Identity.Client
 open System.Net.Http.Headers
 open System.Security
 open System.Threading.Tasks
-open Authzi.AzureActiveDirectory.Configuration
+open Authzi.Deploy.MicrosoftEntra.Configuration
 
 let microsoftGraphsScopes = ["https://graph.microsoft.com/User.Read"; 
         "https://graph.microsoft.com/Application.ReadWrite.All"]

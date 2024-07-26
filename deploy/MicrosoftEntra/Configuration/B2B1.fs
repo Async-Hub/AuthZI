@@ -1,6 +1,6 @@
-﻿namespace Authzi.AzureActiveDirectory.Configuration
+﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
 
-open Authzi.AzureActiveDirectory.Configuration.Common
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common
 open Microsoft.Graph
 
 module B2B1 =

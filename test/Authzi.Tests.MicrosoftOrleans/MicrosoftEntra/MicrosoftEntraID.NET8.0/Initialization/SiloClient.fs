@@ -1,7 +1,7 @@
 module SiloClient
 
 open Authzi.MicrosoftOrleans.AzureActiveDirectory
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Authzi.MicrosoftOrleans.Grains
 open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security

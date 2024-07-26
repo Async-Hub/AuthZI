@@ -1,7 +1,7 @@
 ﻿namespace Initialization
 
-open Authzi.AzureActiveDirectory.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open Xunit.Abstractions
 open Xunit.Sdk

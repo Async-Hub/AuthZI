@@ -1,6 +1,6 @@
-namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
+namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
-open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Authzi.MicrosoftOrleans.Grains.RoleBasedAuthorization
 open Authzi.Security
 open RootConfiguration
