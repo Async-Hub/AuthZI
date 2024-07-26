@@ -1,4 +1,4 @@
-﻿namespace Authzi.AzureActiveDirectory
+﻿namespace Authzi.MicrosoftEntra
 
 open FSharp.Data
 

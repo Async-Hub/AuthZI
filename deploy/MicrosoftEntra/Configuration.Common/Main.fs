@@ -64,7 +64,7 @@ module Credentials =
               Password = GeneralPassword }
 
 module Directories =
-    open Authzi.AzureActiveDirectory
+    open Authzi.MicrosoftEntra
     open Credentials.AzureActiveDirectoryB2B1
 
     let azureActiveDirectoryAppB2B1 =

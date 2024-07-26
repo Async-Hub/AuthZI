@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Identity\Authzi.AzureActiveDirectory\Authzi.AzureActiveDirectory.fsproj" />
+    <ProjectReference Include="..\..\..\src\Identity\MicrosoftEntra\Authzi.Identity.MicrosoftEntra.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

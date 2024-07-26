@@ -1,6 +1,6 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
-open Authzi.AzureActiveDirectory
+open Authzi.MicrosoftEntra
 open Authzi.Deploy.MicrosoftEntra.Configuration.Common
 open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
 

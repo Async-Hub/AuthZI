@@ -1,6 +1,6 @@
 ﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory
 
-open Authzi.AzureActiveDirectory
+open Authzi.MicrosoftEntra
 open Authzi.MicrosoftOrleans
 open Authzi.Security
 open Microsoft.Extensions.DependencyInjection

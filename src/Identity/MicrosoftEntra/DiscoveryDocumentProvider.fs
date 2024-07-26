@@ -1,4 +1,4 @@
-namespace Authzi.AzureActiveDirectory
+namespace Authzi.MicrosoftEntra
 
 open Microsoft.IdentityModel.Protocols;  
 open Microsoft.IdentityModel.Protocols.OpenIdConnect

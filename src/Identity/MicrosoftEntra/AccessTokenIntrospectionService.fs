@@ -1,4 +1,4 @@
-namespace Authzi.AzureActiveDirectory
+namespace Authzi.MicrosoftEntra
 
 open Authzi.Security
 open Authzi.Security.AccessToken

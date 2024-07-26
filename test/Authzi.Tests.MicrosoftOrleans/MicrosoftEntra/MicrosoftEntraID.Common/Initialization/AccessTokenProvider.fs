@@ -1,6 +1,6 @@
 ﻿module AccessTokenProvider
 
-open Authzi.AzureActiveDirectory
+open Authzi.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System.Threading.Tasks
 

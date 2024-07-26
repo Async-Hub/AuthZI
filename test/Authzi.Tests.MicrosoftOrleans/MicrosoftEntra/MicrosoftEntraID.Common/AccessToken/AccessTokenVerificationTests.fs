@@ -1,7 +1,7 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 open AccessTokenProvider
-open Authzi.AzureActiveDirectory
+open Authzi.MicrosoftEntra
 open Authzi.Security.AccessToken
 open Xunit
 open Xunit.Abstractions

@@ -1,6 +1,5 @@
-﻿namespace Authzi.AzureActiveDirectory
+﻿namespace Authzi.MicrosoftEntra
 
-open Authzi.AzureActiveDirectory
 open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection

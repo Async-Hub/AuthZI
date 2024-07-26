@@ -1,6 +1,6 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
-open Authzi.AzureActiveDirectory
+open Authzi.MicrosoftEntra
 open Xunit
 open Xunit.Abstractions
 
