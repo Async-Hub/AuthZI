@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0</RootNamespace>
+		<RootNamespace>Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET7</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
@@ -14,14 +14,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common.fsproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.7.1" />
+		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.7.2" />
 		<PackageReference Include="xunit" Version="2.9.0" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
 			<PrivateAssets>all</PrivateAssets>
@@ -31,6 +27,10 @@
 
 	<ItemGroup>
 		<Folder Include="Initialization\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MicrosoftEntraID.Common\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>

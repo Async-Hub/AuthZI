@@ -21,21 +21,15 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans", "
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Security.IntegrationTests", "test\Authzi.Security.IntegrationTests\Authzi.Security.IntegrationTests.fsproj", "{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authzi.MicrosoftOrleans", "Authzi.MicrosoftOrleans", "{847F61AF-DFE5-4174-9159-C4F6E38DDEBE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authzi.Tests.MicrosoftOrleans", "Authzi.Tests.MicrosoftOrleans", "{847F61AF-DFE5-4174-9159-C4F6E38DDEBE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authzi.AzureFunctions", "Authzi.AzureFunctions", "{9D659389-E038-4F5B-AA55-557D2007F879}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.MicrosoftOrleans.Grains", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.Grains\Authzi.MicrosoftOrleans.Grains.csproj", "{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.MicrosoftOrleans.Interoperability", "src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj", "{DF14D1ED-3D4E-41C8-BD80-58039ED5F2B0}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Extensions", "src\Authzi.Extensions\Authzi.Extensions.fsproj", "{756315A3-5BE4-49C0-A336-5D77E6D782E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authzi.Identity", "Authzi.Identity", "{A2124B9A-1801-4312-8E6B-5EEF2A3850C0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.IdentityServer4.IntegrationTests", "test\AuthziIdentity\Authzi.IdentityServer4.IntegrationTests\Authzi.IdentityServer4.IntegrationTests.csproj", "{ECAD13AA-9F2F-4483-850E-76727542B0C7}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.IdentityServer4.Tests", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.IdentityServer4.Tests\Authzi.MicrosoftOrleans.IdentityServer4.Tests.fsproj", "{F5C4D131-614A-4983-A41F-390390BB23D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8F30CDF4-C766-447B-8FB0-037B8C55435F}"
 EndProject
@@ -64,17 +58,23 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.Azu
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.IdentityServer4", "src\MicrosoftOrleans\Authzi.MicrosoftOrleans.IdentityServer4\Authzi.MicrosoftOrleans.IdentityServer4.fsproj", "{2C16443C-4411-41F1-9918-A35C152CDE27}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NETCore3.1", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NETCore3.1\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NETCore3.1.fsproj", "{C9444C09-0A7D-4CD7-857C-B18353079854}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Common.fsproj", "{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD}"
-EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory.Configuration", "deploy\AzureActiveDirectory\Authzi.AzureActiveDirectory.Configuration\Authzi.AzureActiveDirectory.Configuration.fsproj", "{F3E433E3-1C2B-4F24-8344-B63EB19FB581}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.AzureActiveDirectory.Configuration.Common", "deploy\AzureActiveDirectory\Authzi.AzureActiveDirectory.Configuration.Common\Authzi.AzureActiveDirectory.Configuration.Common.fsproj", "{1C70A444-711F-427B-8CAF-08360275C9F5}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0\Authzi.MicrosoftOrleans.MicrosoftEntraID.Tests.NET8.0.fsproj", "{170C3909-22EB-42DB-A559-F43BACA3017B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftEntra", "MicrosoftEntra", "{F1F4B056-040A-4D02-9727-09788F00BCFF}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0", "test\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0\Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.B2C.NET8.0.fsproj", "{A2268F34-A4CF-45A9-AA7C-522EC498CD79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.Tests.MicrosoftOrleans.Grains", "test\Authzi.Tests.MicrosoftOrleans\Grains\Authzi.Tests.MicrosoftOrleans.Grains.csproj", "{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common", "test\Authzi.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraID.Common\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj", "{84B0E242-AC8B-422B-BFC7-91D1DAD443C1}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0", "test\Authzi.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraID.NET8.0\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0.fsproj", "{5F43CF15-F3A3-4E19-96EF-120E409AD19F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{E179E8EF-609E-49D7-97D2-AF2A13226555}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0", "test\Authzi.Tests.MicrosoftOrleans\MicrosoftEntra\AzureActiveDirectoryB2C.NET8.0\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj", "{E2A6197F-53ED-43E5-9762-A12936841655}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.IdentityServer.IdentityServer4", "test\Authzi.Tests.MicrosoftOrleans\IdentityServer\IdentityServer4\Authzi.Tests.MicrosoftOrleans.IdentityServer.IdentityServer4.fsproj", "{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,10 +102,6 @@ Global
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF14D1ED-3D4E-41C8-BD80-58039ED5F2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF14D1ED-3D4E-41C8-BD80-58039ED5F2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF14D1ED-3D4E-41C8-BD80-58039ED5F2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -114,14 +110,6 @@ Global
 		{756315A3-5BE4-49C0-A336-5D77E6D782E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{756315A3-5BE4-49C0-A336-5D77E6D782E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{756315A3-5BE4-49C0-A336-5D77E6D782E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECAD13AA-9F2F-4483-850E-76727542B0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECAD13AA-9F2F-4483-850E-76727542B0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECAD13AA-9F2F-4483-850E-76727542B0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECAD13AA-9F2F-4483-850E-76727542B0C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5C4D131-614A-4983-A41F-390390BB23D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5C4D131-614A-4983-A41F-390390BB23D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5C4D131-614A-4983-A41F-390390BB23D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5C4D131-614A-4983-A41F-390390BB23D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5C297BB-77C3-4088-8BE9-8F62029FE20C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5C297BB-77C3-4088-8BE9-8F62029FE20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5C297BB-77C3-4088-8BE9-8F62029FE20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -146,14 +134,6 @@ Global
 		{2C16443C-4411-41F1-9918-A35C152CDE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C16443C-4411-41F1-9918-A35C152CDE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C16443C-4411-41F1-9918-A35C152CDE27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9444C09-0A7D-4CD7-857C-B18353079854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9444C09-0A7D-4CD7-857C-B18353079854}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9444C09-0A7D-4CD7-857C-B18353079854}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9444C09-0A7D-4CD7-857C-B18353079854}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3E433E3-1C2B-4F24-8344-B63EB19FB581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3E433E3-1C2B-4F24-8344-B63EB19FB581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E433E3-1C2B-4F24-8344-B63EB19FB581}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -162,14 +142,26 @@ Global
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C70A444-711F-427B-8CAF-08360275C9F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{170C3909-22EB-42DB-A559-F43BACA3017B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{170C3909-22EB-42DB-A559-F43BACA3017B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{170C3909-22EB-42DB-A559-F43BACA3017B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{170C3909-22EB-42DB-A559-F43BACA3017B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2268F34-A4CF-45A9-AA7C-522EC498CD79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B0E242-AC8B-422B-BFC7-91D1DAD443C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B0E242-AC8B-422B-BFC7-91D1DAD443C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B0E242-AC8B-422B-BFC7-91D1DAD443C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B0E242-AC8B-422B-BFC7-91D1DAD443C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F43CF15-F3A3-4E19-96EF-120E409AD19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F43CF15-F3A3-4E19-96EF-120E409AD19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F43CF15-F3A3-4E19-96EF-120E409AD19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F43CF15-F3A3-4E19-96EF-120E409AD19F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A6197F-53ED-43E5-9762-A12936841655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A6197F-53ED-43E5-9762-A12936841655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A6197F-53ED-43E5-9762-A12936841655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A6197F-53ED-43E5-9762-A12936841655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,12 +176,9 @@ Global
 		{1EA2996F-3342-4F03-8AD9-5DBD7E224ECD} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
 		{847F61AF-DFE5-4174-9159-C4F6E38DDEBE} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
 		{9D659389-E038-4F5B-AA55-557D2007F879} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
-		{CD9403BC-8D5B-4BF1-95F0-9168BA18035D} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
 		{DF14D1ED-3D4E-41C8-BD80-58039ED5F2B0} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{756315A3-5BE4-49C0-A336-5D77E6D782E7} = {02F2165E-0E82-4ED3-A80B-F04F926BD439}
 		{A2124B9A-1801-4312-8E6B-5EEF2A3850C0} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
-		{ECAD13AA-9F2F-4483-850E-76727542B0C7} = {A2124B9A-1801-4312-8E6B-5EEF2A3850C0}
-		{F5C4D131-614A-4983-A41F-390390BB23D4} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
 		{B5C297BB-77C3-4088-8BE9-8F62029FE20C} = {8F30CDF4-C766-447B-8FB0-037B8C55435F}
 		{544517DE-EE7B-4C9D-925C-5E2C83FB9CFB} = {E7AA3335-A50B-469F-A858-EFC319A34BC2}
 		{EAB45ACE-F4DA-4F32-AE4E-562749D210D3} = {E7AA3335-A50B-469F-A858-EFC319A34BC2}
@@ -199,12 +188,15 @@ Global
 		{56A13D7D-B100-4B3C-B295-E9E7772EF7C8} = {76494F63-19A9-4AFB-BEA6-4028E594FF2A}
 		{229734DE-6F3E-4AEB-A9C7-BD841D2E1ED8} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{2C16443C-4411-41F1-9918-A35C152CDE27} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
-		{C9444C09-0A7D-4CD7-857C-B18353079854} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
-		{BCD13181-FD2C-4518-AF5D-FAD8FF21D4AD} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
 		{F3E433E3-1C2B-4F24-8344-B63EB19FB581} = {56A13D7D-B100-4B3C-B295-E9E7772EF7C8}
 		{1C70A444-711F-427B-8CAF-08360275C9F5} = {56A13D7D-B100-4B3C-B295-E9E7772EF7C8}
-		{170C3909-22EB-42DB-A559-F43BACA3017B} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
-		{A2268F34-A4CF-45A9-AA7C-522EC498CD79} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{F1F4B056-040A-4D02-9727-09788F00BCFF} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{F457FD06-EFCA-4DCE-8B66-EDF61D5914E9} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{84B0E242-AC8B-422B-BFC7-91D1DAD443C1} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
+		{5F43CF15-F3A3-4E19-96EF-120E409AD19F} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
+		{E179E8EF-609E-49D7-97D2-AF2A13226555} = {847F61AF-DFE5-4174-9159-C4F6E38DDEBE}
+		{E2A6197F-53ED-43E5-9762-A12936841655} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
+		{A2814CD6-3A8B-44C7-BCF5-2F5831502FA1} = {E179E8EF-609E-49D7-97D2-AF2A13226555}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

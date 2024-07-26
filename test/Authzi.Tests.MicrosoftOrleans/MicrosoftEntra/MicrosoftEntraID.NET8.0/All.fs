@@ -1,4 +1,4 @@
-﻿namespace Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.NETCore3._1
+﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8
 
 open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests
 open Authzi.MicrosoftOrleans.AzureActiveDirectory.Tests.Authorization
@@ -19,4 +19,3 @@ type RoleBasedAuthorizationTests() =
 
 type ClaimsBasedAuthorizationTests() =
     inherit ClaimsBasedAuthorizationTestsBase()
-    
