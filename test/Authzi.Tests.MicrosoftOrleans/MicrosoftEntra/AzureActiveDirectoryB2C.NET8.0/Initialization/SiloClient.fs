@@ -2,11 +2,12 @@ module SiloClient
 
 open Authzi.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.MicrosoftOrleans.Grains
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
 open Authzi.Security.Authorization
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Hosting
 open Orleans.Configuration;
 open Orleans;
 open RootConfiguration;
@@ -26,19 +27,18 @@ let private clusterClient =
         services.AddOrleansClientAuthorization(TestData.AzureActiveDirectoryApp,
             fun config -> configureCluster(config)) |> ignore
 
-    let builder = 
-        ClientBuilder().UseLocalhostClustering()
-            .Configure<ClusterOptions>(fun (options: ClusterOptions) ->
-                options.ClusterId <- "Orleans.Security.Test"
-                options.ServiceId <- "ServiceId")
-            .ConfigureApplicationParts(fun parts -> 
-                parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences() |> ignore)
-            .ConfigureServices(fun services -> configure(services))
-
-    let clusterClient = builder.Build()
-    clusterClient.Connect().Wait()
-    clusterClient
+    let hostBuilder = new HostBuilder()
+    hostBuilder.UseOrleansClient(fun (clientBuilder : Hosting.IClientBuilder) ->
+        clientBuilder.Services.Configure<ClusterOptions>(fun (options: ClusterOptions) ->
+            options.ClusterId <- "Orleans.Security.Test"
+            options.ServiceId <- "ServiceId") |> ignore
+        
+        configure(clientBuilder.Services)) |> ignore
+    
+    let host = hostBuilder.Build()
+    host.StartAsync() |> ignore
+    
+    host.Services.GetService<IClusterClient>();
     
 let getClusterClient() = clusterClient
-
 let getIHttpClientFactory = clusterClient.ServiceProvider.GetService<IHttpClientFactory>()

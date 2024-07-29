@@ -2,7 +2,7 @@
 using Authzi.Security.Authorization;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains
+namespace Authzi.Tests.MicrosoftOrleans.Grains
 {
     public interface IGlobalSecretStorageGrain : IGrainWithStringKey
     {

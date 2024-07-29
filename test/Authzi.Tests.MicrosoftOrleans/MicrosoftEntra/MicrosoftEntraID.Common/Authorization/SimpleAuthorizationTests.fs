@@ -1,7 +1,7 @@
 namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
 open RootConfiguration
 open System

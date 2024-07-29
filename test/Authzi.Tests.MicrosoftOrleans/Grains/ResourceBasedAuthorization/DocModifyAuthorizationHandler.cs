@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Authzi.Security.Authorization;
 
-namespace Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     public sealed class SameAuthorRequirement : IAuthorizationRequirement { }
     

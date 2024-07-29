@@ -3,7 +3,7 @@ module SimpleAuthorizationTests
 open System
 open FluentAssertions
 open Authzi.Security
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open System.Threading.Tasks
 open Xunit
 

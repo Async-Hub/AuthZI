@@ -2,8 +2,8 @@
 
 open IdentityModel
 open IdentityServer4.Test
-open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Security.Claims
 
 let aliceId = "1"

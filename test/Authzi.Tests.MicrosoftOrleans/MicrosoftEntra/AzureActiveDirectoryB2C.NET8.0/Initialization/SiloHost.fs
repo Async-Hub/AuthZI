@@ -2,8 +2,8 @@
 
 open Authzi.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.MicrosoftOrleans.Grains
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security.Authorization
 open Microsoft.Extensions.Hosting               
 open Orleans.Configuration;
@@ -26,9 +26,6 @@ let startSilo () =
                    .Configure<EndpointOptions>(fun (options:EndpointOptions) ->          
                        options.AdvertisedIPAddress <- IPAddress.Loopback         
                        ignore())         
-                   .ConfigureApplicationParts(fun parts ->          
-                       parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences()         
-                       |> ignore)
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
                        // Add Azure Active Directory authorization.

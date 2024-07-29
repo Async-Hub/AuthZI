@@ -1,10 +1,11 @@
-using Authzi.Security.Authorization;
-using Orleans.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Authzi.MicrosoftOrleans;
+using Authzi.Security.Authorization;
+using Orleans.Runtime;
 
-namespace Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public class DocumentsRegistryGrain : GrainWithClaimsPrincipal, IDocumentsRegistryGrain

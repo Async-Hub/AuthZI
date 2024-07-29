@@ -1,8 +1,8 @@
 module ClaimsBasedAuthorizationTests
 
 open Authzi.Security
-open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 open System
 open System.Threading.Tasks
 open Xunit

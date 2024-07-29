@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains
+namespace Authzi.Tests.MicrosoftOrleans.Grains
 {
     public class GlobalSecretStorageGrain : Grain, IGlobalSecretStorageGrain
     {

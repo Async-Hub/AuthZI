@@ -1,4 +1,4 @@
-namespace Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     public static class DocRegistryAccessClaim
     {

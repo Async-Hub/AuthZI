@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Authzi.Security.Authorization;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 {
     [Authorize]
     public interface ISimpleGrain : IGrainWithGuidKey

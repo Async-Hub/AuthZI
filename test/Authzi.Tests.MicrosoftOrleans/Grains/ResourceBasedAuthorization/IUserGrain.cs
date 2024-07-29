@@ -2,7 +2,7 @@
 using Authzi.Security.Authorization;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     [Authorize]
     public interface IUserGrain : IGrainWithStringKey

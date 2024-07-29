@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains.RoleBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
 {
     public class ManagerGrain : Grain, IManagerGrain
     {

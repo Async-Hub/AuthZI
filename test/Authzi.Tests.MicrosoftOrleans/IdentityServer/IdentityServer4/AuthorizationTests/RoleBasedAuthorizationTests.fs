@@ -2,7 +2,7 @@ module RoleBasedAuthorizationTests
 
 open FluentAssertions
 open Authzi.Security
-open Authzi.MicrosoftOrleans.Grains.RoleBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
 open System.Threading.Tasks
 open Xunit
 

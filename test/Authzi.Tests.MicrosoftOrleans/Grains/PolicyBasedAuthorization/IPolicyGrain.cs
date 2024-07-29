@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Authzi.Security.Authorization;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 {
     public interface IPolicyGrain : IGrainWithStringKey
     {

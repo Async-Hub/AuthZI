@@ -1,7 +1,7 @@
 namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
-open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 open Authzi.Security
 open RootConfiguration
 open System

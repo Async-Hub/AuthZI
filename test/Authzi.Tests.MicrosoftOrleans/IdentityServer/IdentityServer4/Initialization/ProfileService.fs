@@ -3,8 +3,8 @@ namespace Authzi.MicrosoftOrleans.IdentityServer4.Tests
 open IdentityModel
 open IdentityServer4.Models
 open IdentityServer4.Services
-open Authzi.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Threading.Tasks
 open System.Linq
 

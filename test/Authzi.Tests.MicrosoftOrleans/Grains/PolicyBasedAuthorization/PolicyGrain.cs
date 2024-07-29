@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.MicrosoftOrleans.Grains.PolicyBasedAuthorization
+namespace Authzi.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 {
     public class PolicyGrain : Grain, IPolicyGrain
     {

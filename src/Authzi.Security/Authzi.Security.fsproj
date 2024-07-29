@@ -42,8 +42,8 @@
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="[8.0.*,9.0)" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.*,9.0)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.4.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

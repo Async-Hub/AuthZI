@@ -4,7 +4,7 @@ open System.Threading.Tasks
 open FluentAssertions
 open Authzi.Security
 open Xunit
-open Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 
 [<Theory>]
 [<InlineData("Bob", "Pass123$", "Api1 Orleans")>]

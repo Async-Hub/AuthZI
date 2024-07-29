@@ -1,7 +1,7 @@
 module ClusterSetup
 
 open Orleans
-open Authzi.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 
 let initDocumentsRegistry (getClusterClient: string -> IClusterClient) =
     let getToken =

@@ -1,11 +1,12 @@
 module SiloClient
 
 open Authzi.MicrosoftOrleans.IdentityServer4
-open Authzi.MicrosoftOrleans.Grains
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
 open Authzi.Security.Authorization
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Hosting
 open Orleans.Configuration;
 open Orleans;
 open System
@@ -35,21 +36,33 @@ let private clusterClient =
         services.AddOrleansClientAuthorization(GlobalConfig.identityServer4Info, 
             fun config -> configureCluster(config)) |> ignore
 
-    let builder = 
-        ClientBuilder().UseLocalhostClustering()
-            .Configure<ClusterOptions>(fun (options: ClusterOptions) ->
-                options.ClusterId <- "Orleans.Security.Test"
-                options.ServiceId <- "ServiceId")
-            .ConfigureApplicationParts(fun parts -> parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences() |> ignore)
-            .ConfigureServices(fun services -> configure(services))
-
-    let clusterClient = builder.Build()
-    clusterClient.Connect().Wait()
-    ClusterSetup.initDocumentsRegistry (fun accessToken ->
-        globalAccessToken.AccessToken <- accessToken
-        clusterClient)
+    let hostBuilder = new HostBuilder()
+    hostBuilder.UseOrleansClient(fun (clientBuilder : Hosting.IClientBuilder) ->
+        clientBuilder.Services.Configure<ClusterOptions>(fun (options: ClusterOptions) ->
+            options.ClusterId <- "Orleans.Security.Test"
+            options.ServiceId <- "ServiceId") |> ignore
+        
+        configure(clientBuilder.Services)) |> ignore
     
-    clusterClient
+    let host = hostBuilder.Build()
+    host.StartAsync() |> ignore
+    host.Services.GetService<IClusterClient>();
+
+    //let builder = 
+    //    ClientBuilder().UseLocalhostClustering()
+    //        .Configure<ClusterOptions>(fun (options: ClusterOptions) ->
+    //            options.ClusterId <- "Orleans.Security.Test"
+    //            options.ServiceId <- "ServiceId")
+    //        .ConfigureApplicationParts(fun parts -> parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences() |> ignore)
+    //        .ConfigureServices(fun services -> configure(services))
+
+    //let clusterClient = builder.Build()
+    //clusterClient.Connect().Wait()
+    //ClusterSetup.initDocumentsRegistry (fun accessToken ->
+    //    globalAccessToken.AccessToken <- accessToken
+    //    clusterClient)
+    
+    //clusterClient
     
 let getClusterClient (accessToken: string) =
     globalAccessToken.AccessToken <- accessToken

@@ -1,7 +1,7 @@
 ﻿module SiloHost
 
-open Authzi.MicrosoftOrleans.Grains
-open Authzi.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.Grains
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.MicrosoftOrleans.IdentityServer4
 open Authzi.Security.Authorization
 open Microsoft.Extensions.Hosting               
@@ -24,10 +24,7 @@ let startSilo () =
                        ignore())         
                    .Configure<EndpointOptions>(fun (options:EndpointOptions) ->          
                        options.AdvertisedIPAddress <- IPAddress.Loopback         
-                       ignore())         
-                   .ConfigureApplicationParts(fun parts ->          
-                       parts.AddApplicationPart(typeof<SimpleGrain>.Assembly).WithReferences()         
-                       |> ignore)
+                       ignore())
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
                        // Add IdentityServer4 authorization.
