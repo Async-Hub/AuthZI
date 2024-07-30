@@ -1,14 +1,15 @@
 module SiloClient
 
 open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.Security
 open Authzi.Security.Authorization
+open Authzi.Tests.MicrosoftOrleans.Grains
+open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Orleans.Configuration;
+open Orleans.Hosting
 open Orleans;
 open RootConfiguration;
 open System
@@ -28,17 +29,17 @@ let private clusterClient =
             fun config -> configureCluster(config)) |> ignore
 
     let hostBuilder = new HostBuilder()
-    hostBuilder.UseOrleansClient(fun (clientBuilder : Hosting.IClientBuilder) ->
-        clientBuilder.Services.Configure<ClusterOptions>(fun (options: ClusterOptions) ->
-            options.ClusterId <- "Orleans.Security.Test"
-            options.ServiceId <- "ServiceId") |> ignore
+    hostBuilder.UseOrleansClient(fun clientBuilder ->
+        clientBuilder.UseLocalhostClustering()
+            .Configure<ClusterOptions>(fun (options: ClusterOptions) ->
+                options.ClusterId <- "Orleans.Security.Test"
+                options.ServiceId <- "ServiceId") |> ignore
         
         configure(clientBuilder.Services)) |> ignore
     
     let host = hostBuilder.Build()
-    host.StartAsync() |> ignore
-    
-    host.Services.GetService<IClusterClient>();
-    
+    host.StartAsync().Wait()
+    host.Services.GetService<IClusterClient>()
+
 let getClusterClient() = clusterClient
 let getIHttpClientFactory = clusterClient.ServiceProvider.GetService<IHttpClientFactory>()

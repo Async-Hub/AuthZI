@@ -1,10 +1,10 @@
 ﻿module SiloHost
 
 open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open Authzi.Security.Authorization
 open Authzi.Tests.MicrosoftOrleans.Grains
 open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
-open Authzi.Security.Authorization
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Microsoft.Extensions.Hosting               
 open Orleans.Configuration;
 open Orleans.Hosting;

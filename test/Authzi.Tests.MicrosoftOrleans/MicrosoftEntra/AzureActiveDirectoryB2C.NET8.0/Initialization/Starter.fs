@@ -7,6 +7,9 @@ open RootConfiguration
 open Xunit.Abstractions
 open Xunit.Sdk
 
+[<assembly: Orleans.ApplicationPartAttribute("Authzi.Tests.MicrosoftOrleans.Grains")>]
+()
+
 type Starter(messageSink: IMessageSink) =
     inherit XunitTestFramework(messageSink)
     do 
@@ -26,4 +29,4 @@ module CurrentAssembly =
     let Name = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
-do()
+()

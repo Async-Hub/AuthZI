@@ -28,7 +28,7 @@ module Credentials =
 
         let Api1 = "20ac1601-xxx"
         // Scopes value format definition convention is different for B2B and B2C directories.
-        let Api1Scope1 = $"api://{Api1}/Api1"
+        let Api1Scope1 = $"https://api1.{b2bName}.onmicrosoft.com/Api1"
 
         let WebClient1 = 
             { Id = "e64ef6f7-xxx" 

@@ -41,16 +41,5 @@ let private clusterClient =
     host.StartAsync().Wait()
     host.Services.GetService<IClusterClient>()
 
-    //let builder = 
-    //    ClientBuilder().UseLocalhostClustering()
-    //        .Configure<ClusterOptions>(fun (options: ClusterOptions) ->
-    //            options.ClusterId <- "Orleans.Security.Test"
-    //            options.ServiceId <- "ServiceId")
-    //        .ConfigureServices(fun services -> configure(services))
-
-    //let clusterClient = builder.Build()
-    //clusterClient.Connect().Wait()
-    //clusterClient
-    
 let getClusterClient() = clusterClient
 let getIHttpClientFactory = clusterClient.ServiceProvider.GetService<IHttpClientFactory>()
