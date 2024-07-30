@@ -2,7 +2,6 @@
 
 open Authzi.MicrosoftEntra
 open Authzi.Deploy.MicrosoftEntra.Configuration.Common
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open System
@@ -29,6 +28,8 @@ type Starter(messageSink: IMessageSink) =
             AzureActiveDirectoryApp(credentials.DirectoryId, credentials.WebClient1.Id, 
                 credentials.WebClient1.Secret, credentials.WebClient1.AllowedScopes)
 
+        TestData.UserWithScopeAdeleV <- [[|credentials.AdeleV.Name; credentials.AdeleV.Password; ["Api1"; "Orleans"]|]]
+        TestData.UserWithScopeAlexW <- [[|credentials.AlexW.Name; credentials.AlexW.Password; ["Api1"; "Orleans"]|]]
         TestData.Users <- [[| credentials.AdeleV.Name; credentials.AdeleV.Password |]]
         TestData.AzureActiveDirectoryApp <- azureActiveDirectoryAppB2B1
         TestData.Web1Client <- credentials.WebClient1
