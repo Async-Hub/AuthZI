@@ -1,12 +1,38 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.Common.Connections
+﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.Common
 
 module Literals =
-    let microsoftEntraId = """
+    let microsoftEntraCredentialsJsonTemplate = """
     {
+        "DirectoryId": "DirectoryIdValue",
         "Api1": {
-            "Id": "20ac1601-xxx",
+            "Id": "Api1Id",
             "Secret": "",
-            "AllowedScopes": "https://api1.name1.onmicrosoft.com/Api1"
+            "AllowedScopes": []
+        },
+        "WebClient1": {
+            "Id": "WebClient1Id",
+            "Secret": "WebClient1Secret",
+            "AllowedScopes": ["Api1Scope1"]
+        },
+        "AdeleV": {
+            "Name": "AdeleVName",
+            "Password": "AdeleVPassword"
+        },
+        "AlexW": {
+            "Name": "AlexWName",
+            "Password": "AlexWPassword"
         }
     }
     """
+
+    let microsoftEntraCredentialsJson = 
+        microsoftEntraCredentialsJsonTemplate
+            .Replace("DirectoryIdValue", Credentials.AzureActiveDirectoryB2B1.DirectoryId)
+            .Replace("Api1Id", Credentials.AzureActiveDirectoryB2B1.Api1)
+            .Replace("WebClient1Id", Credentials.AzureActiveDirectoryB2B1.WebClient1.Id)
+            .Replace("WebClient1Secret", Credentials.AzureActiveDirectoryB2B1.WebClient1.Secret)
+            .Replace("Api1Scope1", Credentials.AzureActiveDirectoryB2B1.Api1Scope1)
+            .Replace("AdeleVName", Credentials.AzureActiveDirectoryB2B1.AdeleV.Name)
+            .Replace("AdeleVPassword", Credentials.AzureActiveDirectoryB2B1.AdeleV.Password)
+            .Replace("AlexWName", Credentials.AzureActiveDirectoryB2B1.AlexW.Name)
+            .Replace("AlexWPassword", Credentials.AzureActiveDirectoryB2B1.AlexW.Password)

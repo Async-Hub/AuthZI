@@ -2,6 +2,7 @@
 
 type User = { Name: string; Password: string }
 type Client = { Id: string; Secret: string; AllowedScopes: string list }
+type MicrosoftEntraCredentials = { DirectoryId: string; Api1: Client; WebClient1: Client; AdeleV: User;  AlexW: User }
 
 module Clients =
     let api1 = "api1"

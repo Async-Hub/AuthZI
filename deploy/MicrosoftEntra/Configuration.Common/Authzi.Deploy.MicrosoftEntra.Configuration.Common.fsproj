@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Connections.fs" />
     <Compile Include="Main.fs" />
+    <Compile Include="Connections.fs" />
   </ItemGroup>
 
   <ItemGroup>
