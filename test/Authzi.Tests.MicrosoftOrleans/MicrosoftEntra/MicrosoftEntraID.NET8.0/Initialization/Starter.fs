@@ -26,7 +26,7 @@ type Starter(messageSink: IMessageSink) =
         // Initialize the test data.
         let azureActiveDirectoryAppB2B1 =
             AzureActiveDirectoryApp(credentials.DirectoryId, credentials.WebClient1.Id, 
-                credentials.WebClient1.Secret, credentials.WebClient1.AllowedScopes)
+                credentials.WebClient1.Secret, false, credentials.WebClient1.AllowedScopes)
 
         TestData.UserWithScopeAdeleV <- [[|credentials.AdeleV.Name; credentials.AdeleV.Password; ["Api1"; "Orleans"]|]]
         TestData.UserWithScopeAlexW <- [[|credentials.AlexW.Name; credentials.AlexW.Password; ["Api1"; "Orleans"]|]]

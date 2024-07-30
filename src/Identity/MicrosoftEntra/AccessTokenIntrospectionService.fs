@@ -12,7 +12,7 @@ type public AccessTokenIntrospectionService(azureActiveDirectoryApp: AzureActive
     let verify (jwtToken: string) (app: AzureActiveDirectoryApp) (discoveryDocument: DiscoveryDocument)
            (claimTypeResolver: IClaimTypeResolver) =
                let parameters = TokenValidationParameters()
-               parameters.ValidIssuer <- Configuration.issuerUrl app.DirectoryId
+               parameters.ValidIssuer <- Configuration.issuerUrl app.DirectoryId app.IsB2CTenant
                parameters.ValidAudience <- app.ClientId
                parameters.IssuerSigningKeys <- discoveryDocument.SigningKeys
                parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name

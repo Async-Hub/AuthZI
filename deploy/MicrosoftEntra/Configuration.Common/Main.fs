@@ -63,10 +63,3 @@ module Credentials =
         let AlexW =
             { Name = AlexWB2C1
               Password = GeneralPassword }
-
-module Directories =
-    open Authzi.MicrosoftEntra
-    open Credentials.AzureActiveDirectoryB2C1
-    
-    let azureActiveDirectoryAppB2C1 =
-        AzureActiveDirectoryApp(DirectoryId, WebClient1.Id, WebClient1.Secret, WebClient1.AllowedScopes)
