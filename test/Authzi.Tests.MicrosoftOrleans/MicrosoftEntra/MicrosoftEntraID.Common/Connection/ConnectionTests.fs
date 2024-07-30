@@ -1,6 +1,7 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
 
 open AccessTokenProvider
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System
 open Xunit
 open Xunit.Abstractions
@@ -8,14 +9,8 @@ open Xunit.Abstractions
 open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
 
 type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
-    static member Input with get() : obj[] list = 
-        [
-            [| AdeleV.Name; AdeleV.Password |]; 
-            [| AlexW.Name; AlexW.Password |]
-        ]
-    
     [<Theory>]
-    [<MemberData(nameof(AzureActiveDirectoryB2BTestsBase.Input))>] 
+    [<MemberData(nameof(TestData.Users), MemberType = typeof<TestData>)>] 
     member _.``The system can obtain Access Token from Azure AD B2B endpoint``
         (userName: string) (password: string) =
         async {
