@@ -8,4 +8,6 @@ open Xunit
 [<InlineData("Bob")>]
 let ``This is a simple xUnit.net test``
     (userName: string) =
-        Assert.Equal(userName, "Bob")
+        let actual = Environment.GetEnvironmentVariable("microsoftEntraIdCredentials")
+        //Assert.Equal(userName, "Bob")
+        Assert.Equal(userName, actual)
