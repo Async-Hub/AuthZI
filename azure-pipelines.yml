@@ -34,7 +34,7 @@ stages:
         inputs:
           command: test
           projects: |
-            dotnet test test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
+            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
             publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
@@ -47,8 +47,8 @@ stages:
       name: Azure Pipelines
     #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
     jobs:
-    - job: Build_Solution
-      displayName: Whole solution build process
+    - job: Prepairing_Required_Tools
+      displayName: Prepairing required tools
       steps:
       # Version with GitVersion
       - task: gitversion/setup@0
@@ -60,37 +60,26 @@ stages:
       # Print SemVer Number
       - script: echo $(GitVersion.SemVer)
         displayName: 'Print SemVer Number'
-
-    # # Deploy to the CI feed (https://pkgs.dev.azure.com/async-hub/AuthZI/_packaging/AuthZI/nuget/v3/index.json).
-    # - job: Deploy_Packages_CI_Feed
-    #   dependsOn: General_Build
-    #   variables:
-    #     - group: Default
-    #     - name: GitVersion.SemVer
-    #       value: $[ dependencies.General_Build.outputs['gitVersionNumber.GitVersionSemVer'] ]
-    #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    #   steps:
-    #   # ...
-    #   # NuGet pack AuthZI.Build.sln
-    #   - task: DotNetCoreCLI@2
-    #     displayName: 'NuGet pack AuthZI.Build.sln'
-    #     inputs:
-    #       command: pack
-    #       packagesToPack: AuthZI.Build.sln
-    #       includesymbols: true
-    #       includesource: true
-    #       versioningScheme: byEnvVar
-    #       versionEnvVar: GitVersion.SemVer
-    #       buildProperties: 'SourceLinkCreate=true'
-    #   # ...
-    #   # Push NuGet packs to Azure Artifacts feed
-    #   - task: NuGetCommand@2
-    #     displayName: 'NuGet push to Azure Artifacts'
-    #     inputs:
-    #       command: push
-    #       publishVstsFeed: 'AuthZI/AuthZI'
-    #       allowPackageConflicts: true
-    #     continueOnError: true
+      # NuGet pack AuthZI.Build.sln
+      - task: DotNetCoreCLI@2
+        displayName: 'NuGet pack AuthZI.Build.sln'
+        inputs:
+          command: pack
+          packagesToPack: AuthZI.Build.sln
+          includesymbols: true
+          includesource: true
+          versioningScheme: byEnvVar
+          versionEnvVar: GitVersion.SemVer
+          buildProperties: 'SourceLinkCreate=true'
+      # ...
+      # Push NuGet packs to Azure Artifacts feed
+      - task: NuGetCommand@2
+        displayName: 'NuGet push to Azure Artifacts'
+        inputs:
+          command: push
+          publishVstsFeed: 'AuthZI/AuthZI'
+          allowPackageConflicts: true
+        continueOnError: true
     #   # ...
     #   # Index source code and publish symbols to Azure Artifacts symbol server
     #   # https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops#set-up-the-publish-task
