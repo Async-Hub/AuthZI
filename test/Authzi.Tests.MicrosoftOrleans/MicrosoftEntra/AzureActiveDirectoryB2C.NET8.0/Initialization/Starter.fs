@@ -1,9 +1,11 @@
 ﻿namespace Initialization
 
+open Authzi.MicrosoftEntra
 open Authzi.Deploy.MicrosoftEntra.Configuration.Common
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
+open System
+open System.Text.Json
 open Xunit.Abstractions
 open Xunit.Sdk
 
@@ -13,12 +15,24 @@ open Xunit.Sdk
 type Starter(messageSink: IMessageSink) =
     inherit XunitTestFramework(messageSink)
     do 
-        // Initiate test envieronment with B2C1 data.
-        TestData.UserWithScopeAdeleV <- [[|AdeleV.Name; AdeleV.Password; ["Api1"; "Orleans"]|]]
-        TestData.UserWithScopeAlexW <- [[|AlexW.Name; AlexW.Password; ["Api1"; "Orleans"]|]]
-        TestData.Users <- [[| AdeleV.Name; AdeleV.Password |]]
-        TestData.AzureActiveDirectoryApp <- Directories.azureActiveDirectoryAppB2C1
-        TestData.Web1Client <- Credentials.AzureActiveDirectoryB2C1.WebClient1
+        // Read the configuration.
+        let mutable credentialsJson = Environment.GetEnvironmentVariable("microsoftAzureADB2CCredentials")
+
+        if String.IsNullOrWhiteSpace(credentialsJson) then
+            credentialsJson <- Literals.azureADB2C1Json
+
+        let credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(credentialsJson)
+
+        // Initialize the test data.
+        let azureActiveDirectoryAppB2C1 =
+            AzureActiveDirectoryApp(credentials.DirectoryId, credentials.WebClient1.Id, 
+                credentials.WebClient1.Secret, true, credentials.WebClient1.AllowedScopes)
+
+        TestData.UserWithScopeAdeleV <- [[|credentials.AdeleV.Name; credentials.AdeleV.Password; ["Api1"; "Orleans"]|]]
+        TestData.UserWithScopeAlexW <- [[|credentials.AlexW.Name; credentials.AlexW.Password; ["Api1"; "Orleans"]|]]
+        TestData.Users <- [[| credentials.AdeleV.Name; credentials.AdeleV.Password |]]
+        TestData.AzureActiveDirectoryApp <- azureActiveDirectoryAppB2C1
+        TestData.Web1Client <- credentials.WebClient1
 
         siloClientProvider.SiloClient <- SiloClient.getClusterClient()
 
