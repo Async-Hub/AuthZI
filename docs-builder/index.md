@@ -1,3 +1,7 @@
+---
+_layout: landing
+---
+
 # **Auth**ori**z**ation **I**nteroperability - AuthZI for Microsoft .NET
 
 ### Refer to [AuthZI](https://github.com/Async-Hub/AuthZI) for sources.

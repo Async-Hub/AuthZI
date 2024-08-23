@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# DocFX
+docs/**/*css.map
+docs/**/*js.map
