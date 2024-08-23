@@ -1,11 +1,3 @@
----
-layout: default
-title: Policy-based authorization
-nav_order: 5
-parent: Authorization
-permalink: docs/authorization/policy-based-authorization
----
-
 # Policy-based authorization
 
 An authorization policy consists of one or more requirements. It’s registered as part of **`ClientBuilder.ConfigureServices`** and **`SiloHostBuilder.ConfigureServices`**, in the **`AddOrleansClusteringAuthorization`** method:

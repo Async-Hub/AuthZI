@@ -1,4 +1,7 @@
-/* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
+/**
+ * Licensed to the .NET Foundation under one or more agreements.
+ * The .NET Foundation licenses this file to you under the MIT license.
+ */
 html,
 body {
   font-family: 'Segoe UI', Tahoma, Helvetica, sans-serif;
@@ -108,10 +111,6 @@ span.languagekeyword{
     font-weight: bold;
 }
 
-svg:hover path {
-    fill: #ffffff;
-}
-
 .hljs {
   display: inline;
   background-color: inherit;
@@ -134,21 +133,28 @@ table p {
 table a {
   display: inline-block;
 }
+
 /* Make hidden attribute compatible with old browser.*/
 [hidden] {
   display: none !important;
 }
-h1, .h1 {
-    margin-top: 15px;
-    margin-bottom: 30px;
-    font-weight: 400;
-}
-h2, .h2, h3, .h3 {
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
   margin-top: 15px;
   margin-bottom: 10px;
   font-weight: 400;
 }
-h4, .h4, h5, .h5, h6, .h6 {
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   margin-top: 10px;
   margin-bottom: 5px;
 }
@@ -174,7 +180,7 @@ h4, .h4, h5, .h5, h6, .h6 {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
   /* Standard syntax */
-  height: 0px;
+  height: 5px;
 }
 .divider {
   margin: 0 5px;
@@ -211,8 +217,7 @@ header .navbar {
 }
 
 article h1, article h2, article h3, article h4{
-  margin-top: 5px;
-  text-align:left;
+  margin-top: 25px;
 }
 
 article h4{
@@ -453,8 +458,9 @@ article section {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  border-left: 0px solid #e7e7e7;
-  border-right: 0px solid #e7e7e7;
+  background-color: #f1f1f1;
+  border-left: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
   z-index: 1;
 }
 
@@ -463,7 +469,7 @@ article section {
 }
 
 body .toc{
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   overflow-x: hidden;
 }
 
@@ -492,6 +498,10 @@ body .toc{
 .expand-stub {
   position: absolute;
   left: -10px;
+  font-weight: bold;
+}
+.expand-stub + a {
+  font-weight: bold;
 }
 .toc .nav > li > a.sidetoc-expand {
   position: absolute;
@@ -567,7 +577,7 @@ body .toc{
   position: fixed;
   top: 90px;
   width: 260px;
-  background-color: #fff;
+  background-color: #f1f1f1;
   padding: 15px;
   border-left: 1px solid #e7e7e7;
   border-right: 1px solid #e7e7e7;
@@ -604,8 +614,6 @@ body .toc{
 .article {
   margin-top: 120px;
   margin-bottom: 115px;
-  font-size: 18px;
-  text-align: justify
 }
 
 #_content>a{
@@ -756,8 +764,8 @@ footer {
   z-index: 1000;
 }
 .footer {
-  border-top: 0px solid #fff;
-  background-color: #fff;
+  border-top: 1px solid #e7e7e7;
+  background-color: #f8f8f8;
   padding: 15px 0;
 }
 @media (min-width: 768px) {
@@ -817,7 +825,7 @@ footer {
   .toc .level1 > li {
     display: block;
   }
-  
+
   .toc .level1 > li:after {
     display: none;
   }
@@ -1016,7 +1024,7 @@ div.embeddedvideo iframe {
 /* Color theme */
 
 /* These are not important, tune down **/
-.decalaration, .fieldValue, .parameters, .returns {
+.declaration, .fieldValue, .parameters, .returns {
   color: #a2a2a2;
 }
 
@@ -1024,4 +1032,10 @@ div.embeddedvideo iframe {
 #fields, #properties, #methods, #events {
     font-weight: bold;
     margin-top: 2em;
+}
+
+@media print {
+  @page {
+    margin: .4in;
+  }
 }

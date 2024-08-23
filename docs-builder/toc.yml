@@ -1,7 +1,3 @@
-#- name: Articles
-#  href: articles/
-#- name: Api Documentation
-#  href: api/
 - name: Documentation
   href: documents/
   homepage: documents/index.md

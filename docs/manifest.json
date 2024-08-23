@@ -1,54 +1,43 @@
 {
-  "homepages": [],
   "source_base_path": "C:/Repos/AuthZI/docs-builder",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
-      "type": "Conceptual",
-      "source_relative_path": "api/index.md",
+      "type": "Resource",
       "output": {
-        ".html": {
-          "relative_path": "api/index.html",
-          "hash": "hLDLW9aC51W3upcITQh6mUzBLUqDuMxFaqzqVUIbQIQ="
+        "resource": {
+          "relative_path": "index.json"
         }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "articles/intro.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/intro.html",
-          "hash": "ZiBKF8yMaBo2hWbY6AKt+w3qxpFCAZWiBGkV3Q6i0d4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "articles/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "articles/toc.html",
-          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
+      }
     },
     {
       "type": "Conceptual",
       "source_relative_path": "documents/index.md",
       "output": {
         ".html": {
-          "relative_path": "documents/index.html",
-          "hash": "4UJdgdS8Z7tHcxe53ljG7UmSOcPdjQKtuM/cFUsSLd4="
+          "relative_path": "documents/index.html"
         }
       },
-      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documents/microsoft-orleans/Index1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "documents/microsoft-orleans/Index1.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "documents/microsoft-orleans/Index2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "documents/microsoft-orleans/Index2.jpg"
+        }
+      },
       "version": ""
     },
     {
@@ -56,26 +45,19 @@
       "source_relative_path": "documents/microsoft-orleans/claims-based-authorization.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/claims-based-authorization.html",
-          "hash": "qiF3pbF2i+NY7nbadDrpZGvyqDV0S0vcTzOm/+jfiyY="
+          "relative_path": "documents/microsoft-orleans/claims-based-authorization.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "documents/microsoft-orleans/index.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/index.html",
-          "hash": "wxTWpyET2/GRFC0U4dHBVCD2xNOsuEw2dIITXo0PJOI="
+          "relative_path": "documents/microsoft-orleans/index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -83,11 +65,9 @@
       "source_relative_path": "documents/microsoft-orleans/policy-based-authorization.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/policy-based-authorization.html",
-          "hash": "QvbXC/ySEpOO47xF+amG1EOd88M8RL8gWD7dA58Fc34="
+          "relative_path": "documents/microsoft-orleans/policy-based-authorization.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -95,11 +75,9 @@
       "source_relative_path": "documents/microsoft-orleans/resource-based-authorization.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/resource-based-authorization.html",
-          "hash": "CshfPLJ/BkHHRP9lCjNqy/gwHn24H+vIHifMiq72bVU="
+          "relative_path": "documents/microsoft-orleans/resource-based-authorization.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -107,11 +85,9 @@
       "source_relative_path": "documents/microsoft-orleans/role-based-authorization.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/role-based-authorization.html",
-          "hash": "1mI1heTtMWDQZsIS2AomavQSRbxJV7UXY+qfbBQdLD8="
+          "relative_path": "documents/microsoft-orleans/role-based-authorization.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -119,11 +95,9 @@
       "source_relative_path": "documents/microsoft-orleans/simple-authorization.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/simple-authorization.html",
-          "hash": "VBKaaoRRUK+W5yId0YAtTrkUB7SN+3aLSQpKx7X4qEA="
+          "relative_path": "documents/microsoft-orleans/simple-authorization.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -131,11 +105,12 @@
       "source_relative_path": "documents/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "documents/toc.html",
-          "hash": "Vu+RnxekNJQRCOz2VmzuTVPWKWhGuVu9QSF6mcT6dtM="
+          "relative_path": "documents/toc.html"
+        },
+        ".json": {
+          "relative_path": "documents/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -143,11 +118,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "SSqm2pm8AE8lC7NQhOTj9X5nvZwCpkFzTZAzGe+tVvw="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -155,11 +128,9 @@
       "source_relative_path": "resources/introduction.md",
       "output": {
         ".html": {
-          "relative_path": "resources/introduction.html",
-          "hash": "5WidTktRHnc3XoiHozVkPWNjXNMq9upVCGhvl3yLSLg="
+          "relative_path": "resources/introduction.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -167,11 +138,9 @@
       "source_relative_path": "resources/microsoft-identity.md",
       "output": {
         ".html": {
-          "relative_path": "resources/microsoft-identity.html",
-          "hash": "zxVdWk8oOw5A9MmyltKLqXKiplwUBWnXdiZixJcdfaM="
+          "relative_path": "resources/microsoft-identity.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -179,11 +148,9 @@
       "source_relative_path": "resources/microsoft-identity/how-to-do.md",
       "output": {
         ".html": {
-          "relative_path": "resources/microsoft-identity/how-to-do.html",
-          "hash": "JWRCv5BmwOTIMNslxYRSl1bdwLliwts2nsNNsd5WREs="
+          "relative_path": "resources/microsoft-identity/how-to-do.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -191,11 +158,12 @@
       "source_relative_path": "resources/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "resources/toc.html",
-          "hash": "G9NvmZqLsOPCSCkD1rZbyNxe8YWwOpxcJq4azt1Gwmc="
+          "relative_path": "resources/toc.html"
+        },
+        ".json": {
+          "relative_path": "resources/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -203,52 +171,15 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "89txWoQZk665CHlJoulSJ7W7d4V+mczluu/6USG4v9U="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     }
   ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 13,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
-    }
-  ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
