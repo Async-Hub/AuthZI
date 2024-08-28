@@ -7,13 +7,16 @@
 
 	<ItemGroup>
 		<Content Include="appsettings.json" />
-		<Compile Include="B2B1.fs" />
+		<Compile Include="AccessToken.fs" />
+		<Compile Include="AzureActiveDirectoryB2CSetup.fs" />
+		<Compile Include="MicrosoftEntraExternalIDSetup.fs" />
+		<Compile Include="MicrosoftEntraIDSetup.fs" />
 		<Compile Include="Program.fs" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Graph" Version="4.6.0" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.63.0" />
+		<PackageReference Include="Microsoft.Graph" Version="5.56.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.64.0" />
 	</ItemGroup>
 
 	<ItemGroup>
