@@ -1,7 +1,6 @@
 ﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
 open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common
 open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
 open Microsoft.Graph
 open Microsoft.Graph.Models

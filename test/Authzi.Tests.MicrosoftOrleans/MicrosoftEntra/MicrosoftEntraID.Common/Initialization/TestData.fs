@@ -1,8 +1,8 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 open Authzi.MicrosoftEntra
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Deploy.MicrosoftEntra.Configuration
+open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2B1
 
 type public TestData() =
     static member val public UserWithScopeAdeleV : obj[] list = [] with get, set

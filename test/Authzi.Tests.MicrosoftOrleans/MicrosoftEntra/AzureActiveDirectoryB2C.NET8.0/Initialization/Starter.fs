@@ -1,7 +1,7 @@
 ﻿namespace Initialization
 
 open Authzi.MicrosoftEntra
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common
+open Authzi.Deploy.MicrosoftEntra.Configuration
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open System

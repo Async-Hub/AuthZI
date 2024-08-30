@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.Common
+﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
 
 type User = { Name: string; Password: string }
 type Client = { Id: string; Secret: string; AllowedScopes: string list }
