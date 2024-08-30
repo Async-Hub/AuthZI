@@ -2,7 +2,7 @@
 
 open Authzi.MicrosoftEntra
 open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.MicrosoftEntraID1
 
 type public TestData() =
     static member val public UserWithScopeAdeleV : obj[] list = [] with get, set
@@ -15,4 +15,4 @@ type public TestData() =
         AzureActiveDirectoryApp("", "", "", false, [""]) with get, set
     
     static member val public Web1Client : Client = 
-        Credentials.AzureActiveDirectoryB2B1.WebClient1 with get, set
+        Credentials.MicrosoftEntraID1.WebClient1 with get, set

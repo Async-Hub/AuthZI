@@ -72,6 +72,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Deploy.MicrosoftEntr
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Deploy.MicrosoftEntra.Configuration.App", "deploy\MicrosoftEntra\Configuration.App\Authzi.Deploy.MicrosoftEntra.Configuration.App.fsproj", "{5D81C272-EE1C-4FA6-A3FB-43677EF38DB2}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8.0", "test\Authzi.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraExternalID.NET8.0\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8.0.fsproj", "{195766D8-36C8-4229-BAB6-10E0FF297347}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +152,10 @@ Global
 		{5D81C272-EE1C-4FA6-A3FB-43677EF38DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D81C272-EE1C-4FA6-A3FB-43677EF38DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D81C272-EE1C-4FA6-A3FB-43677EF38DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195766D8-36C8-4229-BAB6-10E0FF297347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195766D8-36C8-4229-BAB6-10E0FF297347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195766D8-36C8-4229-BAB6-10E0FF297347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195766D8-36C8-4229-BAB6-10E0FF297347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +189,7 @@ Global
 		{2E3BAB60-0D4C-45D4-A906-9F0793BAF459} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{1010AAB8-9520-4CF4-82A7-32F65FE2B7F8} = {242FB64D-AB52-42BC-8D15-425EB57A8016}
 		{5D81C272-EE1C-4FA6-A3FB-43677EF38DB2} = {242FB64D-AB52-42BC-8D15-425EB57A8016}
+		{195766D8-36C8-4229-BAB6-10E0FF297347} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

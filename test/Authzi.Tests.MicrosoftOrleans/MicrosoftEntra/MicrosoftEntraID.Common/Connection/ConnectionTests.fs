@@ -6,7 +6,7 @@ open System
 open Xunit
 open Xunit.Abstractions
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.MicrosoftEntraID1
 
 type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
     [<Theory>]

@@ -9,6 +9,8 @@
 		<Compile Include="Initialization\TestData.fs" />
 		<Compile Include="Initialization\AccessTokenProvider.fs" />
 		<Compile Include="Initialization\RootConfiguration.fs" />
+		<Compile Include="Initialization\SiloHost.fs" />
+		<Compile Include="Initialization\SiloClient.fs" />
 		<Compile Include="Connection\ConnectionTests.fs" />
 		<Compile Include="Connection\DiscoveryDocumentProviderTests.fs" />
 		<Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
@@ -18,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
 		<PackageReference Include="xunit" Version="2.9.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
 		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
@@ -28,6 +31,7 @@
 		<ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration\Authzi.Deploy.MicrosoftEntra.Configuration.fsproj" />
 		<ProjectReference Include="..\..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
 		<ProjectReference Include="..\..\..\..\src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
+		<ProjectReference Include="..\..\..\..\src\MicrosoftOrleans\MicrosoftEntra\Authzi.MicrosoftOrleans.MicrosoftEntra.fsproj" />
 		<ProjectReference Include="..\..\Grains\Authzi.Tests.MicrosoftOrleans.Grains.csproj" />
 	</ItemGroup>
 

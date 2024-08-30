@@ -10,26 +10,18 @@ module Clients =
     let api1 = "Api1"
     let webClient1 = "WebClient1"
 
-module Users =
-    let b2bName = ""
+module Credentials =
+    let entraIDName = ""
+    let entraExternalIDName = ""
     let b2cName = ""
 
-    let AdeleVB2B1 = $"{adeleV.MailNickname}@{b2bName}.onmicrosoft.com"
-    let AlexWB2B1 = $"{alexW.MailNickname}@{b2bName}.onmicrosoft.com"
-
-    let AdeleVB2C1 = $"{adeleV.MailNickname}@{b2cName}.onmicrosoft.com"
-    let AlexWB2C1 = $"{alexW.MailNickname}@{b2cName}.onmicrosoft.com"
-
-module Credentials =
-    open Users
-
-    module AzureActiveDirectoryB2B1 =
+    module MicrosoftEntraID1 =
         let DirectoryId = ""
 
         let Api1 = ""
         // Scopes value format definition convention is different for B2B and B2C directories.
         //let Api1Scope1 = $"api://{Api1}/Api1"
-        let Api1Scope1 = $"https://api1.{b2bName}.onmicrosoft.com/Api1"
+        let Api1Scope1 = $"https://api1.{entraIDName}.onmicrosoft.com/Api1"
 
         let WebClient1 = 
             { Id = "" 
@@ -37,11 +29,30 @@ module Credentials =
               AllowedScopes = [Api1Scope1]}
 
         let AdeleV =
-            { Name = AdeleVB2B1
+            { Name = $"{adeleV.MailNickname}@{entraIDName}.onmicrosoft.com"
               Password = GeneralPassword }
 
         let AlexW =
-            { Name = AlexWB2B1
+            { Name = $"{alexW.MailNickname}@{entraIDName}.onmicrosoft.com"
+              Password = GeneralPassword }
+
+    module MicrosoftEntraExternalID1 =
+        let DirectoryId = ""
+
+        let Api1 = ""
+        let Api1Scope1 = $"api://{Api1}/Api1"
+
+        let WebClient1 = 
+            { Id = "" 
+              Secret = ""
+              AllowedScopes = [Api1Scope1]}
+
+        let AdeleV =
+            { Name = $"{adeleV.MailNickname}@{entraExternalIDName}.onmicrosoft.com"
+              Password = GeneralPassword }
+
+        let AlexW =
+            { Name = $"{alexW.MailNickname}@{entraExternalIDName}.onmicrosoft.com"
               Password = GeneralPassword }
 
     module AzureActiveDirectoryB2C1 =
@@ -57,9 +68,9 @@ module Credentials =
               AllowedScopes = [Api1Scope1]}
 
         let AdeleV =
-            { Name = AdeleVB2C1
+            { Name = $"{adeleV.MailNickname}@{b2cName}.onmicrosoft.com"
               Password = GeneralPassword }
 
         let AlexW =
-            { Name = AlexWB2C1
+            { Name = $"{alexW.MailNickname}@{b2cName}.onmicrosoft.com"
               Password = GeneralPassword }

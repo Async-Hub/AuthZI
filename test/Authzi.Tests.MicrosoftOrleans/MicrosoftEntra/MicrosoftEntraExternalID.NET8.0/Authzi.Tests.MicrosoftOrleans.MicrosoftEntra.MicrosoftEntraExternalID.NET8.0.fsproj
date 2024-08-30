@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8</RootNamespace>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Include="Initialization\Starter.fs" />
-		<Compile Include="All.fs" />
-	</ItemGroup>
+  <ItemGroup>
+    <Compile Include="Initialization\Starter.fs" />
+    <Compile Include="All.fs" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
@@ -27,16 +27,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Initialization\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\MicrosoftOrleans\MicrosoftEntra\Authzi.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+	  <ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration\Authzi.Deploy.MicrosoftEntra.Configuration.fsproj" />
 	  <ProjectReference Include="..\MicrosoftEntraID.Common\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.400" />
 	</ItemGroup>
 
 </Project>
