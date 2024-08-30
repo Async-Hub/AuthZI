@@ -1,6 +1,7 @@
-﻿open MicrosoftEntraExternalIDSetup
+﻿open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
 [<EntryPoint>]
 let main argv =
-    RunMicrosoftEntraExternalIDSetup |> Async.RunSynchronously
+    //TenantCreation.start |> Async.RunSynchronously
+    TenantConfiguration.start |> Async.RunSynchronously
     0

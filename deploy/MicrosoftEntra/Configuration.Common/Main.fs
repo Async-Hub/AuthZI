@@ -4,36 +4,36 @@ type User = { Name: string; Password: string }
 type Client = { Id: string; Secret: string; AllowedScopes: string list }
 type MicrosoftEntraCredentials = { DirectoryId: string; Api1: Client; WebClient1: Client; AdeleV: User;  AlexW: User }
 
+open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
+
 module Clients =
-    let api1 = "api1"
+    let api1 = "Api1"
     let webClient1 = "WebClient1"
 
 module Users =
-    let b2bName = "name1"
-    let b2cName = "name2"
+    let b2bName = ""
+    let b2cName = ""
 
-    [<Literal>]
-    let GeneralPassword = "Passw@rd+1"
+    let AdeleVB2B1 = $"{adeleV.MailNickname}@{b2bName}.onmicrosoft.com"
+    let AlexWB2B1 = $"{alexW.MailNickname}@{b2bName}.onmicrosoft.com"
 
-    let AdeleVB2B1 = $"AdeleV@{b2bName}.onmicrosoft.com"
-    let AlexWB2B1 = $"AlexW@{b2bName}.onmicrosoft.com"
-
-    let AdeleVB2C1 = $"AdeleV@{b2cName}.onmicrosoft.com"
-    let AlexWB2C1 = $"AlexW@{b2cName}.onmicrosoft.com"
+    let AdeleVB2C1 = $"{adeleV.MailNickname}@{b2cName}.onmicrosoft.com"
+    let AlexWB2C1 = $"{alexW.MailNickname}@{b2cName}.onmicrosoft.com"
 
 module Credentials =
     open Users
 
     module AzureActiveDirectoryB2B1 =
-        let DirectoryId = "1c59e6e7-xxx"
+        let DirectoryId = ""
 
-        let Api1 = "20ac1601-xxx"
+        let Api1 = ""
         // Scopes value format definition convention is different for B2B and B2C directories.
+        //let Api1Scope1 = $"api://{Api1}/Api1"
         let Api1Scope1 = $"https://api1.{b2bName}.onmicrosoft.com/Api1"
 
         let WebClient1 = 
-            { Id = "e64ef6f7-xxx" 
-              Secret = "xxx"
+            { Id = "" 
+              Secret = ""
               AllowedScopes = [Api1Scope1]}
 
         let AdeleV =
@@ -45,15 +45,15 @@ module Credentials =
               Password = GeneralPassword }
 
     module AzureActiveDirectoryB2C1 =
-        let DirectoryId = "d1f859c5-xxx"
+        let DirectoryId = ""
         let DomainName = $"{b2cName}.onmicrosoft.com"
-        let Api1 = "5e7f5ff5-xxx"
+        let Api1 = ""
         // Scopes value format definition convention is different for B2B and B2C directories.
         let Api1Scope1 = $"https://{DomainName}/{Api1}/Api1"
 
         let WebClient1 = 
-            { Id = "2e2096eb-xxx" 
-              Secret = "xxx"
+            { Id = "" 
+              Secret = ""
               AllowedScopes = [Api1Scope1]}
 
         let AdeleV =

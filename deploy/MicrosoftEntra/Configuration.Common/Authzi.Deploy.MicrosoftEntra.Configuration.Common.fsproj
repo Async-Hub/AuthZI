@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="MicrosoftEntraUsers.fs" />
     <Compile Include="Main.fs" />
     <Compile Include="Connections.fs" />
   </ItemGroup>

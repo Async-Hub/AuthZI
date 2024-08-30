@@ -27,12 +27,6 @@ let result = app.AcquireTokenByUsernamePassword(microsoftGraphsScopes,
 
 printfn "%s" result.AccessToken
 
-//// Choose a Microsoft Graph authentication provider based on scenario
-//// https://docs.microsoft.com/en-us/graph/sdks/choose-authentication-providers?tabs=CS
-//let authProvider = new DelegateAuthenticationProvider(fun request -> 
-//    request.Headers.Authorization <- new AuthenticationHeaderValue("Bearer", result.AccessToken)
-//    Task.CompletedTask);
-
-//let graphClient = new GraphServiceClient(authProvider)
+let graphClient = MicrosoftGraph.getGraphServiceClient result.AccessToken
 
 //B2B1.configure(graphClient)
