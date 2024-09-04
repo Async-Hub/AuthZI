@@ -4,12 +4,13 @@ open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
 open System.Runtime.CompilerServices
+open Authzi.Identity.MicrosoftEntra
 
 [<Extension>]
 type ServiceCollectionExtensions = 
     [<Extension>]
     static member AddAzureActiveDirectoryAuthorization(services: IServiceCollection,
-        azureActiveDirectoryApp: AzureActiveDirectoryApp) =
+        azureActiveDirectoryApp: MicrosoftEntraApp) =
             // Check parameters that might come from C#
             if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
             

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="AzureActiveDirectoryApp.fs" />
+    <Compile Include="MicrosoftEntraApp.fs" />
     <Compile Include="OpenIdConfiguration.fs" />
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />

@@ -24,17 +24,17 @@ type Starter(messageSink: IMessageSink) =
         let credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(credentialsJson)
 
         // Initialize the test data.
-        let azureActiveDirectoryAppB2C1 =
-            AzureActiveDirectoryApp(credentials.DirectoryId, credentials.WebClient1.Id, 
-                credentials.WebClient1.Secret, true, credentials.WebClient1.AllowedScopes)
+        //let azureActiveDirectoryAppB2C1 =
+        //    AzureActiveDirectoryApp(credentials.DirectoryId, credentials.WebClient1.Id, 
+        //        credentials.WebClient1.Secret, true, credentials.WebClient1.AllowedScopes)
 
         TestData.UserWithScopeAdeleV <- [[|credentials.AdeleV.Name; credentials.AdeleV.Password; ["Api1"; "Orleans"]|]]
         TestData.UserWithScopeAlexW <- [[|credentials.AlexW.Name; credentials.AlexW.Password; ["Api1"; "Orleans"]|]]
         TestData.Users <- [[| credentials.AdeleV.Name; credentials.AdeleV.Password |]]
-        TestData.AzureActiveDirectoryApp <- azureActiveDirectoryAppB2C1
+        //TestData.AzureActiveDirectoryApp <- azureActiveDirectoryAppB2C1
         TestData.Web1Client <- credentials.WebClient1
 
-        siloClientProvider.SiloClient <- SiloClient.getClusterClient()
+        //TestData.SiloClient <- SiloClient.getClusterClient()
 
 module CurrentAssembly =
     [<Literal>]

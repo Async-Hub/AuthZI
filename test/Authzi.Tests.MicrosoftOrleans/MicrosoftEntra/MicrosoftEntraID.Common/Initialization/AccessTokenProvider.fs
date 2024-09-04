@@ -4,12 +4,10 @@ open Authzi.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System.Threading.Tasks
 
-let getAccessTokenForUserAsync directoryId clientId scopes userName password =
-    let accessToken = AccessTokenRetriever.getTokenByUserNameAndPassword directoryId 
-                        clientId scopes userName password
+let getAccessTokenForUserAsync entraIDApp userName password =
+    let accessToken = TestData.GetAccessTokenForUserOnWebClient1Async entraIDApp
     
-    Task.FromResult(accessToken)
+    Task.FromResult(accessToken userName password)
 
 let getAccessTokenForUserOnWebClient1Async : string -> string-> Task<string> = 
-        getAccessTokenForUserAsync TestData.AzureActiveDirectoryApp.DirectoryId 
-            TestData.Web1Client.Id TestData.Web1Client.AllowedScopes
+        getAccessTokenForUserAsync TestData.AzureActiveDirectoryApp

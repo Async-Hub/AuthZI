@@ -6,11 +6,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="Initialization\SiloHostBuilder.fs" />
+		<Compile Include="Initialization\SiloClientBuilder.fs" />
 		<Compile Include="Initialization\TestData.fs" />
 		<Compile Include="Initialization\AccessTokenProvider.fs" />
 		<Compile Include="Initialization\RootConfiguration.fs" />
-		<Compile Include="Initialization\SiloHost.fs" />
-		<Compile Include="Initialization\SiloClient.fs" />
 		<Compile Include="Connection\ConnectionTests.fs" />
 		<Compile Include="Connection\DiscoveryDocumentProviderTests.fs" />
 		<Compile Include="AccessToken\AccessTokenVerificationTests.fs" />

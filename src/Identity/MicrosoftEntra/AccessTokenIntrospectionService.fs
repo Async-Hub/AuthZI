@@ -1,18 +1,19 @@
-namespace Authzi.MicrosoftEntra
+namespace Authzi.Identity.MicrosoftEntra
 
+open Authzi.MicrosoftEntra
 open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.IdentityModel.Tokens
 open System.IdentityModel.Tokens.Jwt
 open System.Text
 
-type public AccessTokenIntrospectionService(azureActiveDirectoryApp: AzureActiveDirectoryApp,
+type public AccessTokenIntrospectionService(azureActiveDirectoryApp: MicrosoftEntraApp,
     discoveryDocumentProvider: DiscoveryDocumentProvider, claimTypeResolver : IClaimTypeResolver) =
     
-    let verify (jwtToken: string) (app: AzureActiveDirectoryApp) (discoveryDocument: DiscoveryDocument)
+    let verify (jwtToken: string) (app: MicrosoftEntraApp) (discoveryDocument: DiscoveryDocument)
            (claimTypeResolver: IClaimTypeResolver) =
                let parameters = TokenValidationParameters()
-               parameters.ValidIssuer <- Configuration.issuerUrl app.DirectoryId app.IsB2CTenant
+               parameters.ValidIssuer <- app.IssuerUrl
                parameters.ValidAudience <- app.ClientId
                parameters.IssuerSigningKeys <- discoveryDocument.SigningKeys
                parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name
