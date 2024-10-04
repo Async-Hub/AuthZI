@@ -2,9 +2,11 @@
 
 open AccessTokenProvider
 open Authzi.MicrosoftEntra
+open Authzi.Identity.MicrosoftEntra
 open Authzi.Security.AccessToken
 open Xunit
 open Xunit.Abstractions
+
 
 type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 

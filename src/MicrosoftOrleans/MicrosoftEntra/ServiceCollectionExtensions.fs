@@ -7,12 +7,13 @@ open Microsoft.Extensions.DependencyInjection
 open System
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
+open Authzi.Identity.MicrosoftEntra
 
 [<Extension>]
 type ServiceCollectionExtensions = 
     [<Extension>]
     static member inline AddOrleansAuthorization(services: IServiceCollection, 
-        azureActiveDirectoryApp: AzureActiveDirectoryApp,
+        azureActiveDirectoryApp: MicrosoftEntraApp,
         configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
         
         // Check parameters that might come from C#
@@ -26,7 +27,7 @@ type ServiceCollectionExtensions =
     // For the production usage.
     [<Extension>]
     static member inline AddOrleansClientAuthorization(services: IServiceCollection,
-        azureActiveDirectoryApp: AzureActiveDirectoryApp,
+        azureActiveDirectoryApp: MicrosoftEntraApp,
         configure: Action<Configuration>) =
 
         // Check parameters that might come from C#

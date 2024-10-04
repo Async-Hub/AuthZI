@@ -6,7 +6,7 @@ open System
 open Xunit
 open Xunit.Abstractions
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2B1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.MicrosoftEntraID1
 
 type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
     [<Theory>]
@@ -22,7 +22,7 @@ type AzureActiveDirectoryB2BTestsBase(output: ITestOutputHelper) =
             Assert.False(String.IsNullOrWhiteSpace(accessToken))
     }
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.Common.Credentials.AzureActiveDirectoryB2C1
+open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2C1
 
 type AzureActiveDirectoryB2CTestsBase(output: ITestOutputHelper) =
     static member Input with get() : obj[] list = [[| AdeleV.Name; AdeleV.Password |]]

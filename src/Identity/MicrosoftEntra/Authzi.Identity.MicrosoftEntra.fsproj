@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="AzureActiveDirectoryApp.fs" />
+    <Compile Include="MicrosoftEntraApp.fs" />
     <Compile Include="OpenIdConfiguration.fs" />
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />
@@ -27,8 +27,8 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="FSharp.Data" Version="6.4.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.*,9.0)" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.63.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.65.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
