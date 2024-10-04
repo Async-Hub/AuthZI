@@ -1,6 +1,5 @@
-namespace Authzi.IdentityServer4
+namespace Authzi.Identity.DuendeSoftware.IdentityServer
 
-open Authzi.IdentityServer4.AccessToken
 open Authzi.Security.AccessToken
 open IdentityModel.Client
 open Microsoft.Extensions.Logging
@@ -45,7 +44,7 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
               let! discoveryResponse = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
               
               if accessTokenType = AccessTokenType.Jwt && allowOfflineValidation then
-                  let claims = Authzi.IdentityServer4.AccessToken.JwtSecurityTokenVerifier.Verify accessToken
+                  let claims = JwtSecurityTokenVerifier.Verify accessToken
                                    identityServer4Info.AllowedScope discoveryResponse
                   return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
               else

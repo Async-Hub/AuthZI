@@ -3,24 +3,19 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<WarnOn>3390;$(WarnOn)</WarnOn>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="ServiceCollectionExtensions.fs" />
+	  <Compile Include="ServiceCollectionExtensions.fs" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
-		<ProjectReference Include="..\..\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj" />
+		<ProjectReference Include="..\..\Identity\DuendeSoftware.IdentityServer\Authzi.Identity.DuendeSoftware.IdentityServer.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.400" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Authzi.IdentityServer4
+﻿namespace Authzi.Identity.DuendeSoftware.IdentityServer
 
 open Authzi.Security
 open IdentityModel

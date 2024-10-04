@@ -1,6 +1,5 @@
-﻿namespace Authzi.IdentityServer4
+﻿namespace Authzi.Identity.DuendeSoftware.IdentityServer
 
-open Authzi.IdentityServer4
 open Authzi.Security
 open Authzi.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection

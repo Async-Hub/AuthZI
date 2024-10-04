@@ -1,4 +1,4 @@
-﻿namespace Authzi.IdentityServer4
+﻿namespace Authzi.Identity.DuendeSoftware.IdentityServer
 
 open System.Runtime.CompilerServices
 

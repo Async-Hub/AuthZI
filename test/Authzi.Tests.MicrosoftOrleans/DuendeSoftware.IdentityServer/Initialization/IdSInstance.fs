@@ -3,7 +3,7 @@ module IdSInstance
 open IdentityModel.Client
 open System
 open System.Net.Http
-open Authzi.IdentityServer4.AccessToken
+open Authzi.Identity.DuendeSoftware.IdentityServer
 
 let private getDiscoveryDocumentAsync (client: HttpClient) =
     async {

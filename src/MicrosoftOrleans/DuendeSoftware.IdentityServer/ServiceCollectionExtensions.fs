@@ -1,6 +1,6 @@
-﻿namespace Authzi.MicrosoftOrleans.IdentityServer4
+﻿namespace Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer
 
-open Authzi.IdentityServer4
+open Authzi.Identity.DuendeSoftware.IdentityServer
 open Authzi.MicrosoftOrleans
 open Authzi.Security
 open Microsoft.Extensions.DependencyInjection
@@ -36,7 +36,3 @@ type ServiceCollectionExtensions =
 
         services.AddClientAuthorization(configure)
         services.AddIdentityServer4Authorization(identityServer4Info) |> ignore
-
-
-                
-

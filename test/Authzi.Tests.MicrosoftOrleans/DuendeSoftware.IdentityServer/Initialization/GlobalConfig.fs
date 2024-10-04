@@ -1,6 +1,6 @@
 module GlobalConfig
 
-open Authzi.IdentityServer4
+open Authzi.Identity.DuendeSoftware.IdentityServer
 
 let identityServer4Url = "http://localhost:5005"
 let identityServer4Info = IdentityServer4Info(identityServer4Url,

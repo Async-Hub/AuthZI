@@ -3,7 +3,7 @@
 open Xunit
 open Microsoft.IdentityModel.Tokens
 open FluentAssertions;
-open Authzi.IdentityServer4.AccessToken
+open Authzi.Identity.DuendeSoftware.IdentityServer
 
 [<Theory>]
 [<InlineData(GlobalConfig.WebClient1, "Secret1", "Api1")>]

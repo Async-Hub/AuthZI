@@ -1,10 +1,9 @@
-namespace Authzi.IdentityServer4.AccessToken
+namespace Authzi.Identity.DuendeSoftware.IdentityServer
 
 open IdentityModel
 open Microsoft.IdentityModel.Tokens
 open System.IdentityModel.Tokens.Jwt
 open System.Security.Cryptography
-open Authzi.IdentityServer4.AccessToken
 
 module JwtSecurityTokenVerifier =
     let Verify (jwt:string) (audience:string) (discoveryDocument: DiscoveryDocument) =
