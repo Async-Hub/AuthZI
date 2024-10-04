@@ -21,8 +21,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
-		<PackageReference Include="xunit" Version="2.9.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
 		<PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.0" />
 	</ItemGroup>

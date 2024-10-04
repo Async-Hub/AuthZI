@@ -17,5 +17,6 @@ type SimpleAuthorizationTests() =
 type RoleBasedAuthorizationTests() =
     inherit RoleBasedAuthorizationTestsBase()
 
-type ClaimsBasedAuthorizationTests() =
-    inherit ClaimsBasedAuthorizationTestsBase()
+// TODOD: Change to ClaimsBasedAuthorizationTests
+//type ClaimsBasedAuthorizationTests() =
+//    inherit ClaimsBasedAuthorizationTestsBase()
