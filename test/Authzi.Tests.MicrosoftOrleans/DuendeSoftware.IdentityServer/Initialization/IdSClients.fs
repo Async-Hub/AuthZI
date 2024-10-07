@@ -1,6 +1,6 @@
 module IdSClients
 
-open IdentityServer4.Models
+open Duende.IdentityServer.Models
 
 let getClients() =
     let webClient1 = Client()

@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using Authzi.Security.Authorization;
 using Orleans;
+using System.Threading.Tasks;
 
 namespace Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization;
 

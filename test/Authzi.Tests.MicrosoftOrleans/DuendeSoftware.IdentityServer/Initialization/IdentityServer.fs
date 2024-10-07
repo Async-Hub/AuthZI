@@ -1,7 +1,7 @@
 ﻿module IdentityServer
 
 open Authzi.MicrosoftOrleans.IdentityServer4.Tests
-open IdentityServer4.Services
+open Duende.IdentityServer.Services
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection

@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Authzi.MicrosoftOrleans;
 using Authzi.Security.Authorization;
 using Orleans.Runtime;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {

@@ -1,8 +1,8 @@
 namespace Authzi.MicrosoftOrleans.IdentityServer4.Tests
 
 open IdentityModel
-open IdentityServer4.Models
-open IdentityServer4.Services
+open Duende.IdentityServer.Models
+open Duende.IdentityServer.Services
 open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Threading.Tasks
@@ -28,11 +28,11 @@ type ProfileService() =
                 | null -> ()
                 | value -> context.IssuedClaims.AddRange value
                 
-                // Include CityClaim claims
-                let cityClaims =
-                    context.Subject.Claims.Where(fun c -> c.Type = CityClaim.Name)
+                // Include Country claims
+                let countryClaims =
+                    context.Subject.Claims.Where(fun c -> c.Type = "Country")
                     
-                match cityClaims with
+                match countryClaims with
                 | null -> ()
                 | value -> context.IssuedClaims.AddRange value
             }

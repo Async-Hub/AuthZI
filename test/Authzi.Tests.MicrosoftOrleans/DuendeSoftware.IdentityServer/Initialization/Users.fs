@@ -1,7 +1,7 @@
 ﻿module Users
 
 open IdentityModel
-open IdentityServer4.Test
+open Duende.IdentityServer.Test
 open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Security.Claims
@@ -21,7 +21,7 @@ let private aliceClaims =
        Claim(JwtClaimTypes.Role, "Admin")
        Claim(JwtClaimTypes.Role, "Manager")
        Claim(DocRegistryAccessClaim.Name, DocRegistryAccessClaim.Value)
-       Claim(CityClaim.Name, "New York") |]
+       Claim("Country", "AM") |]
 let private alice = TestUser(SubjectId = aliceId, Username = "alice",
                      Password = "Pass123$", Claims = aliceClaims)
 // Bob user definition
@@ -46,7 +46,7 @@ let private carolClaims =
        Claim(JwtClaimTypes.WebSite, "http://carol.com")
        Claim(JwtClaimTypes.Role, "Developer")
        Claim(JwtClaimTypes.Role, "Manager")
-       Claim(CityClaim.Name, "Boston") |]
+       Claim("Country", "US") |]
 let private carol = TestUser(SubjectId = carolId, Username = "carol",
                      Password = "Pass123$", Claims = carolClaims)
 
