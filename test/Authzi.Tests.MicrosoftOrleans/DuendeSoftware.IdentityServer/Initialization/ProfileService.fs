@@ -1,12 +1,12 @@
-namespace Authzi.MicrosoftOrleans.IdentityServer4.Tests
+namespace Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
 
-open IdentityModel
-open Duende.IdentityServer.Models
-open Duende.IdentityServer.Services
 open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
-open System.Threading.Tasks
+open Duende.IdentityServer.Models
+open Duende.IdentityServer.Services
+open IdentityModel
 open System.Linq
+open System.Threading.Tasks
 
 type ProfileService() =
     interface IProfileService with

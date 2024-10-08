@@ -1,10 +1,11 @@
-module IdSClients
+module IdentityServerClients
 
+open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
 open Duende.IdentityServer.Models
 
 let getClients() =
     let webClient1 = Client()
-    webClient1.ClientId <- GlobalConfig.WebClient1
+    webClient1.ClientId <- WebClient1
     webClient1.AccessTokenType <- AccessTokenType.Jwt
     webClient1.AllowedGrantTypes <- GrantTypes.ResourceOwnerPasswordAndClientCredentials
     webClient1.AllowOfflineAccess <- true
@@ -12,7 +13,7 @@ let getClients() =
     webClient1.AllowedScopes.Add(IdentityServer4Resources.orleansValue)
     
     let webClient2 = Client()
-    webClient2.ClientId <- GlobalConfig.WebClient2
+    webClient2.ClientId <- WebClient2
     webClient2.AccessTokenType <- AccessTokenType.Jwt
     webClient2.AllowedGrantTypes <- GrantTypes.ResourceOwnerPasswordAndClientCredentials
     webClient2.AllowOfflineAccess <- true

@@ -27,4 +27,3 @@ module JwtSecurityTokenVerifier =
         let mutable validatedToken : SecurityToken = null
         let claimsPrincipal = handler.ValidateToken(jwt, parameters, &validatedToken)
         claimsPrincipal.Claims
-

@@ -25,5 +25,6 @@ jobs:
       - name: Run Tests
         run: |
           dotnet test test/Authzi.Security.IntegrationTests
+          dotnet test test/Authzi.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
           dotnet test test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           dotnet test test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0

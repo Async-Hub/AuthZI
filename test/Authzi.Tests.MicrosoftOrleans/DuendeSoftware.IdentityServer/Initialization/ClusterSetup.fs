@@ -2,11 +2,12 @@ module ClusterSetup
 
 open Orleans
 open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open System.Threading.Tasks
 
 let initDocumentsRegistry (getClusterClient: string -> IClusterClient) =
     let getToken =
         async {
-            let! accessTokenResponse = IdSTokenFactory.getAccessTokenForUserOnWebClient1Async "Alice" "Pass123$"
+            let! accessTokenResponse = AccessTokenFactory.getAccessTokenForUserOnWebClient1Async "Alice" "Pass123$"
                                            "Api1 Orleans" |> Async.AwaitTask
             return accessTokenResponse.AccessToken }
 
@@ -23,5 +24,6 @@ let initDocumentsRegistry (getClusterClient: string -> IClusterClient) =
     document2.Content <- "Some content 2."
     document2.Name <- "Document2"
     
-    client.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default).Add document1 |> ignore
-    client.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default).Add document2 |> ignore
+    let grain = client.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default)
+    grain.Add(document1).Wait()
+    grain.Add(document2).Wait()

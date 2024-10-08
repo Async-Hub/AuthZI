@@ -5,9 +5,9 @@ open Authzi.Security.AccessToken
 open Authzi.Security.Authorization
 open Authzi.Security;
 open Microsoft.Extensions.Logging
+open Newtonsoft.Json
 open Orleans
 open Orleans.Runtime
-open System.Security.Claims
 open System.Threading.Tasks
 
 type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerifier,
@@ -21,14 +21,11 @@ type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerif
         member _.Invoke(context: IIncomingGrainCallContext) =
             task {
                 if AuthorizationAdmission.IsRequired context then
-                    let! claims = this.AuthorizeAsync(context)
                     let grainType = context.Grain.GetType()
                     if grainType.BaseType = typeof<GrainWithClaimsPrincipal> then
-                        let claimsIdentity = ClaimsIdentity(claims, System.String.Empty, 
-                                                claimTypeResolver.Resolve ClaimType.Subject, 
-                                                claimTypeResolver.Resolve ClaimType.Role)
-                        let claimsPrincipal = ClaimsPrincipal(claimsIdentity)
-                        RequestContext.Set(ConfigurationKeys.ClaimsPrincipalKey, claimsPrincipal)
+                        let! claims = this.AuthorizeAsync(context)
+                        let serializedClaims = JsonConvert.SerializeObject(claims)
+                        RequestContext.Set(ConfigurationKeys.ClaimsPrincipalKey, serializedClaims)
                     
                     this.Log(LoggingEvents.IncomingGrainCallAuthorizationPassed,
                         grainType.Name, context.InterfaceMethod.Name)

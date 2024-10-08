@@ -1,4 +1,5 @@
 using Authzi.MicrosoftOrleans;
+using Authzi.Security;
 using Authzi.Security.Authorization;
 using Orleans.Runtime;
 using System.Collections.Generic;
@@ -8,38 +9,32 @@ using System.Threading.Tasks;
 namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public class DocumentsRegistryGrain : GrainWithClaimsPrincipal, IDocumentsRegistryGrain
+    public class DocumentsRegistryGrain(
+        [PersistentState("state", "MemoryGrainStorage")]
+        IPersistentState<List<Document>> state,
+        IAuthorizationService authorizationService,
+        IClaimTypeResolver claimTypeResolver)
+        : GrainWithClaimsPrincipal(claimTypeResolver), IDocumentsRegistryGrain
     {
-        private readonly IPersistentState<List<Document>> _state;
-        private readonly IAuthorizationService _authorizationService;
-
-        public DocumentsRegistryGrain([PersistentState("state", 
-            "MemoryGrainStorage")]IPersistentState<List<Document>> state,
-            IAuthorizationService authorizationService)
-        {
-            _state = state;
-            _authorizationService = authorizationService;
-        }
-        
         public async Task Add(Document doc)
         {
-            _state.State.Add(doc);
+            state.State.Add(doc);
 
-            await _state.WriteStateAsync();
+            await state.WriteStateAsync();
         }
 
         public async Task<string> Modify(string docName, string newContent)
         {
-            var document = _state.State.Single(doc => doc.Name == docName);
-            
-            var authorizationResult = await _authorizationService
+            var document = state.State.Single(doc => doc.Name == docName);
+
+            var authorizationResult = await authorizationService
                 .AuthorizeAsync(User, document, AuthorizationConfig.DocumentModifyAccessPolicy);
 
             // ReSharper disable once InvertIf
             if (authorizationResult.Succeeded)
             {
                 document.Content = newContent;
-                await _state.WriteStateAsync();
+                await state.WriteStateAsync();
                 return document.Content;
             }
 
@@ -48,7 +43,7 @@ namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 
         public Task<Document> Take(string docName)
         {
-            var document = _state.State.Single(doc => doc.Name == docName);
+            var document = state.State.Single(doc => doc.Name == docName);
 
             return Task.FromResult(document);
         }

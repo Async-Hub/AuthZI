@@ -11,13 +11,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="8.2.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="IdentityModel" Version="6.2.0" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <!--<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />-->
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
 	<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
-    <PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="8.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -28,15 +28,14 @@
     <Compile Include="Assembly.fs" />
     <Compile Include="Initialization\GlobalConfig.fs" />
     <Compile Include="Initialization\Users.fs" />
-    <Compile Include="Initialization\IdentityServer4Resources.fs" />
-    <Compile Include="Initialization\IdSClients.fs" />
+    <Compile Include="Initialization\IdentityServerResources.fs" />
+    <Compile Include="Initialization\IdentityServerClients.fs" />
     <Compile Include="Initialization\ProfileService.fs" />
-    <Compile Include="Initialization\IdentityServer.fs" />
-    <Compile Include="Initialization\IdSInstance.fs" />
-    <Compile Include="Initialization\IdSTokenFactory.fs" />
+    <Compile Include="Initialization\IdentityServerBuilder.fs" />
+    <Compile Include="Initialization\AccessTokenFactory.fs" />
     <Compile Include="Initialization\SiloHostBuilder.fs" />
+    <Compile Include="Initialization\SiloClientBuilder.fs" />
     <Compile Include="Initialization\ClusterSetup.fs" />
-    <Compile Include="Initialization\SiloClient.fs" />
     <Compile Include="Initialization\Starter.fs" />
     <Compile Include="AccessTokenTests\AccessTokenVerificationTests.fs" />
     <Compile Include="AuthorizationTests\SimpleAuthorizationTests.fs" />

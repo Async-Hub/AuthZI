@@ -4,7 +4,8 @@ open Authzi.Tests.MicrosoftOrleans.Grains
 open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer
 open Authzi.Security.Authorization
-open Microsoft.Extensions.Hosting               
+open Microsoft.Extensions.Hosting   
+open Microsoft.Extensions.Logging
 open Orleans.Configuration;
 open Orleans.Hosting;
 open Orleans;
@@ -18,15 +19,13 @@ module SiloHostBuilder =
                     .UseEnvironment(Environments.Development)
                     .UseOrleans(fun context siloBuilder ->          
                        siloBuilder         
-                           .UseLocalhostClustering()         
+                           .UseLocalhostClustering()
+                           .AddMemoryGrainStorage("MemoryGrainStorage")
                            .Configure<ClusterOptions>(fun (options:ClusterOptions) ->         
                                options.ClusterId <- "Orleans.Security.Test"         
                                options.ServiceId <- "ServiceId"         
-                               ignore())         
-                           .Configure<EndpointOptions>(fun (options:EndpointOptions) ->          
-                               options.AdvertisedIPAddress <- IPAddress.Loopback         
                                ignore())
-                           .AddMemoryGrainStorage("MemoryGrainStorage")
+                           .ConfigureLogging(fun logging -> logging.AddDebug() |> ignore)
                            .ConfigureServices(fun services ->
                                // Add IdentityServer4 authorization.
                                services.AddOrleansAuthorization(GlobalConfig.identityServer4InfoCluster,      
@@ -39,9 +38,3 @@ module SiloHostBuilder =
                                ignore()) |> ignore         
                        )
         builder.Build()
-
-
-
-
-    
-    

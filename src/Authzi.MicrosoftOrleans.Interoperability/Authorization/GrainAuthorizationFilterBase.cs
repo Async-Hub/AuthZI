@@ -12,21 +12,12 @@ using System.Threading.Tasks;
 
 namespace Authzi.MicrosoftOrleans.Authorization
 {
-    public abstract class GrainAuthorizationFilterBase
+    public abstract class GrainAuthorizationFilterBase(
+        IAccessTokenVerifier accessTokenVerifier,
+        IAuthorizationExecutor authorizeHandler,
+        ILogger logger)
     {
-        private readonly IAuthorizationExecutor _authorizeHandler;
-
-        private readonly IAccessTokenVerifier _accessTokenVerifier;
-
-        protected readonly ILogger Logger;
-
-        protected GrainAuthorizationFilterBase(IAccessTokenVerifier accessTokenVerifier, 
-            IAuthorizationExecutor authorizeHandler, ILogger logger)
-        {
-            _authorizeHandler = authorizeHandler;
-            _accessTokenVerifier = accessTokenVerifier;
-            Logger = logger;
-        }
+        protected readonly ILogger Logger = logger;
 
         protected async Task<IEnumerable<Claim>> AuthorizeAsync(IGrainCallContext grainCallContext)
         {
@@ -37,13 +28,14 @@ namespace Authzi.MicrosoftOrleans.Authorization
                 throw new InvalidOperationException("AccessToken can not be null or empty.");
             }
 
-            var accessTokenVerificationResult = await _accessTokenVerifier.Verify(accessToken);
+            var accessTokenVerificationResult = await accessTokenVerifier.Verify(accessToken);
 
             // ReSharper disable once InvertIf
             if (accessTokenVerificationResult.IsVerified)
             {
                 IEnumerable<IAuthorizeData> grainAuthorizeData = null;
-                var grainMethodAuthorizeData = grainCallContext.InterfaceMethod.GetCustomAttributes<AuthorizeAttribute>();
+                var grainMethodAuthorizeData = 
+                    grainCallContext.InterfaceMethod.GetCustomAttributes<AuthorizeAttribute>();
 
                 if (grainCallContext.InterfaceMethod.ReflectedType != null)
                 {
@@ -51,7 +43,7 @@ namespace Authzi.MicrosoftOrleans.Authorization
                         grainCallContext.InterfaceMethod.ReflectedType.GetCustomAttributes<AuthorizeAttribute>();
                 }
 
-                var authorizationSucceeded = await _authorizeHandler.AuthorizeAsync(accessTokenVerificationResult.Claims,
+                var authorizationSucceeded = await authorizeHandler.AuthorizeAsync(accessTokenVerificationResult.Claims,
                     grainAuthorizeData, grainMethodAuthorizeData);
 
                 if (!authorizationSucceeded)
