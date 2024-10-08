@@ -18,14 +18,18 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-		<PackageReference Include="IdentityModel" Version="6.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.*,9.0)" />
-		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.1.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.0" />
+		<PackageReference Include="IdentityModel" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.1.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Authzi.Security\Authzi.Security.fsproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
 	</ItemGroup>
 
 </Project>
