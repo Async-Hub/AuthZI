@@ -2,6 +2,6 @@
 
 open System.Runtime.CompilerServices
 
-[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.AzureActiveDirectory")>]
-[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.IdentityServer4")>]
+[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.MicrosoftEntra")>]
+[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer")>]
 do()

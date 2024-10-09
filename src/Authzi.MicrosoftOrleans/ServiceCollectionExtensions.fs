@@ -8,32 +8,19 @@ open Authzi.Security.Caching
 open Microsoft.Extensions.Caching.Memory
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.DependencyInjection.Extensions
-open Microsoft.Extensions.Http
 open Orleans
 open System
-open System.Net.Http
-open System.Net.Security
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
-open System.Security.Cryptography.X509Certificates
-
-module HttpClientConfiguration =
-    let configureHttpMessageHandlerBuilder (builder: HttpMessageHandlerBuilder, securityOptions: SecurityOptions) =
-        let httpClientHandler = new HttpClientHandler()
-        builder.PrimaryHandler <- httpClientHandler
-
-        if not securityOptions.RequireHttps then
-            httpClientHandler.ServerCertificateCustomValidationCallback <- 
-                new Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool>(fun (_) (_) (_) (_) -> true)
 
 [<Extension>]
-type ServiceCollectionExtensions = 
-    static member inline private RegisterServices(services: IServiceCollection,
+type internal ServiceCollectionExtensions = 
+    static member private RegisterServices(services: IServiceCollection,
         configure: Action<Configuration>, configureServices:  Action<IServiceCollection>) =
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)
 
-        let configuration = new Configuration()
+        let configuration = Configuration()
         configure.Invoke(configuration)
 
         services.AddAuthorizationCore(configuration.ConfigureAuthorizationOptions) |> ignore
@@ -42,27 +29,25 @@ type ServiceCollectionExtensions =
         if not (isNull configureServices) then configureServices.Invoke(services)
 
         // Configure Security.
-        let securityOptions = new SecurityOptions()
+        let securityOptions = SecurityOptions()
         if not (isNull configuration.ConfigureSecurityOptions) then 
             configuration.ConfigureSecurityOptions.Invoke(securityOptions)
         services.Add(ServiceDescriptor.Singleton(securityOptions))
 
         // Access Token verification section.
-        let accessTokenVerifierOptions = new AccessTokenVerifierOptions()
+        let accessTokenVerifierOptions = AccessTokenVerifierOptions()
         if not (isNull configuration.ConfigureAccessTokenVerifierOptions) then
             configuration.ConfigureAccessTokenVerifierOptions.Invoke(accessTokenVerifierOptions)
         services.Add(ServiceDescriptor.Singleton(accessTokenVerifierOptions))
 
-        services.TryAddSingleton<IAccessTokenVerifier,DefaultAccessTokenVerifier>()
-        services.AddHttpClient("IdS4").ConfigureHttpMessageHandlerBuilder(fun builder -> 
-            HttpClientConfiguration.configureHttpMessageHandlerBuilder(builder,securityOptions)) |> ignore
-
-        let memoryCacheOptions = new MemoryCacheOptions()
-        services.AddSingleton<IAccessTokenCache>(new Func<IServiceProvider, IAccessTokenCache>(fun _ -> 
-            new AccessTokenCache(memoryCacheOptions) :> IAccessTokenCache)) |> ignore
+        services.TryAddSingleton<IAccessTokenVerifier, DefaultAccessTokenVerifier>()
+        
+        let memoryCacheOptions = MemoryCacheOptions()
+        services.AddSingleton<IAccessTokenCache>(Func<IServiceProvider, IAccessTokenCache>(fun _ -> 
+            AccessTokenCache(memoryCacheOptions) :> IAccessTokenCache)) |> ignore
 
     [<Extension>]
-    static member inline AddAuthorization(services: IServiceCollection,
+    static member internal AddAuthorization(services: IServiceCollection,
         configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
         
         if isNull (box services) then nullArg(nameof services)
@@ -77,7 +62,7 @@ type ServiceCollectionExtensions =
         ServiceCollectionExtensions.RegisterServices(services, configure, null)
 
     [<Extension>]
-    static member inline AddClientAuthorization(services: IServiceCollection,
+    static member internal AddClientAuthorization(services: IServiceCollection,
         configure: Action<Configuration>) =
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)

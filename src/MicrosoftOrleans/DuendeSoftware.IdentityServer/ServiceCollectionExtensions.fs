@@ -8,9 +8,18 @@ open System
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 
+module internal ConfigurationExtensions =
+    let getSecurityOptions (configure: Action<Configuration>) =
+        let configuration = Configuration()
+        configure.Invoke(configuration)
+        let securityOptions = SecurityOptions()
+        if not (isNull configuration.ConfigureSecurityOptions) then 
+            configuration.ConfigureSecurityOptions.Invoke(securityOptions)
+        securityOptions
+
 type ServiceCollectionExtensions = 
     [<Extension>]
-    static member inline AddOrleansAuthorization(services: IServiceCollection, 
+    static member AddOrleansAuthorization(services: IServiceCollection, 
         identityServerConfig: IdentityServerConfig,
         configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
         
@@ -19,12 +28,14 @@ type ServiceCollectionExtensions =
         if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
         if isNull (box configure) then nullArg(nameof configure)
 
+        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+
         services.AddAuthorization(configure, isCoHostedClient);
-        services.AddIdentityServer4Authorization(identityServerConfig)
+        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
 
     // For the production usage.
     [<Extension>]
-    static member inline AddOrleansClientAuthorization(services: IServiceCollection,
+    static member AddOrleansClientAuthorization(services: IServiceCollection,
         identityServerConfig: IdentityServerConfig,
         configure: Action<Configuration>) =
 
@@ -33,5 +44,7 @@ type ServiceCollectionExtensions =
         if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
         if isNull (box configure) then nullArg(nameof configure)
 
+        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+
         services.AddClientAuthorization(configure)
-        services.AddIdentityServer4Authorization(identityServerConfig)
+        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)

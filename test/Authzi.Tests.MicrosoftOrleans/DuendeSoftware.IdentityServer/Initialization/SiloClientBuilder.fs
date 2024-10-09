@@ -12,7 +12,7 @@ open Orleans.Hosting
 open System
 
 module SiloClientBuilder =
-    let build accessTokenProvider identityServer4Info =
+    let build accessTokenProvider identityServerConfig =
         let configureDelegate (services: IServiceCollection) =
             let configureCluster (config: Configuration) = 
                 config.ConfigureAuthorizationOptions <- 
@@ -21,8 +21,7 @@ module SiloClientBuilder =
             services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
         
             // Add IdentityServer4 authorization.
-            services.AddOrleansClientAuthorization(identityServer4Info, 
-                fun config -> configureCluster(config)) |> ignore
+            services.AddOrleansClientAuthorization(identityServerConfig, configureCluster)
 
         let hostBuilder = HostBuilder().UseOrleansClient(fun clientBuilder ->
                     clientBuilder

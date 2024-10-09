@@ -6,7 +6,7 @@ open Microsoft.Extensions.Logging
 open System.Net.Http
 
 type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactory,
-                                                     identityServer4Info : IdentityServerConfig,
+                                                     identityServerConfig : IdentityServerConfig,
                                                      discoveryDocumentProvider:DiscoveryDocumentProvider,
                                                      logger: ILogger<AccessTokenIntrospectionService> 
                                                     )=
@@ -18,9 +18,9 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
             async{
                 let request = new TokenIntrospectionRequest()
                 request.Address <- discoveryDocument.IntrospectionEndpoint
-                request.ClientId <- identityServer4Info.ClientId
+                request.ClientId <- identityServerConfig.ClientId
                 request.Token <- accessToken
-                request.ClientSecret <- identityServer4Info.ClientSecret
+                request.ClientSecret <- identityServerConfig.ClientSecret
                 
                 let! introspectionResponse = httpClient.IntrospectTokenAsync request |> Async.AwaitTask
                 let nameOfTokenType =
@@ -33,8 +33,7 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
                                                           introspectionResponse.IsActive, "")
                 else
                     // TODO: Log trace.
-                    return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims,
-                                                          false, "")
+                    return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims, false, "")
             } |> Async.StartAsTask
     
     interface IAccessTokenIntrospectionService with
@@ -45,7 +44,7 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
               
               if accessTokenType = AccessTokenType.Jwt && allowOfflineValidation then
                   let claims = JwtSecurityTokenVerifier.Verify accessToken
-                                   identityServer4Info.AllowedScope discoveryResponse
+                                   identityServerConfig.AllowedScope discoveryResponse
                   return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
               else
                   let! res = this.IntrospectTokenOnlineAsync accessToken accessTokenType discoveryResponse |> Async.AwaitTask

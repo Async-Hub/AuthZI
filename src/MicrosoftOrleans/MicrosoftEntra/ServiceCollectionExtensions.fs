@@ -12,7 +12,7 @@ open System.Runtime.InteropServices
 [<Extension>]
 type ServiceCollectionExtensions = 
     [<Extension>]
-    static member inline AddOrleansAuthorization(services: IServiceCollection, 
+    static member AddOrleansAuthorization(services: IServiceCollection, 
         azureActiveDirectoryApp: MicrosoftEntraApp,
         configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
         
@@ -26,7 +26,7 @@ type ServiceCollectionExtensions =
 
     // For the production usage.
     [<Extension>]
-    static member inline AddOrleansClientAuthorization(services: IServiceCollection,
+    static member AddOrleansClientAuthorization(services: IServiceCollection,
         azureActiveDirectoryApp: MicrosoftEntraApp,
         configure: Action<Configuration>) =
 
