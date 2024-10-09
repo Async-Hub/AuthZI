@@ -2,7 +2,6 @@
 
 open Authzi.Identity.DuendeSoftware.IdentityServer
 open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
-open FluentAssertions;
 open Microsoft.IdentityModel.Tokens
 open Xunit
 
@@ -11,11 +10,11 @@ module AccessTokenVerificationTests =
     [<InlineData(GlobalConfig.WebClient1, "Secret1", "Api1")>]
     let ``Access token verification with valid scope should be passed``
         (clientId: string) (clientSecret: string) (scope: string) =
-        async {
+        task {
             // Arrange
-            let! accessTokenResponse = AccessTokenFactory.getAccessTokenForClientAsync clientId clientSecret scope
-                                       |> Async.AwaitTask
-
+            let! accessTokenResponse =
+                AccessTokenFactory.getAccessTokenForClientAsync clientId clientSecret scope
+                                 
             // Act
             let claims =
                 JwtSecurityTokenVerifier.Verify accessTokenResponse.AccessToken scope discoveryDocument
@@ -28,10 +27,10 @@ module AccessTokenVerificationTests =
     [<InlineData(GlobalConfig.WebClient1, "Secret1", "Api2")>]
     let ``Access token verification with invalid scope should be failed``
         (clientId: string) (clientSecret: string) (scope: string) =
-        async {
+        task {
             // Arrange
-            let! accessTokenResponse = AccessTokenFactory.getAccessTokenForClientAsync clientId clientSecret "Api1"
-                                       |> Async.AwaitTask
+            let! accessTokenResponse =
+                AccessTokenFactory.getAccessTokenForClientAsync clientId clientSecret "Api1"
 
             // Act
             let verify =

@@ -3,24 +3,23 @@ namespace Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
 open Authzi.Security
 open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
 open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
-open FluentAssertions
 open System
-open System.Threading.Tasks
 open Xunit
+
+open AccessTokenFactory
 
 module SimpleAuthorizationTests =
     [<Theory>]
     [<InlineData("Bob", "Pass123$", "Api1 Orleans")>]
     let ``An authenticated user can invoke the grain method``
         (userName: string) (password: string) (scope: string) =
-        async {
+        task {
             // Arrange
-            let! accessTokenResponse = AccessTokenFactory.getAccessTokenForUserOnWebClient1Async
-                                           userName password scope |> Async.AwaitTask
+            let! accessTokenResponse = getAccessTokenForUserOnWebClient1Async userName password scope
 
             let clusterClient = getClusterClient accessTokenResponse.AccessToken
             let simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid())
-            let! value = simpleGrain.GetWithAuthenticatedUser("Secret") |> Async.AwaitTask
+            let! value = simpleGrain.GetWithAuthenticatedUser("Secret")
 
             Assert.True(value.Equals "Secret")
         }
@@ -29,26 +28,26 @@ module SimpleAuthorizationTests =
     [<InlineData("Alice", "Pass123$", "Api1")>]
     let ``An authenticated user on an unauthenticated client can't invoke the grain method``
         (userName: string) (password: string) (scope: string) =
-        async {
+        task {
             // Arrange
-            let! accessTokenResponse = AccessTokenFactory.getAccessTokenForUserOnWebClient2Async
-                                           userName password scope |> Async.AwaitTask
+            let! accessTokenResponse = getAccessTokenForUserOnWebClient2Async userName password scope
 
             let clusterClient = getClusterClient accessTokenResponse.AccessToken
             let simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid())
         
             // Act
             let action =
-                async{
-                    let! value = simpleGrain.GetValue() |> Async.AwaitTask
-                return value } |> Async.StartAsTask :> Task
+                task {
+                    let! value = simpleGrain.GetValue()
+                    return value
+                }
 
             Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }
     
     [<Fact>]
     let ``An anonymous user can't invoke the grain method`` () =
-        async {
+        task {
             // Arrange
             let accessToken = String.Empty
             let userName = "Empty"
@@ -58,15 +57,16 @@ module SimpleAuthorizationTests =
         
             // Act
             let action =
-                async {
-                    let! value = simpleGrain.GetWithAuthenticatedUser(String.Empty) |> Async.AwaitTask
-                    return value } |> Async.StartAsTask :> Task
+                task {
+                    let! value = simpleGrain.GetWithAuthenticatedUser(String.Empty)
+                    return value
+                }
 
             Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }
 
     [<Fact>]
-    let ``An anonymous user can invoke a grain method with [AllowAnonymous] attribyte`` () =
+    let ``An anonymous user can invoke a grain method with [AllowAnonymous] attribute`` () =
         async {
             // Arrange
             let accessToken = String.Empty
