@@ -13,19 +13,19 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Extensions", "src\Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{050314A7-D521-4C05-ACE7-6CC5169D2765}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.IdentityServer4", "src\Identity\Authzi.IdentityServer4\Authzi.IdentityServer4.fsproj", "{57879FED-2D22-4415-92FB-6A975816BC7C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftOrleans", "MicrosoftOrleans", "{34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans", "src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj", "{B820AC49-1934-41BF-8D67-113C80C4DD57}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authzi.MicrosoftOrleans.Interoperability", "src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj", "{B08F4A5E-038E-436A-A698-ABABBE5774B7}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.IdentityServer4", "src\MicrosoftOrleans\Authzi.MicrosoftOrleans.IdentityServer4\Authzi.MicrosoftOrleans.IdentityServer4.fsproj", "{E35E6B24-D605-471C-B665-211FDB7FDF28}"
-EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.MicrosoftEntra", "src\MicrosoftOrleans\MicrosoftEntra\Authzi.MicrosoftOrleans.MicrosoftEntra.fsproj", "{75ED7D7A-A854-42BB-AE78-21672E12992E}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Identity.MicrosoftEntra", "src\Identity\MicrosoftEntra\Authzi.Identity.MicrosoftEntra.fsproj", "{09807548-47F1-48D5-A38F-F29088298C7D}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Identity.DuendeSoftware.IdentityServer", "src\Identity\DuendeSoftware.IdentityServer\Authzi.Identity.DuendeSoftware.IdentityServer.fsproj", "{A9985413-320D-487E-9240-D6F883B6E592}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer", "src\MicrosoftOrleans\DuendeSoftware.IdentityServer\Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer.fsproj", "{CAF5B3CE-C604-47AE-903D-52F2372B4A4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,6 @@ Global
 		{D55D634A-09AE-4AAE-A37B-B612D24860F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D55D634A-09AE-4AAE-A37B-B612D24860F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D55D634A-09AE-4AAE-A37B-B612D24860F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57879FED-2D22-4415-92FB-6A975816BC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57879FED-2D22-4415-92FB-6A975816BC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57879FED-2D22-4415-92FB-6A975816BC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57879FED-2D22-4415-92FB-6A975816BC7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B820AC49-1934-41BF-8D67-113C80C4DD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B820AC49-1934-41BF-8D67-113C80C4DD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B820AC49-1934-41BF-8D67-113C80C4DD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,10 +53,6 @@ Global
 		{B08F4A5E-038E-436A-A698-ABABBE5774B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B08F4A5E-038E-436A-A698-ABABBE5774B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B08F4A5E-038E-436A-A698-ABABBE5774B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E35E6B24-D605-471C-B665-211FDB7FDF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E35E6B24-D605-471C-B665-211FDB7FDF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E35E6B24-D605-471C-B665-211FDB7FDF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E35E6B24-D605-471C-B665-211FDB7FDF28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75ED7D7A-A854-42BB-AE78-21672E12992E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75ED7D7A-A854-42BB-AE78-21672E12992E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75ED7D7A-A854-42BB-AE78-21672E12992E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +61,14 @@ Global
 		{09807548-47F1-48D5-A38F-F29088298C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09807548-47F1-48D5-A38F-F29088298C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09807548-47F1-48D5-A38F-F29088298C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9985413-320D-487E-9240-D6F883B6E592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9985413-320D-487E-9240-D6F883B6E592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9985413-320D-487E-9240-D6F883B6E592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9985413-320D-487E-9240-D6F883B6E592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF5B3CE-C604-47AE-903D-52F2372B4A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF5B3CE-C604-47AE-903D-52F2372B4A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF5B3CE-C604-47AE-903D-52F2372B4A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF5B3CE-C604-47AE-903D-52F2372B4A4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,12 +77,12 @@ Global
 		{A4C62369-26A8-41A4-8067-EA964C647CD2} = {23102DB9-9796-42A6-B812-5C7EE4519D12}
 		{BE0A4869-262D-480C-952F-F00512962757} = {23102DB9-9796-42A6-B812-5C7EE4519D12}
 		{D55D634A-09AE-4AAE-A37B-B612D24860F0} = {23102DB9-9796-42A6-B812-5C7EE4519D12}
-		{57879FED-2D22-4415-92FB-6A975816BC7C} = {050314A7-D521-4C05-ACE7-6CC5169D2765}
 		{B820AC49-1934-41BF-8D67-113C80C4DD57} = {34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}
 		{B08F4A5E-038E-436A-A698-ABABBE5774B7} = {34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}
-		{E35E6B24-D605-471C-B665-211FDB7FDF28} = {34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}
 		{75ED7D7A-A854-42BB-AE78-21672E12992E} = {34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}
 		{09807548-47F1-48D5-A38F-F29088298C7D} = {050314A7-D521-4C05-ACE7-6CC5169D2765}
+		{A9985413-320D-487E-9240-D6F883B6E592} = {050314A7-D521-4C05-ACE7-6CC5169D2765}
+		{CAF5B3CE-C604-47AE-903D-52F2372B4A4F} = {34856F5B-37DE-4A0B-ACAC-7C0366FA4D58}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {751E4B92-12D4-43AC-90A5-D8A5D8871CF1}
