@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using Authzi.Security.Authorization;
+using System.Threading.Tasks;
 
 namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {

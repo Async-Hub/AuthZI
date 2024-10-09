@@ -1,24 +1,22 @@
 ﻿namespace Initialization
 
-open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Security.Authorization
 open Authzi.Deploy.MicrosoftEntra.Configuration
+open Authzi.Identity.MicrosoftEntra
 open Authzi.MicrosoftEntra
+open Authzi.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Security
 open Authzi.Security.Authorization
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
+open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra
 open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Identity.Client
 open Orleans
 open RootConfiguration
 open System
 open System.Text.Json
 open Xunit.Abstractions
 open Xunit.Sdk
-open Authzi.Identity.MicrosoftEntra
-open Microsoft.Identity.Client
 
 [<assembly: Orleans.ApplicationPartAttribute("Authzi.Tests.MicrosoftOrleans.Grains")>]
 ()

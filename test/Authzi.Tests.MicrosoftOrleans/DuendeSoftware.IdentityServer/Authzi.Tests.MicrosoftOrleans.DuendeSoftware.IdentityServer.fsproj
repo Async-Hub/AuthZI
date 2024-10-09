@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateProgramFile>true</GenerateProgramFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityServer" Version="7.0.7" />
+    <PackageReference Include="FluentAssertions" Version="6.12.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.10" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="8.2.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+	<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Assembly.fs" />
+    <Compile Include="Initialization\GlobalConfig.fs" />
+    <Compile Include="Initialization\Users.fs" />
+    <Compile Include="Initialization\IdentityServerResources.fs" />
+    <Compile Include="Initialization\IdentityServerClients.fs" />
+    <Compile Include="Initialization\ProfileService.fs" />
+    <Compile Include="Initialization\IdentityServerBuilder.fs" />
+    <Compile Include="Initialization\AccessTokenFactory.fs" />
+    <Compile Include="Initialization\SiloHostBuilder.fs" />
+    <Compile Include="Initialization\SiloClientBuilder.fs" />
+    <Compile Include="Initialization\ClusterSetup.fs" />
+    <Compile Include="Initialization\Starter.fs" />
+    <Compile Include="AccessTokenTests\AccessTokenVerificationTests.fs" />
+    <Compile Include="AuthorizationTests\SimpleAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\RoleBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\ClaimsBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\PolicyBasedAuthorizationTests.fs" />
+    <Compile Include="AuthorizationTests\ResourceBasedAuthorizationTests.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
+    <ProjectReference Include="..\..\..\src\MicrosoftOrleans\DuendeSoftware.IdentityServer\Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer.fsproj" />
+    <ProjectReference Include="..\Grains\Authzi.Tests.MicrosoftOrleans.Grains.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="8.0.401" />
+  </ItemGroup>
+
+</Project>

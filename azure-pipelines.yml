@@ -34,10 +34,14 @@ stages:
         inputs:
           command: test
           projects: |
+            test/Authzi.Security.IntegrationTests
+            test/Authzi.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
             test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
+            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
             publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
+          microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
 
 ##################### Packing Artifacts Stage #####################
 

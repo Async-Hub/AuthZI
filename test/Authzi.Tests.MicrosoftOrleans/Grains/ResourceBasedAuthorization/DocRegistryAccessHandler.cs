@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using Authzi.Security.Authorization;
+using System.Threading.Tasks;
 
 namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
@@ -13,7 +13,7 @@ namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
             {
                 var claim = context.User.FindFirst(c => c.Type == DocRegistryAccessClaim.Name);
 
-                if (claim.Value == DocRegistryAccessClaim.Value)
+                if (claim is { Value: DocRegistryAccessClaim.Value })
                 {
                     context.Succeed(requirement);
                 }
