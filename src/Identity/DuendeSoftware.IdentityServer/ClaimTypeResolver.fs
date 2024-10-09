@@ -9,3 +9,4 @@ type ClaimTypeResolver() =
             match claimType with
             | Role -> JwtClaimTypes.Role
             | Subject -> JwtClaimTypes.Subject
+            | Name -> JwtClaimTypes.Name

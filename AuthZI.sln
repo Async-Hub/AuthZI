@@ -38,11 +38,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftOrleans", "MicrosoftOrleans", "{EAB45ACE-F4DA-4F32-AE4E-562749D210D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{76494F63-19A9-4AFB-BEA6-4028E594FF2A}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\MicrosoftEntra\AzureActiveDirectoryB2B1.azcli = deploy\MicrosoftEntra\AzureActiveDirectoryB2B1.azcli
-		deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.azcli = deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.azcli
-		deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.json = deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftEntra", "MicrosoftEntra", "{F1F4B056-040A-4D02-9727-09788F00BCFF}"
 EndProject
@@ -57,6 +52,11 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0", "test\Authzi.Tests.MicrosoftOrleans\MicrosoftEntra\AzureActiveDirectoryB2C.NET8.0\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj", "{E2A6197F-53ED-43E5-9762-A12936841655}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicrosoftEntra", "MicrosoftEntra", "{242FB64D-AB52-42BC-8D15-425EB57A8016}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\MicrosoftEntra\AzureActiveDirectoryB2B1.azcli = deploy\MicrosoftEntra\AzureActiveDirectoryB2B1.azcli
+		deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.azcli = deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.azcli
+		deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.json = deploy\MicrosoftEntra\AzureActiveDirectoryB2C1.json
+	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Authzi.Identity.MicrosoftEntra", "src\Identity\MicrosoftEntra\Authzi.Identity.MicrosoftEntra.fsproj", "{EF726CF4-944B-49D2-8353-72500662F238}"
 EndProject

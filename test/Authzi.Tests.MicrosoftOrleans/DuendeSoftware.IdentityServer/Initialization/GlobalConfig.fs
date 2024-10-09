@@ -6,7 +6,7 @@ open System.Threading.Tasks
 
 type AccessTokenProvider() =
     let mutable accessToken = String.Empty
-    member _.AccessToken with set (value) = accessToken <- value
+    member _.AccessToken with set value = accessToken <- value
     
     interface IAccessTokenProvider with
         member _.RetrieveTokenAsync() = Task.FromResult(accessToken);
@@ -16,11 +16,11 @@ open Orleans
 
 module GlobalConfig =
     let public identityServerUrl = "http://localhost:5005"
-    let public identityServer4Info = IdentityServer4Info(identityServerUrl,
-                                    "Api1", "Secret", "Orleans")
+    let public identityServerConfig =
+        IdentityServerConfig(identityServerUrl, "Api1", "Secret", "Orleans")
 
-    let identityServer4InfoCluster = IdentityServer4Info(identityServerUrl,
-                                    "Orleans", "@3x3g*RLez$TNU!_7!QW", "Orleans")
+    let identityServerConfigCluster =
+        IdentityServerConfig(identityServerUrl, "Orleans", "@3x3g*RLez$TNU!_7!QW", "Orleans")
 
     [<Literal>]
     let WebClient1 = "WebClient1"

@@ -6,7 +6,7 @@ open Microsoft.Extensions.Logging
 open System.Net.Http
 
 type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactory,
-                                                     identityServer4Info : IdentityServer4Info,
+                                                     identityServer4Info : IdentityServerConfig,
                                                      discoveryDocumentProvider:DiscoveryDocumentProvider,
                                                      logger: ILogger<AccessTokenIntrospectionService> 
                                                     )=

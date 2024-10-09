@@ -3,7 +3,7 @@
 open Authzi.MicrosoftOrleans
 open Authzi.Security.AccessToken
 open Authzi.Security.Authorization
-open Authzi.Security;
+open Authzi.Security
 open Microsoft.Extensions.Logging
 open Newtonsoft.Json
 open Orleans
@@ -11,10 +11,8 @@ open Orleans.Runtime
 open System.Threading.Tasks
 
 type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerifier,
-    authorizeHandler: IAuthorizationExecutor, claimTypeResolver: IClaimTypeResolver,
-    logger: ILogger<IncomingGrainCallAuthorizationFilter>) as this =
+    authorizeHandler: IAuthorizationExecutor, logger: ILogger<IncomingGrainCallAuthorizationFilter>) as this =
     inherit GrainAuthorizationFilterBase(accessTokenVerifier, authorizeHandler, logger)
-
     member _.AuthorizeAsync(context) = base.AuthorizeAsync(context)
     member _.Log(eventId, grainTypeName, interfaceMethodName) = base.Log(eventId, grainTypeName, interfaceMethodName)
     interface IIncomingGrainCallFilter with

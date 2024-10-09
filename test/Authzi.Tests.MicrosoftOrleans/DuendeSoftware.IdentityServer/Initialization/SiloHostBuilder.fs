@@ -1,16 +1,13 @@
 ﻿namespace Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
 
 open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 open Authzi.MicrosoftOrleans.DuendeSoftware.IdentityServer
 open Authzi.Security.Authorization
 open Microsoft.Extensions.Hosting   
 open Microsoft.Extensions.Logging
 open Orleans.Configuration;
 open Orleans.Hosting;
-open Orleans;
 open System
-open System.Net
 
 module SiloHostBuilder =
     let Build() = 
@@ -28,7 +25,7 @@ module SiloHostBuilder =
                            .ConfigureLogging(fun logging -> logging.AddDebug() |> ignore)
                            .ConfigureServices(fun services ->
                                // Add IdentityServer4 authorization.
-                               services.AddOrleansAuthorization(GlobalConfig.identityServer4InfoCluster,      
+                               services.AddOrleansAuthorization(GlobalConfig.identityServerConfigCluster,      
                                    fun (config:Authzi.Security.Configuration) ->         
                                    config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                        AuthorizationConfig.ConfigureOptions)         

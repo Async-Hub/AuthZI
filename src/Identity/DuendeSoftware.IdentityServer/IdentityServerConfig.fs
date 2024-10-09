@@ -6,7 +6,7 @@ module Path=
     [<Literal>]
     let Url = ".well-known/openid-configuration"
 
-type IdentityServer4Info(url: string, clientId: string, clientSecret: string, allowedScope: string,
+type IdentityServerConfig(url: string, clientId: string, clientSecret: string, allowedScope: string,
                          [<Optional; DefaultParameterValue(Path.Url)>]discoveryEndpointEndpointPath: string)=
     member this.Url = url
     member this.ClientId = clientId

@@ -2,7 +2,6 @@
 
 open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
 open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
-open Authzi.Tests.MicrosoftOrleans.Grains
 open Microsoft.Extensions.DependencyInjection
 open Orleans
 open Xunit.Abstractions
@@ -24,7 +23,7 @@ type Starter(messageSink: IMessageSink) =
         discoveryDocument <- IdentityServerBuilder.getDiscoveryDocument identityServerUrl
 
         // Start Orleans client.
-        let siloClientHost = SiloClientBuilder.build accessTokenProvider identityServer4Info
+        let siloClientHost = SiloClientBuilder.build accessTokenProvider identityServerConfig
         siloClientHost.StartAsync().Wait()
         let clusterClient = siloClientHost.Services.GetService<IClusterClient>()
         GlobalConfig.clusterClient <- clusterClient

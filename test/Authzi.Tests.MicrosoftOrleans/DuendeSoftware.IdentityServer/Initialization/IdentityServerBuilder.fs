@@ -13,9 +13,9 @@ open System.Net.Http
 type Startup() =
     member _.ConfigureServices(services: IServiceCollection) =
         services.AddIdentityServer().AddDeveloperSigningCredential()
-                .AddInMemoryApiScopes(IdentityServer4Resources.getApiScopes())
-                .AddInMemoryApiResources(IdentityServer4Resources.getApiResources())
-                .AddInMemoryIdentityResources(IdentityServer4Resources.getIdentityResources())
+                .AddInMemoryApiScopes(IdentityServerResources.getApiScopes())
+                .AddInMemoryApiResources(IdentityServerResources.getApiResources())
+                .AddInMemoryIdentityResources(IdentityServerResources.getIdentityResources())
                 .AddInMemoryClients(IdentityServerClients.getClients()).AddTestUsers(Users.getUsers()) |> ignore
 
         services.AddTransient<IProfileService, ProfileService>() |> ignore

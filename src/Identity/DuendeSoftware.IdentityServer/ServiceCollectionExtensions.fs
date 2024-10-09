@@ -11,7 +11,7 @@ open System.Net.Http
 type ServiceCollectionExtensions = 
     [<Extension>]
     static member AddIdentityServer4Authorization(services: IServiceCollection,
-        identityServer4Info: IdentityServer4Info(*, configure: Action<Configuration>*)) =
+        identityServer4Info: IdentityServerConfig(*, configure: Action<Configuration>*)) =
             if isNull (box identityServer4Info) then nullArg(nameof identityServer4Info)
             //if isNull configure then nullArg(nameof configure)
             
@@ -22,7 +22,7 @@ type ServiceCollectionExtensions =
             // Add Discovery document provider.
             let providerFunc (provider: IServiceProvider) =
                 let httpClientFactory = provider.GetRequiredService<IHttpClientFactory>()
-                let discoveryEndpointUrl = provider.GetRequiredService<IdentityServer4Info>().DiscoveryEndpointUrl
+                let discoveryEndpointUrl = provider.GetRequiredService<IdentityServerConfig>().DiscoveryEndpointUrl
                 let securityOptions = provider.GetRequiredService<SecurityOptions>()
                 DiscoveryDocumentProvider(httpClientFactory, discoveryEndpointUrl, securityOptions)
 
