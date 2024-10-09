@@ -59,6 +59,8 @@ stages:
         runOnce:
           deploy:
             steps:
+            - checkout: self
+              fetchTags: true
             - template: packing-artifacts.yml
               parameters:
                 vstsFeedName: 'AuthZI/Testing'
@@ -73,6 +75,8 @@ stages:
         runOnce:
           deploy:
             steps:
+            - checkout: self
+              fetchTags: true
             - template: packing-artifacts.yml
               parameters:
                 vstsFeedName: 'AuthZI/Staging'
