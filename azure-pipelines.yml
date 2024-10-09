@@ -62,3 +62,17 @@ stages:
             - template: packing-artifacts.yml
               parameters:
                 vstsFeedName: 'AuthZI/Testing'
+
+    - deployment: Deploy_Artifacts_Staging
+      displayName: Deploy staging artifacts in Azure Artifacts
+      condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+      pool:
+        name: Azure Pipelines
+      environment: 'Staging'
+      strategy: 
+        runOnce:
+          deploy:
+            steps:
+            - template: packing-artifacts.yml
+              parameters:
+                vstsFeedName: 'AuthZI/Staging'
