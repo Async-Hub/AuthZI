@@ -47,7 +47,6 @@ stages:
 
   - stage: Packing_Artifacts
     displayName: Packing artifacts stage
-    dependsOn:
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
