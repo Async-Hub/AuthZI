@@ -43,10 +43,11 @@ stages:
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
 
-##################### Packing Artifacts Stage #####################
+##################### Packing Artifacts Stages #####################
 
-  - stage: Packing_Artifacts
-    displayName: Packing artifacts stage
+  - stage: Packing_Artifacts_Testing
+    displayName: Packing artifacts testing
+    dependsOn:
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
@@ -64,6 +65,10 @@ stages:
               parameters:
                 vstsFeedName: 'AuthZI/Testing'
 
+  - stage: Packing_Artifacts_Staging
+    displayName: Packing artifacts staging
+    dependsOn: Build
+    jobs:
     - deployment: Deploy_Artifacts_Staging
       displayName: Deploy staging artifacts in Azure Artifacts
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
