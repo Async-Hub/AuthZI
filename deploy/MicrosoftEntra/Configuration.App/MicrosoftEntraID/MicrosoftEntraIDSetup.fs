@@ -1,6 +1,6 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration
 
-open Authzi.Deploy.MicrosoftEntra.Configuration
+open AuthZI.Deploy.MicrosoftEntra.Configuration
 open Microsoft.Graph
 open Microsoft.Graph.Models
 

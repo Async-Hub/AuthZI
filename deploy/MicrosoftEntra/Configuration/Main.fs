@@ -1,10 +1,10 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration
 
 type User = { Name: string; Password: string }
 type Client = { Id: string; Secret: string; AllowedScopes: string list }
 type MicrosoftEntraCredentials = { DirectoryId: string; Api1: Client; WebClient1: Client; AdeleV: User;  AlexW: User }
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
 
 module Clients =
     let api1 = "Api1"

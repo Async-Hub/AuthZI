@@ -34,10 +34,10 @@ stages:
         inputs:
           command: test
           projects: |
-            test/Authzi.Security.IntegrationTests
-            test/Authzi.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
-            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
-            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
+            test/AuthZI.Security.IntegrationTests
+            test/AuthZI.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
             publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
