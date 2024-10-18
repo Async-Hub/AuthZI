@@ -1,6 +1,6 @@
-namespace Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+namespace AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
 
-open Authzi.Security
+open AuthZI.Security
 open System
 open System.Threading.Tasks
 
@@ -11,7 +11,7 @@ type AccessTokenProvider() =
     interface IAccessTokenProvider with
         member _.RetrieveTokenAsync() = Task.FromResult(accessToken);
 
-open Authzi.Identity.DuendeSoftware.IdentityServer
+open AuthZI.Identity.DuendeSoftware.IdentityServer
 open Orleans
 
 module GlobalConfig =

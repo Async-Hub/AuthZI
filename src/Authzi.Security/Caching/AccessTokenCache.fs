@@ -1,4 +1,4 @@
-﻿namespace Authzi.Security.Caching
+﻿namespace AuthZI.Security.Caching
 
 open System
 open Microsoft.Extensions.Caching.Memory

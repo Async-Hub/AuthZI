@@ -4,7 +4,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Base class for authorization handlers that need to be called for a specific requirement type.

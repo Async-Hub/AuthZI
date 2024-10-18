@@ -1,15 +1,15 @@
 ﻿namespace Initialization
 
-open Authzi.MicrosoftEntra
-open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.MicrosoftEntra
+open AuthZI.Deploy.MicrosoftEntra.Configuration
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open System
 open System.Text.Json
 open Xunit.Abstractions
 open Xunit.Sdk
 
-[<assembly: Orleans.ApplicationPartAttribute("Authzi.Tests.MicrosoftOrleans.Grains")>]
+[<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
 type Starter(messageSink: IMessageSink) =
@@ -40,7 +40,7 @@ module CurrentAssembly =
     [<Literal>]
     let TypeName = "Initialization.Starter"
     [<Literal>]
-    let Name = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0"
+    let Name = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
 ()

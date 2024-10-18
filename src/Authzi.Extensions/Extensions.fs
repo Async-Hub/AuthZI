@@ -1,4 +1,4 @@
-﻿namespace Authzi.Extensions
+﻿namespace AuthZI.Extensions
 
 open System.Threading.Tasks
 
@@ -15,4 +15,3 @@ module TaskExtensions =
                     if (not (isNull ex.InnerExceptions)) && ex.InnerExceptions.Count = 1 then
                         raise ex.InnerException
             }
-    

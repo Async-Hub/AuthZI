@@ -1,7 +1,7 @@
 ﻿module RootConfiguration
 
-open Authzi.Security
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.Security
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System
 open System.Threading.Tasks
 

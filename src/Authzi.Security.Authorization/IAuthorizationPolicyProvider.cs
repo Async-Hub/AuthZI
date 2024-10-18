@@ -3,7 +3,7 @@
 
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// A type which can provide a <see cref="AuthorizationPolicy"/> for a particular name.

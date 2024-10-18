@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
-    <ProjectReference Include="..\..\Identity\MicrosoftEntra\Authzi.Identity.MicrosoftEntra.fsproj" />
+    <ProjectReference Include="..\AuthZI.Identity.MicrosoftEntra\AuthZI.Identity.MicrosoftEntra.fsproj" />
+    <ProjectReference Include="..\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

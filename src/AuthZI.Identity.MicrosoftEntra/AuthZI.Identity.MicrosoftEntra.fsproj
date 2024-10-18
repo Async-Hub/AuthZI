@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Authzi.Security\Authzi.Security.fsproj" />
+    <ProjectReference Include="..\AuthZI.Security\AuthZI.Security.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

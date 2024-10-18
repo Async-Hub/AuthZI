@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Checks policy based permissions for a user

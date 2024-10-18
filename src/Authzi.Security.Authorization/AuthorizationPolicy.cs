@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Authzi.Security.Authorization.Properties;
+using AuthZI.Security.Authorization.Properties;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Represents a collection of authorization requirements and the scheme or 

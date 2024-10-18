@@ -1,6 +1,6 @@
-﻿namespace Authzi.Identity.DuendeSoftware.IdentityServer
+﻿namespace AuthZI.Identity.DuendeSoftware.IdentityServer
 
-open Authzi.Security
+open AuthZI.Security
 open IdentityModel
 
 type ClaimTypeResolver() =

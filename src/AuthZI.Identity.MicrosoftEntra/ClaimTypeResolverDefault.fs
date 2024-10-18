@@ -1,6 +1,6 @@
-﻿namespace Authzi.MicrosoftEntra
+﻿namespace AuthZI.MicrosoftEntra
 
-open Authzi.Security
+open AuthZI.Security
 
 type ClaimTypeResolverDefault() =
     interface IClaimTypeResolver with

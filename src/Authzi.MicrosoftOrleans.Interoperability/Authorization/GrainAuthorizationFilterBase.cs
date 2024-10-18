@@ -1,6 +1,6 @@
-﻿using Authzi.Security;
-using Authzi.Security.AccessToken;
-using Authzi.Security.Authorization;
+﻿using AuthZI.Security;
+using AuthZI.Security.AccessToken;
+using AuthZI.Security.Authorization;
 using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Runtime;
@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authzi.MicrosoftOrleans.Authorization
+namespace AuthZI.MicrosoftOrleans.Authorization
 {
     public abstract class GrainAuthorizationFilterBase(
         IAccessTokenVerifier accessTokenVerifier,

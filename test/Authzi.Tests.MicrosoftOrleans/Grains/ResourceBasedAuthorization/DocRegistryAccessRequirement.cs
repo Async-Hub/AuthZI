@@ -1,6 +1,6 @@
-using Authzi.Security.Authorization;
+using AuthZI.Security.Authorization;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     public sealed class DocRegistryAccessRequirement : IAuthorizationRequirement
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     public class UserGrain : Grain, IUserGrain
     {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Authzi.IdentityServer4.IntegrationTests.Configuration
+namespace AuthZI.IdentityServer4.IntegrationTests.Configuration
 {
     public static class TestIdentityServer4Builder
     {

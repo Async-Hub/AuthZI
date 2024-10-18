@@ -1,6 +1,6 @@
-﻿namespace Authzi.Security.Authorization
+﻿namespace AuthZI.Security.Authorization
 
-open Authzi.Security
+open AuthZI.Security
 open Microsoft.FSharp.Core
 open System.Collections.Generic
 open System.Linq

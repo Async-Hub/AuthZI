@@ -1,11 +1,11 @@
 module SiloClient
 
-open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Security
-open Authzi.Security.Authorization
-open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.MicrosoftOrleans.MicrosoftEntra
+open AuthZI.Security
+open AuthZI.Security.Authorization
+open AuthZI.Tests.MicrosoftOrleans.Grains
+open AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Orleans.Configuration;

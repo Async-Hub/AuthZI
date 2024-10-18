@@ -1,4 +1,4 @@
-namespace Authzi.Security.AccessToken
+namespace AuthZI.Security.AccessToken
 
 open System.IdentityModel.Tokens.Jwt
 
@@ -19,7 +19,7 @@ module AccessTokenAnalyzer =
 //using JWT;
 //using JWT.Serializers;
 
-//namespace Authzi.Security.AccessToken
+//namespace AuthZI.Security.AccessToken
 //{
 //    internal class AccessTokenAnalyzer
 //    {

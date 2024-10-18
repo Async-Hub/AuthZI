@@ -20,13 +20,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Graph" Version="5.59.0" />
+		<PackageReference Include="Microsoft.Graph" Version="5.61.0" />
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.65.0" />
-		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.13.0" />
+		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.13.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Configuration\Authzi.Deploy.MicrosoftEntra.Configuration.fsproj" />
+	  <ProjectReference Include="..\Configuration\AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,9 +1,9 @@
-﻿namespace Authzi.MicrosoftOrleans.Authorization
+﻿namespace AuthZI.MicrosoftOrleans.Authorization
 
-open Authzi.MicrosoftOrleans
-open Authzi.Security.AccessToken
-open Authzi.Security.Authorization
-open Authzi.Security;
+open AuthZI.MicrosoftOrleans
+open AuthZI.Security.AccessToken
+open AuthZI.Security.Authorization
+open AuthZI.Security;
 open Microsoft.Extensions.Logging
 open Orleans
 open System.Threading.Tasks

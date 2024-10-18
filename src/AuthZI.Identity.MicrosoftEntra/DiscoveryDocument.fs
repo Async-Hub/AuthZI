@@ -1,4 +1,4 @@
-namespace Authzi.MicrosoftEntra
+namespace AuthZI.MicrosoftEntra
 
 open Microsoft.IdentityModel.Tokens
 open System.Collections.Generic

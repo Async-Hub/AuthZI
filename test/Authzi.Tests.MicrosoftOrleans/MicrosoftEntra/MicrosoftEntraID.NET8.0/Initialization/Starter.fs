@@ -1,14 +1,14 @@
 ﻿namespace Initialization
 
-open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Identity.MicrosoftEntra
-open Authzi.MicrosoftEntra
-open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Security
-open Authzi.Security.Authorization
-open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.Deploy.MicrosoftEntra.Configuration
+open AuthZI.Identity.MicrosoftEntra
+open AuthZI.MicrosoftEntra
+open AuthZI.MicrosoftOrleans.MicrosoftEntra
+open AuthZI.Security
+open AuthZI.Security.Authorization
+open AuthZI.Tests.MicrosoftOrleans.Grains
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Identity.Client
 open Orleans
@@ -18,7 +18,7 @@ open System.Text.Json
 open Xunit.Abstractions
 open Xunit.Sdk
 
-[<assembly: Orleans.ApplicationPartAttribute("Authzi.Tests.MicrosoftOrleans.Grains")>]
+[<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
 type Starter(messageSink: IMessageSink) =
@@ -49,7 +49,7 @@ type Starter(messageSink: IMessageSink) =
         let configureSiloHost = fun (services: IServiceCollection) ->
             // Add Azure Active Directory authorization.
             services.AddOrleansAuthorization(TestData.AzureActiveDirectoryApp, 
-                fun (config: Authzi.Security.Configuration) -> 
+                fun (config: AuthZI.Security.Configuration) -> 
                     config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)
                     ignore())
             // Some custom authorization services.
@@ -78,7 +78,7 @@ module CurrentAssembly =
     [<Literal>]
     let TypeName = "Initialization.Starter"
     [<Literal>]
-    let Name = "Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0"
+    let Name = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
 ()

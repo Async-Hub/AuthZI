@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 
-namespace Authzi.Security.Authorization.Properties
+namespace AuthZI.Security.Authorization.Properties
 {
     internal static class Resources
     {
         private static readonly ResourceManager _resourceManager
-            = new ResourceManager("Authzi.Security.Authorization.Resources", typeof(Resources).GetTypeInfo().Assembly);
+            = new ResourceManager("AuthZI.Security.Authorization.Resources", typeof(Resources).GetTypeInfo().Assembly);
 
         /// <summary>
         /// AuthorizationPolicy must have at least one requirement.

@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Provides programmatic configuration used by <see cref="IAuthorizationService"/> and <see cref="IAuthorizationPolicyProvider"/>.

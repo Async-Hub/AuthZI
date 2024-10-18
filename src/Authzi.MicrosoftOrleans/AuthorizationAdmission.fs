@@ -1,6 +1,6 @@
-namespace Authzi.MicrosoftOrleans
+namespace AuthZI.MicrosoftOrleans
 
-open Authzi.Security.Authorization
+open AuthZI.Security.Authorization
 open Orleans
 open System.Linq
 open System.Reflection

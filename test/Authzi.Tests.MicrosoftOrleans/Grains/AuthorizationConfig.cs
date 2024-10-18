@@ -1,8 +1,8 @@
-﻿using Authzi.Security.Authorization;
-using Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization;
+﻿using AuthZI.Security.Authorization;
+using AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains
+namespace AuthZI.Tests.MicrosoftOrleans.Grains
 {
     // ReSharper disable once UnusedType.Global
     public static class AuthorizationConfig

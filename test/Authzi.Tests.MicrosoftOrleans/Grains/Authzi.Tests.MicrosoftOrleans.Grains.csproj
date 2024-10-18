@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
-    <ProjectReference Include="..\..\..\src\Authzi.MicrosoftOrleans\Authzi.MicrosoftOrleans.fsproj" />
+    <ProjectReference Include="..\..\..\src\AuthZI.MicrosoftOrleans.Interoperability\AuthZI.MicrosoftOrleans.Interoperability.csproj" />
+    <ProjectReference Include="..\..\..\src\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
   </ItemGroup>
 
 </Project>

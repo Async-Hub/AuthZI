@@ -3,7 +3,7 @@ using IdentityServer4.Test;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace Authzi.IdentityServer4.IntegrationTests.Configuration
+namespace AuthZI.IdentityServer4.IntegrationTests.Configuration
 {
     public static class TestUsers
     {

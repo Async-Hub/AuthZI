@@ -1,6 +1,6 @@
 using Orleans;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     [GenerateSerializer]
     public class Document

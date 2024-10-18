@@ -2,8 +2,8 @@
 
 open IdentityModel
 open Duende.IdentityServer.Test
-open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Security.Claims
 
 let aliceId = "1"

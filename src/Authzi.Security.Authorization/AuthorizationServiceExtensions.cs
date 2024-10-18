@@ -5,7 +5,7 @@ using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Extension methods for <see cref="IAuthorizationService"/>.

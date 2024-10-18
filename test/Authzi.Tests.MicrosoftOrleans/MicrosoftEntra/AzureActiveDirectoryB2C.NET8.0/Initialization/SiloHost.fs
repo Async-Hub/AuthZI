@@ -1,10 +1,10 @@
 ﻿module SiloHost
 
-open Authzi.MicrosoftOrleans.MicrosoftEntra
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.Tests.MicrosoftOrleans.Grains
-open Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
-open Authzi.Security.Authorization
+open AuthZI.MicrosoftOrleans.MicrosoftEntra
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.Tests.MicrosoftOrleans.Grains
+open AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
+open AuthZI.Security.Authorization
 open Microsoft.Extensions.Hosting               
 open Orleans.Configuration;
 open Orleans.Hosting;
@@ -30,7 +30,7 @@ let startSilo () =
                    .ConfigureServices(fun services ->
                        // Add Azure Active Directory authorization.
                        services.AddOrleansAuthorization(TestData.AzureActiveDirectoryApp,       
-                           fun (config:Authzi.Security.Configuration) ->         
+                           fun (config:AuthZI.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                AuthorizationConfig.ConfigureOptions)         
                            ignore())

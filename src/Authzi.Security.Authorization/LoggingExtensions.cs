@@ -4,7 +4,7 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     internal static class LoggingExtensions
     {

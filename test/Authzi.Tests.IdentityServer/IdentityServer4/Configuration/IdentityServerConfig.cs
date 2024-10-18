@@ -3,7 +3,7 @@ using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 
-namespace Authzi.IdentityServer4.IntegrationTests.Configuration
+namespace AuthZI.IdentityServer4.IntegrationTests.Configuration
 {
     public static class IdentityServerConfig
     {

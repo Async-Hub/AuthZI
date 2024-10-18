@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration
 
 module Literals =
     let microsoftEntraCredentialsJsonTemplate = """

@@ -1,10 +1,10 @@
-﻿namespace Authzi.MicrosoftOrleans
+﻿namespace AuthZI.MicrosoftOrleans
 
-open Authzi.MicrosoftOrleans.Authorization
-open Authzi.Security
-open Authzi.Security.AccessToken
-open Authzi.Security.Authorization
-open Authzi.Security.Caching
+open AuthZI.MicrosoftOrleans.Authorization
+open AuthZI.Security
+open AuthZI.Security.AccessToken
+open AuthZI.Security.Authorization
+open AuthZI.Security.Caching
 open Microsoft.Extensions.Caching.Memory
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.DependencyInjection.Extensions

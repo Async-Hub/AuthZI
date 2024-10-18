@@ -1,4 +1,4 @@
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 {
     public static class CityClaim
     {

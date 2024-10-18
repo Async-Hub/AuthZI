@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authzi.Extensions\Authzi.Extensions.fsproj" />
-    <ProjectReference Include="..\Authzi.MicrosoftOrleans.Interoperability\Authzi.MicrosoftOrleans.Interoperability.csproj" />
-    <ProjectReference Include="..\Authzi.Security.Authorization\Authzi.Security.Authorization.csproj" />
-    <ProjectReference Include="..\Authzi.Security\Authzi.Security.fsproj" />
+    <ProjectReference Include="..\AuthZI.Extensions\AuthZI.Extensions.fsproj" />
+    <ProjectReference Include="..\AuthZI.MicrosoftOrleans.Interoperability\AuthZI.MicrosoftOrleans.Interoperability.csproj" />
+    <ProjectReference Include="..\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
+    <ProjectReference Include="..\AuthZI.Security\AuthZI.Security.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

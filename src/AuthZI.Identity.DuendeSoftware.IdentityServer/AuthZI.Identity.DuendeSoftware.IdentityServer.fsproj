@@ -21,11 +21,10 @@
 		<PackageReference Include="IdentityModel" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
 		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.1.2" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Authzi.Security\Authzi.Security.fsproj" />
+		<ProjectReference Include="..\AuthZI.Security\AuthZI.Security.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>

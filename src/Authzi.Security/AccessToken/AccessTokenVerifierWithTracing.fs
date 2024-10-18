@@ -1,4 +1,4 @@
-﻿namespace Authzi.Security.AccessToken
+﻿namespace AuthZI.Security.AccessToken
 
 open Microsoft.Extensions.Logging
 open System.Diagnostics

@@ -1,8 +1,8 @@
-using Authzi.IdentityServer4.AccessToken;
+using AuthZI.IdentityServer4.AccessToken;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Authzi.IdentityServer4.IntegrationTests
+namespace AuthZI.IdentityServer4.IntegrationTests
 {
     public class TokenVerificationTests : TestBase
     {

@@ -1,7 +1,7 @@
-﻿namespace Authzi.Identity.DuendeSoftware.IdentityServer
+﻿namespace AuthZI.Identity.DuendeSoftware.IdentityServer
 
-open Authzi.Security
-open Authzi.Security.AccessToken
+open AuthZI.Security
+open AuthZI.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
 open System
 open System.Runtime.CompilerServices

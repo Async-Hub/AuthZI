@@ -1,10 +1,10 @@
-﻿namespace Authzi.Security.AccessToken
+﻿namespace AuthZI.Security.AccessToken
 
 open System
 open System.Security.Cryptography
 open System.Text
 open System.Threading.Tasks
-open Authzi.Security.Caching
+open AuthZI.Security.Caching
 
 module Hashing =
     let tryToOptimize accessToken =

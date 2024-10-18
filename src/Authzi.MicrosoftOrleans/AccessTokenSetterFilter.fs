@@ -1,7 +1,7 @@
-﻿namespace Authzi.MicrosoftOrleans
+﻿namespace AuthZI.MicrosoftOrleans
 
-open Authzi.Extensions.TaskExtensions
-open Authzi.Security
+open AuthZI.Extensions.TaskExtensions
+open AuthZI.Security
 open Orleans
 open Orleans.Runtime
 open System

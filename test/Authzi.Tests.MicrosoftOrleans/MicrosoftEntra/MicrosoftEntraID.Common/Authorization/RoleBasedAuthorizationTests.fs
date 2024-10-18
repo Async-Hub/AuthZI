@@ -1,8 +1,8 @@
-namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
-open Authzi.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
-open Authzi.Security
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
+open AuthZI.Security
 open RootConfiguration
 open System.Threading.Tasks
 open Xunit

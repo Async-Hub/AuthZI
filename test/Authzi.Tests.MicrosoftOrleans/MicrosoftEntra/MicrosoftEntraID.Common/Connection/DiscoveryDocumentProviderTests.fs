@@ -1,6 +1,6 @@
-﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
-open Authzi.MicrosoftEntra
+open AuthZI.MicrosoftEntra
 open Xunit
 open Xunit.Abstractions
 

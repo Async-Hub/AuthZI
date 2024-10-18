@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// A type used to provide a <see cref="AuthorizationHandlerContext"/> used for authorization.

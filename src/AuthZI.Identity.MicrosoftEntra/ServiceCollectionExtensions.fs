@@ -1,10 +1,10 @@
-﻿namespace Authzi.MicrosoftEntra
+﻿namespace AuthZI.MicrosoftEntra
 
-open Authzi.Security
-open Authzi.Security.AccessToken
+open AuthZI.Security
+open AuthZI.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
 open System.Runtime.CompilerServices
-open Authzi.Identity.MicrosoftEntra
+open AuthZI.Identity.MicrosoftEntra
 
 [<Extension>]
 type ServiceCollectionExtensions = 
@@ -23,7 +23,3 @@ type ServiceCollectionExtensions =
             let discoveryDocumentProvider = DiscoveryDocumentProvider(azureActiveDirectoryApp.DiscoveryEndpointUrl)
 
             services.AddSingleton<DiscoveryDocumentProvider>(discoveryDocumentProvider) |> ignore
-
-
-                
-

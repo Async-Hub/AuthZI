@@ -1,7 +1,7 @@
 module ClusterSetup
 
 open Orleans
-open Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+open AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 open System.Threading.Tasks
 
 let initDocumentsRegistry (getClusterClient: string -> IClusterClient) =

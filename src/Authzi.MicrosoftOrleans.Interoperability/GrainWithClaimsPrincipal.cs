@@ -1,11 +1,11 @@
-using Authzi.Security;
+using AuthZI.Security;
 using Newtonsoft.Json;
 using Orleans;
 using Orleans.Runtime;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authzi.MicrosoftOrleans
+namespace AuthZI.MicrosoftOrleans
 {
     public class GrainWithClaimsPrincipal(IClaimTypeResolver claimTypeResolver) : Grain, IIncomingGrainCallFilter
     {

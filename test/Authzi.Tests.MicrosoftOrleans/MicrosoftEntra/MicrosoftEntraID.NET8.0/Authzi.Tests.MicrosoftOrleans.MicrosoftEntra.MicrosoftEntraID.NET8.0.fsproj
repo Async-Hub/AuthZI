@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8</RootNamespace>
+		<RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
@@ -31,8 +31,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\MicrosoftOrleans\MicrosoftEntra\Authzi.MicrosoftOrleans.MicrosoftEntra.fsproj" />
-	  <ProjectReference Include="..\MicrosoftEntraID.Common\Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+	  <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+	  <ProjectReference Include="..\MicrosoftEntraID.Common\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
 	</ItemGroup>
 
 	<ItemGroup>

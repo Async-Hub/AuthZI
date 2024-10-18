@@ -1,7 +1,7 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
-open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
+open AuthZI.Deploy.MicrosoftEntra.Configuration
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraUsers
 open Microsoft.Graph
 open Microsoft.Graph.Models
 

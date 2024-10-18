@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Authzi.Security.Authorization;
+using AuthZI.Security.Authorization;
 using Orleans;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
 {
     public interface IManagerGrain : IGrainWithStringKey
     {

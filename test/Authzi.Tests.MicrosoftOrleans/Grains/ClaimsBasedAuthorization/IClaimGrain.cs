@@ -1,8 +1,8 @@
-using Authzi.Security.Authorization;
+using AuthZI.Security.Authorization;
 using Orleans;
 using System.Threading.Tasks;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization;
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization;
 
 public interface IClaimGrain : IGrainWithStringKey
 {

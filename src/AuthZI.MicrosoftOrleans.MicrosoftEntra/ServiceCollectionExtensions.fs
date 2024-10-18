@@ -1,9 +1,9 @@
-﻿namespace Authzi.MicrosoftOrleans.MicrosoftEntra
+﻿namespace AuthZI.MicrosoftOrleans.MicrosoftEntra
 
-open Authzi.Identity.MicrosoftEntra
-open Authzi.MicrosoftEntra
-open Authzi.MicrosoftOrleans
-open Authzi.Security
+open AuthZI.Identity.MicrosoftEntra
+open AuthZI.MicrosoftEntra
+open AuthZI.MicrosoftOrleans
+open AuthZI.Security
 open Microsoft.Extensions.DependencyInjection
 open System
 open System.Runtime.CompilerServices

@@ -1,8 +1,8 @@
-namespace Authzi.Identity.MicrosoftEntra
+namespace AuthZI.Identity.MicrosoftEntra
 
-open Authzi.MicrosoftEntra
-open Authzi.Security
-open Authzi.Security.AccessToken
+open AuthZI.MicrosoftEntra
+open AuthZI.Security
+open AuthZI.Security.AccessToken
 open Microsoft.IdentityModel.Tokens
 open System.IdentityModel.Tokens.Jwt
 open System.Text

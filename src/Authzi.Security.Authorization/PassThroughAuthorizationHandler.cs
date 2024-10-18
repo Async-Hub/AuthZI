@@ -4,7 +4,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Infrastructure class which allows an <see cref="IAuthorizationRequirement"/> to

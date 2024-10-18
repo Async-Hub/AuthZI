@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization
 {
     public class SimpleGrain : Grain, ISimpleGrain
     {

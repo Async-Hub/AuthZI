@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval
 
 open Microsoft.Identity.Client
 

@@ -1,4 +1,4 @@
-﻿namespace Authzi.Security
+﻿namespace AuthZI.Security
 
 module ConfigurationKeys =
     let OAuth2EndpointInfoKey = "OAuth2EndpointInfoKey"

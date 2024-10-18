@@ -1,9 +1,9 @@
-﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 open AccessTokenProvider
-open Authzi.MicrosoftEntra
-open Authzi.Identity.MicrosoftEntra
-open Authzi.Security.AccessToken
+open AuthZI.MicrosoftEntra
+open AuthZI.Identity.MicrosoftEntra
+open AuthZI.Security.AccessToken
 open Xunit
 open Xunit.Abstractions
 

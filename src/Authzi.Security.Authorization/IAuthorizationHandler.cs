@@ -3,7 +3,7 @@
 
 using System.Threading.Tasks;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Classes implementing this interface are able to make a decision if authorization is allowed.

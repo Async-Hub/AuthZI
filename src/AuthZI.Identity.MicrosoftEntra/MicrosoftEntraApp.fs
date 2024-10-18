@@ -1,4 +1,4 @@
-﻿namespace Authzi.Identity.MicrosoftEntra
+﻿namespace AuthZI.Identity.MicrosoftEntra
 
 module Configuration =
     [<Literal>]

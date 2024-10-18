@@ -1,4 +1,4 @@
-﻿namespace Authzi.Security
+﻿namespace AuthZI.Security
 
 type ClaimType =
     | Role

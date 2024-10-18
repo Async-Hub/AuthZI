@@ -1,7 +1,7 @@
 ﻿module AccessTokenProvider
 
-open Authzi.MicrosoftEntra
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.MicrosoftEntra
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System.Threading.Tasks
 
 let getAccessTokenForUserAsync entraIDApp userName password =

@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Authzi.Security.Authorization library.</Description>
+    <Description>AuthZI.Security.Authorization library.</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageTags>Authzi;Authorization</PackageTags>
+    <PackageTags>AuthZI;Authorization</PackageTags>
     <EnableApiCheck>false</EnableApiCheck>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <!-- Publish symbols for debugging -->

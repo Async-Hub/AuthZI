@@ -1,6 +1,6 @@
-namespace Authzi.Identity.DuendeSoftware.IdentityServer
+namespace AuthZI.Identity.DuendeSoftware.IdentityServer
 
-open Authzi.Security.AccessToken
+open AuthZI.Security.AccessToken
 open IdentityModel.Client
 open Microsoft.Extensions.Logging
 open System.Net.Http

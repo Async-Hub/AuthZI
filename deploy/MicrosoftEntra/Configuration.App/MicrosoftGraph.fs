@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration
 
 open Microsoft.Graph
 open Microsoft.Identity.Client

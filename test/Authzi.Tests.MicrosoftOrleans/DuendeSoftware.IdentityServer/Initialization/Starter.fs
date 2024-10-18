@@ -1,13 +1,13 @@
 ﻿namespace Initialization
 
-open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
-open Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
+open AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+open AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
 open Microsoft.Extensions.DependencyInjection
 open Orleans
 open Xunit.Abstractions
 open Xunit.Sdk
 
-[<assembly: Orleans.ApplicationPartAttribute("Authzi.Tests.MicrosoftOrleans.Grains")>]
+[<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
 type Starter(messageSink: IMessageSink) =
@@ -34,7 +34,7 @@ module CurrentAssembly =
     [<Literal>]
     let TypeName = "Initialization.Starter"
     [<Literal>]
-    let Name = "Authzi.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer"
+    let Name = "AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer"
 
 [<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
 ()

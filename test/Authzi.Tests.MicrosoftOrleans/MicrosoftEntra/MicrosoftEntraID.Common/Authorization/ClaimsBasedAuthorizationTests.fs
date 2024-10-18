@@ -1,13 +1,13 @@
-namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
-open Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
-open Authzi.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
-open Authzi.Security
+open AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+open AuthZI.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
+open AuthZI.Security
 open RootConfiguration
 open System
 open System.Threading.Tasks
 open Xunit
-open Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 type ClaimsBasedAuthorizationTestsBase() =
     [<Theory>]

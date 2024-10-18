@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Orleans;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 {
     public class ClaimGrain : Grain, IClaimGrain
     {

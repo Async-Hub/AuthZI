@@ -1,4 +1,4 @@
-﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra
 
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting

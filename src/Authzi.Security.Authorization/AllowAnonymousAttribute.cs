@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Authzi.Security.Authorization
+namespace AuthZI.Security.Authorization
 {
     /// <summary>
     /// Specifies that the class or method that this attribute is applied to does not require authorization.

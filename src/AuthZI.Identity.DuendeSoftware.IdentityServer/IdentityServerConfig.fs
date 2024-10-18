@@ -1,10 +1,10 @@
-namespace Authzi.Identity.DuendeSoftware.IdentityServer
+namespace AuthZI.Identity.DuendeSoftware.IdentityServer
 
 open System.Runtime.InteropServices
 
 module Path=
-    [<Literal>]
-    let Url = ".well-known/openid-configuration"
+  [<Literal>]
+  let Url = ".well-known/openid-configuration"
 
 type IdentityServerConfig(url: string, clientId: string, clientSecret: string, allowedScope: string,
                          [<Optional; DefaultParameterValue(Path.Url)>]discoveryEndpointEndpointPath: string)=

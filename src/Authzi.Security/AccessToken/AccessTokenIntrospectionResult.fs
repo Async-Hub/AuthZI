@@ -1,4 +1,4 @@
-namespace Authzi.Security.AccessToken
+namespace AuthZI.Security.AccessToken
 
 open System.Collections.Generic
 open System.Security.Claims

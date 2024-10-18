@@ -1,9 +1,9 @@
-﻿namespace Authzi.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
-open Authzi.Deploy.MicrosoftEntra.Configuration
-open Authzi.Deploy.MicrosoftEntra.Configuration.Credentials.MicrosoftEntraID1
-open Authzi.Identity.MicrosoftEntra
-open Authzi.MicrosoftEntra
+open AuthZI.Deploy.MicrosoftEntra.Configuration
+open AuthZI.Deploy.MicrosoftEntra.Configuration.Credentials.MicrosoftEntraID1
+open AuthZI.Identity.MicrosoftEntra
+open AuthZI.MicrosoftEntra
 open Orleans
 
 type public TestData() =

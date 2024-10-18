@@ -1,4 +1,4 @@
-namespace Authzi.Security.AccessToken
+namespace AuthZI.Security.AccessToken
 
 type AccessTokenType =
     | Jwt = 0

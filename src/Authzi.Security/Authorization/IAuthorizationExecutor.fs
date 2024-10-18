@@ -1,4 +1,4 @@
-﻿namespace Authzi.Security.Authorization
+﻿namespace AuthZI.Security.Authorization
 
 open System.Collections.Generic
 open System.Security.Claims

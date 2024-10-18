@@ -1,6 +1,6 @@
-﻿namespace Authzi.MicrosoftEntra
+﻿namespace AuthZI.MicrosoftEntra
 
-open Authzi.Identity.MicrosoftEntra
+open AuthZI.Identity.MicrosoftEntra
 open Microsoft.Identity.Client
 
 // Username/Password flow to acquire a token silently. For testing purposes only!

@@ -1,7 +1,7 @@
-using Authzi.Security.Authorization;
+using AuthZI.Security.Authorization;
 using System.Threading.Tasks;
 
-namespace Authzi.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
+namespace AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
     public class DocRegistryAccessHandler : AuthorizationHandler<DocRegistryAccessRequirement>
     {

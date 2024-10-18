@@ -1,10 +1,10 @@
-﻿using Authzi.IdentityServer4.AccessToken;
-using Authzi.IdentityServer4.IntegrationTests.Configuration;
+﻿using AuthZI.IdentityServer4.AccessToken;
+using AuthZI.IdentityServer4.IntegrationTests.Configuration;
 using IdentityModel.Client;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Authzi.IdentityServer4.IntegrationTests
+namespace AuthZI.IdentityServer4.IntegrationTests
 {
     public class TestBase
     {

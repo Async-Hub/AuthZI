@@ -1,6 +1,6 @@
-﻿namespace Authzi.Security
+﻿namespace AuthZI.Security
 
 open System.Runtime.CompilerServices
 
-[<assembly: InternalsVisibleTo("Authzi.MicrosoftOrleans.Interoperability")>]
+[<assembly: InternalsVisibleTo("AuthZI.MicrosoftOrleans.Interoperability")>]
 do()
