@@ -6,11 +6,11 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Async-Hub_AuthZI&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Async-Hub_AuthZI)
 # **Auth**ori**z**ation **I**nteroperability – AuthZI for .NET
 
-## Do you like authorization philosophy implemented in **Microsoft ASP.NET**? **AuthZI** allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and IdentityServer4.  
+## Do you like authorization philosophy implemented in **Microsoft ASP.NET**? **AuthZI** allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende IdentityServer.
 
-## AuthZI project is open-source set of libraries for authorization interoperability for .NET by using OAuth 2.0.  
+## AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0.
 
-## Fore more information please visite the [project documentation site](https://authzi.asynchub.org/).  
+## Fore more information please visite the [project documentation site](https://authzi.asynchub.org/).
 
 # Quick start
 ## Please [see sample](https://github.com/Async-Hub/AuthZI-Samples) solutions for more details.

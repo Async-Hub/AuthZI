@@ -5,53 +5,68 @@ open IdentityModel.Client
 open Microsoft.Extensions.Logging
 open System.Net.Http
 
-type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactory,
-                                                     identityServerConfig : IdentityServerConfig,
-                                                     discoveryDocumentProvider:DiscoveryDocumentProvider,
-                                                     logger: ILogger<AccessTokenIntrospectionService> 
-                                                    )=
+type public AccessTokenIntrospectionService
+    (
+        httpClientFactory: IHttpClientFactory,
+        identityServerConfig: IdentityServerConfig,
+        discoveryDocumentProvider: DiscoveryDocumentProvider,
+        logger: ILogger<AccessTokenIntrospectionService>
+    ) =
     let httpClient = httpClientFactory.CreateClient "IdS4"
-    
-    
-    member private this.IntrospectTokenOnlineAsync (accessToken:string) (accessTokenType: AccessTokenType)
-            (discoveryDocument:DiscoveryDocument) =
-            async{
-                let request = new TokenIntrospectionRequest()
-                request.Address <- discoveryDocument.IntrospectionEndpoint
-                request.ClientId <- identityServerConfig.ClientId
-                request.Token <- accessToken
-                request.ClientSecret <- identityServerConfig.ClientSecret
-                
-                let! introspectionResponse = httpClient.IntrospectTokenAsync request |> Async.AwaitTask
-                let nameOfTokenType =
-                    match accessTokenType with
-                    | AccessTokenType.Jwt -> "JWT"
-                    |_-> "Reference"
-                
-                if not introspectionResponse.IsError then
-                    return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims,
-                                                          introspectionResponse.IsActive, "")
-                else
-                    // TODO: Log trace.
-                    return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims, false, "")
-            } |> Async.StartAsTask
-    
+
+    member private this.IntrospectTokenOnlineAsync
+        (accessToken: string)
+        (accessTokenType: AccessTokenType)
+        (discoveryDocument: DiscoveryDocument)
+        =
+        async {
+            let request = new TokenIntrospectionRequest()
+            request.Address <- discoveryDocument.IntrospectionEndpoint
+            request.ClientId <- identityServerConfig.ClientId
+            request.Token <- accessToken
+            request.ClientSecret <- identityServerConfig.ClientSecret
+
+            let! introspectionResponse = httpClient.IntrospectTokenAsync request |> Async.AwaitTask
+
+            let nameOfTokenType =
+                match accessTokenType with
+                | AccessTokenType.Jwt -> "JWT"
+                | _ -> "Reference"
+
+            if not introspectionResponse.IsError then
+                return
+                    AccessTokenIntrospectionResult(
+                        accessTokenType,
+                        introspectionResponse.Claims,
+                        introspectionResponse.IsActive,
+                        ""
+                    )
+            else
+                // TODO: Log trace.
+                return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims, false, "")
+        }
+        |> Async.StartAsTask
+
     interface IAccessTokenIntrospectionService with
         member this.IntrospectTokenAsync accessToken allowOfflineValidation =
-          async{
-              let accessTokenType = AccessTokenAnalyzer.GetTokenType accessToken
-              let! discoveryResponse = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
-              
-              if accessTokenType = AccessTokenType.Jwt && allowOfflineValidation then
-                  let claims = JwtSecurityTokenVerifier.Verify accessToken
-                                   identityServerConfig.AllowedScope discoveryResponse
-                  return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
-              else
-                  let! res = this.IntrospectTokenOnlineAsync accessToken accessTokenType discoveryResponse |> Async.AwaitTask
-                  return res
-          } |> Async.StartAsTask
-        end
-        
+            async {
+                let accessTokenType = AccessTokenAnalyzer.GetTokenType accessToken
+                let! discoveryResponse = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
+
+                if accessTokenType = AccessTokenType.Jwt && allowOfflineValidation then
+                    let claims =
+                        JwtSecurityTokenVerifier.Verify accessToken identityServerConfig.Audience discoveryResponse
+
+                    return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
+                else
+                    let! res =
+                        this.IntrospectTokenOnlineAsync accessToken accessTokenType discoveryResponse
+                        |> Async.AwaitTask
+
+                    return res
+            }
+            |> Async.StartAsTask
+
 //using System;
 //using System.Net.Http;
 //using System.Threading;
@@ -79,7 +94,7 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
 //            _logger = logger;
 //        }
 
-//        public async Task<AccessTokenIntrospectionResult> IntrospectTokenAsync(string accessToken, 
+//        public async Task<AccessTokenIntrospectionResult> IntrospectTokenAsync(string accessToken,
 //            bool allowOfflineValidation = false)
 //        {
 //            var accessTokenType = AccessTokenAnalyzer.GetTokenType(accessToken);
@@ -98,8 +113,8 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
 
 //            return introspectionResult;
 //        }
-        
-//        private async Task<AccessTokenIntrospectionResult> IntrospectTokenOnlineAsync(string accessToken, 
+
+//        private async Task<AccessTokenIntrospectionResult> IntrospectTokenOnlineAsync(string accessToken,
 //            AccessTokenType accessTokenType, DiscoveryDocumentShortInfo discoveryDocument)
 //        {
 
@@ -112,8 +127,8 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
 //            const string fullyQualifiedNameOfType =
 //                "IdentityModel.Client.HttpClientTokenIntrospectionExtensions, IdentityModel";
 
-//            dynamic request = 
-//                Activator.CreateInstance(Type.GetType("IdentityModel.Client.TokenIntrospectionRequest, IdentityModel", 
+//            dynamic request =
+//                Activator.CreateInstance(Type.GetType("IdentityModel.Client.TokenIntrospectionRequest, IdentityModel",
 //                    true));
 
 //            request.Address = discoveryDocument.IntrospectionEndpoint;
@@ -138,12 +153,12 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
 //                Token = accessToken,
 //                ClientSecret = _identityServer4Info.ClientSecret,
 //            };
-            
+
 //            var introspectionResponse = await _httpClient.IntrospectTokenAsync(request);
 //            */
 
 //            var nameOfTokenType = accessTokenType == AccessTokenType.Jwt ? "JWT" : "Reference";
-            
+
 //            // ReSharper disable once ConvertIfStatementToReturnStatement
 //            if (!introspectionResponse.IsError)
 //            {
@@ -155,7 +170,7 @@ type public AccessTokenIntrospectionService(httpClientFactory: IHttpClientFactor
 //                $"{LoggingEvents.AccessTokenValidationFailed.Name} Token type: {nameOfTokenType} " +
 //                $"Reason: {introspectionResponse.Error} " +
 //                $"Token value: {accessToken}");
-                
+
 //            return new AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims, false, null);
 //        }
 //    }

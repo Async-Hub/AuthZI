@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Tests
         run: |
-          dotnet test test/AuthZI.Security.IntegrationTests
+          dotnet test test/AuthZI.Tests.Security
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0

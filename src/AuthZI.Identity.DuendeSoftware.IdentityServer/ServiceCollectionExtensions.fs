@@ -3,12 +3,12 @@
 open AuthZI.Security
 open AuthZI.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
-open System
-open System.Runtime.CompilerServices
-open System.Net.Http
 open Microsoft.Extensions.Http
-open System.Security.Cryptography.X509Certificates
+open System
+open System.Net.Http
 open System.Net.Security
+open System.Runtime.CompilerServices
+open System.Security.Cryptography.X509Certificates
 
 module HttpClientConfiguration =
     let configureHttpMessageHandlerBuilder (builder: HttpMessageHandlerBuilder, securityOptions: SecurityOptions) =
@@ -51,4 +51,4 @@ type ServiceCollectionExtensions =
 
                 DiscoveryDocumentProvider(httpClientFactory, discoveryEndpointUrl, securityOptions)
 
-            services.AddSingleton<DiscoveryDocumentProvider>(fun provider -> providerFunc(provider)) |> ignore
+            services.AddSingleton<DiscoveryDocumentProvider>(providerFunc)  |> ignore

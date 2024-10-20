@@ -18,7 +18,7 @@ type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerif
     interface IIncomingGrainCallFilter with
         member _.Invoke(context: IIncomingGrainCallContext) =
             task {
-                if AuthorizationAdmission.IsRequired context then
+                if AuthorizationDeterminer.IsRequired context.InterfaceMethod then
                     let grainType = context.Grain.GetType()
                     if grainType.BaseType = typeof<GrainWithClaimsPrincipal> then
                         let! claims = this.AuthorizeAsync(context)

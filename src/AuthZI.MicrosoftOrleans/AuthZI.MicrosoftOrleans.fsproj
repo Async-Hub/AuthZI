@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="AuthorizationAdmission.fs" />
     <Compile Include="IncomingGrainCallAuthorizationFilter.fs" />
     <Compile Include="OutgoingGrainCallAuthorizationFilter.fs" />
     <Compile Include="AccessTokenSetterFilter.fs" />

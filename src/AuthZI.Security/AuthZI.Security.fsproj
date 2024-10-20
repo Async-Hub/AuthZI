@@ -11,6 +11,7 @@
 
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.fs" />
+		<Compile Include="AuthorizationDeterminer.fs" />
 		<Compile Include="IAccessTokenProvider.fs" />
 		<Compile Include="IClaimTypeResolver.fs" />
 		<Compile Include="ConfigurationKeys.fs" />

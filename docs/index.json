@@ -36,8 +36,8 @@
   },
   "index.html": {
     "href": "index.html",
-    "title": "Authorization Interoperability - AuthZI for Microsoft .NET | AuthZI",
-    "keywords": "Authorization Interoperability - AuthZI for Microsoft .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Azure Active Directory and IdentityServer4. AuthZI project is open-source set of libraries for authorization interoperability for Microsoft .NET by using OAuth 2.0."
+    "title": "Authorization Interoperability - AuthZI for .NET | AuthZI",
+    "keywords": "Authorization Interoperability - AuthZI for .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende IdentityServer. AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0."
   },
   "resources/introduction.html": {
     "href": "resources/introduction.html",
@@ -52,6 +52,6 @@
   "resources/microsoft-identity/how-to-do.html": {
     "href": "resources/microsoft-identity/how-to-do.html",
     "title": "How To Do? | AuthZI",
-    "keywords": "How To Do? Acquire a token from an edpoint Add app roles to your application and receive them in the token Configure optional claims How to protect APIs using the Microsoft identity platform Manage Azure AD B2C with Microsoft Graph Microsoft identity platform best practices and recommendations Permissions and consent in the Microsoft identity platform Resource Owner Password Credentials Token cache serialization in MSAL.NET Using directory schema extension attributes in claims Provide optional claims to your app"
+    "keywords": "How To Do? Application and service principal objects in Microsoft Entra ID Acquire a token from an edpoint Add app roles to your application and receive them in the token Configure optional claims How to protect APIs using the Microsoft identity platform Manage Azure AD B2C with Microsoft Graph Microsoft identity platform best practices and recommendations Permissions and consent in the Microsoft identity platform Resource Owner Password Credentials Token cache serialization in MSAL.NET Using directory schema extension attributes in claims Provide optional claims to your app Build a sample app to evaluate Microsoft Entra External ID"
   }
 }
