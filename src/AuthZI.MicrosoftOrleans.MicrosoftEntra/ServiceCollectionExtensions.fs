@@ -1,0 +1,39 @@
+﻿namespace AuthZI.MicrosoftOrleans.MicrosoftEntra
+
+open AuthZI.Identity.MicrosoftEntra
+open AuthZI.MicrosoftEntra
+open AuthZI.MicrosoftOrleans
+open AuthZI.Security
+open Microsoft.Extensions.DependencyInjection
+open System
+open System.Runtime.CompilerServices
+open System.Runtime.InteropServices
+
+[<Extension>]
+type ServiceCollectionExtensions = 
+    [<Extension>]
+    static member AddOrleansAuthorization(services: IServiceCollection, 
+        azureActiveDirectoryApp: MicrosoftEntraApp,
+        configure: Action<Configuration>, [<Optional; DefaultParameterValue(false)>] isCoHostedClient) =
+        
+        // Check parameters that might come from C#
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
+        if isNull (box configure) then nullArg(nameof configure)
+
+        services.AddAuthorization(configure, isCoHostedClient);
+        services.AddAzureActiveDirectoryAuthorization(azureActiveDirectoryApp) |> ignore
+
+    // For the production usage.
+    [<Extension>]
+    static member AddOrleansClientAuthorization(services: IServiceCollection,
+        azureActiveDirectoryApp: MicrosoftEntraApp,
+        configure: Action<Configuration>) =
+
+        // Check parameters that might come from C#
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
+        if isNull (box configure) then nullArg(nameof configure)
+
+        services.AddClientAuthorization(configure)
+        services.AddAzureActiveDirectoryAuthorization(azureActiveDirectoryApp) |> ignore

@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Initialization\SiloHostBuilder.fs" />
+		<Compile Include="Initialization\SiloClientBuilder.fs" />
+		<Compile Include="Initialization\TestData.fs" />
+		<Compile Include="Initialization\AccessTokenProvider.fs" />
+		<Compile Include="Initialization\RootConfiguration.fs" />
+		<Compile Include="Connection\ConnectionTests.fs" />
+		<Compile Include="Connection\DiscoveryDocumentProviderTests.fs" />
+		<Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
+		<Compile Include="Authorization\SimpleAuthorizationTests.fs" />
+		<Compile Include="Authorization\RoleBasedAuthorizationTests.fs" />
+		<Compile Include="Authorization\ClaimsBasedAuthorizationTests.fs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration\AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
+		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
+		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.Interoperability\AuthZI.MicrosoftOrleans.Interoperability.csproj" />
+		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+		<ProjectReference Include="..\..\Grains\AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
+	</ItemGroup>
+
+</Project>

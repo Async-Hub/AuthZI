@@ -1,9 +1,9 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval.AccessTokenProvider
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalIDSecrets
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftGraph
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID.Api
+open AuthZI.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval.AccessTokenProvider
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalIDSecrets
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftGraph
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID.Api
 
 module TenantConfiguration = 
     let start =

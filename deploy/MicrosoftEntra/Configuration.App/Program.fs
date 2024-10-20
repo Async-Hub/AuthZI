@@ -1,4 +1,4 @@
-﻿open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
+﻿open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
 [<EntryPoint>]
 let main argv =
