@@ -20,9 +20,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Graph" Version="5.61.0" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.65.0" />
-		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.13.1" />
+		<PackageReference Include="Microsoft.Graph" Version="5.62.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.66.1" />
+		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.14.0" />
 	</ItemGroup>
 
 	<ItemGroup>

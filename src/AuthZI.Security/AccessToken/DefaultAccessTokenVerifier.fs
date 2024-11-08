@@ -12,9 +12,7 @@ type DefaultAccessTokenVerifier(options: AccessTokenVerifierOptions,
 
                 let! introspectionResult = introspectionService.IntrospectTokenAsync accessToken
                                                options.AllowOfflineValidation |> Async.AwaitTask
-                if introspectionResult.IsValid then
-                    return AccessTokenVerificationResult.CreateSuccess
-                               (System.Nullable(introspectionResult.AccessTokenType), introspectionResult.Claims)
-                else return AccessTokenVerificationResult.CreateFailed(introspectionResult.Message)
+                
+                return introspectionResult
             }
             |> Async.StartAsTask

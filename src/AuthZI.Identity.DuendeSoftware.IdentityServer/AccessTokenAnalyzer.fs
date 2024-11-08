@@ -1,10 +1,10 @@
-namespace AuthZI.Security.AccessToken
+namespace AuthZI.Identity.DuendeSoftware.IdentityServer
 
-open System.IdentityModel.Tokens.Jwt
+open Microsoft.IdentityModel.JsonWebTokens
 
 module AccessTokenAnalyzer =
     let isAccessTokenJwtToken (accessToken: string) =
-        let handler = JwtSecurityTokenHandler()
+        let handler = JsonWebTokenHandler()
         handler.CanReadToken accessToken
 
     let GetTokenType accessToken =

@@ -31,11 +31,10 @@ type public AccessTokenIntrospectionService(azureActiveDirectoryApp: MicrosoftEn
     interface IAccessTokenIntrospectionService with
         member _.IntrospectTokenAsync accessToken allowOfflineValidation =
           async {
-              let accessTokenType = AccessTokenAnalyzer.GetTokenType accessToken
               let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
               
               let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
 
-              return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
+              return Ok(claims)
           } |> Async.StartAsTask
         end

@@ -27,8 +27,10 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
             let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false |> Async.AwaitTask
             
+            let isSuccess = match result with Ok _ -> true | _ -> false
+
             // Act
-            Assert.True(result.IsValid)
+            Assert.True(isSuccess)
          }
 
 

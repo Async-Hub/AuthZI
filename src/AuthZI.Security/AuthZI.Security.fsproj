@@ -17,12 +17,10 @@
 		<Compile Include="ConfigurationKeys.fs" />
 		<Compile Include="AuthorizationException.fs" />
 		<Compile Include="LoggingEvents.fs" />
-		<Compile Include="GlobalSettings.fs" />
+		<Compile Include="SecurityOptions.fs" />
 		<Compile Include="Caching\IAccessTokenCache.fs" />
 		<Compile Include="Caching\AccessTokenCache.fs" />
 		<Compile Include="AccessToken\InvalidAccessTokenException.fs" />
-		<Compile Include="AccessToken\AccessTokenType.fs" />
-		<Compile Include="AccessToken\AccessTokenAnalyzer.fs" />
 		<Compile Include="AccessToken\AccessTokenIntrospectionResult.fs" />
 		<Compile Include="AccessToken\IAccessTokenIntrospectionService.fs" />
 		<Compile Include="AccessToken\AccessTokenVerificationResult.fs" />
@@ -40,7 +38,6 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>

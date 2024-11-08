@@ -1,7 +1,9 @@
 namespace AuthZI.Security.AccessToken
 
+open System.Collections.Generic
+open System.Security.Claims
 open System.Threading.Tasks
 
 type public IAccessTokenIntrospectionService =
-    abstract IntrospectTokenAsync: accessToken:string
-     -> allowOfflineValidation:bool -> Task<AccessTokenIntrospectionResult>
+  abstract IntrospectTokenAsync:
+    accessToken: string -> allowOfflineValidation: bool -> Task<Result<IEnumerable<Claim>, string>>

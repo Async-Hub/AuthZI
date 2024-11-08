@@ -33,17 +33,11 @@ type public AccessTokenIntrospectionService
                 | AccessTokenType.Jwt -> "JWT"
                 | _ -> "Reference"
 
-            if not introspectionResponse.IsError then
-                return
-                    AccessTokenIntrospectionResult(
-                        accessTokenType,
-                        introspectionResponse.Claims,
-                        introspectionResponse.IsActive,
-                        ""
-                    )
+            if (not introspectionResponse.IsError) && introspectionResponse.IsActive then
+                return Ok(introspectionResponse.Claims)
             else
                 // TODO: Log trace.
-                return AccessTokenIntrospectionResult(accessTokenType, introspectionResponse.Claims, false, "")
+                return Error("Access token introspection failed.")
         }
         |> Async.StartAsTask
 
@@ -57,7 +51,7 @@ type public AccessTokenIntrospectionService
                     let claims =
                         JwtSecurityTokenVerifier.Verify accessToken identityServerConfig.Audience discoveryResponse
 
-                    return AccessTokenIntrospectionResult(accessTokenType, claims, true, "")
+                    return Ok(claims)
                 else
                     let! res =
                         this.IntrospectTokenOnlineAsync accessToken accessTokenType discoveryResponse
