@@ -1,52 +1,64 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuthZI.Security.Authorization
+namespace AuthZI.Security.Authorization;
+
+/// <summary>
+/// Implements an <see cref="IAuthorizationHandler"/> and <see cref="IAuthorizationRequirement"/>
+/// which requires the current user name must match the specified value.
+/// </summary>
+public class NameAuthorizationRequirement : AuthorizationHandler<NameAuthorizationRequirement>, IAuthorizationRequirement
 {
     /// <summary>
-    /// Implements an <see cref="IAuthorizationHandler"/> and <see cref="IAuthorizationRequirement"/>
-    /// which requires the current user name must match the specified value.
+    /// Constructs a new instance of <see cref="NameAuthorizationRequirement"/>.
     /// </summary>
-    public class NameAuthorizationRequirement : AuthorizationHandler<NameAuthorizationRequirement>, IAuthorizationRequirement
+    /// <param name="requiredName">The required name that the current user must have.</param>
+    public NameAuthorizationRequirement(string requiredName)
     {
-        /// <summary>
-        /// Constructs a new instance of <see cref="NameAuthorizationRequirement"/>.
-        /// </summary>
-        /// <param name="requiredName">The required name that the current user must have.</param>
-        public NameAuthorizationRequirement(string requiredName)
+        ArgumentNullThrowHelper.ThrowIfNull(requiredName);
+
+        RequiredName = requiredName;
+    }
+
+    /// <summary>
+    /// Gets the required name that the current user must have.
+    /// </summary>
+    public string RequiredName { get; }
+
+    /// <summary>
+    /// Makes a decision if authorization is allowed based on a specific requirement.
+    /// </summary>
+    /// <param name="context">The authorization context.</param>
+    /// <param name="requirement">The requirement to evaluate.</param>
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, NameAuthorizationRequirement requirement)
+    {
+        if (context.User != null)
         {
-            if (requiredName == null)
+            var succeed = false;
+
+            foreach (var identity in context.User.Identities)
             {
-                throw new ArgumentNullException(nameof(requiredName));
-            }
-
-            RequiredName = requiredName;
-        }
-
-        /// <summary>
-        /// Gets the required name that the current user must have.
-        /// </summary>
-        public string RequiredName { get; }
-
-        /// <summary>
-        /// Makes a decision if authorization is allowed based on a specific requirement.
-        /// </summary>
-        /// <param name="context">The authorization context.</param>
-        /// <param name="requirement">The requirement to evaluate.</param>
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, NameAuthorizationRequirement requirement)
-        {
-            if (context.User != null)
-            {
-                if (context.User.Identities.Any(i => string.Equals(i.Name, requirement.RequiredName)))
+                if (string.Equals(identity.Name, requirement.RequiredName, StringComparison.Ordinal))
                 {
-                    context.Succeed(requirement);
+                    succeed = true;
+                    break;
                 }
             }
-            return Task.CompletedTask;
+
+            if (succeed)
+            {
+                context.Succeed(requirement);
+            }
         }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return $"{nameof(NameAuthorizationRequirement)}:Requires a user identity with Name equal to {RequiredName}";
     }
 }

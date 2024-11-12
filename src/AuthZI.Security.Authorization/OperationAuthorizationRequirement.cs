@@ -1,17 +1,22 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
-namespace AuthZI.Security.Authorization
+namespace AuthZI.Security.Authorization;
+
+/// <summary>
+/// A helper class to provide a useful <see cref="IAuthorizationRequirement"/> which
+/// contains a name.
+/// </summary>
+public class OperationAuthorizationRequirement : IAuthorizationRequirement
 {
     /// <summary>
-    /// A helper class to provide a useful <see cref="IAuthorizationRequirement"/> which
-    /// contains a name.
+    /// The name of this instance of <see cref="IAuthorizationRequirement"/>.
     /// </summary>
-    public class OperationAuthorizationRequirement : IAuthorizationRequirement
+    public string Name { get; set; } = default!;
+
+    /// <inheritdoc />
+    public override string ToString()
     {
-        /// <summary>
-        /// The name of this instance of <see cref="IAuthorizationRequirement"/>.
-        /// </summary>
-        public string Name { get; set; }
+        return $"{nameof(OperationAuthorizationRequirement)}:Name={Name}";
     }
 }
