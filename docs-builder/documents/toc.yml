@@ -1,7 +1,7 @@
 - name: Introduction
-  href: index.md
+  href: introduction.md
 - name: Microsoft Orleans
-  href: microsoft-orleans/index.md
+  href: microsoft-orleans/microsoft-orleans.md
   items:
     - name: Simple authorization
       href: microsoft-orleans/simple-authorization.md

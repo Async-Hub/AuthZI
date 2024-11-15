@@ -11,3 +11,15 @@ ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende Id
 \
 \
 AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0.
+
+![AuthZI for Microsoft Orleans](documents/microsoft-orleans/authzi-for-microsoft-orleans.svg)
+
+---
+
+### License
+
+AuthZI is distributed by an MIT license.
+
+### Contributing
+
+Contributions are welcome, please contact [via Azure DevOps](https://dev.azure.com/async-hub/AuthZI/_workitems/recentlyupdated/), email <admin@asynchub.org>, or any other method with the owners of this repository.

@@ -12,5 +12,7 @@
 
 ## Fore more information please visite the [project documentation site](https://authzi.asynchub.org/).
 
+![AuthZI for Microsoft Orleans](docs-builder/documents/microsoft-orleans/authzi-for-microsoft-orleans.svg)
+
 # Quick start
 ## Please [see sample](https://github.com/Async-Hub/AuthZI-Samples) solutions for more details.

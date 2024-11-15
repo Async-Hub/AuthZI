@@ -12,30 +12,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documents/index.md",
+      "source_relative_path": "documents/Introduction.md",
       "output": {
         ".html": {
-          "relative_path": "documents/index.html"
+          "relative_path": "documents/Introduction.html"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "documents/microsoft-orleans/Index1.jpg",
+      "source_relative_path": "documents/microsoft-orleans/authzi-for-microsoft-orleans.svg",
       "output": {
         "resource": {
-          "relative_path": "documents/microsoft-orleans/Index1.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "documents/microsoft-orleans/Index2.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "documents/microsoft-orleans/Index2.jpg"
+          "relative_path": "documents/microsoft-orleans/authzi-for-microsoft-orleans.svg"
         }
       },
       "version": ""
@@ -52,10 +42,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documents/microsoft-orleans/index.md",
+      "source_relative_path": "documents/microsoft-orleans/microsoft-orleans.md",
       "output": {
         ".html": {
-          "relative_path": "documents/microsoft-orleans/index.html"
+          "relative_path": "documents/microsoft-orleans/microsoft-orleans.html"
         }
       },
       "version": ""
@@ -91,6 +81,16 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "documents/microsoft-orleans/round-trip-to-the-protected-grain.png",
+      "output": {
+        "resource": {
+          "relative_path": "documents/microsoft-orleans/round-trip-to-the-protected-grain.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "documents/microsoft-orleans/simple-authorization.md",
       "output": {
@@ -109,6 +109,26 @@
         },
         ".json": {
           "relative_path": "documents/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
         }
       },
       "version": ""
