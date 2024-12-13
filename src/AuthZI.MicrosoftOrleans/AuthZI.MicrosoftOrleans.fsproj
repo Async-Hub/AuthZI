@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="OrleansAuthorizationConfiguration.fs" />
+    <Compile Include="SecureGrain.fs" />
     <Compile Include="IncomingGrainCallAuthorizationFilter.fs" />
     <Compile Include="OutgoingGrainCallAuthorizationFilter.fs" />
     <Compile Include="AccessTokenSetterFilter.fs" />

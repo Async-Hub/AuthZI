@@ -75,6 +75,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.Security", "test\AuthZI.Tests.Security\AuthZI.Tests.Security.fsproj", "{9E6C231B-8D16-4B20-8036-E4E805A3C518}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B4DA86A3-81A0-46A5-ABAA-D571E5B07A07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microsoft-orleans", "microsoft-orleans", "{C9F0A6EA-F7B7-4D30-A9B2-D43D10B80026}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{E916AE94-8E73-444F-A066-1B3CF50AB8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer", "samples\microsoft-orleans\IdentityServer\AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer\AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer.csproj", "{77084CF2-3239-4A34-B265-E155780FF66D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient", "samples\microsoft-orleans\IdentityServer\AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient\AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient.csproj", "{3886A378-0CD3-48A4-891D-1601EB841316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost", "samples\microsoft-orleans\IdentityServer\AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost\AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost.csproj", "{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +169,18 @@ Global
 		{9E6C231B-8D16-4B20-8036-E4E805A3C518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E6C231B-8D16-4B20-8036-E4E805A3C518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E6C231B-8D16-4B20-8036-E4E805A3C518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77084CF2-3239-4A34-B265-E155780FF66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77084CF2-3239-4A34-B265-E155780FF66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77084CF2-3239-4A34-B265-E155780FF66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77084CF2-3239-4A34-B265-E155780FF66D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3886A378-0CD3-48A4-891D-1601EB841316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3886A378-0CD3-48A4-891D-1601EB841316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3886A378-0CD3-48A4-891D-1601EB841316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3886A378-0CD3-48A4-891D-1601EB841316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +213,11 @@ Global
 		{5214C3BE-8EF7-43C7-92FD-B6109BF00834} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{66DAECFF-B6B4-433B-BF4F-847EFC96A4A5} = {EAB45ACE-F4DA-4F32-AE4E-562749D210D3}
 		{9E6C231B-8D16-4B20-8036-E4E805A3C518} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
+		{C9F0A6EA-F7B7-4D30-A9B2-D43D10B80026} = {B4DA86A3-81A0-46A5-ABAA-D571E5B07A07}
+		{E916AE94-8E73-444F-A066-1B3CF50AB8FB} = {C9F0A6EA-F7B7-4D30-A9B2-D43D10B80026}
+		{77084CF2-3239-4A34-B265-E155780FF66D} = {E916AE94-8E73-444F-A066-1B3CF50AB8FB}
+		{3886A378-0CD3-48A4-891D-1601EB841316} = {E916AE94-8E73-444F-A066-1B3CF50AB8FB}
+		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F} = {E916AE94-8E73-444F-A066-1B3CF50AB8FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}

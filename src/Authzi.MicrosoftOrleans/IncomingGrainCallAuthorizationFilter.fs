@@ -13,8 +13,10 @@ open System.Threading.Tasks
 type IncomingGrainCallAuthorizationFilter(accessTokenVerifier: IAccessTokenVerifier,
     authorizeHandler: IAuthorizationExecutor, logger: ILogger<IncomingGrainCallAuthorizationFilter>) as this =
     inherit GrainAuthorizationFilterBase(accessTokenVerifier, authorizeHandler, logger)
+    
     member _.AuthorizeAsync(context) = base.AuthorizeAsync(context)
     member _.Log(eventId, grainTypeName, interfaceMethodName) = base.Log(eventId, grainTypeName, interfaceMethodName)
+    
     interface IIncomingGrainCallFilter with
         member _.Invoke(context: IIncomingGrainCallContext) =
             task {

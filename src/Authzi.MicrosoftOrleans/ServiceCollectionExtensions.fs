@@ -23,6 +23,9 @@ type internal ServiceCollectionExtensions =
         let configuration = Configuration()
         configure.Invoke(configuration)
 
+        if isNull (configuration.ConfigureAuthorizationOptions)
+           then configuration.ConfigureAuthorizationOptions <- fun _ -> ()
+
         services.AddAuthorizationCore(configuration.ConfigureAuthorizationOptions) |> ignore
         services.TryAdd(ServiceDescriptor.Singleton<IAuthorizationExecutor, AuthorizationExecutor>(): ServiceDescriptor)
 
@@ -41,6 +44,7 @@ type internal ServiceCollectionExtensions =
         services.Add(ServiceDescriptor.Singleton(accessTokenVerifierOptions))
 
         services.TryAddSingleton<IAccessTokenVerifier, DefaultAccessTokenVerifier>()
+        services.TryAddScoped<SecureGrainContext>()
         
         let memoryCacheOptions = MemoryCacheOptions()
         services.AddSingleton<IAccessTokenCache>(Func<IServiceProvider, IAccessTokenCache>(fun _ -> 
@@ -70,4 +74,16 @@ type internal ServiceCollectionExtensions =
         services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>() |> ignore
         services.AddSingleton<IOutgoingGrainCallFilter, OutgoingGrainCallAuthorizationFilter>() |> ignore
         
+        ServiceCollectionExtensions.RegisterServices(services, configure, null)
+
+    [<Extension>]
+    static member internal AddAuthorizationNew(services: IServiceCollection,
+        configure: Action<Configuration>, orleansAuthorizationConfiguration: OrleansAuthorizationConfiguration) =
+        
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box configure) then nullArg(nameof configure)
+        if isNull (box orleansAuthorizationConfiguration) then nullArg(nameof orleansAuthorizationConfiguration)
+
+        services.AddSingleton(orleansAuthorizationConfiguration) |> ignore
+
         ServiceCollectionExtensions.RegisterServices(services, configure, null)

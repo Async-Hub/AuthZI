@@ -7,6 +7,7 @@ open Microsoft.Extensions.DependencyInjection
 open System
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
+open AuthZI.MicrosoftOrleans.Authorization
 
 module internal ConfigurationExtensions =
     let getSecurityOptions (configure: Action<Configuration>) =
@@ -47,4 +48,19 @@ type ServiceCollectionExtensions =
         let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
 
         services.AddClientAuthorization(configure)
+        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
+
+    [<Extension>]
+    static member AddAuthorization(services: IServiceCollection, 
+        identityServerConfig: IdentityServerConfig,
+        configure: Action<Configuration>, orleansAuthorizationConfiguration: OrleansAuthorizationConfiguration) =
+        
+        // Check parameters that might come from C#
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
+        if isNull (box configure) then nullArg(nameof configure)
+
+        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+
+        services.AddAuthorizationNew(configure, orleansAuthorizationConfiguration);
         services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
