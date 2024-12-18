@@ -1,6 +1,6 @@
-﻿namespace AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+﻿namespace AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer
 
-open AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer
+open AuthZI.MicrosoftOrleans.Duende.IdentityServer
 open AuthZI.Security
 open AuthZI.Security.Authorization
 open AuthZI.Tests.MicrosoftOrleans.Grains

@@ -1,7 +1,7 @@
-namespace AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+namespace AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer
 
 open AuthZI.Security
-open AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
+open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.GlobalConfig
 open AuthZI.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 open System
 open Xunit

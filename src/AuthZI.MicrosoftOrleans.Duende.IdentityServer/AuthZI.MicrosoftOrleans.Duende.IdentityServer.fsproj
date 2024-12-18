@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AuthZI.Identity.DuendeSoftware.IdentityServer\AuthZI.Identity.DuendeSoftware.IdentityServer.fsproj" />
+	  <ProjectReference Include="..\AuthZI.Identity.Duende.IdentityServer\AuthZI.Identity.Duende.IdentityServer.fsproj" />
 	  <ProjectReference Include="..\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
 	</ItemGroup>
 

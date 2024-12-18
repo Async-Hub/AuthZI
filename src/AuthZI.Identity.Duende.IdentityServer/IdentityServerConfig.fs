@@ -1,4 +1,4 @@
-namespace AuthZI.Identity.DuendeSoftware.IdentityServer
+namespace AuthZI.Identity.Duende.IdentityServer
 
 open System.Runtime.InteropServices
 

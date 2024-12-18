@@ -1,6 +1,6 @@
 module IdentityServerClients
 
-open AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
+open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.GlobalConfig
 open Duende.IdentityServer.Models
 
 let getClients() =

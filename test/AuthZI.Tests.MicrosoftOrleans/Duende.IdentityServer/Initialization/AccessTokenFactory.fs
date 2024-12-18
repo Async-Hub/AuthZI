@@ -1,6 +1,6 @@
 module AccessTokenFactory
 
-open AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.GlobalConfig
+open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.GlobalConfig
 open IdentityModel.Client
 open System.Net.Http
 

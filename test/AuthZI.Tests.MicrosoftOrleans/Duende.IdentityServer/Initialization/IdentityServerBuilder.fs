@@ -1,6 +1,6 @@
-﻿namespace AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+﻿namespace AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer
 
-open AuthZI.Identity.DuendeSoftware.IdentityServer
+open AuthZI.Identity.Duende.IdentityServer
 open Duende.IdentityServer.Services
 open IdentityModel.Client
 open Microsoft.AspNetCore.Builder

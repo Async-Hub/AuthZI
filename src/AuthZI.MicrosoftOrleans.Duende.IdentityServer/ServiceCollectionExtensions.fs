@@ -1,6 +1,6 @@
-﻿namespace AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer
+﻿namespace AuthZI.MicrosoftOrleans.Duende.IdentityServer
 
-open AuthZI.Identity.DuendeSoftware.IdentityServer
+open AuthZI.Identity.Duende.IdentityServer
 open AuthZI.MicrosoftOrleans
 open AuthZI.Security
 open Microsoft.Extensions.DependencyInjection

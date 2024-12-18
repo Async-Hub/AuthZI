@@ -1,4 +1,4 @@
-namespace AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer
+namespace AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer
 
 open AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization

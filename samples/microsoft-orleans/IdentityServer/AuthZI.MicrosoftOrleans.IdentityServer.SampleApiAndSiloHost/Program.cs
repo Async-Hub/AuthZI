@@ -1,6 +1,6 @@
-using AuthZI.Identity.DuendeSoftware.IdentityServer;
+using AuthZI.Identity.Duende.IdentityServer;
 using AuthZI.MicrosoftOrleans.Authorization;
-using AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer;
+using AuthZI.MicrosoftOrleans.Duende.IdentityServer;
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost;
 using AuthZI.Security;
 using Microsoft.AspNetCore.DataProtection;

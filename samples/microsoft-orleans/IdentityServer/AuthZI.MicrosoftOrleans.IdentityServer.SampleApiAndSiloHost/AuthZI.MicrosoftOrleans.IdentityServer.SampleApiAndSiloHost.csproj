@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer\AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer.fsproj" />
+    <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.Duende.IdentityServer\AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
     <ProjectReference Include="..\..\..\..\src\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
   </ItemGroup>
 

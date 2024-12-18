@@ -41,7 +41,7 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrlea
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0", "test\AuthZI.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraID.NET8.0\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0.fsproj", "{5F43CF15-F3A3-4E19-96EF-120E409AD19F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DuendeSoftware.IdentityServer", "DuendeSoftware.IdentityServer", "{E179E8EF-609E-49D7-97D2-AF2A13226555}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Duende.IdentityServer", "Duende.IdentityServer", "{E179E8EF-609E-49D7-97D2-AF2A13226555}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0", "test\AuthZI.Tests.MicrosoftOrleans\MicrosoftEntra\AzureActiveDirectoryB2C.NET8.0\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj", "{E2A6197F-53ED-43E5-9762-A12936841655}"
 EndProject
@@ -58,13 +58,13 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Deploy.MicrosoftEntr
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8.0", "test\AuthZI.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraExternalID.NET8.0\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8.0.fsproj", "{195766D8-36C8-4229-BAB6-10E0FF297347}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer", "test\AuthZI.Tests.MicrosoftOrleans\DuendeSoftware.IdentityServer\AuthZI.Tests.MicrosoftOrleans.DuendeSoftware.IdentityServer.fsproj", "{5A588787-A454-4283-8E0D-D6D7B589518C}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer", "test\AuthZI.Tests.MicrosoftOrleans\Duende.IdentityServer\AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.fsproj", "{5A588787-A454-4283-8E0D-D6D7B589518C}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Identity.DuendeSoftware.IdentityServer", "src\AuthZI.Identity.DuendeSoftware.IdentityServer\AuthZI.Identity.DuendeSoftware.IdentityServer.fsproj", "{EED829CF-8E15-4908-9419-8239BB0B9F91}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Identity.Duende.IdentityServer", "src\AuthZI.Identity.Duende.IdentityServer\AuthZI.Identity.Duende.IdentityServer.fsproj", "{EED829CF-8E15-4908-9419-8239BB0B9F91}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.Identity.MicrosoftEntra", "src\AuthZI.Identity.MicrosoftEntra\AuthZI.Identity.MicrosoftEntra.fsproj", "{C55E1490-5432-4C0F-8E8F-B65812120FEC}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer", "src\AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer\AuthZI.MicrosoftOrleans.DuendeSoftware.IdentityServer.fsproj", "{5214C3BE-8EF7-43C7-92FD-B6109BF00834}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.MicrosoftOrleans.Duende.IdentityServer", "src\AuthZI.MicrosoftOrleans.Duende.IdentityServer\AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj", "{5214C3BE-8EF7-43C7-92FD-B6109BF00834}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AuthZI.MicrosoftOrleans.MicrosoftEntra", "src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj", "{66DAECFF-B6B4-433B-BF4F-847EFC96A4A5}"
 EndProject
