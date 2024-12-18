@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="AssemblyInfo.fs" />
+		<Compile Include="AccessTokenType.fs" />
+		<Compile Include="ClaimTypeResolver.fs" />
+		<Compile Include="AccessTokenAnalyzer.fs" />
+		<Compile Include="IdentityServerConfig.fs" />
+		<Compile Include="DiscoveryDocument.fs" />
+		<Compile Include="DiscoveryDocumentProvider.fs" />
+		<Compile Include="JwtSecurityTokenVerifier.fs" />
+		<Compile Include="AccessTokenIntrospectionService.fs" />
+		<Compile Include="ServiceCollectionExtensions.fs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="IdentityModel" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AuthZI.Security\AuthZI.Security.fsproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
+	</ItemGroup>
+
+</Project>

@@ -14,7 +14,7 @@
       {
         "files": [
           "images/**",
-          "documents/**/*.jpg"
+          "documents/**/*.{jpg,png,svg}"
         ]
       }
     ],
@@ -26,8 +26,8 @@
       "_appName": "AuthZI",
       "_appTitle": "AuthZI",
       "_appFooter": "AuthZI",
-      "_appLogoPath": "",
-      "_appFaviconPath": "",
+      "_appLogoPath": "images/logo.svg",
+      "_appFaviconPath": "images/favicon.ico",
       "_enableSearch": true,
       "_disableContribution": true,
       "pdf": false

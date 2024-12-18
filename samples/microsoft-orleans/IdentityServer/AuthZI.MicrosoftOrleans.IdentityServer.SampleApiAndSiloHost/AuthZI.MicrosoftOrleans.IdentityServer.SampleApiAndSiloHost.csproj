@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.Duende.IdentityServer\AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
+    <ProjectReference Include="..\..\..\..\src\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
+  </ItemGroup>
+
+</Project>

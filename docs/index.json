@@ -1,18 +1,18 @@
 {
-  "documents/index.html": {
-    "href": "documents/index.html",
-    "title": "Overview | AuthZI",
-    "keywords": "Overview Authorization refers to the process that determines what a user is able to do. For example, an administrative user is allowed to create a document library, add documents, edit documents, and delete them. A non-administrative user working with the library is only authorized to read the documents. Authorization is orthogonal and independent from authentication. However, authorization requires an authentication mechanism. Authentication is the process of ascertaining who a user is. Authentication may create one or more identities for the current user. Note Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about ASP.NET Core authorization here."
+  "documents/Introduction.html": {
+    "href": "documents/Introduction.html",
+    "title": "Introduction | AuthZI",
+    "keywords": "Introduction Authorization refers to the process that determines what a user is able to do. For example, an administrative user is allowed to create a document library, add documents, edit documents, and delete them. A non-administrative user working with the library is only authorized to read the documents. Authorization is orthogonal and independent from authentication. However, authorization requires an authentication mechanism. Authentication is the process of ascertaining who a user is. Authentication may create one or more identities for the current user."
   },
   "documents/microsoft-orleans/claims-based-authorization.html": {
     "href": "documents/microsoft-orleans/claims-based-authorization.html",
     "title": "Claims-based authorization | AuthZI",
     "keywords": "Claims-based authorization The documentation will be available soon. You can also use ASP.NET Core docs."
   },
-  "documents/microsoft-orleans/index.html": {
-    "href": "documents/microsoft-orleans/index.html",
+  "documents/microsoft-orleans/microsoft-orleans.html": {
+    "href": "documents/microsoft-orleans/microsoft-orleans.html",
     "title": "Authorization functionality for Microsoft Orleans | AuthZI",
-    "keywords": "Authorization functionality for Microsoft Orleans The set of security packages for Microsoft Orleans 3.* provide the ability to use the same authorization functionality which is used in ASP.NET Core It allows to use Azure Active Directory or IdentityServer4 v4.0 with MS Orleans grains and any ASP.NET Core 3.* or 5.* application. The image below shows a round trip to the protected grain. Get started now View it on GitHub Getting started Dependencies There are two packages: Orleans.Security.Cluster and Orleans.Security.ClusterClient. The first is for a silo host project and the seccond for an Orleans cluster client. Quick start Please see sample solutions for more details. License AuthZI is distributed by an MIT license. Contributing Contributions are welcome, please contact via Azure DevOps, email admin@asynchub.org, or any other method with the owners of this repository."
+    "keywords": "Authorization functionality for Microsoft Orleans The set of security packages for Microsoft Orleans 8.* provide the ability to use the same authorization functionality which is used in ASP.NET Core. It allows to use Microsoft Entra and Duende IdentityServer with MS Orleans grains and any ASP.NET Core 8.* application. Note Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about ASP.NET Core authorization here. The image below shows a round trip to the protected grain. Get started now View it on GitHub Getting started Dependencies There are two packages: Orleans.Security.Cluster and Orleans.Security.ClusterClient. The first is for a silo host project and the seccond for an Orleans cluster client. Quick start Please see sample solutions for more details."
   },
   "documents/microsoft-orleans/policy-based-authorization.html": {
     "href": "documents/microsoft-orleans/policy-based-authorization.html",
@@ -36,8 +36,8 @@
   },
   "index.html": {
     "href": "index.html",
-    "title": "Authorization Interoperability - AuthZI for Microsoft .NET | AuthZI",
-    "keywords": "Authorization Interoperability - AuthZI for Microsoft .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Azure Active Directory and IdentityServer4. AuthZI project is open-source set of libraries for authorization interoperability for Microsoft .NET by using OAuth 2.0."
+    "title": "Authorization Interoperability - AuthZI for .NET | AuthZI",
+    "keywords": "Authorization Interoperability - AuthZI for .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende IdentityServer. AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0. License AuthZI is distributed by an MIT license. Contributing Contributions are welcome, please contact via Azure DevOps, email admin@asynchub.org, or any other method with the owners of this repository."
   },
   "resources/introduction.html": {
     "href": "resources/introduction.html",
@@ -52,6 +52,6 @@
   "resources/microsoft-identity/how-to-do.html": {
     "href": "resources/microsoft-identity/how-to-do.html",
     "title": "How To Do? | AuthZI",
-    "keywords": "How To Do? Acquire a token from an edpoint Add app roles to your application and receive them in the token Configure optional claims How to protect APIs using the Microsoft identity platform Manage Azure AD B2C with Microsoft Graph Microsoft identity platform best practices and recommendations Permissions and consent in the Microsoft identity platform Resource Owner Password Credentials Token cache serialization in MSAL.NET Using directory schema extension attributes in claims Provide optional claims to your app"
+    "keywords": "How To Do? Application and service principal objects in Microsoft Entra ID Acquire a token from an edpoint Add app roles to your application and receive them in the token Configure optional claims How to protect APIs using the Microsoft identity platform Manage Azure AD B2C with Microsoft Graph Microsoft identity platform best practices and recommendations Permissions and consent in the Microsoft identity platform Resource Owner Password Credentials Token cache serialization in MSAL.NET Using directory schema extension attributes in claims Provide optional claims to your app Build a sample app to evaluate Microsoft Entra External ID"
   }
 }

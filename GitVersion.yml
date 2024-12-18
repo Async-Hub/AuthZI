@@ -1,5 +1,6 @@
-mode: ContinuousDelivery
-branches: {}
-ignore:
-  sha: []
-merge-message-formats: {}
+branches:
+  main:
+    mode: ContinuousDelivery
+  pull-request:
+    mode: ContinuousDelivery
+    label: pr

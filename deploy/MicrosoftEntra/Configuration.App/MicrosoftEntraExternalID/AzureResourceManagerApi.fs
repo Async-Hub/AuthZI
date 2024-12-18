@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
 open Newtonsoft.Json
 open Newtonsoft.Json.Linq

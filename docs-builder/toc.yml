@@ -1,6 +1,6 @@
 - name: Documentation
   href: documents/
-  homepage: documents/index.md
+  homepage: documents/introduction.md
 - name: Resources
   href: resources/
   homepage: resources/introduction.md

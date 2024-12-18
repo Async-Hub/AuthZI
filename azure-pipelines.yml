@@ -21,23 +21,31 @@ stages:
     - job: Build_Solution
       displayName: Whole solution build process
       steps:
+      - task: UseDotNet@2
+        displayName: 'Install .NET SDK 9.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '9.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Build solution AuthZI.sln'
         inputs:
           command: build
           projects: 'AuthZI.sln'
           configuration: '$(buildConfiguration)'
-
-      # Run Tests
+    
+    - job: Run_Tests
+      displayName: Run Tests
+      dependsOn: Build_Solution
+      steps:
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
           command: test
           projects: |
-            test/Authzi.Security.IntegrationTests
-            test/Authzi.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
-            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
-            test/Authzi.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
+            test/AuthZI.Tests.Security
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
             publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
@@ -63,7 +71,7 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Testing'
+                vstsFeedName: 'AuthZI/Testing1'
 
   - stage: Packing_Artifacts_Staging
     displayName: Packing artifacts staging
@@ -83,4 +91,4 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Staging'
+                vstsFeedName: 'AuthZI/Staging1'

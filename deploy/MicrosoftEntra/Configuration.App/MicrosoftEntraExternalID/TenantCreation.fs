@@ -1,4 +1,4 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID
 
 // 1. Register your application: First, you need to register your application with Microsoft Entra ID 
 // to get the necessary credentials (client ID, tenant ID, and client secret) for authentication.
@@ -8,9 +8,9 @@
 
 open System
 
-open Authzi.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval.AccessTokenProvider
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID.Api
-open Authzi.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalIDSecrets
+open AuthZI.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval.AccessTokenProvider
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalID.Api
+open AuthZI.Deploy.MicrosoftEntra.Configuration.MicrosoftEntraExternalIDSecrets
 
 module TenantCreation =
     let start =

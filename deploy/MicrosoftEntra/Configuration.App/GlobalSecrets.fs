@@ -1,7 +1,7 @@
-﻿namespace Authzi.Deploy.MicrosoftEntra.Configuration
+﻿namespace AuthZI.Deploy.MicrosoftEntra.Configuration
 
 open Microsoft.Identity.Client
-open Authzi.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval
+open AuthZI.Deploy.MicrosoftEntra.Configuration.AccessTokenRetrieval
 
 module MicrosoftEntraExternalIDSecrets =
     let newTenantName = ""
