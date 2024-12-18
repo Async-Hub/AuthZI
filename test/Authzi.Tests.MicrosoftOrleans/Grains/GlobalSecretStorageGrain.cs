@@ -4,7 +4,7 @@ using Orleans;
 
 namespace AuthZI.Tests.MicrosoftOrleans.Grains
 {
-    public class GlobalSecretStorageGrain : Grain, IGlobalSecretStorageGrain
+  public class GlobalSecretStorageGrain : Grain, IGlobalSecretStorageGrain
     {
         public Task<string> TakeUserSecret(string userId)
         {

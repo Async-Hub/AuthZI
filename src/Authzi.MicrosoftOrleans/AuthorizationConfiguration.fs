@@ -1,4 +1,4 @@
 ﻿namespace AuthZI.MicrosoftOrleans.Authorization
 
-type OrleansAuthorizationConfiguration(isCoHostingEnabled: bool) =
+type AuthorizationConfiguration(isCoHostingEnabled: bool) =
     member val IsCoHostingEnabled = isCoHostingEnabled with get

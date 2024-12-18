@@ -8,6 +8,7 @@ open Microsoft.Extensions.Logging
 open Orleans.Configuration;
 open Orleans.Hosting;
 open System
+open AuthZI.MicrosoftOrleans.Authorization
 
 module SiloHostBuilder =
     let Build() = 
@@ -26,10 +27,8 @@ module SiloHostBuilder =
                            .ConfigureServices(fun services ->
                                // Add IdentityServer4 authorization.
                                services.AddOrleansAuthorization(GlobalConfig.identityServerConfigCluster,      
-                                   fun (config:AuthZI.Security.Configuration) ->         
-                                   config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
-                                       AuthorizationConfig.ConfigureOptions)         
-                                   ignore())
+                                   (fun (config: AuthZI.Security.Configuration) -> config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)), 
+                                   AuthorizationConfiguration(false))
                                // Some custom authorization services.
                                AuthorizationConfig.ConfigureServices(services)
                                ignore()) |> ignore         

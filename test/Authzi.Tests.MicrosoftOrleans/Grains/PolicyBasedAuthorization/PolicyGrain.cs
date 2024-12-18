@@ -1,13 +1,14 @@
 using System.Threading.Tasks;
-using Orleans;
+using AuthZI.MicrosoftOrleans.Authorization;
 
 namespace AuthZI.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
 {
-    public class PolicyGrain : Grain, IPolicyGrain
+  public class PolicyGrain(SecureGrainContext secureGrainContext) :
+    SecureGrain(secureGrainContext), IPolicyGrain
+  {
+    public Task<string> GetWithMangerPolicy(string secret)
     {
-        public Task<string> GetWithMangerPolicy(string secret)
-        {
-            return Task.FromResult(secret);
-        }
+      return Task.FromResult(secret);
     }
+  }
 }

@@ -1,18 +1,19 @@
 using System.Threading.Tasks;
-using Orleans;
+using AuthZI.MicrosoftOrleans.Authorization;
 
 namespace AuthZI.Tests.MicrosoftOrleans.Grains.RoleBasedAuthorization
 {
-    public class ManagerGrain : Grain, IManagerGrain
+  public class ManagerGrain(SecureGrainContext secureGrainContext) :
+    SecureGrain(secureGrainContext), IManagerGrain
+  {
+    public Task<string> GetWithCommaSeparatedRoles(string secret)
     {
-        public Task<string> GetWithCommaSeparatedRoles(string secret)
-        {
-            return Task.FromResult(secret);
-        }
-
-        public Task<string> GetWithMultipleRoleAttributes(string secret)
-        {
-            return Task.FromResult(secret);
-        }
+      return Task.FromResult(secret);
     }
+
+    public Task<string> GetWithMultipleRoleAttributes(string secret)
+    {
+      return Task.FromResult(secret);
+    }
+  }
 }

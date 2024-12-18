@@ -10,6 +10,7 @@ open Microsoft.Extensions.Hosting
 open Orleans.Configuration;
 open Orleans.Hosting
 open System
+open AuthZI.MicrosoftOrleans.Authorization
 
 module SiloClientBuilder =
     let build accessTokenProvider identityServerConfig =
@@ -20,8 +21,8 @@ module SiloClientBuilder =
                 AuthorizationConfig.ConfigureServices(services)
             services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
         
-            // Add IdentityServer4 authorization.
-            services.AddOrleansClientAuthorization(identityServerConfig, configureCluster)
+            // Add IdentityServer authorization.
+            services.AddOrleansClientAuthorizationNew(identityServerConfig, configureCluster)
 
         let hostBuilder = HostBuilder().UseOrleansClient(fun clientBuilder ->
                     clientBuilder

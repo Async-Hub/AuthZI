@@ -17,6 +17,7 @@ open System
 open System.Text.Json
 open Xunit.Abstractions
 open Xunit.Sdk
+open AuthZI.MicrosoftOrleans.Authorization
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
@@ -49,9 +50,10 @@ type Starter(messageSink: IMessageSink) =
         let configureSiloHost = fun (services: IServiceCollection) ->
             // Add Azure Active Directory authorization.
             services.AddOrleansAuthorization(TestData.AzureActiveDirectoryApp, 
-                fun (config: AuthZI.Security.Configuration) -> 
-                    config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)
-                    ignore())
+                (fun (config: AuthZI.Security.Configuration) -> 
+                    config.ConfigureAuthorizationOptions 
+                      <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)), 
+                      AuthorizationConfiguration(false))
             // Some custom authorization services.
             AuthorizationConfig.ConfigureServices(services)
         

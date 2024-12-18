@@ -77,13 +77,23 @@ type internal ServiceCollectionExtensions =
         ServiceCollectionExtensions.RegisterServices(services, configure, null)
 
     [<Extension>]
+    static member internal AddClientAuthorizationNew(services: IServiceCollection,
+        configure: Action<Configuration>) =
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box configure) then nullArg(nameof configure)
+
+        services.AddSingleton<IOutgoingGrainCallFilter, AccessTokenSetterFilter>() |> ignore
+        
+        ServiceCollectionExtensions.RegisterServices(services, configure, null)
+
+    [<Extension>]
     static member internal AddAuthorizationNew(services: IServiceCollection,
-        configure: Action<Configuration>, orleansAuthorizationConfiguration: OrleansAuthorizationConfiguration) =
+        configure: Action<Configuration>, authorizationConfiguration: AuthorizationConfiguration) =
         
         if isNull (box services) then nullArg(nameof services)
         if isNull (box configure) then nullArg(nameof configure)
-        if isNull (box orleansAuthorizationConfiguration) then nullArg(nameof orleansAuthorizationConfiguration)
+        if isNull (box authorizationConfiguration) then nullArg(nameof authorizationConfiguration)
 
-        services.AddSingleton(orleansAuthorizationConfiguration) |> ignore
+        services.AddSingleton(authorizationConfiguration) |> ignore
 
         ServiceCollectionExtensions.RegisterServices(services, configure, null)

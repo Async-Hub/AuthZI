@@ -1,23 +1,24 @@
 ﻿using System.Threading.Tasks;
-using Orleans;
+using AuthZI.MicrosoftOrleans.Authorization;
 
 namespace AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization
 {
-    public class UserGrain : Grain, IUserGrain
+  public class UserGrain(SecureGrainContext secureGrainContext) : 
+    SecureGrain(secureGrainContext), IUserGrain
+  {
+    public async Task<string> GetDocumentContent(string docName)
     {
-        public async Task<string> GetDocumentContent(string docName)
-        {
-            var grain = GrainFactory.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default);
-            var doc = await grain.Take(docName);
-            
-            return doc.Content;
-        }
+      var grain = GrainFactory.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default);
+      var doc = await grain.Take(docName);
 
-        public async Task<string> ModifyDocumentContent(string docName, string newContent)
-        {
-            var grain = GrainFactory.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default);
-
-            return await grain.Modify(docName, newContent);
-        }
+      return doc.Content;
     }
+
+    public async Task<string> ModifyDocumentContent(string docName, string newContent)
+    {
+      var grain = GrainFactory.GetGrain<IDocumentsRegistryGrain>(DocumentsRegistry.Default);
+
+      return await grain.Modify(docName, newContent);
+    }
+  }
 }

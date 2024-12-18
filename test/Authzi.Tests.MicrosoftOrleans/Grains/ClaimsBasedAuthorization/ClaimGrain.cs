@@ -1,13 +1,14 @@
 using System.Threading.Tasks;
-using Orleans;
+using AuthZI.MicrosoftOrleans.Authorization;
 
 namespace AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 {
-    public class ClaimGrain : Grain, IClaimGrain
+  public class ClaimGrain(SecureGrainContext secureGrainContext) :
+    SecureGrain(secureGrainContext), IClaimGrain
+  {
+    public Task<string> DoSomething(string someInput)
     {
-        public Task<string> DoSomething(string someInput)
-        {
-            return Task.FromResult<string>(someInput);
-        }
+      return Task.FromResult<string>(someInput);
     }
+  }
 }

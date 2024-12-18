@@ -15,13 +15,13 @@ open System.Threading.Tasks
 
 type SecureGrainContext(accessTokenVerifier: IAccessTokenVerifier, accessTokenProvider: IAccessTokenProvider,
     authorizeHandler: IAuthorizationExecutor, claimTypeResolver: IClaimTypeResolver,
-    orleansAuthorizationConfiguration: OrleansAuthorizationConfiguration,
+    authorizationConfiguration: AuthorizationConfiguration,
     logger: ILogger<SecureGrainContext>)=
   member _.AccessTokenVerifier = accessTokenVerifier
   member _.AccessTokenProvider = accessTokenProvider
   member _.AuthorizeHandler = authorizeHandler
   member _.ClaimTypeResolver = claimTypeResolver
-  member _.OrleansAuthorizationConfiguration = orleansAuthorizationConfiguration
+  member _.OrleansAuthorizationConfiguration = authorizationConfiguration
   member _.Logger = logger
 
 type public SecureGrain(secureGrainContext: SecureGrainContext) as this =

@@ -21,8 +21,8 @@ builder.Host.UseOrleans((context, siloBuilder) =>
     siloBuilder.UseLocalhostClustering()
       .ConfigureServices(services =>
       {
-        services.AddAuthorization(identityServerConfig, config =>{ }, 
-          new OrleansAuthorizationConfiguration(true));
+        services.AddOrleansAuthorization(identityServerConfig, config =>{ }, 
+          new AuthorizationConfiguration(true));
       });
   })
   .UseConsoleLifetime()

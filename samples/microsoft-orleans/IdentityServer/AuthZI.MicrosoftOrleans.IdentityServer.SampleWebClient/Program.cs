@@ -22,6 +22,7 @@ var response = await httpClient.GetAsync($"/protected-grain");
 if (!response.IsSuccessStatusCode)
 {
   Console.WriteLine(response.StatusCode);
+  Console.WriteLine(response.Content.ToString());
 }
 else
 {

@@ -11,6 +11,7 @@ open Orleans.Hosting;
 open Orleans;
 open System
 open System.Net
+open AuthZI.MicrosoftOrleans.Authorization
 
 let startSilo () =
     let builder = 
@@ -30,10 +31,9 @@ let startSilo () =
                    .ConfigureServices(fun services ->
                        // Add Azure Active Directory authorization.
                        services.AddOrleansAuthorization(TestData.AzureActiveDirectoryApp,       
-                           fun (config:AuthZI.Security.Configuration) ->         
+                           (fun (config:AuthZI.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
-                               AuthorizationConfig.ConfigureOptions)         
-                           ignore())
+                               AuthorizationConfig.ConfigureOptions)), AuthorizationConfiguration(false))
                        // Some custom authorization services.
                        AuthorizationConfig.ConfigureServices(services)
                        ignore()) |> ignore         

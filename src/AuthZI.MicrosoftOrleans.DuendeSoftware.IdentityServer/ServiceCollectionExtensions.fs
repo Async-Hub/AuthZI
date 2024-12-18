@@ -5,6 +5,7 @@ open AuthZI.MicrosoftOrleans
 open AuthZI.Security
 open Microsoft.Extensions.DependencyInjection
 open System
+open System.Threading.Tasks
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 open AuthZI.MicrosoftOrleans.Authorization
@@ -51,9 +52,24 @@ type ServiceCollectionExtensions =
         services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
 
     [<Extension>]
-    static member AddAuthorization(services: IServiceCollection, 
+    static member AddOrleansClientAuthorizationNew(services: IServiceCollection,
         identityServerConfig: IdentityServerConfig,
-        configure: Action<Configuration>, orleansAuthorizationConfiguration: OrleansAuthorizationConfiguration) =
+        configure: Action<Configuration>) =
+
+        // Check parameters that might come from C#
+        if isNull (box services) then nullArg(nameof services)
+        if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
+        if isNull (box configure) then nullArg(nameof configure)
+
+        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+
+        services.AddClientAuthorizationNew(configure)
+        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
+
+    [<Extension>]
+    static member AddOrleansAuthorization(services: IServiceCollection, 
+        identityServerConfig: IdentityServerConfig,
+        configure: Action<Configuration>, authorizationConfiguration: AuthorizationConfiguration) =
         
         // Check parameters that might come from C#
         if isNull (box services) then nullArg(nameof services)
@@ -62,5 +78,10 @@ type ServiceCollectionExtensions =
 
         let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
 
-        services.AddAuthorizationNew(configure, orleansAuthorizationConfiguration);
+        if not authorizationConfiguration.IsCoHostingEnabled then
+            let accessTokenProvider=
+              { new IAccessTokenProvider with member this.RetrieveTokenAsync() = Task.FromResult(String.Empty) }
+            services.AddSingleton<IAccessTokenProvider>(accessTokenProvider) |> ignore
+
+        services.AddAuthorizationNew(configure, authorizationConfiguration);
         services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
