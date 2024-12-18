@@ -3,12 +3,12 @@ parameters:
   type: string
 
 steps:
-  # Version with GitVersion
-  - task: gitversion/setup@0
+   # Version with GitVersion
+  - task: gitversion/setup@3.0.3
     displayName: Install GitVersion
     inputs:
-      versionSpec: '5.x'
-  - task: gitversion/execute@0
+      versionSpec: '6.x'
+  - task: gitversion/execute@3.0.3
     displayName: Execute GitVersion
   # Print SemVer Number
   - script: echo $(GitVersion.SemVer)
