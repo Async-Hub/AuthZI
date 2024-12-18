@@ -21,6 +21,11 @@ stages:
     - job: Build_Solution
       displayName: Whole solution build process
       steps:
+      - task: UseDotNet@2
+        displayName: 'Install .NET SDK 9.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '9.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Build solution AuthZI.sln'
         inputs:
