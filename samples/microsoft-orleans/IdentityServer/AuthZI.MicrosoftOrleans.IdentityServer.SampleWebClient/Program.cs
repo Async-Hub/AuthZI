@@ -32,4 +32,4 @@ else
 
 app.MapGet("/", () => "WebClient is running...");
 
-app.Run();
+await app.RunAsync();

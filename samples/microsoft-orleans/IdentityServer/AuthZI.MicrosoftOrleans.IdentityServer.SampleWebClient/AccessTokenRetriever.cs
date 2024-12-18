@@ -1,50 +1,49 @@
 ﻿using IdentityModel.Client;
 using System.Diagnostics;
 
-namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient
+namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
+
+public static class AccessTokenRetriever
 {
-  public class AccessTokenRetriever
+  internal static async Task<string> RetrieveToken(string url)
   {
-    internal static async Task<string> RetrieveToken(string url)
+    var discoveryClient = new HttpClient()
     {
-      var discoveryClient = new HttpClient()
-      {
-        BaseAddress = new Uri(url)
-      };
+      BaseAddress = new Uri(url)
+    };
 
-      var discoveryResponse = await discoveryClient.GetDiscoveryDocumentAsync();
+    var discoveryResponse = await discoveryClient.GetDiscoveryDocumentAsync();
 
-      if (discoveryResponse.IsError)
-      {
-        throw new Exception(discoveryResponse.Error);
-      }
-
-      var httpClient = new HttpClient();
-
-      var passwordTokenRequest = new PasswordTokenRequest()
-      {
-        ClientId = "ConsoleClient",
-        ClientSecret = "KHG+TZ8htVx2h3^!vJ65",
-        Address = discoveryResponse.TokenEndpoint,
-        UserName = "Bob",
-        Password = "Pass123$",
-        Scope = "Api1 Api1.Read Api1.Write Cluster"
-      };
-
-      var tokenResponse = await httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
-
-      if (tokenResponse.IsError)
-      {
-        throw new Exception(tokenResponse.Error);
-      }
-
-      if (tokenResponse is null)
-      {
-        throw new Exception("tokenResponse is null.");
-      }
-
-      Debug.Assert(tokenResponse.AccessToken != null, "tokenResponse.AccessToken != null");
-      return tokenResponse.AccessToken;
+    if (discoveryResponse.IsError)
+    {
+      throw new InvalidOperationException(discoveryResponse.Error);
     }
+
+    var httpClient = new HttpClient();
+
+    var passwordTokenRequest = new PasswordTokenRequest()
+    {
+      ClientId = "ConsoleClient",
+      ClientSecret = "KHG+TZ8htVx2h3^!vJ65",
+      Address = discoveryResponse.TokenEndpoint,
+      UserName = "Bob",
+      Password = "Pass123$",
+      Scope = "Api1 Api1.Read Api1.Write Cluster"
+    };
+
+    var tokenResponse = await httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
+
+    if (tokenResponse.IsError)
+    {
+      throw new InvalidOperationException(tokenResponse.Error);
+    }
+
+    if (tokenResponse is null)
+    {
+      throw new InvalidOperationException("tokenResponse is null.");
+    }
+
+    Debug.Assert(tokenResponse.AccessToken != null, "tokenResponse.AccessToken != null");
+    return tokenResponse.AccessToken;
   }
 }

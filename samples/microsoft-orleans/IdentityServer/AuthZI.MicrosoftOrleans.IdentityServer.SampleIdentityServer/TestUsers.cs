@@ -4,9 +4,9 @@ using System.Security.Claims;
 
 namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer;
 
-public class TestUsers
+public static class TestUsers
 {
-  public static List<TestUser> Users =
+  public static readonly List<TestUser> Users =
   [
     new TestUser
     {

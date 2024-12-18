@@ -23,4 +23,4 @@ app.UseAuthorization();
 
 app.MapGet("/", () => "IdentityServer is running...");
 
-app.Run();
+await app.RunAsync();

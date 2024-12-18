@@ -6,33 +6,35 @@ namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer;
 
 public static class IdentityServerConfig
 {
-  public static IEnumerable<ApiScope> GetApiScopes()
-  {
-    return new List<ApiScope>
-      {
-        new ApiScope(name: "Api1", displayName: "Api1"),
-        new ApiScope(name: "Api1.Read", displayName: "Api1.Read"),
-        new ApiScope(name: "Api1.Write", displayName: "Api1.Read"),
-        new ApiScope(name: "Cluster", displayName: "Cluster")
-      };
-  }
+  private const string Api1 = "Api1";
+  private const string Api1Read = "Api1.Read";
+  private const string Api1Write = "Api1.Write";
+  private const string Cluster = "Cluster";
+
+  public static IEnumerable<ApiScope> GetApiScopes() =>
+    [
+        new(name: Api1, displayName: Api1),
+        new(name: Api1Read, displayName: Api1Read),
+        new(name: Api1Write, displayName: Api1Read),
+        new(name: Cluster, displayName: Cluster)
+    ];
 
   public static IEnumerable<ApiResource> GetApiResources()
   {
     var resources = new List<ApiResource>();
 
-    var api1 = new ApiResource("Api1", [JwtClaimTypes.Email, JwtClaimTypes.Role]);
+    var api1 = new ApiResource(Api1, [JwtClaimTypes.Email, JwtClaimTypes.Role]);
 
     api1.ApiSecrets.Add(new Secret("TFGB=?Gf3UvH+Uqfu_5p".Sha256()));
-    api1.Scopes.Add("Api1.Read");
-    api1.Scopes.Add("Api1.Write");
+    api1.Scopes.Add(Api1Read);
+    api1.Scopes.Add(Api1Write);
 
     resources.Add(api1);
 
-    var orleans = new ApiResource("Cluster");
+    var orleans = new ApiResource(Cluster);
 
     orleans.ApiSecrets.Add(new Secret("@3x3g*RLez$TNU!_7!QW".Sha256()));
-    orleans.Scopes.Add("Cluster");
+    orleans.Scopes.Add(Cluster);
 
     resources.Add(orleans);
 
@@ -55,7 +57,7 @@ public static class IdentityServerConfig
           Claims = new List<ClientClaim> { new ClientClaim(JwtClaimTypes.Role, "Admin") },
           AllowedScopes =
           {
-            "Api1", "Api1.Read", "Api1.Write", "Cluster",
+            Api1, Api1Read, Api1Write, Cluster,
             JwtClaimTypes.Email,
             JwtClaimTypes.Role
           },
@@ -69,13 +71,9 @@ public static class IdentityServerConfig
     return TestUsers.Users;
   }
 
-  public static IEnumerable<IdentityResource> GetIdentityResources()
-  {
-    return new List<IdentityResource>
-      {
+  public static IEnumerable<IdentityResource> GetIdentityResources() => [
         new IdentityResources.OpenId(),
         new IdentityResources.Profile(),
         new IdentityResources.Email()
-      };
-  }
+      ];
 }
