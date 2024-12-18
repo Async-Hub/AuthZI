@@ -32,8 +32,11 @@ stages:
           command: build
           projects: 'AuthZI.sln'
           configuration: '$(buildConfiguration)'
-
-      # Run Tests
+    
+    - job: Run_Tests
+      displayName: Run Tests
+      dependsOn: Build_Solution
+      steps:
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
