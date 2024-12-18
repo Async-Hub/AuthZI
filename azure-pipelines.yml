@@ -40,7 +40,7 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.Security
-            test/AuthZI.Tests.MicrosoftOrleans/DuendeSoftware.IdentityServer
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
             publishTestResults: true
