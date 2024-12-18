@@ -2,24 +2,24 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>AuthZI.MicrosoftOrleans.MicrosoftEntra.Tests.B2C.NET7</RootNamespace>
+		<RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<OutputType>Library</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="Initialization\SiloHost.fs" />
-		<Compile Include="Initialization\SiloClient.fs" />
 		<Compile Include="Initialization\Starter.fs" />
 		<Compile Include="All.fs" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
-		<PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
-		<PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Orleans.Client" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Orleans.Server" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="9.0.1" />
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
 		<PackageReference Include="xunit" Version="2.9.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -37,7 +37,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
+	  <PackageReference Update="FSharp.Core" Version="9.0.100" />
 	</ItemGroup>
 
 </Project>

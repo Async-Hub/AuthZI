@@ -91,6 +91,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthZI.Tests.Duende.Identit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthZI.Tests.Duende.IdentityServer", "test\AuthZI.Tests.Duende.IdentityServer\AuthZI.Tests.Duende.IdentityServer.csproj", "{B08D0360-F600-4C8C-BFD8-F43C9367D37D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET9.0", "test\AuthZI.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraExternalID.NET9.0\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET9.0.fsproj", "{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9.0", "test\AuthZI.Tests.MicrosoftOrleans\MicrosoftEntra\MicrosoftEntraID.NET9.0\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9.0.fsproj", "{623B5AA7-6943-4A28-8C98-61FDF731605E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +193,14 @@ Global
 		{B08D0360-F600-4C8C-BFD8-F43C9367D37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B08D0360-F600-4C8C-BFD8-F43C9367D37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B08D0360-F600-4C8C-BFD8-F43C9367D37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{623B5AA7-6943-4A28-8C98-61FDF731605E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623B5AA7-6943-4A28-8C98-61FDF731605E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623B5AA7-6943-4A28-8C98-61FDF731605E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{623B5AA7-6943-4A28-8C98-61FDF731605E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -228,6 +240,8 @@ Global
 		{ADEE7F91-DED8-4BF7-B56C-D18EFD714F6F} = {E916AE94-8E73-444F-A066-1B3CF50AB8FB}
 		{84C42B28-A79D-4681-B7FE-7DF6C4B84297} = {3206C214-A7CF-4CC0-8D5A-035309C58373}
 		{B08D0360-F600-4C8C-BFD8-F43C9367D37D} = {84C42B28-A79D-4681-B7FE-7DF6C4B84297}
+		{7E1ADB28-6A1B-4B0D-8655-AD04F9BAA112} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
+		{623B5AA7-6943-4A28-8C98-61FDF731605E} = {F1F4B056-040A-4D02-9727-09788F00BCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F94885BB-3411-4122-AD6F-09B89DA67B50}
