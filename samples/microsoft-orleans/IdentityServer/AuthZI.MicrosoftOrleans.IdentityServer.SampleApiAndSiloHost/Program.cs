@@ -55,4 +55,4 @@ app.MapGet("/protected-grain",
     }
   });
 
-app.Run();
+await app.RunAsync();

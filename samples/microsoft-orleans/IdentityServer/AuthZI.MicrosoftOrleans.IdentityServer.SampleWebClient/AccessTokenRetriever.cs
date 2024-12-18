@@ -33,17 +33,16 @@ public static class AccessTokenRetriever
 
     var tokenResponse = await httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
 
-    if (tokenResponse.IsError)
-    {
-      throw new InvalidOperationException(tokenResponse.Error);
-    }
-
     if (tokenResponse is null)
     {
       throw new InvalidOperationException("tokenResponse is null.");
     }
 
-    Debug.Assert(tokenResponse.AccessToken != null, "tokenResponse.AccessToken != null");
-    return tokenResponse.AccessToken;
+    if (tokenResponse.IsError)
+    {
+      throw new InvalidOperationException(tokenResponse.Error);
+    }
+
+    return tokenResponse.AccessToken!;
   }
 }
