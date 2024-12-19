@@ -6,6 +6,8 @@ open System.Collections.Generic
 open System.Linq
 open System.Security.Claims
 
+type CSharpResult = CSharpFunctionalExtensions.Result 
+
 type AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider, 
         authorizationService : IAuthorizationService, claimTypeResolver: IClaimTypeResolver) =
         interface IAuthorizationExecutor with
@@ -36,6 +38,9 @@ type AuthorizationExecutor(policyProvider : IAuthorizationPolicyProvider,
                     
                         authorizationSucceeded <- authorizationResult.Succeeded
 
-                    return authorizationSucceeded
+                    if authorizationSucceeded then
+                      return CSharpResult.Success<ClaimsPrincipal, string>(claimsPrincipal)
+                    else
+                      return CSharpResult.Failure<ClaimsPrincipal, string>("Authorization failed.")
 
                 } |> Async.StartAsTask

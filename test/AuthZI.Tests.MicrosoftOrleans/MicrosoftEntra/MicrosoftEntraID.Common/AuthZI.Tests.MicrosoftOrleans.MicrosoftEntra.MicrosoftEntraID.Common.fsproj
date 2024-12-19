@@ -31,7 +31,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration\AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
 		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
-		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.Interoperability\AuthZI.MicrosoftOrleans.Interoperability.csproj" />
 		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
 		<ProjectReference Include="..\..\Grains\AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
 	</ItemGroup>
