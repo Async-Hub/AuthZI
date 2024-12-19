@@ -3,13 +3,12 @@
 open AuthZI.Identity.MicrosoftEntra
 open AuthZI.MicrosoftEntra
 open AuthZI.MicrosoftOrleans
+open AuthZI.MicrosoftOrleans.Authorization
 open AuthZI.Security
 open Microsoft.Extensions.DependencyInjection
 open System
-open System.Threading.Tasks
 open System.Runtime.CompilerServices
-open System.Runtime.InteropServices
-open AuthZI.MicrosoftOrleans.Authorization
+open System.Threading.Tasks
 
 [<Extension>]
 type ServiceCollectionExtensions = 
@@ -29,7 +28,7 @@ type ServiceCollectionExtensions =
               { new IAccessTokenProvider with member this.RetrieveTokenAsync() = Task.FromResult(String.Empty) }
             services.AddSingleton<IAccessTokenProvider>(accessTokenProvider) |> ignore
 
-        services.AddAuthorizationNew(configure, authorizationConfiguration);
+        services.AddAuthorization(configure, authorizationConfiguration);
         services.AddAzureActiveDirectoryAuthorization(azureActiveDirectoryApp) |> ignore
 
     // For the production usage.
@@ -43,5 +42,5 @@ type ServiceCollectionExtensions =
         if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
         if isNull (box configure) then nullArg(nameof configure)
 
-        services.AddClientAuthorizationNew(configure)
+        services.AddClientAuthorization(configure)
         services.AddAzureActiveDirectoryAuthorization(azureActiveDirectoryApp) |> ignore

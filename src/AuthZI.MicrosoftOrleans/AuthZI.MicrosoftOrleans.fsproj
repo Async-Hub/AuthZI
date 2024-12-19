@@ -9,8 +9,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="AuthorizationConfiguration.fs" />
+    <Compile Include="AdmissionExecutor.fs" />
+    <Compile Include="AccessTokenExtractor.fs" />
     <Compile Include="SecureGrain.fs" />
-    <Compile Include="IncomingGrainCallAuthorizationFilter.fs" />
     <Compile Include="OutgoingGrainCallAuthorizationFilter.fs" />
     <Compile Include="AccessTokenSetterFilter.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
@@ -18,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuthZI.Extensions\AuthZI.Extensions.fsproj" />
-    <ProjectReference Include="..\AuthZI.MicrosoftOrleans.Interoperability\AuthZI.MicrosoftOrleans.Interoperability.csproj" />
     <ProjectReference Include="..\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
     <ProjectReference Include="..\AuthZI.Security\AuthZI.Security.fsproj" />
   </ItemGroup>
