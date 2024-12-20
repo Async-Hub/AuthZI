@@ -33,8 +33,8 @@ stages:
           projects: 'AuthZI.sln'
           configuration: '$(buildConfiguration)'
     
-    - job: Run_Tests
-      displayName: Run Tests
+    - job: Run_Tests_DotNet8
+      displayName: Run Tests .NET 8.0.x
       dependsOn: Build_Solution
       steps:
       - task: DotNetCoreCLI@2
@@ -46,6 +46,27 @@ stages:
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
+            publishTestResults: true
+        env: 
+          microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
+          microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
+    
+    - job: Run_Tests_DotNet9
+      displayName: Run Tests .NET 9.0.x
+      dependsOn: Build_Solution
+      steps:
+      - task: UseDotNet@2
+        displayName: 'Install .NET SDK 9.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '9.0.x'
+      - task: DotNetCoreCLI@2
+        displayName: 'Run Integration Tests'
+        inputs:
+          command: test
+          projects: |
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0
             publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
