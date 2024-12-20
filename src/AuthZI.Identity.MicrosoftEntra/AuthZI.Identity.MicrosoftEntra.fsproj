@@ -14,7 +14,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="MicrosoftEntraApp.fs" />
-    <Compile Include="OpenIdConfiguration.fs" />
     <Compile Include="DiscoveryDocument.fs" />
     <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="AccessTokenIntrospectionService.fs" />

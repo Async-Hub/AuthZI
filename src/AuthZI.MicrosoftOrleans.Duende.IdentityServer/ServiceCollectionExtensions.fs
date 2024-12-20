@@ -7,50 +7,51 @@ open AuthZI.Security
 open Microsoft.Extensions.DependencyInjection
 open System
 open System.Runtime.CompilerServices
-open System.Runtime.InteropServices
 open System.Threading.Tasks
 
-module internal ConfigurationExtensions =
-    let getSecurityOptions (configure: Action<Configuration>) =
-        let configuration = Configuration()
-        configure.Invoke(configuration)
-        let securityOptions = SecurityOptions()
-        if not (isNull configuration.ConfigureSecurityOptions) then 
-            configuration.ConfigureSecurityOptions.Invoke(securityOptions)
-        securityOptions
+type ServiceCollectionExtensions =
+  [<Extension>]
+  static member AddOrleansClientAuthorization
+    (services: IServiceCollection, identityServerConfig: IdentityServerConfig, configure: Action<Configuration>) =
 
-type ServiceCollectionExtensions = 
-    [<Extension>]
-    static member AddOrleansClientAuthorization(services: IServiceCollection,
-        identityServerConfig: IdentityServerConfig,
-        configure: Action<Configuration>) =
+    // Check parameters that might come from C#
+    if isNull (box services) then
+      nullArg (nameof services)
 
-        // Check parameters that might come from C#
-        if isNull (box services) then nullArg(nameof services)
-        if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
-        if isNull (box configure) then nullArg(nameof configure)
+    if isNull (box identityServerConfig) then
+      nullArg (nameof identityServerConfig)
 
-        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+    if isNull (box configure) then
+      nullArg (nameof configure)
 
-        services.AddClientAuthorization(configure)
-        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
+    services.AddClientAuthorization(configure)
+    services.AddIdentityServerAuthorization(identityServerConfig)
 
-    [<Extension>]
-    static member AddOrleansAuthorization(services: IServiceCollection, 
-        identityServerConfig: IdentityServerConfig,
-        configure: Action<Configuration>, authorizationConfiguration: AuthorizationConfiguration) =
-        
-        // Check parameters that might come from C#
-        if isNull (box services) then nullArg(nameof services)
-        if isNull (box identityServerConfig) then nullArg(nameof identityServerConfig)
-        if isNull (box configure) then nullArg(nameof configure)
+  [<Extension>]
+  static member AddOrleansAuthorization
+    (
+      services: IServiceCollection,
+      identityServerConfig: IdentityServerConfig,
+      configure: Action<Configuration>,
+      authorizationConfiguration: AuthorizationConfiguration
+    ) =
 
-        let securityOptions = ConfigurationExtensions.getSecurityOptions(configure)
+    // Check parameters that might come from C#
+    if isNull (box services) then
+      nullArg (nameof services)
 
-        if not authorizationConfiguration.IsCoHostingEnabled then
-            let accessTokenProvider=
-              { new IAccessTokenProvider with member this.RetrieveTokenAsync() = Task.FromResult(String.Empty) }
-            services.AddSingleton<IAccessTokenProvider>(accessTokenProvider) |> ignore
+    if isNull (box identityServerConfig) then
+      nullArg (nameof identityServerConfig)
 
-        services.AddAuthorization(configure, authorizationConfiguration);
-        services.AddIdentityServerAuthorization(identityServerConfig, securityOptions)
+    if isNull (box configure) then
+      nullArg (nameof configure)
+
+    if not authorizationConfiguration.IsCoHostingEnabled then
+      let accessTokenProvider =
+        { new IAccessTokenProvider with
+            member this.RetrieveTokenAsync() = Task.FromResult(String.Empty) }
+
+      services.AddSingleton<IAccessTokenProvider>(accessTokenProvider) |> ignore
+
+    services.AddAuthorization(configure, authorizationConfiguration)
+    services.AddIdentityServerAuthorization(identityServerConfig)

@@ -6,7 +6,8 @@ open System.Reflection
 
 type public AuthorizationDeterminer() =
   static member IsRequired(methodInfo: MethodInfo) =
-    let allowAnonymousAttribute = methodInfo.GetCustomAttribute<AllowAnonymousAttribute>()
+    let allowAnonymousAttribute =
+      methodInfo.GetCustomAttribute<AllowAnonymousAttribute>()
 
     if not (isNull allowAnonymousAttribute) then
       false

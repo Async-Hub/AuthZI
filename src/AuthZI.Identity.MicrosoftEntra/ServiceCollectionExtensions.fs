@@ -7,19 +7,22 @@ open System.Runtime.CompilerServices
 open AuthZI.Identity.MicrosoftEntra
 
 [<Extension>]
-type ServiceCollectionExtensions = 
-    [<Extension>]
-    static member AddAzureActiveDirectoryAuthorization(services: IServiceCollection,
-        azureActiveDirectoryApp: MicrosoftEntraApp) =
-            // Check parameters that might come from C#
-            if isNull (box azureActiveDirectoryApp) then nullArg(nameof azureActiveDirectoryApp)
-            
-            services.AddSingleton(azureActiveDirectoryApp) |> ignore
-            services.AddSingleton<IClaimTypeResolver, ClaimTypeResolverDefault>() |> ignore
-            services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
+type ServiceCollectionExtensions =
+  [<Extension>]
+  static member AddAzureActiveDirectoryAuthorization
+    (services: IServiceCollection, azureActiveDirectoryApp: MicrosoftEntraApp)
+    =
+    // Check parameters that might come from C#
+    if isNull (box azureActiveDirectoryApp) then
+      nullArg (nameof azureActiveDirectoryApp)
 
-            // Add Discovery document provider.
-            // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
-            let discoveryDocumentProvider = DiscoveryDocumentProvider(azureActiveDirectoryApp.DiscoveryEndpointUrl)
+    services.AddSingleton(azureActiveDirectoryApp) |> ignore
+    services.AddSingleton<IClaimTypeResolver, ClaimTypeResolverDefault>() |> ignore
 
-            services.AddSingleton<DiscoveryDocumentProvider>(discoveryDocumentProvider) |> ignore
+    services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>() |> ignore
+
+    // Add Discovery document provider.
+    // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
+    let discoveryDocumentProvider = DiscoveryDocumentProvider(azureActiveDirectoryApp.DiscoveryEndpointUrl)
+
+    services.AddSingleton<DiscoveryDocumentProvider>(discoveryDocumentProvider) |> ignore

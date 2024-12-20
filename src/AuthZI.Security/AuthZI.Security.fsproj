@@ -17,7 +17,6 @@
 		<Compile Include="ConfigurationKeys.fs" />
 		<Compile Include="AuthorizationException.fs" />
 		<Compile Include="LoggingEvents.fs" />
-		<Compile Include="SecurityOptions.fs" />
 		<Compile Include="Caching\IAccessTokenCache.fs" />
 		<Compile Include="Caching\AccessTokenCache.fs" />
 		<Compile Include="AccessToken\InvalidAccessTokenException.fs" />
