@@ -1,6 +1,5 @@
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
 using IdentityModel.Client;
-using System.Net.Http;
 
 Console.Title = "WebClient";
 

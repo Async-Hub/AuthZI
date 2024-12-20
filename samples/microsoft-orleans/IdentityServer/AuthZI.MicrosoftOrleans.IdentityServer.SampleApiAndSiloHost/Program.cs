@@ -3,8 +3,6 @@ using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.MicrosoftOrleans.Duende.IdentityServer;
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost;
 using AuthZI.Security;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 Console.Title = @"Api and SiloHost";
 
