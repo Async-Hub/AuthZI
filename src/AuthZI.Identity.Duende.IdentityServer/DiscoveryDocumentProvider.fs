@@ -7,7 +7,7 @@ open System.Net.Http
 
 type DiscoveryDocumentProvider
     (clientFactory: IHttpClientFactory, discoveryEndpointUrl: string) =
-    let httpClient = clientFactory.CreateClient("IdS4")
+    let httpClient = clientFactory.CreateClient("IdS")
     let mutable discoveryDocument: DiscoveryDocument = null
 
     member _.GetDiscoveryDocumentAsync() =

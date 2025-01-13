@@ -21,7 +21,7 @@ type ServiceCollectionExtensions =
     services.AddTransient<IAccessTokenIntrospectionService, AccessTokenIntrospectionService>()
     |> ignore
 
-    services.AddHttpClient("IdS4") |> ignore
+    services.AddHttpClient("IdS") |> ignore
 
     // Add Discovery document provider.
     let providerFunc (provider: IServiceProvider) =

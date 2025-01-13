@@ -12,7 +12,7 @@ type public AccessTokenIntrospectionService
         discoveryDocumentProvider: DiscoveryDocumentProvider,
         logger: ILogger<AccessTokenIntrospectionService>
     ) =
-    let httpClient = httpClientFactory.CreateClient "IdS4"
+    let httpClient = httpClientFactory.CreateClient "IdS"
 
     member private this.IntrospectTokenOnlineAsync
         (accessToken: string)
