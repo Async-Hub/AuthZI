@@ -5,8 +5,11 @@ open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Author
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
 open Xunit.Abstractions
 
-type AzureActiveDirectoryB2BTests(output: ITestOutputHelper) =
-    inherit AzureActiveDirectoryB2BTestsBase(output)
+type MicrosoftEntraIdTests(output: ITestOutputHelper) =
+    inherit MicrosoftEntraIdTestsBase(output)
+
+type DiscoveryDocumentProviderTests(output: ITestOutputHelper) =
+    inherit DiscoveryDocumentProviderTestsBase(output: ITestOutputHelper)
 
 type AccessTokenVerificationTests(output: ITestOutputHelper) =
     inherit AccessTokenVerificationTestsBase(output)

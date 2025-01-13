@@ -1,4 +1,4 @@
-﻿namespace AuthZI.MicrosoftEntra
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra
 
 open AuthZI.Identity.MicrosoftEntra
 open Microsoft.Identity.Client

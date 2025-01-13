@@ -17,6 +17,8 @@ type SecureGrainContext(accessTokenExtractor: AccessTokenExtractor,admissionExec
 type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
   inherit Grain()
 
+  static member AccessDeniedMessage = "Access to the requested grain denied."
+
   member val User : ClaimsPrincipal = null with get, set
 
   interface IIncomingGrainCallFilter with
@@ -27,7 +29,7 @@ type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
 
           let accessToken = RequestContext.Get(ConfigurationKeys.AccessTokenKey)
           let! accessTokenResult = secureGrainContext.AccessTokenExtractor.RetriveAccessToken(accessToken)
-          let! authorizeResult = secureGrainContext.AdmissionExecutor .AdmitAsync(accessTokenResult, context.InterfaceMethod)
+          let! authorizeResult = secureGrainContext.AdmissionExecutor.AdmitAsync(accessTokenResult, context.InterfaceMethod)
 
           match authorizeResult with
           | Ok claimsPrincipal ->
@@ -38,8 +40,8 @@ type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
           | Error error ->
               secureGrainContext.Logger.LogInformation(LoggingEvents.IncomingGrainCallAuthorizationFailed,
                   grainType.Name, context.InterfaceMethod.Name, error)
-              raise (AuthorizationException("Access to the requested grain denied."))
-                 
+              raise (Exception(SecureGrain.AccessDeniedMessage))
+          
           secureGrainContext.Logger.LogDebug(LoggingEvents.IncomingGrainCallAuthorizationPassed,
                         grainType.Name, context.InterfaceMethod.Name)
 

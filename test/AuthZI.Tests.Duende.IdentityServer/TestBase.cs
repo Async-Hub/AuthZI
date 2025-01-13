@@ -14,8 +14,8 @@ public class TestBase
 
   protected TestBase()
   {
-    var identityServer4 = TestIdentityServer4Builder.StartNew();
-    _identityServerClient = identityServer4.CreateClient();
+    var identityServer = TestIdentityServerBuilder.StartNew();
+    _identityServerClient = identityServer.CreateClient();
 
     var discoveryResponse = _identityServerClient.GetDiscoveryDocumentAsync().Result;
 

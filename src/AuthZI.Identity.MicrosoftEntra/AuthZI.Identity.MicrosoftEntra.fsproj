@@ -18,15 +18,15 @@
     <Compile Include="DiscoveryDocumentProvider.fs" />
     <Compile Include="AccessTokenIntrospectionService.fs" />
     <Compile Include="ClaimTypeResolverDefault.fs" />
-    <Compile Include="AccessTokenRetriever.fs" />
     <Compile Include="ServiceCollectionExtensions.fs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.3.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
-    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.2.0" />
   </ItemGroup>
 
   <ItemGroup>

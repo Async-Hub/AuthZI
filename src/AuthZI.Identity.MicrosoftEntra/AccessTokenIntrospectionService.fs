@@ -4,14 +4,16 @@ open AuthZI.MicrosoftEntra
 open AuthZI.Security
 open AuthZI.Security.AccessToken
 open Microsoft.IdentityModel.Tokens
-open System.IdentityModel.Tokens.Jwt
 open System.Text
+open System.IdentityModel.Tokens.Jwt
+open Microsoft.Extensions.Logging
 
 type public AccessTokenIntrospectionService
   (
     azureActiveDirectoryApp: MicrosoftEntraApp,
     discoveryDocumentProvider: DiscoveryDocumentProvider,
-    claimTypeResolver: IClaimTypeResolver
+    claimTypeResolver: IClaimTypeResolver,
+    logger: ILogger<AccessTokenIntrospectionService>
   ) =
 
   let verify
@@ -27,6 +29,7 @@ type public AccessTokenIntrospectionService
     parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name
     parameters.RoleClaimType <- claimTypeResolver.Resolve ClaimType.Role
     parameters.RequireSignedTokens <- true
+    // TODO: Implement audience validation functionality
     parameters.ValidateAudience <- false
     parameters.IssuerSigningKey <- SymmetricSecurityKey(Encoding.ASCII.GetBytes(app.ClientSecret))
 
@@ -40,7 +43,13 @@ type public AccessTokenIntrospectionService
     member _.IntrospectTokenAsync accessToken allowOfflineValidation =
       task {
         let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync()
-        let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
-        
-        return Ok(claims)
+
+        try
+          let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
+          return Ok(claims)
+        with
+        // TODO: Implement logging
+        | :? System.Exception as ex -> 
+          logger.LogError(ex, "Exception during token introspection.")
+          return Error(ex.Message)
       }
