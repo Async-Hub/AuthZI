@@ -37,7 +37,7 @@
   "index.html": {
     "href": "index.html",
     "title": "Authorization Interoperability - AuthZI for .NET | AuthZI",
-    "keywords": "Authorization Interoperability - AuthZI for .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende IdentityServer. AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0. Microsoft Orleans For more details please se the docs. License AuthZI is distributed by an MIT license. Contributing Contributions are welcome, please contact via Azure DevOps, email admin@asynchub.org, or any other method with the owners of this repository."
+    "keywords": "Authorization Interoperability - AuthZI for .NET Refer to AuthZI for sources. Do you like authorization philosophy implemented in Microsoft ASP.NET? AuthZI allows to use the same ability in Microsoft Orleans, Azure Functions with Microsoft Entra and Duende IdentityServer. AuthZI project is open-source set of libraries for authorization interoperability for .NET 8 and above by using OAuth 2.0. Microsoft Orleans For more details please see the docs. License AuthZI is distributed by an MIT license. Contributing Contributions are welcome, please contact via Azure DevOps, email admin@asynchub.org, or any other method with the owners of this repository."
   },
   "resources/introduction.html": {
     "href": "resources/introduction.html",
