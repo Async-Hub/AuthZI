@@ -3,10 +3,10 @@ namespace AuthZI.Identity.MicrosoftEntra
 open AuthZI.MicrosoftEntra
 open AuthZI.Security
 open AuthZI.Security.AccessToken
-open Microsoft.IdentityModel.Tokens
-open System.Text
-open System.IdentityModel.Tokens.Jwt
 open Microsoft.Extensions.Logging
+open Microsoft.IdentityModel.Tokens
+open System.IdentityModel.Tokens.Jwt
+open System.Text
 
 type public AccessTokenIntrospectionService
   (
@@ -48,8 +48,7 @@ type public AccessTokenIntrospectionService
           let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
           return Ok(claims)
         with
-        // TODO: Implement logging
-        | :? System.Exception as ex -> 
-          logger.LogError(ex, "Exception during token introspection.")
+        | ex ->
+          logger.LogError(ex, "Exception during access token introspection.")
           return Error(ex.Message)
       }

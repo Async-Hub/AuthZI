@@ -6,6 +6,7 @@ open Orleans
 open Orleans.Runtime
 open System
 open System.Security.Claims
+open System.Security
 
 type SecureGrainContext(accessTokenExtractor: AccessTokenExtractor,admissionExecutor: AdmissionExecutor,
   logger: ILogger<SecureGrainContext>)=
@@ -40,7 +41,7 @@ type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
           | Error error ->
               secureGrainContext.Logger.LogInformation(LoggingEvents.IncomingGrainCallAuthorizationFailed,
                   grainType.Name, context.InterfaceMethod.Name, error)
-              raise (Exception(SecureGrain.AccessDeniedMessage))
+              raise (SecurityException(SecureGrain.AccessDeniedMessage))
           
           secureGrainContext.Logger.LogDebug(LoggingEvents.IncomingGrainCallAuthorizationPassed,
                         grainType.Name, context.InterfaceMethod.Name)

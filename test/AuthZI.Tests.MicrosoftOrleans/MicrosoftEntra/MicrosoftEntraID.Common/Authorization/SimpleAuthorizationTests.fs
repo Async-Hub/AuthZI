@@ -6,6 +6,7 @@ open AuthZI.Extensions.TaskExtensions
 open AuthZI.Security
 open RootConfiguration
 open System
+open System.Security
 open System.Threading.Tasks
 open Xunit
 open AuthZI.MicrosoftOrleans.Authorization
@@ -50,7 +51,7 @@ type SimpleAuthorizationTestsBase() =
           return value
         }
 
-      let! result = Assert.ThrowsAsync<Exception>(fun () -> action)
+      let! result = Assert.ThrowsAsync<SecurityException>(fun () -> action)
       Assert.True(result.Message = SecureGrain.AccessDeniedMessage)
     }
 
