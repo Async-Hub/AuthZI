@@ -100,7 +100,7 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Testing1'
+                vstsFeedName: 'AuthZI/Testing'
 
   - stage: Packing_Artifacts_Staging
     displayName: Packing artifacts staging
@@ -121,4 +121,4 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Staging1'
+                vstsFeedName: 'AuthZI/Staging'
