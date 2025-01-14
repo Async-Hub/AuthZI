@@ -18,7 +18,7 @@ jobs:
 
 ##################### Launch Integration Testing ##################### 
   Integration_Testing_DotNet8:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [ Build_Solution ]
     env:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
@@ -29,6 +29,7 @@ jobs:
       - name: Run Tests
         run: |
           dotnet test test/AuthZI.Tests.Security
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
 
