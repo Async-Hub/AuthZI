@@ -34,6 +34,14 @@ stages:
           projects: 'AuthZI.sln'
           configuration: '$(buildConfiguration)'
     
+    - job: Print_SemVer_Number
+      displayName: Print SemVer Number
+      dependsOn:
+      pool:
+        name: Azure Pipelines
+      steps:
+      - template: execute-gitversion.yml    
+          
     - job: Run_Tests_DotNet8
       displayName: Run Tests .NET 8.0.x
       pool:
@@ -100,7 +108,7 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Testing1'
+                vstsFeedName: 'AuthZI/Testing'
 
   - stage: Packing_Artifacts_Staging
     displayName: Packing artifacts staging
@@ -121,4 +129,4 @@ stages:
               fetchTags: true
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Staging1'
+                vstsFeedName: 'AuthZI/Staging'
