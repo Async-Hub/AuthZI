@@ -33,6 +33,17 @@ stages:
           command: build
           projects: 'AuthZI.sln'
           configuration: '$(buildConfiguration)'
+      
+      # Version with GitVersion
+      - task: gitversion/setup@3.0.3
+        displayName: Install GitVersion
+        inputs:
+          versionSpec: '6.0.5'
+      - task: gitversion/execute@3.0.3
+        displayName: Execute GitVersion
+      # Print SemVer Number
+      - script: echo $(GitVersion.SemVer)
+        displayName: 'Print SemVer Number'
     
     - job: Run_Tests_DotNet8
       displayName: Run Tests .NET 8.0.x
