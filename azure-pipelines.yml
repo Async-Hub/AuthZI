@@ -15,6 +15,7 @@ stages:
     displayName: Build stage
     pool:
       name: Azure Pipelines
+      agent: ubuntu-latest
     variables:
       - group: Default
     jobs:
@@ -35,6 +36,9 @@ stages:
     
     - job: Run_Tests_DotNet8
       displayName: Run Tests .NET 8.0.x
+      pool:
+        name: Azure Pipelines
+        agent: ubuntu-22.04
       dependsOn: Build_Solution
       steps:
       - task: DotNetCoreCLI@2
@@ -53,6 +57,9 @@ stages:
     
     - job: Run_Tests_DotNet9
       displayName: Run Tests .NET 9.0.x
+      pool:
+        name: Azure Pipelines
+        agent: ubuntu-24.04
       dependsOn: Build_Solution
       steps:
       - task: UseDotNet@2
@@ -80,6 +87,7 @@ stages:
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
+      agent: ubuntu-latest
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
@@ -100,6 +108,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
+      agent: ubuntu-latest
     jobs:
     - deployment: Deploy_Artifacts_Staging
       displayName: Deploy staging artifacts in Azure Artifacts
