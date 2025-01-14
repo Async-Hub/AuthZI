@@ -6,8 +6,8 @@ open System
 open System.Net.Http
 
 type DiscoveryDocumentProvider
-    (clientFactory: IHttpClientFactory, discoveryEndpointUrl: string, securityOptions: SecurityOptions) =
-    let httpClient = clientFactory.CreateClient("IdS4")
+    (clientFactory: IHttpClientFactory, discoveryEndpointUrl: string) =
+    let httpClient = clientFactory.CreateClient("IdS")
     let mutable discoveryDocument: DiscoveryDocument = null
 
     member _.GetDiscoveryDocumentAsync() =
@@ -17,7 +17,6 @@ type DiscoveryDocumentProvider
             else
                 let request = new DiscoveryDocumentRequest()
                 request.Address <- discoveryEndpointUrl
-                request.Policy.RequireHttps <- securityOptions.RequireHttps
 
                 let! discoveryResponse = httpClient.GetDiscoveryDocumentAsync(request) |> Async.AwaitTask
 

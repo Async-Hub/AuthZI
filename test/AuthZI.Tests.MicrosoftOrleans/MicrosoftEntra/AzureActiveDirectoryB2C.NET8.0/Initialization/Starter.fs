@@ -32,7 +32,6 @@ type Starter(messageSink: IMessageSink) =
         TestData.UserWithScopeAlexW <- [[|credentials.AlexW.Name; credentials.AlexW.Password; ["Api1"; "Orleans"]|]]
         TestData.Users <- [[| credentials.AdeleV.Name; credentials.AdeleV.Password |]]
         //TestData.AzureActiveDirectoryApp <- azureActiveDirectoryAppB2C1
-        TestData.Web1Client <- credentials.WebClient1
 
         //TestData.SiloClient <- SiloClient.getClusterClient()
 

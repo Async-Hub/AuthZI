@@ -25,7 +25,7 @@ let private clusterClient =
             AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>( fun _ -> accessTokenProvider) |> ignore
         // Add Azure Active Directory authorization.
-        services.AddOrleansClientAuthorization(TestData.AzureActiveDirectoryApp,
+        services.AddOrleansClientAuthorization(TestData.Web1ClientApp,
             fun config -> configureCluster(config)) |> ignore
 
     let hostBuilder = new HostBuilder()

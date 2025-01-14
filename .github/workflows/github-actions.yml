@@ -17,8 +17,8 @@ jobs:
         run: dotnet build AuthZI.sln --configuration Release --no-restore
 
 ##################### Launch Integration Testing ##################### 
-  Integration_Testing:
-    runs-on: ubuntu-latest
+  Integration_Testing_DotNet8:
+    runs-on: ubuntu-22.04
     needs: [ Build_Solution ]
     env:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
@@ -32,3 +32,21 @@ jobs:
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
+
+  Integration_Testing_DotNet9:
+    runs-on: ubuntu-latest
+    needs: [ Build_Solution ]
+    env:
+      microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
+      microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
+      microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET SDK 9.0.x
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Run Tests on .NET 9.0.x
+        run: |
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0

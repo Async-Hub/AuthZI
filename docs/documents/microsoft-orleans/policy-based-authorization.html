@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
@@ -63,7 +63,7 @@
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -139,13 +139,13 @@ public class EmailVerifiedRequirement : IAuthorizationRequirement
 <p>The preceding code determines if the current user/client principal has an EmailVerified claim. Authorization can't occur when the claim is missing, in which case a completed task is returned. When a claim is present, the email verified flag is checked. If the user meets the minimum age defined by the requirement, authorization is deemed successful. When authorization is successful, context. Succeed is invoked with the satisfied requirement as its sole parameter.</p>
 <h3 id="use-a-handler-for-multiple-requirements"><strong>Use a handler for multiple requirements</strong></h3>
 <p>The following is an example of a one-to-many relationship in which a permission handler utilizes two requirements:</p>
-<pre><code class="lang-csharp">public class GenderRequirement : IAuthorizationRequirement
+<pre><code class="lang-csharp">public class LocationRequirement : IAuthorizationRequirement
 {
-    public string Gender { get; private set; }
+    public string Location { get; private set; }
 
-    public GenderRequirement(string gender)
+    public LocationRequirement(string location)
     {
-        Gender = gender;
+        Location = location;
     }
 }
 
@@ -159,7 +159,7 @@ public class RoleIsPresentRequirement : IAuthorizationRequirement
     }
 }
 
-public class RoleAndGenderCombinationHandler : IAuthorizationHandler
+public class RoleAndLocationCombinationHandler : IAuthorizationHandler
 {
     public Task HandleAsync(AuthorizationHandlerContext context)
     {
@@ -178,12 +178,12 @@ public class RoleAndGenderCombinationHandler : IAuthorizationHandler
 
                     break;
                 }
-                case GenderRequirement genderRequirement:
+                case LocationRequirement locationRequirement:
                 {
-                    if (context.User.HasClaim(c =&gt; c.Type == JwtClaimTypes.Gender))
+                    if (context.User.HasClaim(c =&gt; c.Type == JwtClaimTypes.Location))
                     {
-                        var claim = context.User.FindFirst(c =&gt; c.Type == JwtClaimTypes.Gender)
-                        if (claim.Value == genderRequirement.Gender)
+                        var claim = context.User.FindFirst(c =&gt; c.Type == JwtClaimTypes.Location)
+                        if (claim.Value == locationRequirement.Location)
                         {
                             context.Succeed(requirement);
                         }
@@ -209,7 +209,7 @@ public class RoleAndGenderCombinationHandler : IAuthorizationHandler
     });
 
     services.AddSingleton&lt;IAuthorizationHandler, EmailVerifiedHandler&gt;();
-    services.AddSingleton&lt;IAuthorizationHandler, RoleAndGenderCombinationHandler&gt;();
+    services.AddSingleton&lt;IAuthorizationHandler, RoleAndLocationCombinationHandler&gt;();
 })
 </code></pre>
 <h3 id="what-should-a-handler-return">What should a handler return?</h3>
@@ -221,7 +221,7 @@ public class RoleAndGenderCombinationHandler : IAuthorizationHandler
 </ul>
 <h3 id="why-would-i-want-multiple-handlers-for-a-requirement">Why would I want multiple handlers for a requirement?</h3>
 <p>In cases where you want evaluation to be on an <strong>OR</strong> basis, implement multiple handlers for a single requirement.</p>
-<p>For the additional information please <a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-2.1#security-authorization-policies-based-handler-registration">see ASP.NET Core documentation</a></p>
+<p>For the additional information please <a href="https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-9.0">see ASP.NET Core documentation</a></p>
 
 </article>
           </div>

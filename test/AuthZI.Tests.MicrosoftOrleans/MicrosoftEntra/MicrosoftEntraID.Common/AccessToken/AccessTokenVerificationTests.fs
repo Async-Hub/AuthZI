@@ -6,31 +6,32 @@ open AuthZI.Identity.MicrosoftEntra
 open AuthZI.Security.AccessToken
 open Xunit
 open Xunit.Abstractions
-
+open AuthZI.Tests.Common.Xunit
 
 type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
-    [<Theory>]
-    [<MemberData(nameof(TestData.Users), MemberType = typeof<TestData>)>] 
-    member _.``The system can verify JWT Token from Azure AD endpoint`` 
-        (userName: string) (password: string) =
-        async {
-            // Arrange
-            let discoveryDocumentProvider = 
-                DiscoveryDocumentProvider(TestData.AzureActiveDirectoryApp.DiscoveryEndpointUrl)
-            
-            let! accessToken = getAccessTokenForUserOnWebClient1Async userName password |> Async.AwaitTask
-            output.WriteLine(accessToken)
+  [<Theory>]
+  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>)>]
+  member _.``The system can verify JWT Token from Azure AD endpoint`` (userName: string) (password: string) =
+    task {
+      // Arrange
+      let discoveryDocumentProvider = DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl)
 
-            let accessTokenIntrospectionService = AccessTokenIntrospectionService(TestData.AzureActiveDirectoryApp,
-                                                    discoveryDocumentProvider, ClaimTypeResolverDefault()) :> IAccessTokenIntrospectionService
+      let! accessToken = getAccessTokenForUserOnWebClient1Async userName password
+      output.WriteLine(accessToken)
 
-            let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false |> Async.AwaitTask
-            
-            let isSuccess = match result with Ok _ -> true | _ -> false
+      let logger = TestLogger<AccessTokenIntrospectionService>(output)
+      let accessTokenIntrospectionService =
+        AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
+        :> IAccessTokenIntrospectionService
 
-            // Act
-            Assert.True(isSuccess)
-         }
+      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false
 
+      let isSuccess =
+        match result with
+        | Ok _ -> true
+        | _ -> false
 
+      // Act
+      Assert.True(isSuccess)
+    }

@@ -30,7 +30,7 @@ let startSilo () =
                    .AddMemoryGrainStorage("MemoryGrainStorage")
                    .ConfigureServices(fun services ->
                        // Add Azure Active Directory authorization.
-                       services.AddOrleansAuthorization(TestData.AzureActiveDirectoryApp,       
+                       services.AddOrleansAuthorization(TestData.Web1ClientApp,       
                            (fun (config:AuthZI.Security.Configuration) ->         
                            config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(         
                                AuthorizationConfig.ConfigureOptions)), AuthorizationConfiguration(false))

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9</RootNamespace>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Initialization\Starter.fs" />
+		<Compile Include="All.fs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+		<PackageReference Include="Microsoft.Orleans.Client" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Orleans.Server" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="9.0.1" />
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Initialization\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+	  <ProjectReference Include="..\MicrosoftEntraID.Common\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="9.0.100" />
+	</ItemGroup>
+
+</Project>

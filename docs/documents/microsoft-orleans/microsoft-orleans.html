@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
@@ -63,7 +63,7 @@
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -79,7 +79,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="authorization-functionality-for-microsoft-orleans">Authorization functionality for Microsoft Orleans</h1>
 
-<p>The set of security packages for Microsoft Orleans 8.* provide the ability to use the same authorization functionality which is used in ASP.NET Core. It allows to use Microsoft Entra and Duende IdentityServer with MS Orleans grains and any ASP.NET Core 8.* application.</p>
+<p><a href="#getting-started">Get started now</a> <a href="https://github.com/Async-Hub/AuthZI">View it on GitHub</a></p>
+<hr>
+<p>The security packages for Microsoft Orleans 8.<em>|9.</em> enable the use of authorization functionality similar to what is available in ASP.NET Core. These packages allow seamless integration with Microsoft Entra and Duende IdentityServer for securing Microsoft Orleans grains and any ASP.NET Core 8.<em>|9.</em> application.</p>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about
@@ -88,11 +90,148 @@ ASP.NET Core authorization <strong><a href="https://learn.microsoft.com/en-us/as
 <p><img src="authzi-for-microsoft-orleans.svg" alt="Image 1"></p>
 <p>The image below shows a round trip to the protected grain.</p>
 <p><img src="round-trip-to-the-protected-grain.png" alt="Image 2"></p>
-<p><a href="#getting-started">Get started now</a> <a href="https://github.com/Async-Hub/AuthZI">View it on GitHub</a></p>
-<hr>
 <h2 id="getting-started">Getting started</h2>
-<h3 id="dependencies">Dependencies</h3>
-<p>There are two packages: <em>Orleans.Security.Cluster</em> and <em>Orleans.Security.ClusterClient</em>. The first is for a silo host project and the seccond for an Orleans cluster client.</p>
+<p>Below is a simple example of using Duende IdentityServer with Microsoft Orleans 9. For more details, <a href="https://github.com/Async-Hub/AuthZI/tree/master/samples/microsoft-orleans/IdentityServer">please visit the repository</a> link.</p>
+<h3 id="identityserver">IdentityServer</h3>
+<pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer;
+
+Console.Title = &quot;IdentityServer&quot;;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityServer()
+  .AddDeveloperSigningCredential()
+  .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
+  .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
+  .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+  .AddInMemoryClients(IdentityServerConfig.GetClients())
+  .AddTestUsers(IdentityServerConfig.GetUsers());
+
+var app = builder.Build();
+
+app.UseRouting();
+
+app.UseIdentityServer();
+app.UseAuthorization();
+
+app.MapGet(&quot;/&quot;, () =&gt; &quot;IdentityServer is running...&quot;);
+
+await app.RunAsync();
+</code></pre>
+<h3 id="microsoft-orleans-9">Microsoft Orleans 9.*</h3>
+<pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.Authorization;
+using AuthZI.Security.Authorization;
+
+namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost;
+
+public interface IProtectedGrain : IGrainWithStringKey
+{
+  [Authorize(Roles = &quot;Admin&quot;)]
+  Task&lt;string&gt; TakeSecret();
+}
+
+public class ProtectedGrain(SecureGrainContext secureGrainContext) : 
+  SecureGrain(secureGrainContext), IProtectedGrain
+{
+  public Task&lt;string&gt; TakeSecret()
+  {
+    return Task.FromResult(&quot;Success! You see the data which is available only for Admin role.&quot;);
+  }
+}
+
+using AuthZI.Identity.Duende.IdentityServer;
+using AuthZI.MicrosoftOrleans.Authorization;
+using AuthZI.MicrosoftOrleans.Duende.IdentityServer;
+using AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost;
+using AuthZI.Security;
+
+Console.Title = @&quot;Api and SiloHost&quot;;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var identityServerConfig = new IdentityServerConfig(&quot;https://localhost:7171&quot;,
+  &quot;Cluster&quot;, @&quot;@3x3g*RLez$TNU!_7!QW&quot;, &quot;Cluster&quot;);
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient&lt;IAccessTokenProvider, AccessTokenProvider&gt;();
+
+builder.Host.UseOrleans((context, siloBuilder) =&gt;
+  {
+    siloBuilder.UseLocalhostClustering()
+      .ConfigureServices(services =&gt;
+      {
+        services.AddOrleansAuthorization(identityServerConfig, config =&gt; { },
+          new AuthorizationConfiguration(true));
+      });
+  })
+  .UseConsoleLifetime()
+  .ConfigureLogging(loggingBuilder =&gt;
+  {
+    loggingBuilder.AddConsole();
+  });
+
+var app = builder.Build();
+
+app.MapGet(&quot;/&quot;, () =&gt; &quot;Running...&quot;);
+
+app.MapGet(&quot;/protected-grain&quot;,
+  static async (IGrainFactory grains, HttpRequest request) =&gt;
+  {
+    var protectedGrain =
+      grains.GetGrain&lt;IProtectedGrain&gt;(nameof(IProtectedGrain));
+
+    try
+    {
+      var secret = await protectedGrain.TakeSecret();
+      return Results.Ok(secret);
+    }
+    catch (AuthorizationException ex)
+    {
+      Console.WriteLine(ex.Message);
+      return Results.Unauthorized();
+    }
+  });
+
+await app.RunAsync();
+</code></pre>
+<h3 id="sample-client">Sample Client</h3>
+<pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
+using IdentityModel.Client;
+
+Console.Title = &quot;WebClient&quot;;
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+Console.WriteLine(&quot;Please press 's' to start.&quot;);
+Console.ReadLine();
+
+var identityServerUrl = &quot;https://localhost:7171&quot;;
+var accessToken = await AccessTokenRetriever.RetrieveToken(identityServerUrl);
+Console.WriteLine($&quot;AccessToken: {accessToken}&quot;);
+
+var apiUrl = &quot;https://localhost:7116&quot;;
+var httpClient = new HttpClient() { BaseAddress = new Uri(apiUrl) };
+httpClient.SetBearerToken(accessToken);
+
+var response = await httpClient.GetAsync($&quot;/protected-grain&quot;);
+if (!response.IsSuccessStatusCode)
+{
+  Console.WriteLine(response.StatusCode);
+  Console.WriteLine(response.Content.ToString());
+}
+else
+{
+  var content = await response.Content.ReadAsStringAsync();
+  Console.WriteLine(content);
+}
+
+app.MapGet(&quot;/&quot;, () =&gt; &quot;WebClient is running...&quot;);
+
+await app.RunAsync();
+</code></pre>
 <h3 id="quick-start">Quick start</h3>
 <p>Please <a href="https://github.com/Async-Hub/AuthZI-Samples">see sample</a> solutions for more details.</p>
 

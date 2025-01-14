@@ -3,8 +3,6 @@ using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.MicrosoftOrleans.Duende.IdentityServer;
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost;
 using AuthZI.Security;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 Console.Title = @"Api and SiloHost";
 
@@ -21,13 +19,11 @@ builder.Host.UseOrleans((context, siloBuilder) =>
     siloBuilder.UseLocalhostClustering()
       .ConfigureServices(services =>
       {
-        services.AddOrleansAuthorization(identityServerConfig, config =>{ }, 
+        services.AddOrleansAuthorization(identityServerConfig, config => { },
           new AuthorizationConfiguration(true));
       });
   })
   .UseConsoleLifetime()
-  // Configure logging with any logging framework that supports Microsoft.Extensions.Logging.
-  // In this particular case it logs using the Microsoft.Extensions.Logging.Console package.
   .ConfigureLogging(loggingBuilder =>
   {
     loggingBuilder.AddConsole();

@@ -17,7 +17,6 @@
 		<Compile Include="ConfigurationKeys.fs" />
 		<Compile Include="AuthorizationException.fs" />
 		<Compile Include="LoggingEvents.fs" />
-		<Compile Include="SecurityOptions.fs" />
 		<Compile Include="Caching\IAccessTokenCache.fs" />
 		<Compile Include="Caching\AccessTokenCache.fs" />
 		<Compile Include="AccessToken\InvalidAccessTokenException.fs" />
@@ -35,6 +34,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CSharpFunctionalExtensions" Version="3.4.3" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.*" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.*" />

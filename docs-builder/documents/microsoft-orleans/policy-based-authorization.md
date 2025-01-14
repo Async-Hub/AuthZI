@@ -83,13 +83,13 @@ The preceding code determines if the current user/client principal has an EmailV
 The following is an example of a one-to-many relationship in which a permission handler utilizes two requirements:
 
 ```csharp
-public class GenderRequirement : IAuthorizationRequirement
+public class LocationRequirement : IAuthorizationRequirement
 {
-    public string Gender { get; private set; }
+    public string Location { get; private set; }
 
-    public GenderRequirement(string gender)
+    public LocationRequirement(string location)
     {
-        Gender = gender;
+        Location = location;
     }
 }
 
@@ -103,7 +103,7 @@ public class RoleIsPresentRequirement : IAuthorizationRequirement
     }
 }
 
-public class RoleAndGenderCombinationHandler : IAuthorizationHandler
+public class RoleAndLocationCombinationHandler : IAuthorizationHandler
 {
     public Task HandleAsync(AuthorizationHandlerContext context)
     {
@@ -122,12 +122,12 @@ public class RoleAndGenderCombinationHandler : IAuthorizationHandler
 
                     break;
                 }
-                case GenderRequirement genderRequirement:
+                case LocationRequirement locationRequirement:
                 {
-                    if (context.User.HasClaim(c => c.Type == JwtClaimTypes.Gender))
+                    if (context.User.HasClaim(c => c.Type == JwtClaimTypes.Location))
                     {
-                        var claim = context.User.FindFirst(c => c.Type == JwtClaimTypes.Gender)
-                        if (claim.Value == genderRequirement.Gender)
+                        var claim = context.User.FindFirst(c => c.Type == JwtClaimTypes.Location)
+                        if (claim.Value == locationRequirement.Location)
                         {
                             context.Succeed(requirement);
                         }
@@ -158,7 +158,7 @@ Handlers are registered in the services collection during configuration. For exa
     });
 
     services.AddSingleton<IAuthorizationHandler, EmailVerifiedHandler>();
-    services.AddSingleton<IAuthorizationHandler, RoleAndGenderCombinationHandler>();
+    services.AddSingleton<IAuthorizationHandler, RoleAndLocationCombinationHandler>();
 })
 ```
 
@@ -174,4 +174,4 @@ Note that the **`Handle`** method in the handler example returns no value. How i
 
 In cases where you want evaluation to be on an **OR** basis, implement multiple handlers for a single requirement.
 
-For the additional information please [see ASP.NET Core documentation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-2.1#security-authorization-policies-based-handler-registration)
+For the additional information please [see ASP.NET Core documentation](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-9.0)

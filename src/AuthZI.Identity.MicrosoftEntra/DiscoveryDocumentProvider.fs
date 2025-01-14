@@ -1,22 +1,22 @@
 namespace AuthZI.MicrosoftEntra
 
-open Microsoft.IdentityModel.Protocols;  
+open Microsoft.IdentityModel.Protocols
 open Microsoft.IdentityModel.Protocols.OpenIdConnect
 
 type DiscoveryDocumentProvider(discoveryEndpointUrl: string) =
-    let mutable discoveryDocument: DiscoveryDocument option = None
-    let discoveryEndpointUrl = discoveryEndpointUrl
+  let mutable discoveryDocument: DiscoveryDocument option = None
+  let discoveryEndpointUrl = discoveryEndpointUrl
 
-    member _.GetDiscoveryDocumentAsync() =
-        async {
-            if discoveryDocument.IsSome then
-                return discoveryDocument
-            else
-               let configManager = ConfigurationManager<OpenIdConnectConfiguration>(discoveryEndpointUrl, 
-                                    new OpenIdConnectConfigurationRetriever())
+  member _.GetDiscoveryDocumentAsync() =
+    task {
+      if discoveryDocument.IsSome then
+        return discoveryDocument
+      else
+        let configManager =
+          ConfigurationManager<OpenIdConnectConfiguration>(discoveryEndpointUrl, OpenIdConnectConfigurationRetriever())
 
-               let! config = configManager.GetConfigurationAsync() |> Async.AwaitTask
-               discoveryDocument <- Some(DiscoveryDocument(discoveryEndpointUrl, config.SigningKeys))
+        let! config = configManager.GetConfigurationAsync()
+        discoveryDocument <- Some(DiscoveryDocument(discoveryEndpointUrl, config.SigningKeys))
 
-               return discoveryDocument
-        } |> Async.StartAsTask
+        return discoveryDocument
+    }

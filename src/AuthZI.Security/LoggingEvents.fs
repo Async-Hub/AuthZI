@@ -4,14 +4,14 @@ open Microsoft.Extensions.Logging
 
 // TODO: Try to use best practices for logging events.
 module LoggingEvents = 
-    let AccessTokenValidationFailed = new EventId(938000, "Access token validation failed.")
+    let AccessTokenValidationFailed = EventId(938000, "Access token validation failed.")
 
-    let AccessTokenVerified = new EventId(938001, "Access token validation passed.")
+    let AccessTokenVerified = EventId(938001, "Access token validation passed.")
 
-    let OutgoingGrainCallAuthorizationPassed = new EventId(938002, "Outgoing grain call authorization passed.")
+    let OutgoingGrainCallAuthorizationPassed = EventId(938002, "Outgoing grain call authorization passed.")
 
-    let OutgoingGrainCallAuthorizationFailed = new EventId(938003, "Outgoing grain call authorization failed.")
+    let OutgoingGrainCallAuthorizationFailed = EventId(938003, "Outgoing grain call authorization failed.")
 
-    let IncomingGrainCallAuthorizationPassed = new EventId(938004, "Incoming grain call authorization passed.")
+    let IncomingGrainCallAuthorizationPassed = EventId(938004, "Incoming grain call authorization passed.")
 
-    let IncomingGrainCallAuthorizationFailed= new EventId(938005, "Incoming grain call authorization failed.")
+    let IncomingGrainCallAuthorizationFailed= EventId(938005, "Incoming grain call authorization failed.")

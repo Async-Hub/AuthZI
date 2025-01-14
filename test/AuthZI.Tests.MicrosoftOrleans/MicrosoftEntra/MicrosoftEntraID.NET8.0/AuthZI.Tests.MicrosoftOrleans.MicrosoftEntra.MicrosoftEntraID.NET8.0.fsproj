@@ -4,6 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<OutputType>Library</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,13 +15,13 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
 		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
 		<PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
 		<PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="8.2.0" />
 		<PackageReference Include="System.Text.Json" Version="8.0.5" />
-		<PackageReference Include="xunit" Version="2.9.2" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

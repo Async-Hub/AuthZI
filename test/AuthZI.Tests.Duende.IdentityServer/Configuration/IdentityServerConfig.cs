@@ -10,9 +10,9 @@ namespace AuthZI.Tests.Duende.IdentityServer.Configuration
     public static IEnumerable<ApiScope> GetApiScopes()
     {
       return new List<ApiScope>
-            {
-                new ApiScope(name: "Api1",   displayName: "Api1")
-            };
+      {
+        new ApiScope(name: "Api1", displayName: "Api1")
+      };
     }
 
     public static IEnumerable<ApiResource> GetApiResources()
@@ -30,23 +30,23 @@ namespace AuthZI.Tests.Duende.IdentityServer.Configuration
     public static IEnumerable<Client> GetClients()
     {
       return new List<Client>
-            {
-                new Client
-                {
-                    ClientId = "WebClient",
-                    AccessTokenType = AccessTokenType.Jwt,
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowOfflineAccess = true,
-                    ClientSecrets =
-                    {
-                        new Secret("Secret".Sha256())
-                    },
-                    AllowedScopes =
-                    {
-                        "Api1"
-                    }
-                }
-            };
+      {
+        new Client
+        {
+          ClientId = "WebClient",
+          AccessTokenType = AccessTokenType.Jwt,
+          AllowedGrantTypes = GrantTypes.ClientCredentials,
+          AllowOfflineAccess = true,
+          ClientSecrets =
+          {
+            new Secret("Secret".Sha256())
+          },
+          AllowedScopes =
+          {
+            "Api1"
+          }
+        }
+      };
     }
 
     public static List<TestUser> GetUsers()
@@ -57,11 +57,11 @@ namespace AuthZI.Tests.Duende.IdentityServer.Configuration
     public static IEnumerable<IdentityResource> GetIdentityResources()
     {
       return new List<IdentityResource>
-            {
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-                new IdentityResources.Email()
-            };
+      {
+        new IdentityResources.OpenId(),
+        new IdentityResources.Profile(),
+        new IdentityResources.Email()
+      };
     }
   }
 }
