@@ -22,8 +22,8 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="Duende.IdentityModel" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
-		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.2.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.6.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
 	</ItemGroup>
 
 	<ItemGroup>

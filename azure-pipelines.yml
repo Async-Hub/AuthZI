@@ -39,6 +39,7 @@ stages:
       dependsOn:
       pool:
         name: Azure Pipelines
+        vmImage: ubuntu-22.04
       steps:
       - template: execute-gitversion.yml    
           
