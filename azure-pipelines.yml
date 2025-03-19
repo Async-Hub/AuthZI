@@ -15,7 +15,7 @@ stages:
     displayName: Build stage
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-22.04
     variables:
       - group: Default
     jobs:
@@ -67,7 +67,7 @@ stages:
       displayName: Run Tests .NET 9.0.x
       pool:
         name: Azure Pipelines
-        vmImage: ubuntu-24.04
+        vmImage: ubuntu-22.04
       dependsOn: Build_Solution
       steps:
       - task: UseDotNet@2
@@ -95,7 +95,7 @@ stages:
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-22.04
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
@@ -116,7 +116,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-22.04
     jobs:
     - deployment: Deploy_Artifacts_Staging
       displayName: Deploy staging artifacts in Azure Artifacts
