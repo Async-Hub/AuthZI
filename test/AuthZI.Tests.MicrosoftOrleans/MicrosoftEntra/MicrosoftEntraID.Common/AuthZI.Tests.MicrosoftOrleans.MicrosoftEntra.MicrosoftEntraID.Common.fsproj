@@ -28,6 +28,7 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
 		<PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.0" />
+    <PackageReference Include="FSharp.Core" Version="[8.0.100, 9.0.201]" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,10 +38,6 @@
 		<ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
 		<ProjectReference Include="..\..\..\AuthZI.Tests.Common.Xunit\AuthZI.Tests.Common.Xunit.csproj" />
 		<ProjectReference Include="..\..\Grains\AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
 	</ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="8.0.401" />
 		<PackageReference Include="FluentAssertions" Version="8.2.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="xunit" Version="2.9.3" />
@@ -18,10 +19,6 @@
 
 	<ItemGroup>
 		<Compile Include="AuthorizationDeterminerTests.fs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
 	</ItemGroup>
 
 	<ItemGroup>
