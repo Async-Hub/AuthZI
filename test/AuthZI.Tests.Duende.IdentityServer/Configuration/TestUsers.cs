@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
+using Duende.IdentityModel;
 using Duende.IdentityServer.Test;
-using IdentityModel;
 
 namespace AuthZI.Tests.Duende.IdentityServer.Configuration;
 

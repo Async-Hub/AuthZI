@@ -1,6 +1,6 @@
 ﻿module Users
 
-open IdentityModel
+open Duende.IdentityModel
 open Duende.IdentityServer.Test
 open AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open AuthZI.Tests.MicrosoftOrleans.Grains.ResourceBasedAuthorization

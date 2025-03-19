@@ -1,7 +1,7 @@
 module AccessTokenFactory
 
 open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.GlobalConfig
-open IdentityModel.Client
+open Duende.IdentityModel.Client
 open System.Net.Http
 
 let getAccessTokenForClientAsync (clientId: string) (clientSecret: string) (scope: string) =

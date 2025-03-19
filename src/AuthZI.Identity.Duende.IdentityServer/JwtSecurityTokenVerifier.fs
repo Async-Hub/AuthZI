@@ -1,6 +1,6 @@
 namespace AuthZI.Identity.Duende.IdentityServer
 
-open IdentityModel
+open Duende.IdentityModel
 open Microsoft.IdentityModel.Tokens
 open System.IdentityModel.Tokens.Jwt
 open System.Security.Cryptography

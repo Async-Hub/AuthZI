@@ -1,7 +1,7 @@
 ﻿module IdentityServerResources
 
 open Duende.IdentityServer.Models
-open IdentityModel
+open Duende.IdentityModel
 open System.Collections.Generic
 
 let api1Value = "Api1"

@@ -1,5 +1,4 @@
-﻿using IdentityModel.Client;
-using System.Diagnostics;
+﻿using Duende.IdentityModel.Client;
 
 namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
 

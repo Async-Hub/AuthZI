@@ -1,7 +1,7 @@
 namespace AuthZI.Identity.Duende.IdentityServer
 
 open AuthZI.Security.AccessToken
-open IdentityModel.Client
+open Duende.IdentityModel.Client
 open Microsoft.Extensions.Logging
 open System.Net.Http
 
