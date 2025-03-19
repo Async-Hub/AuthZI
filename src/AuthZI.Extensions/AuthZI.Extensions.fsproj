@@ -10,8 +10,4 @@
     <Compile Include="Extensions.fs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FSharp.Core" Version="[8.0.100, 9.0.201]" />
-  </ItemGroup>
-
 </Project>

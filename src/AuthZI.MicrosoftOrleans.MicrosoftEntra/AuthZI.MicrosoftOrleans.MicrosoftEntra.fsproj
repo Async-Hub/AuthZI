@@ -24,8 +24,4 @@
     <ProjectReference Include="..\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FSharp.Core" Version="[8.0.100, 9.0.201]" />
-  </ItemGroup>
-
 </Project>

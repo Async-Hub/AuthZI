@@ -28,7 +28,6 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
 		<PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.0" />
-    <PackageReference Include="FSharp.Core" Version="[8.0.100, 9.0.201]" />
 	</ItemGroup>
 
 	<ItemGroup>

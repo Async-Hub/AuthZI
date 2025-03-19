@@ -44,8 +44,4 @@
 		<ProjectReference Include="..\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-    <PackageReference Include="FSharp.Core" Version="[8.0.100, 9.0.201]" />
-	</ItemGroup>
-
 </Project>
