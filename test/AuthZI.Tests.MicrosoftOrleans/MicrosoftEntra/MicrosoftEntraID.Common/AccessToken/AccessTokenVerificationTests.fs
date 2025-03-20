@@ -25,7 +25,7 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
         AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
         :> IAccessTokenIntrospectionService
 
-      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false
+      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken
 
       let isSuccess =
         match result with

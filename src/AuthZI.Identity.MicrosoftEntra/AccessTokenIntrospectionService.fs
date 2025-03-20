@@ -40,7 +40,7 @@ type public AccessTokenIntrospectionService
     claimsPrincipal.Claims
 
   interface IAccessTokenIntrospectionService with
-    member _.IntrospectTokenAsync accessToken allowOfflineValidation =
+    member _.IntrospectTokenAsync accessToken =
       task {
         let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync()
 

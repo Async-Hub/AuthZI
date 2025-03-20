@@ -46,7 +46,6 @@ type internal ServiceCollectionExtensions =
 
     services.AddTransient<AccessTokenExtractor>() |> ignore
     services.AddTransient<AdmissionExecutor>() |> ignore
-    services.TryAddSingleton<IAccessTokenVerifier, DefaultAccessTokenVerifier>()
     services.TryAddScoped<SecureGrainContext>()
 
     let memoryCacheOptions = MemoryCacheOptions()
