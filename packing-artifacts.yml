@@ -13,12 +13,12 @@ steps:
   # Print SemVer Number
   - script: echo $(GitVersion.SemVer)
     displayName: 'Print SemVer Number'
-  # NuGet pack AuthZI.Build.sln
+  # NuGet pack AuthZI.Build.slnx
   - task: DotNetCoreCLI@2
-    displayName: 'NuGet pack AuthZI.Build.sln'
+    displayName: 'NuGet pack AuthZI.Build.slnx'
     inputs:
       command: pack
-      packagesToPack: AuthZI.Build.sln
+      packagesToPack: AuthZI.Build.slnx
       includesymbols: true
       includesource: true
       versioningScheme: byEnvVar

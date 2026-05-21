@@ -12,9 +12,9 @@ jobs:
         with:
           dotnet-version: '9.0.x'
       - name: Install dependencies
-        run: dotnet restore AuthZI.sln
+        run: dotnet restore AuthZI.slnx
       - name: Build_Solution
-        run: dotnet build AuthZI.sln --configuration Release --no-restore
+        run: dotnet build AuthZI.slnx --configuration Release --no-restore
 
 ##################### Launch Integration Testing ##################### 
   Integration_Testing_DotNet8:
