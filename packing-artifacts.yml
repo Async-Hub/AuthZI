@@ -2,6 +2,14 @@ parameters:
 - name: vstsFeedName
   type: string
 
+- name: azureDevOpsOrganization
+  type: string
+  default: 'async-hub'
+
+- name: vstsFeedProject
+  type: string
+  default: 'AuthZI'
+
 steps:
    # Version with GitVersion
   - task: gitversion/setup@3.0.3
@@ -35,7 +43,7 @@ steps:
       custom: nuget
       arguments: >
         push "$(Build.ArtifactStagingDirectory)/*.nupkg"
-        --source "${{ parameters.vstsFeedName }}"
+        --source "https://pkgs.dev.azure.com/${{ parameters.azureDevOpsOrganization }}/${{ parameters.vstsFeedProject }}/_packaging/${{ parameters.vstsFeedName }}/nuget/v3/index.json"
         --api-key AzureDevOps
         --skip-duplicate
     continueOnError: true
