@@ -98,9 +98,7 @@ stages:
               fetchTags: 'true'
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'Testing'
-                azureDevOpsOrganization: 'async-hub'
-                vstsFeedProject: 'AuthZI'
+                vstsFeedName: 'https://pkgs.dev.azure.com/async-hub/AuthZI/_packaging/Testing/nuget/v3/index.json'
 
   - stage: Packing_Artifacts_Staging
     displayName: Packing artifacts staging
@@ -121,6 +119,4 @@ stages:
               fetchTags: 'true'
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'Staging'
-                azureDevOpsOrganization: 'async-hub'
-                vstsFeedProject: 'AuthZI'
+                vstsFeedName: 'https://pkgs.dev.azure.com/async-hub/AuthZI/_packaging/Staging/nuget/v3/index.json'

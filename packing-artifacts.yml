@@ -2,46 +2,45 @@ parameters:
 - name: vstsFeedName
   type: string
 
-- name: azureDevOpsOrganization
-  type: string
-
-- name: vstsFeedProject
-  type: string
-
 steps:
-   # Version with GitVersion
-  - task: gitversion/setup@3.0.3
-    displayName: Install GitVersion
-    inputs:
-      versionSpec: '6.0.x'
-  - task: gitversion/execute@3.0.3
-    displayName: Execute GitVersion
-  # Print SemVer Number
-  - script: echo $(GitVersion.SemVer)
-    displayName: 'Print SemVer Number'
-  # NuGet pack AuthZI.Build.slnx
-  - task: DotNetCoreCLI@2
-    displayName: 'NuGet pack AuthZI.Build.slnx'
-    inputs:
-      command: pack
-      packagesToPack: AuthZI.Build.slnx
-      includesymbols: true
-      includesource: true
-      versioningScheme: byEnvVar
-      versionEnvVar: GitVersion.SemVer
-      buildProperties: 'SourceLinkCreate=true'
-  # Authenticate to Azure Artifacts feed
-  - task: NuGetAuthenticate@1
-    displayName: 'Authenticate to Azure Artifacts'
-    # Push NuGet packs to Azure Artifacts feed
-  - task: DotNetCoreCLI@2
-    displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
-    inputs:
-      command: custom
-      custom: nuget
-      arguments: >
-        push "$(Build.ArtifactStagingDirectory)/*.nupkg"
-        --source "https://pkgs.dev.azure.com/${{ parameters.azureDevOpsOrganization }}/${{ parameters.vstsFeedProject }}/_packaging/${{ parameters.vstsFeedName }}/nuget/v3/index.json"
-        --api-key AzureDevOps
-        --skip-duplicate
-    continueOnError: true
+# Version with GitVersion
+- task: gitversion/setup@3.0.3
+  displayName: Install GitVersion
+  inputs:
+    versionSpec: '6.0.x'
+
+- task: gitversion/execute@3.0.3
+  displayName: Execute GitVersion
+
+# Print SemVer Number
+- script: echo $(GitVersion.SemVer)
+  displayName: 'Print SemVer Number'
+
+# NuGet pack AuthZI.Build.slnx
+- task: DotNetCoreCLI@2
+  displayName: 'NuGet pack AuthZI.Build.slnx'
+  inputs:
+    command: pack
+    packagesToPack: AuthZI.Build.slnx
+    includesymbols: true
+    includesource: true
+    versioningScheme: byEnvVar
+    versionEnvVar: GitVersion.SemVer
+    buildProperties: 'SourceLinkCreate=true'
+
+# Authenticate to Azure Artifacts feed
+- task: NuGetAuthenticate@1
+  displayName: 'Authenticate to Azure Artifacts'
+
+# Push NuGet packages to Azure Artifacts feed
+- task: DotNetCoreCLI@2
+  displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
+  inputs:
+    command: custom
+    custom: nuget
+    arguments: >
+      push "$(Build.ArtifactStagingDirectory)/*.nupkg"
+      --source "${{ parameters.vstsFeedName }}"
+      --api-key AzureDevOps
+      --skip-duplicate
+  continueOnError: true
