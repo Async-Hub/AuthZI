@@ -21,8 +21,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Graph" Version="5.67.0" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
-		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.84.1" />
+		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

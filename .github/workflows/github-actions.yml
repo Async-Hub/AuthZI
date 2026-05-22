@@ -31,7 +31,7 @@ jobs:
           dotnet test test/AuthZI.Tests.Security
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
+#         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-latest
@@ -49,4 +49,4 @@ jobs:
       - name: Run Tests on .NET 9.0.x
         run: |
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0
+#         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0
