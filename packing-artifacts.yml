@@ -32,15 +32,12 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: 'Authenticate to Azure Artifacts'
 
-# Push NuGet packages to Azure Artifacts feed
+# NuGet push to Azure Artifacts feed
 - task: DotNetCoreCLI@2
   displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
   inputs:
-    command: custom
-    custom: nuget
-    arguments: >
-      push "$(Build.ArtifactStagingDirectory)/*.nupkg"
-      --source "${{ parameters.vstsFeedName }}"
-      --api-key AzureDevOps
-      --skip-duplicate
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: internal
+    publishVstsFeed: '${{ parameters.vstsFeedName }}'
   continueOnError: true
