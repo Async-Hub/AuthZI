@@ -10,7 +10,7 @@
 
 ## AuthZI project is open-source set of libraries for authorization interoperability for .NET 8, .NET 9, and .NET 10 by using OAuth 2.0.
 
-## Fore more information please visite the [project documentation site](https://authzi.asynchub.org/).
+## For more information please visit the [project documentation site](https://authzi.asynchub.org/).
 
 ![AuthZI for Microsoft Orleans](docs-builder/documents/microsoft-orleans/authzi-for-microsoft-orleans.svg)
 

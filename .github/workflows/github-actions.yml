@@ -58,6 +58,8 @@ jobs:
   Integration_Testing_DotNet10:
     runs-on: ubuntu-latest
     needs: [ Build_Solution ]
+    permissions:
+      contents: read
     env:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
