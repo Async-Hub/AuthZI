@@ -6,8 +6,8 @@
 
 ## Fast Start
 
-- Build all: `dotnet build AuthZI.sln -c Release`
-- Build packable projects only: `dotnet build AuthZI.Build.sln -c Release`
+- Build all: `dotnet build AuthZI.slnx -c Release`
+- Build packable projects only: `dotnet build AuthZI.Build.slnx -c Release`
 
 Prefer targeted test runs for changed areas before broader test runs.
 
