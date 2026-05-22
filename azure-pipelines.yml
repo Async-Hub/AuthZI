@@ -15,18 +15,13 @@ stages:
     displayName: Build stage
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     variables:
       - group: Default
     jobs:
     - job: Build_Solution
       displayName: Whole solution build process
       steps:
-      - task: UseDotNet@2
-        displayName: 'Install .NET SDK 9.0.x'
-        inputs:
-          packageType: 'sdk'
-          version: '9.0.x'
       - task: UseDotNet@2
         displayName: 'Install .NET SDK 10.0.x'
         inputs:
@@ -51,7 +46,6 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.Security
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
             publishTestResults: true
@@ -66,11 +60,6 @@ stages:
         vmImage: ubuntu-24.04
       dependsOn: Build_Solution
       steps:
-      - task: UseDotNet@2
-        displayName: 'Install .NET SDK 9.0.x'
-        inputs:
-          packageType: 'sdk'
-          version: '9.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
@@ -86,7 +75,7 @@ stages:
       displayName: Run Tests .NET 10.0.x
       pool:
         name: Azure Pipelines
-        vmImage: ubuntu-latest
+        vmImage: ubuntu-24.04
       dependsOn: Build_Solution
       steps:
       - task: UseDotNet@2
@@ -99,6 +88,7 @@ stages:
         inputs:
           command: test
           projects: |
+            test/AuthZI.Tests.Security
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0
           publishTestResults: true
         env: 
