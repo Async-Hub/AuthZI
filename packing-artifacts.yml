@@ -32,12 +32,12 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: 'Authenticate to Azure Artifacts'
 
-# NuGet push to Azure Artifacts feed
+# Push NuGet packages to Azure Artifacts feed
 - task: DotNetCoreCLI@2
   displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
   inputs:
     command: push
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
     nuGetFeedType: internal
     publishVstsFeed: '${{ parameters.vstsFeedName }}'
   continueOnError: true
