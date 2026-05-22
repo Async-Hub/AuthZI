@@ -31,8 +31,4 @@
 	  <ProjectReference Include="..\MicrosoftEntraID.Common\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="9.0.100" />
-	</ItemGroup>
-
 </Project>
