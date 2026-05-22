@@ -78,11 +78,6 @@ stages:
         vmImage: ubuntu-24.04
       dependsOn: Build_Solution
       steps:
-      - task: UseDotNet@2
-        displayName: 'Install .NET SDK 10.0.x'
-        inputs:
-          packageType: 'sdk'
-          version: '10.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
@@ -103,7 +98,7 @@ stages:
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
@@ -124,7 +119,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     jobs:
     - deployment: Deploy_Artifacts_Staging
       displayName: Deploy staging artifacts in Azure Artifacts
