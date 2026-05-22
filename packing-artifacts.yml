@@ -4,11 +4,9 @@ parameters:
 
 - name: azureDevOpsOrganization
   type: string
-  default: 'async-hub'
 
 - name: vstsFeedProject
   type: string
-  default: 'AuthZI'
 
 steps:
    # Version with GitVersion

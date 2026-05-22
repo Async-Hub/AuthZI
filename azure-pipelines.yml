@@ -98,7 +98,9 @@ stages:
               fetchTags: 'true'
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Testing'
+                vstsFeedName: 'Testing'
+                azureDevOpsOrganization: 'async-hub'
+                vstsFeedProject: 'AuthZI'
 
   - stage: Packing_Artifacts_Staging
     displayName: Packing artifacts staging
@@ -119,4 +121,6 @@ stages:
               fetchTags: 'true'
             - template: packing-artifacts.yml
               parameters:
-                vstsFeedName: 'AuthZI/Staging'
+                vstsFeedName: 'Staging'
+                azureDevOpsOrganization: 'async-hub'
+                vstsFeedProject: 'AuthZI'
