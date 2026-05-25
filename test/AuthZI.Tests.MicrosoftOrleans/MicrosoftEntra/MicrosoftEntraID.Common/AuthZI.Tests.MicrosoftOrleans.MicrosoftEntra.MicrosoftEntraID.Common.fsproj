@@ -25,6 +25,7 @@
 		<PackageReference Include="Microsoft.Orleans.Client" Version="[8.2.0,11.0.0)" />
 		<PackageReference Include="Microsoft.Orleans.Runtime" Version="[8.2.0,11.0.0)" />
 		<PackageReference Include="Microsoft.Orleans.Server" Version="[8.2.0,11.0.0)" />
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="[8.2.0,11.0.0)" />
 		<PackageReference Include="xunit" Version="2.9.3" />
 	</ItemGroup>
 
