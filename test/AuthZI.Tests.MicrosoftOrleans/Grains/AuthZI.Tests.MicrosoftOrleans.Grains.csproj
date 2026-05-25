@@ -9,8 +9,8 @@
     <PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.*" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-    <PackageReference Include="Microsoft.Orleans.Sdk"     Version="8.2.*" />
-    <PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.*" />
+    <PackageReference Include="Microsoft.Orleans.Sdk"     Version="9.2.*" />
+    <PackageReference Include="Microsoft.Orleans.Runtime" Version="9.2.*" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageReference Include="Microsoft.Orleans.Sdk"     Version="10.1.*" />
