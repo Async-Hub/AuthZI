@@ -4,7 +4,6 @@ open AccessTokenProvider
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System
 open Xunit
-open Xunit.Abstractions
 
 type MicrosoftEntraIdTestsBase(output: ITestOutputHelper) =
   [<Theory>]

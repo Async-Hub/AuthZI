@@ -5,7 +5,6 @@ open AuthZI.MicrosoftEntra
 open AuthZI.Identity.MicrosoftEntra
 open AuthZI.Security.AccessToken
 open Xunit
-open Xunit.Abstractions
 open AuthZI.Tests.Common.Xunit
 
 type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
