@@ -15,7 +15,7 @@ stages:
     displayName: Build stage
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     variables:
       - group: Default
     jobs:
@@ -23,10 +23,10 @@ stages:
       displayName: Whole solution build process
       steps:
       - task: UseDotNet@2
-        displayName: 'Install .NET SDK 9.0.x'
+        displayName: 'Install .NET SDK 10.0.x'
         inputs:
           packageType: 'sdk'
-          version: '9.0.x'
+          version: '10.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Build solution AuthZI.slnx'
         inputs:
@@ -46,7 +46,6 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.Security
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
             publishTestResults: true
@@ -61,11 +60,6 @@ stages:
         vmImage: ubuntu-24.04
       dependsOn: Build_Solution
       steps:
-      - task: UseDotNet@2
-        displayName: 'Install .NET SDK 9.0.x'
-        inputs:
-          packageType: 'sdk'
-          version: '9.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
@@ -73,6 +67,25 @@ stages:
           projects: |
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
             publishTestResults: true
+        env: 
+          microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
+          microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
+
+    - job: Run_Tests_DotNet10
+      displayName: Run Tests .NET 10.0.x
+      pool:
+        name: Azure Pipelines
+        vmImage: ubuntu-24.04
+      dependsOn: Build_Solution
+      steps:
+      - task: DotNetCoreCLI@2
+        displayName: 'Run Integration Tests'
+        inputs:
+          command: test
+          projects: |
+            test/AuthZI.Tests.Security
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0
+          publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
@@ -85,7 +98,7 @@ stages:
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     jobs:
     - deployment: Deploy_Artifacts_Testing
       displayName: Deploy testing artifacts in Azure Artifacts
@@ -106,7 +119,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-24.04
     jobs:
     - deployment: Deploy_Artifacts_Staging
       displayName: Deploy staging artifacts in Azure Artifacts

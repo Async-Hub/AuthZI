@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
 		<!-- Publish symbols for debugging -->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -34,7 +34,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CSharpFunctionalExtensions" Version="3.4.3" />
+		<PackageReference Include="CSharpFunctionalExtensions" Version="3.7.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.*" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.*" />
@@ -42,10 +42,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\AuthZI.Security.Authorization\AuthZI.Security.Authorization.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="FSharp.Core" Version="8.0.401" />
 	</ItemGroup>
 
 </Project>

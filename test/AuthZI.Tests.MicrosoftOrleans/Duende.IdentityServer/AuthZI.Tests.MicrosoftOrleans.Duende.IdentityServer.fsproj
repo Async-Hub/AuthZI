@@ -10,7 +10,7 @@
     <PackageReference Include="FluentAssertions" Version="6.12.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.10" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
     <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="8.2.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="IdentityModel" Version="7.0.0" />
@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
 	<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -49,10 +49,6 @@
     <ProjectReference Include="..\..\..\src\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
     <ProjectReference Include="..\..\..\src\AuthZI.MicrosoftOrleans.Duende.IdentityServer\AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
     <ProjectReference Include="..\Grains\AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="8.0.401" />
   </ItemGroup>
 
 </Project>
