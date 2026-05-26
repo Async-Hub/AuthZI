@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="src/AuthZI.Extensions/AuthZI.Extensions.fsproj" />
+    <Project Path="src/AuthZI.Security.Authorization/AuthZI.Security.Authorization.csproj" />
+    <Project Path="src/AuthZI.Security/AuthZI.Security.fsproj" />
+  </Folder>
+  <Folder Name="/Identity/">
+    <Project Path="src/AuthZI.Identity.Duende.IdentityServer/AuthZI.Identity.Duende.IdentityServer.fsproj" />
+    <Project Path="src/AuthZI.Identity.MicrosoftEntra/AuthZI.Identity.MicrosoftEntra.fsproj" />
+  </Folder>
+  <Folder Name="/MicrosoftOrleans/">
+    <Project Path="src/AuthZI.MicrosoftOrleans.Duende.IdentityServer/AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
+    <Project Path="src/AuthZI.MicrosoftOrleans.MicrosoftEntra/AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+    <Project Path="src/AuthZI.MicrosoftOrleans/AuthZI.MicrosoftOrleans.fsproj" />
+  </Folder>
+</Solution>

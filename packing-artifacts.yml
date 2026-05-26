@@ -3,32 +3,41 @@ parameters:
   type: string
 
 steps:
-   # Version with GitVersion
-  - task: gitversion/setup@3.1.2
-    displayName: Install GitVersion
-    inputs:
-      versionSpec: '6.0.5'
-  - task: gitversion/execute@3.1.2
-    displayName: Execute GitVersion
-  # Print SemVer Number
-  - script: echo $(GitVersion.SemVer)
-    displayName: 'Print SemVer Number'
-  # NuGet pack AuthZI.Build.sln
-  - task: DotNetCoreCLI@2
-    displayName: 'NuGet pack AuthZI.Build.sln'
-    inputs:
-      command: pack
-      packagesToPack: AuthZI.Build.sln
-      includesymbols: true
-      includesource: true
-      versioningScheme: byEnvVar
-      versionEnvVar: GitVersion.SemVer
-      buildProperties: 'SourceLinkCreate=true'
-  # Push NuGet packs to Azure Artifacts feed
-  - task: NuGetCommand@2
-    displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
-    inputs:
-      command: push
-      publishVstsFeed: '${{ parameters.vstsFeedName }}'
-      allowPackageConflicts: true
-    continueOnError: true
+# Version with GitVersion
+- task: gitversion/setup@3.0.3
+  displayName: Install GitVersion
+  inputs:
+    versionSpec: '6.0.x'
+
+- task: gitversion/execute@3.0.3
+  displayName: Execute GitVersion
+
+# Print SemVer Number
+- script: echo $(GitVersion.SemVer)
+  displayName: 'Print SemVer Number'
+
+# NuGet pack AuthZI.Build.slnx
+- task: DotNetCoreCLI@2
+  displayName: 'NuGet pack AuthZI.Build.slnx'
+  inputs:
+    command: pack
+    packagesToPack: AuthZI.Build.slnx
+    includesymbols: true
+    includesource: true
+    versioningScheme: byEnvVar
+    versionEnvVar: GitVersion.SemVer
+    buildProperties: 'SourceLinkCreate=true'
+
+# Authenticate to Azure Artifacts feed
+- task: NuGetAuthenticate@1
+  displayName: 'Authenticate to Azure Artifacts'
+
+# Push NuGet packages to Azure Artifacts feed
+- task: DotNetCoreCLI@2
+  displayName: 'NuGet push to Azure Artifacts: ${{ parameters.vstsFeedName }}'
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
+    nuGetFeedType: internal
+    publishVstsFeed: '${{ parameters.vstsFeedName }}'
+  continueOnError: true

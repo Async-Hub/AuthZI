@@ -1,0 +1,1 @@
+# [GitHub Copilot: Support for different types of custom instructions](https://docs.github.com/en/copilot/reference/custom-instructions-support)

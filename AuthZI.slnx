@@ -1,0 +1,62 @@
+<Solution>
+  <Folder Name="/deploy/" />
+  <Folder Name="/deploy/MicrosoftEntra/">
+    <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2B1.azcli" />
+    <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.azcli" />
+    <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.json" />
+    <Project Path="deploy/MicrosoftEntra/Configuration.App/AuthZI.Deploy.MicrosoftEntra.Configuration.App.fsproj" />
+    <Project Path="deploy/MicrosoftEntra/Configuration/AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
+  </Folder>
+  <Folder Name="/docs-builder/" />
+  <Folder Name="/samples/" />
+  <Folder Name="/samples/microsoft-orleans/" />
+  <Folder Name="/samples/microsoft-orleans/IdentityServer/">
+    <Project Path="samples/microsoft-orleans/IdentityServer/AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost/AuthZI.MicrosoftOrleans.IdentityServer.SampleApiAndSiloHost.csproj" />
+    <Project Path="samples/microsoft-orleans/IdentityServer/AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer/AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer.csproj" />
+    <Project Path="samples/microsoft-orleans/IdentityServer/AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient/AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/AzureFunctions/">
+    <Project Path="src/AuthZI.AzureFunctions/AuthZI.AzureFunctions.fsproj" />
+  </Folder>
+  <Folder Name="/src/Core/">
+    <Project Path="src/AuthZI.Extensions/AuthZI.Extensions.fsproj" />
+    <Project Path="src/AuthZI.Security.Authorization/AuthZI.Security.Authorization.csproj" />
+    <Project Path="src/AuthZI.Security/AuthZI.Security.fsproj" />
+  </Folder>
+  <Folder Name="/src/Identity/">
+    <Project Path="src/AuthZI.Identity.Duende.IdentityServer/AuthZI.Identity.Duende.IdentityServer.fsproj" />
+    <Project Path="src/AuthZI.Identity.MicrosoftEntra/AuthZI.Identity.MicrosoftEntra.fsproj" />
+  </Folder>
+  <Folder Name="/src/MicrosoftOrleans/">
+    <Project Path="src/AuthZI.MicrosoftOrleans.Duende.IdentityServer/AuthZI.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
+    <Project Path="src/AuthZI.MicrosoftOrleans.MicrosoftEntra/AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
+    <Project Path="src/AuthZI.MicrosoftOrleans/AuthZI.MicrosoftOrleans.fsproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/AuthZI.Tests.Common.Xunit/AuthZI.Tests.Common.Xunit.csproj" />
+    <Project Path="test/AuthZI.Tests.Security/AuthZI.Tests.Security.fsproj" />
+  </Folder>
+  <Folder Name="/test/AuthZI.Tests.Duende.IdentityServer/">
+    <Project Path="test/AuthZI.Tests.Duende.IdentityServer/AuthZI.Tests.Duende.IdentityServer.csproj" />
+  </Folder>
+  <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/">
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/Grains/AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
+  </Folder>
+  <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer/">
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer/AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
+  </Folder>
+  <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/">
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/AzureActiveDirectoryB2C.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET8.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET9.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET10.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.NET10.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET10.0.fsproj" />
+  </Folder>
+</Solution>
