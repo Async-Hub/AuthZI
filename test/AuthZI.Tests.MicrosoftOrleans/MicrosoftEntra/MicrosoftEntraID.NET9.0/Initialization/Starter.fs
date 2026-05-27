@@ -15,15 +15,13 @@ open Orleans
 open RootConfiguration
 open System
 open System.Text.Json
-open Xunit.Abstractions
-open Xunit.Sdk
 open AuthZI.MicrosoftOrleans.Authorization
+open Xunit
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
-type Starter(messageSink: IMessageSink) =
-  inherit XunitTestFramework(messageSink)
+type Starter() =
 
   do
     // Read the configuration.
@@ -96,12 +94,6 @@ type Starter(messageSink: IMessageSink) =
     siloClientHost.StartAsync().Wait()
     TestData.IClusterClient <- siloClientHost.Services.GetService<IClusterClient>()
 
-module CurrentAssembly =
-  [<Literal>]
-  let TypeName = "Initialization.Starter"
-
-  [<Literal>]
-  let Name = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET9.0"
-
-[<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
+[<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
+[<assembly: CollectionBehavior(DisableTestParallelization = true)>]
 ()

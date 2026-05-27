@@ -4,11 +4,10 @@ open AccessTokenProvider
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open System
 open Xunit
-open Xunit.Abstractions
 
 type MicrosoftEntraIdTestsBase(output: ITestOutputHelper) =
   [<Theory>]
-  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>)>]
+  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
   member _.``The system can obtain Access Token from Microsoft Entra ID endpoint`` (userName: string) (password: string) =
     async {
       // Arrange

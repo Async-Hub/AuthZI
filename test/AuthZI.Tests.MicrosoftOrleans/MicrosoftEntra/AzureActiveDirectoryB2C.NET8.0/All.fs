@@ -3,7 +3,7 @@
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
-open Xunit.Abstractions
+open Xunit
 
 type AzureActiveDirectoryB2CTests(output: ITestOutputHelper) =
     inherit AzureActiveDirectoryB2CTestsBase(output)

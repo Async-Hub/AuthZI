@@ -6,14 +6,11 @@ open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open System
 open System.Text.Json
-open Xunit.Abstractions
-open Xunit.Sdk
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
-type Starter(messageSink: IMessageSink) =
-    inherit XunitTestFramework(messageSink)
+type Starter() =
     do 
         // Read the configuration.
         let mutable credentialsJson = Environment.GetEnvironmentVariable("microsoftAzureADB2CCredentials")
@@ -35,11 +32,5 @@ type Starter(messageSink: IMessageSink) =
 
         //TestData.SiloClient <- SiloClient.getClusterClient()
 
-module CurrentAssembly =
-    [<Literal>]
-    let TypeName = "Initialization.Starter"
-    [<Literal>]
-    let Name = "AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0"
-
-[<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
+[<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
 ()

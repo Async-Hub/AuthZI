@@ -4,14 +4,11 @@ open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer
 open AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.GlobalConfig
 open Microsoft.Extensions.DependencyInjection
 open Orleans
-open Xunit.Abstractions
-open Xunit.Sdk
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
-type Starter(messageSink: IMessageSink) =
-    inherit XunitTestFramework(messageSink)
+type Starter() =
     do
         // Start Orleans silo host.
         let siloHost = SiloHostBuilder.Build()
@@ -30,11 +27,5 @@ type Starter(messageSink: IMessageSink) =
 
         ClusterSetup.initDocumentsRegistry getClusterClient
 
-module CurrentAssembly =
-    [<Literal>]
-    let TypeName = "Initialization.Starter"
-    [<Literal>]
-    let Name = "AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer"
-
-[<assembly: Xunit.TestFramework(CurrentAssembly.TypeName, CurrentAssembly.Name)>]
+[<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
 ()

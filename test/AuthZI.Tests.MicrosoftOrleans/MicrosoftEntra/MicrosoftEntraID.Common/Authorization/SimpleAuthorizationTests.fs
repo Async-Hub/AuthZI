@@ -13,7 +13,7 @@ open AuthZI.MicrosoftOrleans.Authorization
 
 type SimpleAuthorizationTestsBase() =
   [<Theory>]
-  [<MemberData(nameof (TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>]
+  [<MemberData(nameof (TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
   member _.``An authenticated user can invoke the grain method``
     (userName: string)
     (password: string)
@@ -31,7 +31,7 @@ type SimpleAuthorizationTestsBase() =
     }
 
   [<Theory>]
-  [<MemberData(nameof (TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>)>]
+  [<MemberData(nameof (TestData.UserWithScopeAdeleV), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
   member _.``An authenticated user on an unauthenticated client can't invoke the grain method``
     (userName: string)
     (password: string)

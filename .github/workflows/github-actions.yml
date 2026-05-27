@@ -4,25 +4,24 @@ on: [push]
 jobs:
 ##################### Build Solution ##################### 
   Build_Solution:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .NET SDK 9.0.x
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
+      
       - name: Setup .NET SDK 10.0.x
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+
       - name: Install dependencies
         run: dotnet restore AuthZI.slnx
+
       - name: Build_Solution
         run: dotnet build AuthZI.slnx --configuration Release --no-restore
 
 ##################### Launch Integration Testing ##################### 
   Integration_Testing_DotNet8:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [ Build_Solution ]
     env:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
@@ -38,7 +37,7 @@ jobs:
 #         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0
 
   Integration_Testing_DotNet9:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [ Build_Solution ]
     env:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
@@ -56,7 +55,7 @@ jobs:
 #         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0
 
   Integration_Testing_DotNet10:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [ Build_Solution ]
     permissions:
       contents: read
