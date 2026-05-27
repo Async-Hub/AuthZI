@@ -1,7 +1,7 @@
-﻿namespace AuthZI.Tests.Common.Xunit;
-
-using global::Xunit.Abstractions;
+﻿using global::Xunit;
 using Microsoft.Extensions.Logging;
+
+namespace AuthZI.Tests.Common.Xunit;
 
 public class TestLogger(ITestOutputHelper output) : ILogger
 {

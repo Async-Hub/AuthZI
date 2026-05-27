@@ -3,7 +3,7 @@
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection
-open Xunit.Abstractions
+open Xunit
 
 type MicrosoftEntraIdTests(output: ITestOutputHelper) =
     inherit MicrosoftEntraIdTestsBase(output)

@@ -2,7 +2,6 @@
 
 open AuthZI.MicrosoftEntra
 open Xunit
-open Xunit.Abstractions
 
 type DiscoveryDocumentProviderTestsBase(output: ITestOutputHelper) =
   [<Fact>]

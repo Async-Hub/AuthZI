@@ -57,7 +57,7 @@ stages:
           projects: |
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
-            publishTestResults: true
+          publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
@@ -75,7 +75,7 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
-            publishTestResults: true
+          publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
