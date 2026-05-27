@@ -1,4 +1,4 @@
-namespace Initialization
+﻿namespace Initialization
 
 open AuthZI.Deploy.MicrosoftEntra.Configuration
 open AuthZI.Identity.MicrosoftEntra
@@ -14,46 +14,54 @@ open Microsoft.Identity.Client
 open Orleans
 open RootConfiguration
 open System
-open System.Threading.Tasks
+open System.Text.Json
 open AuthZI.MicrosoftOrleans.Authorization
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
 
-type TestDataPipelineStartup() =
-  interface Xunit.v3.ITestPipelineStartup with
-    member _.StartAsync(_diagnosticMessageSink: Xunit.Sdk.IMessageSink) =
-      let credentialsJson =
-        TestDataInitialization.getCredentialsJson "microsoftEntraExternalIdCredentials" Literals.microsoftEntraExternalIDCredentialsJson
-
-      TestDataInitialization.initialize
-        credentialsJson
-        (fun credentials ->
-          MicrosoftEntraExternalIDApp(
-            credentials.DirectoryId,
-            credentials.WebClient1.Id,
-            credentials.WebClient1.Secret,
-            credentials.WebClient1.AllowedScopes,
-            AadAuthorityAudience.AzureAdMyOrg
-          )
-          :> MicrosoftEntraApp)
-        (fun credentials ->
-          MicrosoftEntraExternalIDApp(
-            credentials.DirectoryId,
-            credentials.WebClient2.Id,
-            credentials.WebClient2.Secret,
-            credentials.WebClient2.AllowedScopes,
-            AadAuthorityAudience.AzureAdMyOrg
-          )
-          :> MicrosoftEntraApp)
-        AccessTokenRetriever.getTokenByUserNameAndPasswordForEntraExternalIDTenant
-
-      ValueTask()
-
-    member _.StopAsync() = ValueTask()
-
 type Starter() =
+
   do
+    // Read the configuration.
+    let mutable microsoftEntraIdCredentialsJson =
+      Environment.GetEnvironmentVariable("microsoftEntraExternalIdCredentials")
+
+    if String.IsNullOrWhiteSpace(microsoftEntraIdCredentialsJson) then
+      microsoftEntraIdCredentialsJson <- Literals.microsoftEntraExternalIDCredentialsJson
+
+    let credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)
+
+    // Initialize the test data.
+    let web1ClientApp =
+      MicrosoftEntraExternalIDApp(
+        credentials.DirectoryId,
+        credentials.WebClient1.Id,
+        credentials.WebClient1.Secret,
+        credentials.WebClient1.AllowedScopes,
+        AadAuthorityAudience.AzureAdMyOrg
+      )
+      
+    let web2ClientApp =
+      MicrosoftEntraExternalIDApp(
+        credentials.DirectoryId,
+        credentials.WebClient2.Id,
+        credentials.WebClient2.Secret,
+        credentials.WebClient2.AllowedScopes,
+        AadAuthorityAudience.AzureAdMyOrg
+      )
+
+    TestData.UserWithScopeAdeleV <-
+      [ [| credentials.AdeleV.Name; credentials.AdeleV.Password; [ "Api1"; "Orleans" ] |] ]
+
+    TestData.UserWithScopeAlexW <- [ [| credentials.AlexW.Name; credentials.AlexW.Password; [ "Api1"; "Orleans" ] |] ]
+    TestData.Users <- [ [| credentials.AdeleV.Name; credentials.AdeleV.Password |] ]
+    TestData.Web1ClientApp <- web1ClientApp
+    TestData.Web2ClientApp <- web2ClientApp
+
+    TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync <-
+      AccessTokenRetriever.getTokenByUserNameAndPasswordForEntraExternalIDTenant
+
     let configureSiloHost =
       fun (services: IServiceCollection) ->
         // Add Azure Active Directory authorization.
@@ -86,6 +94,5 @@ type Starter() =
     siloClientHost.StartAsync().Wait()
     TestData.IClusterClient <- siloClientHost.Services.GetService<IClusterClient>()
 
-[<assembly: Xunit.v3.TestPipelineStartup(typeof<TestDataPipelineStartup>)>]
 [<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
 ()

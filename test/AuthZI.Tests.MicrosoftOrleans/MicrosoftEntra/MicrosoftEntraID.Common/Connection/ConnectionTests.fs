@@ -7,7 +7,7 @@ open Xunit
 
 type MicrosoftEntraIdTestsBase(output: ITestOutputHelper) =
   [<Theory>]
-  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>)>]
+  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
   member _.``The system can obtain Access Token from Microsoft Entra ID endpoint`` (userName: string) (password: string) =
     async {
       // Arrange
