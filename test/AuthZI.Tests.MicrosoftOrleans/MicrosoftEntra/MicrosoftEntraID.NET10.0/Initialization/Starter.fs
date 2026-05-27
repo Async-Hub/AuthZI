@@ -16,6 +16,7 @@ open RootConfiguration
 open System
 open System.Text.Json
 open AuthZI.MicrosoftOrleans.Authorization
+open Xunit
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
@@ -94,4 +95,5 @@ type Starter() =
     TestData.IClusterClient <- siloClientHost.Services.GetService<IClusterClient>()
 
 [<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
+[<assembly: CollectionBehavior(DisableTestParallelization = true)>]
 ()
