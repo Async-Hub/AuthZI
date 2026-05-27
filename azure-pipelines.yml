@@ -41,6 +41,11 @@ stages:
         vmImage: ubuntu-22.04
       dependsOn: Build_Solution
       steps:
+      - task: UseDotNet@2
+        displayName: 'Install .NET SDK 8.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '8.0.x'
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests'
         inputs:
@@ -48,7 +53,7 @@ stages:
           projects: |
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
-            publishTestResults: true
+          publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
@@ -66,7 +71,7 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
-            publishTestResults: true
+          publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
           microsoftEntraExternalIdCredentials: $(MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS)
