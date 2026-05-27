@@ -10,7 +10,7 @@ open AuthZI.Tests.Common.Xunit
 type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
   [<Theory>]
-  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
+  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>)>]
   member _.``The system can verify JWT Token from Azure AD endpoint`` (userName: string) (password: string) =
     task {
       // Arrange
