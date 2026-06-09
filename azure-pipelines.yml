@@ -36,7 +36,7 @@ stages:
     
     - job: Print_SemVer_Number
       displayName: Print SemVer Number
-      dependsOn:
+      dependsOn: []
       pool:
         name: Azure Pipelines
         vmImage: ubuntu-22.04

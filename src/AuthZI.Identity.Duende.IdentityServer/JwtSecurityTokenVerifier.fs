@@ -10,8 +10,8 @@ module JwtSecurityTokenVerifier =
     let keys = System.Collections.Generic.List<SecurityKey>()
 
     for webKey in discoveryDocument.Keys do
-      let e = Base64Url.Decode(webKey.E)
-      let n = Base64Url.Decode(webKey.N)
+      let e = Base64UrlEncoder.DecodeBytes(webKey.E)
+      let n = Base64UrlEncoder.DecodeBytes(webKey.N)
       let rsaParameters = new RSAParameters(Exponent = e, Modulus = n)
       let key = RsaSecurityKey(rsaParameters)
       keys.Add key
