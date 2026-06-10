@@ -1,5 +1,9 @@
 steps:
-   # Version with GitVersion
+  # Ensure full git history and tags for GitVersion
+  - checkout: self
+    fetchDepth: 0
+    fetchTags: true
+  # Version with GitVersion
   - task: gitversion/setup@3.1.2
     displayName: Install GitVersion
     inputs:

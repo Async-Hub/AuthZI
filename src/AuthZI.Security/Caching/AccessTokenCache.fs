@@ -7,7 +7,7 @@ open Microsoft.Extensions.Options
 type AccessTokenCache(memoryCacheOptions: IOptions<MemoryCacheOptions>) =
   do
     if isNull memoryCacheOptions then
-      raise (new ArgumentNullException("memoryCacheOptions"))
+      raise (new ArgumentNullException(nameof memoryCacheOptions))
 
   interface IAccessTokenCache with
     member val Current: IMemoryCache = new MemoryCache(memoryCacheOptions) :> IMemoryCache
