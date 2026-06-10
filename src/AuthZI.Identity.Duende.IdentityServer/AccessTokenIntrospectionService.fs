@@ -10,6 +10,7 @@ type public AccessTokenIntrospectionService
     httpClientFactory: IHttpClientFactory,
     identityServerConfig: IdentityServerConfig,
     discoveryDocumentProvider: DiscoveryDocumentProvider,
+    accessTokenVerifierOptions: AccessTokenVerifierOptions,
     logger: ILogger<AccessTokenIntrospectionService>
   ) =
   let httpClient = httpClientFactory.CreateClient "IdS"
@@ -48,8 +49,8 @@ type public AccessTokenIntrospectionService
   interface IAccessTokenIntrospectionService with
     member this.IntrospectTokenAsync accessToken =
       async {
-        // TODO: Read this from configuaration.
-        let allowOfflineValidation = true
+        // Read AllowOfflineValidation from configuration options.
+        let allowOfflineValidation = accessTokenVerifierOptions.AllowOfflineValidation
         let accessTokenType = AccessTokenAnalyzer.GetTokenType accessToken
         let! discoveryResponse = discoveryDocumentProvider.GetDiscoveryDocumentAsync() |> Async.AwaitTask
 
