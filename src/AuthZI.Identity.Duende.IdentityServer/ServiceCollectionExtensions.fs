@@ -25,7 +25,7 @@ type ServiceCollectionExtensions =
     services.AddHttpClient("IdS") |> ignore
 
     // Register AccessTokenVerifierOptions if not already registered (e.g. by the Orleans layer).
-    services.TryAddSingleton<AccessTokenVerifierOptions>()
+    services.TryAddSingleton<AccessTokenVerifierOptions>(fun _ -> AccessTokenVerifierOptions())
 
     // Add Discovery document provider.
     let providerFunc (provider: IServiceProvider) =
