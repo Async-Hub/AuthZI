@@ -104,7 +104,7 @@ stages:
 
   - stage: Packing_Artifacts_Testing
     displayName: Packing artifacts testing
-    dependsOn: []
+    dependsOn: Build
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines
