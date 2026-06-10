@@ -21,7 +21,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.Memory" Version="9.0.16" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-		<PackageReference Include="Duende.IdentityModel" Version="7.0.0" />
+		<PackageReference Include="Duende.IdentityModel" Version="8.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
 		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.6.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />

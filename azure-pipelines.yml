@@ -55,7 +55,6 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           publishTestResults: true
         env: 
@@ -93,6 +92,8 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.Security
+            test/AuthZI.Tests.Duende.IdentityServer
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0
           publishTestResults: true
         env: 
