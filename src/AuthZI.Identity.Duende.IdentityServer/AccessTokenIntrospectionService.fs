@@ -36,7 +36,11 @@ type public AccessTokenIntrospectionService
       if (not introspectionResponse.IsError) && introspectionResponse.IsActive then
         return Ok(introspectionResponse.Claims)
       else
-        // TODO: Log trace.
+        logger.LogWarning(
+          "Access token introspection failed for {TokenType} token. Error: {Error}",
+          nameOfTokenType,
+          introspectionResponse.Error
+        )
         return Error("Access token introspection failed.")
     }
     |> Async.StartAsTask
