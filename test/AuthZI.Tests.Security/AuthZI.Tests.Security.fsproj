@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Include="AuthorizationDeterminerTests.fs" />
+		<Compile Include="AuthorizationRequirementResolverTests.fs" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -13,7 +13,7 @@ type public AccessTokenSetterFilter(accessTokenProvider: IAccessTokenProvider) =
   interface IOutgoingGrainCallFilter with
     member _.Invoke(context: IOutgoingGrainCallContext) =
       task {
-        if AuthorizationDeterminer.IsRequired(context.InterfaceMethod) then
+        if AuthorizationRequirementResolver.IsRequired(context.InterfaceMethod) then
           let mutable accessToken : String = null
           accessToken <- (RequestContext.Get(ConfigurationKeys.AccessTokenKey) |? (String.Empty :> Object)).ToString()
 

@@ -6,11 +6,10 @@ open AuthZI.Security.AccessToken
 open Microsoft.Extensions.Logging
 open Microsoft.IdentityModel.Tokens
 open System.IdentityModel.Tokens.Jwt
-open System.Text
 
 type public AccessTokenIntrospectionService
   (
-    azureActiveDirectoryApp: MicrosoftEntraApp,
+    microsoftEntraApp: MicrosoftEntraApp,
     discoveryDocumentProvider: DiscoveryDocumentProvider,
     claimTypeResolver: IClaimTypeResolver,
     logger: ILogger<AccessTokenIntrospectionService>
@@ -24,19 +23,18 @@ type public AccessTokenIntrospectionService
     =
     let parameters = TokenValidationParameters()
     parameters.ValidIssuer <- app.IssuerUrl
-    parameters.ValidAudience <- app.ClientId
+    parameters.ValidAudiences <- app.ValidAudiences
     parameters.IssuerSigningKeys <- discoveryDocument.SigningKeys
     parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name
     parameters.RoleClaimType <- claimTypeResolver.Resolve ClaimType.Role
     parameters.RequireSignedTokens <- true
-    // TODO: Implement audience validation functionality
-    parameters.ValidateAudience <- false
-    parameters.IssuerSigningKey <- SymmetricSecurityKey(Encoding.ASCII.GetBytes(app.ClientSecret))
+    parameters.ValidateAudience <- true
 
     let handler = JwtSecurityTokenHandler()
     handler.InboundClaimTypeMap.Clear()
     let mutable validatedToken: SecurityToken = null
     let claimsPrincipal = handler.ValidateToken(jwtToken, parameters, &validatedToken)
+    
     claimsPrincipal.Claims
 
   interface IAccessTokenIntrospectionService with
@@ -45,7 +43,7 @@ type public AccessTokenIntrospectionService
         let! discoveryDocument = discoveryDocumentProvider.GetDiscoveryDocumentAsync()
 
         try
-          let claims = verify accessToken azureActiveDirectoryApp discoveryDocument.Value claimTypeResolver
+          let claims = verify accessToken microsoftEntraApp discoveryDocument.Value claimTypeResolver
           return Ok(claims)
         with
         | ex ->

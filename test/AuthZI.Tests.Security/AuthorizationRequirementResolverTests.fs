@@ -20,7 +20,7 @@ type TypeThatRequiresAuthorizationOnlyForMethod() =
 
   member _.MethodWithoutAuthorizeAttribute() = ()
 
-type AuthorizationDeterminerTests() =
+type AuthorizationRequirementResolverTests() =
 
   [<Fact>]
   member _.``Should return false when AllowAnonymous attribute is present``() =
@@ -32,7 +32,7 @@ type AuthorizationDeterminerTests() =
         .GetMethod(nameof (typeUnderTest.MethodWithAllowAnonymousAttribute))
 
     // Act
-    let result = AuthorizationDeterminer.IsRequired(methodInfo)
+    let result = AuthorizationRequirementResolver.IsRequired(methodInfo)
 
     // Assert
     Assert.False(result)
@@ -46,7 +46,7 @@ type AuthorizationDeterminerTests() =
         .GetMethod(nameof (testClass.MethodWithAllowAnonymousAttribute))
 
     // Act
-    let result = AuthorizationDeterminer.IsRequired(methodInfo)
+    let result = AuthorizationRequirementResolver.IsRequired(methodInfo)
 
     // Assert
     Assert.False(result)
@@ -60,7 +60,7 @@ type AuthorizationDeterminerTests() =
         .GetMethod(nameof (testClass.MethodWithoutAuthorizeAttribute))
 
     // Act
-    let result = AuthorizationDeterminer.IsRequired(methodInfo)
+    let result = AuthorizationRequirementResolver.IsRequired(methodInfo)
 
     // Assert
     Assert.True(result)
@@ -75,7 +75,7 @@ type AuthorizationDeterminerTests() =
         .GetMethod(nameof (typeUnderTest.MethodWithAuthorizeAttribute))
 
     // Act
-    let result = AuthorizationDeterminer.IsRequired(methodInfo)
+    let result = AuthorizationRequirementResolver.IsRequired(methodInfo)
 
     // Assert
     Assert.True(result)
@@ -90,7 +90,7 @@ type AuthorizationDeterminerTests() =
         .GetMethod(nameof (typeUnderTest.MethodWithoutAuthorizeAttribute))
 
     // Act
-    let result = AuthorizationDeterminer.IsRequired(methodInfo)
+    let result = AuthorizationRequirementResolver.IsRequired(methodInfo)
 
     // Assert
     Assert.False(result)
