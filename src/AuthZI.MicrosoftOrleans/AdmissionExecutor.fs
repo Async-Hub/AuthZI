@@ -5,32 +5,32 @@ open AuthZI.Security.Authorization
 open System.Collections.Generic
 open System.Reflection
 
-type public AdmissionExecutor(accessTokenVerifier: IAccessTokenVerifier, authorizeHandler: IAuthorizationExecutor)=
-  member public this.AdmitAsync(accessTokenResult: Result<string,string>, interfaceMethod: MethodInfo )=
-      task {        
-          match accessTokenResult with
-          | Error error -> return Error error
-          | Ok accessToken ->
-          let! accessTokenVerificationResult = accessTokenVerifier.Verify(accessToken)
+type public AdmissionExecutor
+  (introspectionService: IAccessTokenIntrospectionService, authorizeHandler: IAuthorizationExecutor) =
+  member public this.AdmitAsync(accessTokenResult: Result<string, string>, interfaceMethod: MethodInfo) =
+    task {
+      match accessTokenResult with
+      | Error error -> return Error error
+      | Ok accessToken ->
+        let! accessTokenIntrospectionResult = introspectionService.IntrospectTokenAsync(accessToken)
 
-          match accessTokenVerificationResult with
-          | Ok claims ->
-              let grainMethodAuthorizeData: IEnumerable<IAuthorizeData> = 
-                  interfaceMethod.GetCustomAttributes<AuthorizeAttribute>()
-                  |> Seq.cast<IAuthorizeData>
+        match accessTokenIntrospectionResult with
+        | Ok claims ->
+          let grainMethodAuthorizeData: IEnumerable<IAuthorizeData> =
+            interfaceMethod.GetCustomAttributes<AuthorizeAttribute>() |> Seq.cast<IAuthorizeData>
 
-              let mutable grainAuthorizeData: IEnumerable<IAuthorizeData> = null
+          let mutable grainAuthorizeData: IEnumerable<IAuthorizeData> = null
 
-              if interfaceMethod.ReflectedType <> null then
-                  grainAuthorizeData <- interfaceMethod.ReflectedType.GetCustomAttributes<AuthorizeAttribute>()
-                                        |> Seq.cast<IAuthorizeData>
+          if interfaceMethod.ReflectedType <> null then
+            grainAuthorizeData <-
+              interfaceMethod.ReflectedType.GetCustomAttributes<AuthorizeAttribute>() |> Seq.cast<IAuthorizeData>
 
-              let! authorizationResult = 
-                authorizeHandler.AuthorizeAsync(claims, grainAuthorizeData, grainMethodAuthorizeData)
-              if authorizationResult.IsSuccess then
-                  return Ok authorizationResult.Value
-              else
-                  return Error("Authorization failed.")
-          | Error error -> return Error error
-      }
+          let! authorizationResult =
+            authorizeHandler.AuthorizeAsync(claims, grainAuthorizeData, grainMethodAuthorizeData)
 
+          if authorizationResult.IsSuccess then
+            return Ok authorizationResult.Value
+          else
+            return Error("Authorization failed.")
+        | Error error -> return Error error
+    }

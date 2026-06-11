@@ -4,7 +4,7 @@
 
 ---
 
-The security packages for Microsoft Orleans 8.*|9.* enable the use of authorization functionality similar to what is available in ASP.NET Core. These packages allow seamless integration with Microsoft Entra and Duende IdentityServer for securing Microsoft Orleans grains and any ASP.NET Core 8.*|9.* application.
+The security packages for Microsoft Orleans 8.\*/9.\* enable the use of authorization functionality similar to what is available in ASP.NET Core. These packages allow seamless integration with Microsoft Entra and Duende IdentityServer for securing Microsoft Orleans grains and any ASP.NET Core 8.\*/9.\* application.
 
 >[!NOTE]
 >Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about 

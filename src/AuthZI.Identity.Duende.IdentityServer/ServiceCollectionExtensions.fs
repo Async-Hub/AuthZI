@@ -3,6 +3,7 @@
 open AuthZI.Security
 open AuthZI.Security.AccessToken
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.DependencyInjection.Extensions
 open System
 open System.Net.Http
 open System.Runtime.CompilerServices
@@ -22,6 +23,9 @@ type ServiceCollectionExtensions =
     |> ignore
 
     services.AddHttpClient("IdS") |> ignore
+
+    // Register AccessTokenVerifierOptions if not already registered (e.g. by the Orleans layer).
+    services.TryAddSingleton<AccessTokenVerifierOptions>(fun _ -> AccessTokenVerifierOptions())
 
     // Add Discovery document provider.
     let providerFunc (provider: IServiceProvider) =

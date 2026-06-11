@@ -35,9 +35,17 @@ Common targeted test commands used in CI:
 
 ## Project Conventions
 
-- Follow `.editorconfig` (2-space indentation, C# style preferences, line-length guides).
-- Keep naming and existing style consistent with surrounding code.
-- F# project files list compile order explicitly; when adding a `.fs` file, update the corresponding `.fsproj` in dependency order.
+- Follow `.editorconfig` conventions, including 2-space indentation, C# style preferences, and line-length guidance.
+- Keep naming, formatting, and implementation style consistent with the surrounding code.
+- F# project files define compile order explicitly. When adding a `.fs` file, update the corresponding `.fsproj` and place the file in the correct dependency order.
+- Avoid using `null` to represent optional values or operation failures.
+- For F#-only APIs, prefer native F# types:
+  - Use `Option<'T>` when a value may be absent and no failure reason is needed.
+  - Use `Result<'T, 'Error>` when an operation can fail and the caller needs error details.
+- For APIs consumed from C#, prefer C#-friendly types from `CSharpFunctionalExtensions` version `3.7.0`:
+  - Use `Maybe<T>` instead of exposing F# `Option<'T>`.
+  - Use `Result`, `Result<T>`, or `Result<T, E>` for operations that can fail.
+- Keep F# native functional types inside F# implementation boundaries, and expose C#-friendly wrappers at public interop boundaries.
 
 ## CI/Validation Expectations
 

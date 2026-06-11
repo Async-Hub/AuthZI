@@ -1,6 +1,6 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityModel;
+using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Test;
-using IdentityModel;
 
 namespace AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer;
 

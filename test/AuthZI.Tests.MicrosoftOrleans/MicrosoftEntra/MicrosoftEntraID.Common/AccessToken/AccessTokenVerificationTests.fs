@@ -24,7 +24,7 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
         AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
         :> IAccessTokenIntrospectionService
 
-      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken false
+      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken
 
       let isSuccess =
         match result with
@@ -33,4 +33,31 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
       // Act
       Assert.True(isSuccess)
+    }
+
+  [<Theory>]
+  [<MemberData(nameof (TestData.Users), MemberType = typeof<TestData>, DisableDiscoveryEnumeration = true)>]
+  member _.``The system rejects JWT Token with invalid audience`` (userName: string) (password: string) =
+    task {
+      // Arrange
+      let discoveryDocumentProvider = DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl)
+
+      let! accessToken = getAccessTokenForUserOnWebClient2Async userName password
+      output.WriteLine(accessToken)
+
+      let logger = TestLogger<AccessTokenIntrospectionService>(output)
+      let accessTokenIntrospectionService =
+        AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
+        :> IAccessTokenIntrospectionService
+
+      // Act
+      let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken
+
+      let isRejected =
+        match result with
+        | Error _ -> true
+        | Ok _ -> false
+
+      // Assert
+      Assert.True(isRejected)
     }

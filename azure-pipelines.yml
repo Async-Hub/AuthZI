@@ -34,6 +34,15 @@ stages:
           projects: 'AuthZI.slnx'
           configuration: '$(buildConfiguration)'
     
+    - job: Print_SemVer_Number
+      displayName: Print SemVer Number
+      dependsOn: []
+      pool:
+        name: Azure Pipelines
+        vmImage: ubuntu-22.04
+      steps:
+      - template: execute-gitversion.yml    
+          
     - job: Run_Tests_DotNet8
       displayName: Run Tests .NET 8.0.x
       pool:
@@ -46,7 +55,6 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
           publishTestResults: true
         env: 
@@ -57,7 +65,7 @@ stages:
       displayName: Run Tests .NET 9.0.x
       pool:
         name: Azure Pipelines
-        vmImage: ubuntu-24.04
+        vmImage: ubuntu-22.04
       dependsOn: Build_Solution
       steps:
       - task: DotNetCoreCLI@2
@@ -84,6 +92,8 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.Security
+            test/AuthZI.Tests.Duende.IdentityServer
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0
           publishTestResults: true
         env: 
@@ -94,7 +104,7 @@ stages:
 
   - stage: Packing_Artifacts_Testing
     displayName: Packing artifacts testing
-    dependsOn: []
+    dependsOn: Build
     condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
     pool:
       name: Azure Pipelines

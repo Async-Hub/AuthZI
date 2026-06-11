@@ -3,4 +3,4 @@
 open Microsoft.Extensions.Caching.Memory
 
 type IAccessTokenCache =
-    abstract Current : IMemoryCache with get
+  abstract Current: IMemoryCache with get

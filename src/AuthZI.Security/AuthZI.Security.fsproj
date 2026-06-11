@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.fs" />
-		<Compile Include="AuthorizationDeterminer.fs" />
+		<Compile Include="AuthorizationRequirementResolver.fs" />
 		<Compile Include="IAccessTokenProvider.fs" />
 		<Compile Include="IClaimTypeResolver.fs" />
 		<Compile Include="ConfigurationKeys.fs" />
@@ -20,14 +20,8 @@
 		<Compile Include="Caching\IAccessTokenCache.fs" />
 		<Compile Include="Caching\AccessTokenCache.fs" />
 		<Compile Include="AccessToken\InvalidAccessTokenException.fs" />
-		<Compile Include="AccessToken\AccessTokenIntrospectionResult.fs" />
 		<Compile Include="AccessToken\IAccessTokenIntrospectionService.fs" />
-		<Compile Include="AccessToken\AccessTokenVerificationResult.fs" />
 		<Compile Include="AccessToken\AccessTokenVerifierOptions.fs" />
-		<Compile Include="AccessToken\IAccessTokenVerifier.fs" />
-		<Compile Include="AccessToken\AccessTokenVerifierWithTracing.fs" />
-		<Compile Include="AccessToken\DefaultAccessTokenVerifier.fs" />
-		<Compile Include="AccessToken\AccessTokenVerifierWithCaching.fs" />
 		<Compile Include="Configuration.fs" />
 		<Compile Include="Authorization\IAuthorizationExecutor.fs" />
 		<Compile Include="Authorization\AuthorizationExecutor.fs" />

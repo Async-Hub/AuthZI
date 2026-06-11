@@ -1,6 +1,6 @@
 namespace AuthZI.Identity.Duende.IdentityServer
 
-open IdentityModel.Jwk
+open Duende.IdentityModel.Jwk
 open System.Collections.Generic
 
 [<AllowNullLiteral>]

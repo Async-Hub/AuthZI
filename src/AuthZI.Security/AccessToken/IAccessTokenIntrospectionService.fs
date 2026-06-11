@@ -5,5 +5,4 @@ open System.Security.Claims
 open System.Threading.Tasks
 
 type public IAccessTokenIntrospectionService =
-  abstract IntrospectTokenAsync:
-    accessToken: string -> allowOfflineValidation: bool -> Task<Result<IEnumerable<Claim>, string>>
+  abstract IntrospectTokenAsync: accessToken: string -> Task<Result<IEnumerable<Claim>, string>>

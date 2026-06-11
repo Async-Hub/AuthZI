@@ -1,7 +1,7 @@
 namespace AuthZI.Identity.Duende.IdentityServer
 
 open AuthZI.Security
-open IdentityModel.Client
+open Duende.IdentityModel.Client
 open System
 open System.Net.Http
 

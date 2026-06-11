@@ -14,6 +14,9 @@ type DiscoveryDocumentProviderTests(output: ITestOutputHelper) =
 type AccessTokenVerificationTests(output: ITestOutputHelper) =
     inherit AccessTokenVerificationTestsBase(output)
 
+type ExpectedAudienceTests(output: ITestOutputHelper) =
+    inherit AudienceValidationTestsBase(output)
+
 type SimpleAuthorizationTests() =
     inherit SimpleAuthorizationTestsBase()
 

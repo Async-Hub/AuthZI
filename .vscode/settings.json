@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "async-hub",
+        "projectKey": "Async-Hub_AuthZI"
+    }
+}

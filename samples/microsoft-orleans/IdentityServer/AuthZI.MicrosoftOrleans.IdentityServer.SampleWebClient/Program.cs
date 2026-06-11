@@ -1,5 +1,5 @@
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
-using IdentityModel.Client;
+using Duende.IdentityModel.Client;
 
 Console.Title = "WebClient";
 

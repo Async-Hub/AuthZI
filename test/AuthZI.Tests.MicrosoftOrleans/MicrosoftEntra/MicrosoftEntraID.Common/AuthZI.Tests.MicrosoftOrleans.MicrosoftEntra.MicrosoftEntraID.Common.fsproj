@@ -14,6 +14,7 @@
 		<Compile Include="Initialization\RootConfiguration.fs" />
 		<Compile Include="Connection\ConnectionTests.fs" />
 		<Compile Include="Connection\DiscoveryDocumentProviderTests.fs" />
+		<Compile Include="AccessToken\AudienceValidationTests.fs" />
 		<Compile Include="AccessToken\AccessTokenVerificationTests.fs" />
 		<Compile Include="Authorization\SimpleAuthorizationTests.fs" />
 		<Compile Include="Authorization\RoleBasedAuthorizationTests.fs" />
@@ -29,19 +30,19 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="Microsoft.Orleans.Client" Version="8.2.*" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.*" />
-    <PackageReference Include="Microsoft.Orleans.Sdk"     Version="8.2.*" />
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.2.*" />
     <PackageReference Include="Microsoft.Orleans.Runtime" Version="8.2.*" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
     <PackageReference Include="Microsoft.Orleans.Client" Version="9.2.*" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.*" />
-    <PackageReference Include="Microsoft.Orleans.Sdk"     Version="9.2.*" />
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.2.*" />
     <PackageReference Include="Microsoft.Orleans.Runtime" Version="9.2.*" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageReference Include="Microsoft.Orleans.Client" Version="10.1.*" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="10.1.*" />
-    <PackageReference Include="Microsoft.Orleans.Sdk"     Version="10.1.*" />
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="10.1.*" />
     <PackageReference Include="Microsoft.Orleans.Runtime" Version="10.1.*" />
   </ItemGroup>
 

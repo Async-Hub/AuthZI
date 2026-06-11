@@ -4,7 +4,7 @@ open AuthZI.Security.Authorization
 open System.Linq
 open System.Reflection
 
-type public AuthorizationDeterminer() =
+type public AuthorizationRequirementResolver() =
   static member IsRequired(methodInfo: MethodInfo) =
     let allowAnonymousAttribute =
       methodInfo.GetCustomAttribute<AllowAnonymousAttribute>()

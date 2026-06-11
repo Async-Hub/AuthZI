@@ -2,7 +2,7 @@
 
 open AuthZI.Identity.Duende.IdentityServer
 open Duende.IdentityServer.Services
-open IdentityModel.Client
+open Duende.IdentityModel.Client
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection

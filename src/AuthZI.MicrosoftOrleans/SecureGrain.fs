@@ -25,7 +25,7 @@ type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
   interface IIncomingGrainCallFilter with
     member _.Invoke(context: IIncomingGrainCallContext) =
       task {
-        if AuthorizationDeterminer.IsRequired context.InterfaceMethod then
+        if AuthorizationRequirementResolver.IsRequired context.InterfaceMethod then
           let grainType = context.Grain.GetType()
 
           let accessToken = RequestContext.Get(ConfigurationKeys.AccessTokenKey)
@@ -52,7 +52,7 @@ type public SecureGrain(secureGrainContext: SecureGrainContext) as this =
   interface IOutgoingGrainCallFilter with
     member _.Invoke(context: IOutgoingGrainCallContext) =
       task {
-        if AuthorizationDeterminer.IsRequired(context.InterfaceMethod) then
+        if AuthorizationRequirementResolver.IsRequired(context.InterfaceMethod) then
           let accessToken = RequestContext.Get(ConfigurationKeys.AccessTokenKey)
           let! accessTokenResult = secureGrainContext.AccessTokenExtractor.RetriveAccessToken(accessToken)
 

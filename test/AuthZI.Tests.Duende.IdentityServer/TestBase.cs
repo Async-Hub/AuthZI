@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AuthZI.Identity.Duende.IdentityServer;
 using AuthZI.Tests.Duende.IdentityServer.Configuration;
-using IdentityModel.Client;
+using Duende.IdentityModel.Client;
 
 namespace AuthZI.Tests.Duende.IdentityServer;
 
