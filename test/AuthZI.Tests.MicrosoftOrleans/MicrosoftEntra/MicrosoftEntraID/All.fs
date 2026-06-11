@@ -1,4 +1,4 @@
-﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET8
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID
 
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization

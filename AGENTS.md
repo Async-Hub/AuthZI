@@ -28,11 +28,11 @@ This file helps coding agents be productive in the AuthZI repository.
   - `dotnet test test/AuthZI.Tests.Security -c Release`
   - `dotnet test test/AuthZI.Tests.Duende.IdentityServer -c Release`
   - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0 -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET8.0 -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0 -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.NET9.0 -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0 -c Release`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net8.0`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net8.0`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net9.0`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net9.0`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net10.0`
 
 ## Conventions
 

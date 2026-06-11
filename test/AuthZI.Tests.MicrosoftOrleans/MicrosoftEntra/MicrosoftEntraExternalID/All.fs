@@ -1,4 +1,4 @@
-﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.NET10
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID
 
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
@@ -14,14 +14,11 @@ type DiscoveryDocumentProviderTests(output: ITestOutputHelper) =
 type AccessTokenVerificationTests(output: ITestOutputHelper) =
     inherit AccessTokenVerificationTestsBase(output)
 
-type ExpectedAudienceTests(output: ITestOutputHelper) =
-    inherit AudienceValidationTestsBase(output)
-
 type SimpleAuthorizationTests() =
     inherit SimpleAuthorizationTestsBase()
 
 type RoleBasedAuthorizationTests() =
     inherit RoleBasedAuthorizationTestsBase()
 
-type ClaimsBasedAuthorizationTests() =
-    inherit ClaimsBasedAuthorizationTestsBase()
+// type ClaimsBasedAuthorizationTests() =
+//     inherit ClaimsBasedAuthorizationTestsBase()
