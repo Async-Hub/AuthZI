@@ -98,6 +98,14 @@ stages:
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
           publishTestResults: true
       - task: DotNetCoreCLI@2
+        displayName: 'Run Integration Tests (Duende IdentityServer 8.0)'
+        inputs:
+          command: test
+          projects: |
+            test/AuthZI.Tests.Duende.IdentityServer.IS8
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0
+          publishTestResults: true
+      - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests (Microsoft Entra ID)'
         inputs:
           command: test

@@ -42,12 +42,14 @@
   </Folder>
   <Folder Name="/test/AuthZI.Tests.Duende.IdentityServer/">
     <Project Path="test/AuthZI.Tests.Duende.IdentityServer/AuthZI.Tests.Duende.IdentityServer.csproj" />
+    <Project Path="test/AuthZI.Tests.Duende.IdentityServer.IS8/AuthZI.Tests.Duende.IdentityServer.IS8.csproj" />
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/Grains/AuthZI.Tests.MicrosoftOrleans.Grains.csproj" />
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer/AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0/AuthZI.Tests.MicrosoftOrleans.Duende.IdentityServer.8.0.fsproj" />
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/AzureActiveDirectoryB2C.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj" />
