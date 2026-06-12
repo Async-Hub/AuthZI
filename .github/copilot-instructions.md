@@ -19,6 +19,8 @@ Common targeted test commands used in CI:
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net8.0`
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net9.0`
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net9.0`
+- `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net10.0`
+- `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net10.0`
 
 ## Repository Map
 
