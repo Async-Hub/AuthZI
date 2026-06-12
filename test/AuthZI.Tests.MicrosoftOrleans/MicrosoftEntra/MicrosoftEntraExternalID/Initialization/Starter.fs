@@ -1,4 +1,4 @@
-﻿namespace Initialization
+﻿namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID
 
 open AuthZI.Deploy.MicrosoftEntra.Configuration
 open AuthZI.Identity.MicrosoftEntra

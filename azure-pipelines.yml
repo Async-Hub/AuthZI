@@ -55,7 +55,8 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET8.0
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
+          arguments: --framework net8.0
           publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
@@ -73,7 +74,8 @@ stages:
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET9.0
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
+          arguments: --framework net9.0
           publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
@@ -94,7 +96,14 @@ stages:
             test/AuthZI.Tests.Security
             test/AuthZI.Tests.Duende.IdentityServer
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
-            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.NET10.0
+          publishTestResults: true
+      - task: DotNetCoreCLI@2
+        displayName: 'Run Integration Tests (Microsoft Entra ID)'
+        inputs:
+          command: test
+          projects: |
+            test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
+          arguments: --framework net10.0
           publishTestResults: true
         env: 
           microsoftEntraIdCredentials: $(MICROSOFT_ENTRA_ID_CREDENTIALS)
