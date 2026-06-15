@@ -94,15 +94,15 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.Security
-            test/AuthZI.Tests.Duende.IdentityServer
-            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
+            test/AuthZI.Tests.Duende.IdentityServer.7.4
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
           publishTestResults: true
       - task: DotNetCoreCLI@2
         displayName: 'Run Integration Tests (Duende IdentityServer 8.0)'
         inputs:
           command: test
           projects: |
-            test/AuthZI.Tests.Duende.IdentityServer.IS8
+            test/AuthZI.Tests.Duende.IdentityServer.8.0
             test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0
           publishTestResults: true
       - task: DotNetCoreCLI@2

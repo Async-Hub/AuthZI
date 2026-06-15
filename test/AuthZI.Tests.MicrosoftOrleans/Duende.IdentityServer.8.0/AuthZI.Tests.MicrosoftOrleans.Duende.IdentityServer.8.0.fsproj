@@ -23,40 +23,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\Duende.IdentityServer\Assembly.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Assembly.fs"
              Link="Assembly.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\GlobalConfig.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\GlobalConfig.fs"
              Link="Initialization\GlobalConfig.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\Users.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\Users.fs"
              Link="Initialization\Users.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\IdentityServerResources.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\IdentityServerResources.fs"
              Link="Initialization\IdentityServerResources.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\IdentityServerClients.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\IdentityServerClients.fs"
              Link="Initialization\IdentityServerClients.fs" />
     <Compile Include="ProfileService.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\IdentityServerBuilder.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\IdentityServerBuilder.fs"
              Link="Initialization\IdentityServerBuilder.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\AccessTokenFactory.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\AccessTokenFactory.fs"
              Link="Initialization\AccessTokenFactory.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\SiloHostBuilder.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\SiloHostBuilder.fs"
              Link="Initialization\SiloHostBuilder.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\SiloClientBuilder.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\SiloClientBuilder.fs"
              Link="Initialization\SiloClientBuilder.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\ClusterSetup.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\ClusterSetup.fs"
              Link="Initialization\ClusterSetup.fs" />
-    <Compile Include="..\Duende.IdentityServer\Initialization\Starter.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\Initialization\Starter.fs"
              Link="Initialization\Starter.fs" />
-    <Compile Include="..\Duende.IdentityServer\AccessTokenTests\AccessTokenVerificationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AccessTokenTests\AccessTokenVerificationTests.fs"
              Link="AccessTokenTests\AccessTokenVerificationTests.fs" />
-    <Compile Include="..\Duende.IdentityServer\AuthorizationTests\SimpleAuthorizationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\SimpleAuthorizationTests.fs"
              Link="AuthorizationTests\SimpleAuthorizationTests.fs" />
-    <Compile Include="..\Duende.IdentityServer\AuthorizationTests\RoleBasedAuthorizationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\RoleBasedAuthorizationTests.fs"
              Link="AuthorizationTests\RoleBasedAuthorizationTests.fs" />
-    <Compile Include="..\Duende.IdentityServer\AuthorizationTests\ClaimsBasedAuthorizationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\ClaimsBasedAuthorizationTests.fs"
              Link="AuthorizationTests\ClaimsBasedAuthorizationTests.fs" />
-    <Compile Include="..\Duende.IdentityServer\AuthorizationTests\PolicyBasedAuthorizationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\PolicyBasedAuthorizationTests.fs"
              Link="AuthorizationTests\PolicyBasedAuthorizationTests.fs" />
-    <Compile Include="..\Duende.IdentityServer\AuthorizationTests\ResourceBasedAuthorizationTests.fs"
+    <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\ResourceBasedAuthorizationTests.fs"
              Link="AuthorizationTests\ResourceBasedAuthorizationTests.fs" />
   </ItemGroup>
 

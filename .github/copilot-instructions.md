@@ -14,7 +14,7 @@ Prefer targeted test runs for changed areas before broader test runs.
 Common targeted test commands used in CI:
 
 - `dotnet test test/AuthZI.Tests.Security -c Release`
-- `dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer -c Release`
+- `dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -c Release`
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net8.0`
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net8.0`
 - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net9.0`

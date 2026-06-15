@@ -16,15 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer\Configuration\TestUsers.cs"
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\TestUsers.cs"
              Link="Configuration\TestUsers.cs" />
-    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer\Configuration\IdentityServerConfig.cs"
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\IdentityServerConfig.cs"
              Link="Configuration\IdentityServerConfig.cs" />
-    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer\Configuration\TestIdentityServerBuilder.cs"
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\TestIdentityServerBuilder.cs"
              Link="Configuration\TestIdentityServerBuilder.cs" />
-    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer\TestBase.cs"
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\TestBase.cs"
              Link="TestBase.cs" />
-    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer\TokenVerificationTests.cs"
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\TokenVerificationTests.cs"
              Link="TokenVerificationTests.cs" />
   </ItemGroup>
 

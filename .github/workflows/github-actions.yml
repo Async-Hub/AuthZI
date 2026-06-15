@@ -32,7 +32,7 @@ jobs:
       - name: Run Tests
         run: |
           dotnet test test/AuthZI.Tests.Security
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net8.0
 #         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -f net8.0
 
