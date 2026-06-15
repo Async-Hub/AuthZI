@@ -32,9 +32,9 @@ jobs:
       - name: Run Tests
         run: |
           dotnet test test/AuthZI.Tests.Security
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
+          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net8.0
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net8.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net8.0
-#         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -f net8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-24.04
@@ -51,8 +51,9 @@ jobs:
           dotnet-version: '9.0.x'
       - name: Run Tests on .NET 9.0.x
         run: |
+          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net9.0
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net9.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net9.0
-#         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -f net9.0
 
   Integration_Testing_DotNet10:
     runs-on: ubuntu-24.04
@@ -71,5 +72,9 @@ jobs:
           dotnet-version: '10.0.x'
       - name: Run Tests on .NET 10.0.x
         run: |
+          dotnet test test/AuthZI.Tests.Security
+          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net10.0
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net10.0
+          dotnet test test/AuthZI.Tests.Duende.IdentityServer.8.0 -f net10.0
+          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 -f net10.0
           dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net10.0
-#         dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -f net10.0
