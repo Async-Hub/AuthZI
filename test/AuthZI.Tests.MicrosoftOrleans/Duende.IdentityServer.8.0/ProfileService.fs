@@ -22,20 +22,16 @@ type ProfileService() =
                 | value -> context.IssuedClaims.Add value
                 
                 // Include Role claims
-                let roleClaims =
-                    context.Subject.Claims.Where(fun c -> c.Type = JwtClaimTypes.Role)
+                let roleClaims = 
+                  context.Subject.Claims.Where(fun c -> c.Type = JwtClaimTypes.Role)
                     
-                match roleClaims with
-                | null -> ()
-                | value -> context.IssuedClaims.AddRange value
+                context.IssuedClaims.AddRange roleClaims
                 
                 // Include Country claims
                 let countryClaims =
                     context.Subject.Claims.Where(fun c -> c.Type = "Country")
                     
-                match countryClaims with
-                | null -> ()
-                | value -> context.IssuedClaims.AddRange value
+                context.IssuedClaims.AddRange countryClaims
             }
             |> Async.StartAsTask :> Task
 
