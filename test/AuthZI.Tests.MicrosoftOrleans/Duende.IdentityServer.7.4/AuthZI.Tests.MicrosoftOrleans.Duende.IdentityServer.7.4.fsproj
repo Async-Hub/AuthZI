@@ -1,25 +1,46 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Duende.IdentityServer" Version="7.4.7" />
     <PackageReference Include="FluentAssertions" Version="8.10.0" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.10" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
-    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="8.2.0" />
     <PackageReference Include="xunit.v3" Version="3.2.2" />
     <PackageReference Include="Duende.IdentityModel" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
-	<PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
-    <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="8.2.0" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="9.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.16" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="9.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="9.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.Memory" Version="10.1.0" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="10.1.0" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="10.1.0" />
   </ItemGroup>
 
   <ItemGroup>
