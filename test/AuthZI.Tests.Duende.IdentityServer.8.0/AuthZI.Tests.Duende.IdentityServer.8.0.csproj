@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityServer" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\TestUsers.cs"
+             Link="Configuration\TestUsers.cs" />
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\IdentityServerConfig.cs"
+             Link="Configuration\IdentityServerConfig.cs" />
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\Configuration\TestIdentityServerBuilder.cs"
+             Link="Configuration\TestIdentityServerBuilder.cs" />
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\TestBase.cs"
+             Link="TestBase.cs" />
+    <Compile Include="..\AuthZI.Tests.Duende.IdentityServer.7.4\TokenVerificationTests.cs"
+             Link="TokenVerificationTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AuthZI.Identity.Duende.IdentityServer\AuthZI.Identity.Duende.IdentityServer.fsproj" />
+  </ItemGroup>
+
+</Project>

@@ -14,7 +14,7 @@ This file helps coding agents be productive in the AuthZI repository.
 - `src/AuthZI.Identity.Duende.IdentityServer` and `src/AuthZI.Identity.MicrosoftEntra`: identity-provider integrations.
 - `src/AuthZI.MicrosoftOrleans*`: Orleans integration packages, including Duende IdentityServer and Microsoft Entra adapters.
 - `src/AuthZI.Extensions` and `src/AuthZI.AzureFunctions`: shared `netstandard2.0` support libraries.
-- `test/AuthZI.Tests.Security`, `test/AuthZI.Tests.Duende.IdentityServer`, and `test/AuthZI.Tests.MicrosoftOrleans`: test projects split by integration area and target framework.
+- `test/AuthZI.Tests.Security`, `test/AuthZI.Tests.Duende.IdentityServer.*`, and `test/AuthZI.Tests.MicrosoftOrleans`: test projects split by integration area and target framework.
 - `samples/microsoft-orleans/IdentityServer/`: runnable sample apps used in `README.md`.
 - `deploy/MicrosoftEntra/`: Azure CLI scripts and configuration for Entra setup.
 - `docs-builder/`: DocFX source; generated site output is under `docs/`.
@@ -26,8 +26,8 @@ This file helps coding agents be productive in the AuthZI repository.
 - Prefer targeted test runs for the changed area before broader runs.
 - Common CI test targets include:
   - `dotnet test test/AuthZI.Tests.Security -c Release`
-  - `dotnet test test/AuthZI.Tests.Duende.IdentityServer -c Release`
-  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer -c Release`
+  - `dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -c Release`
+  - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -c Release`
   - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net8.0`
   - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID -c Release -f net8.0`
   - `dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -c Release -f net9.0`

@@ -55,6 +55,8 @@ stages:
         inputs:
           command: test
           projects: |
+            test/AuthZI.Tests.Duende.IdentityServer.7.4
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
           arguments: --framework net8.0
           publishTestResults: true
@@ -74,6 +76,8 @@ stages:
         inputs:
           command: test
           projects: |
+            test/AuthZI.Tests.Duende.IdentityServer.7.4
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
           arguments: --framework net9.0
           publishTestResults: true
@@ -94,14 +98,10 @@ stages:
           command: test
           projects: |
             test/AuthZI.Tests.Security
-            test/AuthZI.Tests.Duende.IdentityServer
-            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer
-          publishTestResults: true
-      - task: DotNetCoreCLI@2
-        displayName: 'Run Integration Tests (Microsoft Entra ID)'
-        inputs:
-          command: test
-          projects: |
+            test/AuthZI.Tests.Duende.IdentityServer.7.4
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4
+            test/AuthZI.Tests.Duende.IdentityServer.8.0
+            test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0
             test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID
           arguments: --framework net10.0
           publishTestResults: true
