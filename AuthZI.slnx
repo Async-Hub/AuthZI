@@ -4,6 +4,12 @@
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2B1.azcli" />
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.azcli" />
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.json" />
+    <Project Path="deploy/MicrosoftEntra/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp.csproj" Id="ba879812-9ab4-45ea-9d8b-ebfb155a98b6">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
+    <Project Path="deploy/MicrosoftEntra/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.FSharp/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.FSharp.fsproj" Id="cdca39ea-3202-4300-aea7-80df95a5034a">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
     <Project Path="deploy/MicrosoftEntra/Configuration.App/AuthZI.Deploy.MicrosoftEntra.Configuration.App.fsproj" />
     <Project Path="deploy/MicrosoftEntra/Configuration/AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
   </Folder>
@@ -55,6 +61,8 @@
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/AzureActiveDirectoryB2C.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.fsproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.CSharp.csproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp.csproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.fsproj" />
   </Folder>
 </Solution>
