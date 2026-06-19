@@ -1,24 +1,23 @@
+using AuthZI.MicrosoftOrleans.Authorization;
+using AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Threading.Tasks;
-using AuthZI.MicrosoftOrleans.Authorization;
-using AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class SimpleAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture)
+public class SimpleAuthorizationTestsBase(MainTestFixture fixture)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task AnAuthenticatedUserCanInvokeTheGrainMethod(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());
@@ -31,10 +30,9 @@ public class SimpleAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture)
   [MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task AnAuthenticatedUserOnAnUnauthenticatedClientCannotInvokeTheGrainMethod(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient2Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());

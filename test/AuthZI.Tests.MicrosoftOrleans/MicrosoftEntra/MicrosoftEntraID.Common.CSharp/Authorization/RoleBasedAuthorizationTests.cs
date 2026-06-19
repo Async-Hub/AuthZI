@@ -7,17 +7,16 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class RoleBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture)
+public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), 
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task MultipleRolesAsACommaSeparatedListShouldWorkWhenTheUserHasBothRoles(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -31,10 +30,9 @@ public class RoleBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task MultipleRolesAsACommaSeparatedListShouldNotWorkWhenTheUserHasOnlyOneRole(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -47,10 +45,9 @@ public class RoleBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task MultipleRolesAppliedAsMultipleAttributesShouldWorkWhenTheUserHasBothRoles(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -64,10 +61,9 @@ public class RoleBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task MultipleRolesAppliedAsMultipleAttributesShouldNotWorkWhenTheUserHasOnlyOneRole(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);

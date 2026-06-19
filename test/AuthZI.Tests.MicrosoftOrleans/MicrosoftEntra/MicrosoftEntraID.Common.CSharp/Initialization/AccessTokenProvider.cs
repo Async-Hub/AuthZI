@@ -1,23 +1,28 @@
-using System.Threading.Tasks;
 using AuthZI.Identity.MicrosoftEntra;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+using System;
+using System.Threading.Tasks;
+
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 
 public static class AccessTokenProvider
 {
-  public static Task<string> getAccessTokenForUserAsync(
-    MicrosoftEntraApp entraIDApp,
-    string userName,
-    string password)
+  private static Task<string> GetAccessTokenForUserAsync(
+    MicrosoftEntraApp entraIdApp,
+    string userName)
   {
-    var accessToken = TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync(entraIDApp, userName, password);
+    if (!TestData.UserPasswords.TryGetValue(userName, out var password))
+    {
+      throw new InvalidOperationException($"Password for test user '{userName}' is not configured.");
+    }
+
+    var accessToken = TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync(entraIdApp, userName, password);
 
     return Task.FromResult(accessToken);
   }
 
-  public static Task<string> getAccessTokenForUserOnWebClient1Async(string userName, string password) =>
-    getAccessTokenForUserAsync(TestData.Web1ClientApp, userName, password);
+  public static Task<string> GetAccessTokenForUserOnWebClient1Async(string userName) =>
+    GetAccessTokenForUserAsync(TestData.Web1ClientApp, userName);
 
-  public static Task<string> getAccessTokenForUserOnWebClient2Async(string userName, string password) =>
-    getAccessTokenForUserAsync(TestData.Web2ClientApp, userName, password);
+  public static Task<string> GetAccessTokenForUserOnWebClient2Async(string userName) =>
+    GetAccessTokenForUserAsync(TestData.Web2ClientApp, userName);
 }

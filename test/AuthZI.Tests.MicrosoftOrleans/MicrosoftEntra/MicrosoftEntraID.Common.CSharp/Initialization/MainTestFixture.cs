@@ -1,24 +1,23 @@
-using System;
-using System.Text.Json;
-using System.Threading.Tasks;
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
 using AuthZI.Identity.MicrosoftEntra;
-using AuthZI.MicrosoftEntra;
 using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.MicrosoftOrleans.MicrosoftEntra;
 using AuthZI.Security;
 using AuthZI.Security.Authorization;
 using AuthZI.Tests.MicrosoftOrleans.Grains;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Client;
 using Orleans;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 
-public class MicrosoftEntraIdTestFixture : IAsyncLifetime
+public class MainTestFixture : IAsyncLifetime
 {
   private readonly ConfigurableAccessTokenProvider _accessTokenProvider = new();
   private readonly string _credentialsEnvironmentVariableName;
@@ -27,12 +26,12 @@ public class MicrosoftEntraIdTestFixture : IAsyncLifetime
   private IHost _siloHost = null!;
   private IHost _siloClientHost = null!;
 
-  public MicrosoftEntraIdTestFixture()
+  public MainTestFixture()
     : this("microsoftEntraIdCredentials", Literals.microsoftEntraCredentialsJson)
   {
   }
 
-  protected MicrosoftEntraIdTestFixture(
+  protected MainTestFixture(
     string credentialsEnvironmentVariableName,
     string fallbackCredentialsJson)
   {
@@ -106,18 +105,25 @@ public class MicrosoftEntraIdTestFixture : IAsyncLifetime
 
     TestData.UserWithScopeAdeleV =
     [
-      [credentials.AdeleV.Name, credentials.AdeleV.Password, new[] { "Api1", "Orleans" }]
+      [credentials.AdeleV.Name, new[] { "Api1", "Orleans" }]
     ];
 
     TestData.UserWithScopeAlexW =
     [
-      [credentials.AlexW.Name, credentials.AlexW.Password, new[] { "Api1", "Orleans" }]
+      [credentials.AlexW.Name, new[] { "Api1", "Orleans" }]
     ];
 
     TestData.Users =
     [
-      [credentials.AdeleV.Name, credentials.AdeleV.Password]
+      [credentials.AdeleV.Name]
     ];
+
+    TestData.UserPasswords = new Dictionary<string, string>
+    {
+      [credentials.AdeleV.Name] = credentials.AdeleV.Password,
+      [credentials.AlexW.Name] = credentials.AlexW.Password,
+      [Credentials.AzureActiveDirectoryB2C1.AdeleV.Name] = Credentials.AzureActiveDirectoryB2C1.AdeleV.Password
+    };
 
     TestData.Web1ClientApp = web1ClientApp;
     TestData.Web2ClientApp = web2ClientApp;

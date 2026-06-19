@@ -12,11 +12,11 @@ public class AccessTokenVerificationTestsBase(ITestOutputHelper output)
 {
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
-  public async Task TheSystemCanVerifyJwtTokenFromAzureAdEndpoint(string userName, string password)
+  public async Task TheSystemCanVerifyJwtTokenFromAzureAdEndpoint(string userName)
   {
     var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
 
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
     output.WriteLine(accessToken);
 
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);
@@ -34,11 +34,11 @@ public class AccessTokenVerificationTestsBase(ITestOutputHelper output)
 
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
-  public async Task TheSystemRejectsJwtTokenWithInvalidAudience(string userName, string password)
+  public async Task TheSystemRejectsJwtTokenWithInvalidAudience(string userName)
   {
     var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
 
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient2Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
     output.WriteLine(accessToken);
 
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);

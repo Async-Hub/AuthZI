@@ -1,7 +1,7 @@
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
@@ -20,9 +20,9 @@ public class AudienceValidationTestsBase(ITestOutputHelper output)
 
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
-  public async Task RealAccessTokenAudienceIsIncludedInExpectedAudiencesForConfiguredApp(string userName, string password)
+  public async Task RealAccessTokenAudienceIsIncludedInExpectedAudiencesForConfiguredApp(string userName)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
     output.WriteLine(accessToken);
 
     var audienceClaims = GetAudienceClaimValues(accessToken);
@@ -34,9 +34,9 @@ public class AudienceValidationTestsBase(ITestOutputHelper output)
 
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
-  public async Task RealAccessTokenFromAnotherAppHasAudienceOutsideConfiguredExpectedAudiences(string userName, string password)
+  public async Task RealAccessTokenFromAnotherAppHasAudienceOutsideConfiguredExpectedAudiences(string userName)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient2Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
     output.WriteLine(accessToken);
 
     var audienceClaims = GetAudienceClaimValues(accessToken);

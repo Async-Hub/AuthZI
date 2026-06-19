@@ -15,8 +15,8 @@ public class AccessTokenVerificationTests(ITestOutputHelper output) : AccessToke
 
 public class ExpectedAudienceTests(ITestOutputHelper output) : AudienceValidationTestsBase(output);
 
-public class SimpleAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : SimpleAuthorizationTestsBase(fixture);
+public class SimpleAuthorizationTests(MainTestFixture fixture) : SimpleAuthorizationTestsBase(fixture);
 
-public class RoleBasedAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : RoleBasedAuthorizationTestsBase(fixture);
+public class RoleBasedAuthorizationTests(MainTestFixture fixture) : RoleBasedAuthorizationTestsBase(fixture);
 
-public class ClaimsBasedAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : ClaimsBasedAuthorizationTestsBase(fixture);
+public class ClaimsBasedAuthorizationTests(MainTestFixture fixture) : ClaimsBasedAuthorizationTestsBase(fixture);

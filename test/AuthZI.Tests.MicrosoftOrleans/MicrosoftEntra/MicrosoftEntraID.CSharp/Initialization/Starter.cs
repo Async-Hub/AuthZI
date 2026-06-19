@@ -3,5 +3,5 @@ using Orleans;
 using Xunit;
 
 [assembly: ApplicationPart("AuthZI.Tests.MicrosoftOrleans.Grains")]
-[assembly: AssemblyFixture(typeof(MicrosoftEntraIdTestFixture))]
+[assembly: AssemblyFixture(typeof(MainTestFixture))]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

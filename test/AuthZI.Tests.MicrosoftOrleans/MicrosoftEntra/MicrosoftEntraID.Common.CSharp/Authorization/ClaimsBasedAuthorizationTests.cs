@@ -1,4 +1,3 @@
-using AuthZI.Security;
 using AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization;
 using AuthZI.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
@@ -9,17 +8,16 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class ClaimsBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture)
+public class ClaimsBasedAuthorizationTestsBase(MainTestFixture fixture)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), 
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task AUserWithAnAppropriateClaimShouldHaveAccessToTheMethod(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var claimGrain = clusterClient.GetGrain<IClaimGrain>(userName);
@@ -33,10 +31,9 @@ public class ClaimsBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixtu
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task AUserWithoutAnAppropriateClaimShouldNotHaveAccessToTheMethod(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IPolicyGrain>(userName);
@@ -49,10 +46,9 @@ public class ClaimsBasedAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixtu
     MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task AUserWithAnAppropriateClaimAndWithoutAnAppropriateClaimValueShouldNotHaveAccessToTheMethod(
     string userName,
-    string password,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
+    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var claimGrain = clusterClient.GetGrain<IClaimGrain>(userName);
