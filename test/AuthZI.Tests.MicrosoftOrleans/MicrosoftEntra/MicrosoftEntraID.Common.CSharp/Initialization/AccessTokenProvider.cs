@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 
 public static class AccessTokenProvider
 {

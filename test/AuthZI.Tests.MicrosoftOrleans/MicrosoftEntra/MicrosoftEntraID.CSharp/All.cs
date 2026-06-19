@@ -1,6 +1,8 @@
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp;
@@ -13,8 +15,8 @@ public class AccessTokenVerificationTests(ITestOutputHelper output) : AccessToke
 
 public class ExpectedAudienceTests(ITestOutputHelper output) : AudienceValidationTestsBase(output);
 
-public class SimpleAuthorizationTests : SimpleAuthorizationTestsBase;
+public class SimpleAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : SimpleAuthorizationTestsBase(fixture);
 
-public class RoleBasedAuthorizationTests : RoleBasedAuthorizationTestsBase;
+public class RoleBasedAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : RoleBasedAuthorizationTestsBase(fixture);
 
-public class ClaimsBasedAuthorizationTests : ClaimsBasedAuthorizationTestsBase;
+public class ClaimsBasedAuthorizationTests(MicrosoftEntraIdTestFixture fixture) : ClaimsBasedAuthorizationTestsBase(fixture);

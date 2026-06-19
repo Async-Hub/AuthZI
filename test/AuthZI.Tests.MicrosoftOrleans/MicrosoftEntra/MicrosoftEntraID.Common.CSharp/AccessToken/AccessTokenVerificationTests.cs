@@ -1,17 +1,18 @@
-using System.Threading.Tasks;
 using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.MicrosoftEntra;
 using AuthZI.Security.AccessToken;
 using AuthZI.Tests.Common.Xunit;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
 
 public class AccessTokenVerificationTestsBase(ITestOutputHelper output)
 {
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
-  public async Task TheSystemCanVerifyJwtTokenFromAzureADEndpoint(string userName, string password)
+  public async Task TheSystemCanVerifyJwtTokenFromAzureAdEndpoint(string userName, string password)
   {
     var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
 

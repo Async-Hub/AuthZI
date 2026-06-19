@@ -4,11 +4,12 @@ using System.Security;
 using System.Threading.Tasks;
 using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class SimpleAuthorizationTestsBase
+public class SimpleAuthorizationTestsBase(MicrosoftEntraIdTestFixture fixture)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
@@ -19,7 +20,7 @@ public class SimpleAuthorizationTestsBase
   {
     var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient1Async(userName, password);
 
-    var clusterClient = RootConfiguration.getClusterClient(accessToken);
+    var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());
     var value = await simpleGrain.GetWithAuthenticatedUser("Secret");
 
@@ -35,7 +36,7 @@ public class SimpleAuthorizationTestsBase
   {
     var accessToken = await AccessTokenProvider.getAccessTokenForUserOnWebClient2Async(userName, password);
 
-    var clusterClient = RootConfiguration.getClusterClient(accessToken);
+    var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());
 
     var result = await Assert.ThrowsAsync<SecurityException>(() => simpleGrain.GetValue());
@@ -47,7 +48,7 @@ public class SimpleAuthorizationTestsBase
   {
     var accessToken = string.Empty;
 
-    var clusterClient = RootConfiguration.getClusterClient(accessToken);
+    var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());
 
     await Assert.ThrowsAsync<InvalidOperationException>(() => simpleGrain.GetWithAuthenticatedUser(string.Empty));
@@ -59,7 +60,7 @@ public class SimpleAuthorizationTestsBase
   {
     var accessToken = string.Empty;
 
-    var clusterClient = RootConfiguration.getClusterClient(accessToken);
+    var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.Empty);
     var value = await simpleGrain.GetWithAnonymousUser("Secret");
 
