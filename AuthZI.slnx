@@ -59,6 +59,7 @@
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/AzureActiveDirectoryB2C.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp.csproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.fsproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.CSharp.csproj" />
