@@ -81,17 +81,16 @@
 
 <p><a href="#getting-started">Get started now</a> <a href="https://github.com/Async-Hub/AuthZI">View it on GitHub</a></p>
 <hr>
-<p>The security packages for Microsoft Orleans 8.*/9.* enable the use of authorization functionality similar to what is available in ASP.NET Core. These packages allow seamless integration with Microsoft Entra and Duende IdentityServer for securing Microsoft Orleans grains and any ASP.NET Core 8.*/9.* application.</p>
+<p>The security packages for Microsoft Orleans 8.*/9.*/10.* enable authorization functionality similar to ASP.NET Core authorization. These packages support integration with Microsoft Entra and Duende IdentityServer for securing Orleans grains and ASP.NET Core applications.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about
-ASP.NET Core authorization <strong><a href="https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-8.0">here</a>.</strong></p>
+<p>Authorization behavior in Orleans follows the same core concepts as ASP.NET Core authorization. Read more in the <a href="https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction">ASP.NET Core authorization documentation</a>.</p>
 </div>
 <p><img src="authzi-for-microsoft-orleans.svg" alt="Image 1"></p>
 <p>The image below shows a round trip to the protected grain.</p>
 <p><img src="round-trip-to-the-protected-grain.png" alt="Image 2"></p>
 <h2 id="getting-started">Getting started</h2>
-<p>Below is a simple example of using Duende IdentityServer with Microsoft Orleans 9. For more details, <a href="https://github.com/Async-Hub/AuthZI/tree/master/samples/microsoft-orleans/IdentityServer">please visit the repository</a> link.</p>
+<p>Below is a simple example of using Duende IdentityServer with Microsoft Orleans. For more details, visit the <a href="https://github.com/Async-Hub/AuthZI/tree/master/samples/microsoft-orleans/IdentityServer">sample repository path</a>.</p>
 <h3 id="identityserver">IdentityServer</h3>
 <pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.IdentityServer.SampleIdentityServer;
 
@@ -120,7 +119,7 @@ app.MapGet(&quot;/&quot;, () =&gt; &quot;IdentityServer is running...&quot;);
 
 await app.RunAsync();
 </code></pre>
-<h3 id="microsoft-orleans-9">Microsoft Orleans 9.*</h3>
+<h3 id="microsoft-orleans">Microsoft Orleans</h3>
 <pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.Security.Authorization;
 
@@ -198,7 +197,7 @@ await app.RunAsync();
 </code></pre>
 <h3 id="sample-client">Sample Client</h3>
 <pre><code class="lang-csharp">using AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
-using IdentityModel.Client;
+using Duende.IdentityModel.Client;
 
 Console.Title = &quot;WebClient&quot;;
 
@@ -233,7 +232,7 @@ app.MapGet(&quot;/&quot;, () =&gt; &quot;WebClient is running...&quot;);
 await app.RunAsync();
 </code></pre>
 <h3 id="quick-start">Quick start</h3>
-<p>Please <a href="https://github.com/Async-Hub/AuthZI-Samples">see sample</a> solutions for more details.</p>
+<p>See <a href="https://github.com/Async-Hub/AuthZI-Samples">AuthZI sample solutions</a> for more end-to-end scenarios.</p>
 
 </article>
           </div>

@@ -79,7 +79,29 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="claims-based-authorization">Claims-based authorization</h1>
 
-<p>The documentation will be available soon. You can also use <a href="https://learn.microsoft.com/en-us/aspnet/core/security/authorization/claims?view=aspnetcore-9.0">ASP.NET Core docs</a>.</p>
+<p>Claims-based authorization checks whether a principal contains specific claims with expected values.</p>
+<p>For Orleans grains, apply claim requirements through authorization policies, then reference those policies on grain interfaces or methods.</p>
+<h2 id="example-policy">Example policy</h2>
+<pre><code class="lang-csharp">services.AddOrleansAuthorization(
+    identityServerConfig,
+    config =&gt;
+    {
+        config.ConfigureAuthorizationOptions = options =&gt;
+        {
+            options.AddPolicy(&quot;Scope.Read&quot;, policy =&gt;
+                policy.RequireClaim(&quot;scope&quot;, &quot;authzi.read&quot;));
+        };
+    },
+    new AuthorizationConfiguration(isCoHostingEnabled: true));
+</code></pre>
+<h2 id="apply-policy-to-a-grain">Apply policy to a grain</h2>
+<pre><code class="lang-csharp">[Authorize(Policy = &quot;Scope.Read&quot;)]
+public interface IProtectedGrain : IGrainWithStringKey
+{
+    Task&lt;string&gt; ReadAsync();
+}
+</code></pre>
+<p>For general claims authorization concepts, see the <a href="https://learn.microsoft.com/en-us/aspnet/core/security/authorization/claims">ASP.NET Core documentation</a>.</p>
 
 </article>
           </div>

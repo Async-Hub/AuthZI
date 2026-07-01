@@ -1,8 +1,8 @@
-﻿# Simple authorization in MS Orleans cluster
+﻿# Simple authorization in a Microsoft Orleans cluster
 
-Authorization in Orleans is controlled through the **`AuthorizeAttribute`** attribute and its various parameters. At its simplest, applying the **`AuthorizeAttribute`** attribute to a **Grain Interface** or **Grain Interface Method** limits access to the grain or method to any authenticated user.
+Authorization in Orleans is controlled through `AuthorizeAttribute` and related authorization options. At the simplest level, applying `AuthorizeAttribute` to a grain interface or a grain interface method limits access to authenticated users.
 
-For example, the following code limits access to the **`UserGrain`** to any authenticated user.
+For example, the following code limits access to `IUserGrain` to authenticated users.
 
 ```csharp
 [Authorize]
@@ -14,7 +14,7 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-If you want to apply authorization to a method rather than the grain, apply the **`AuthorizeAttribute`** attribute to the method itself:
+If you want to apply authorization to a method rather than the full grain contract, apply `AuthorizeAttribute` to the method:
 
 ```csharp
 public interface IUserGrain : IGrainWithStringKey
@@ -26,9 +26,9 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-Now only authenticated users can access the **`DoSomething`** method and everyone can access **`DoSomethingElse`** method.
+Now only authenticated users can access `DoSomething`, while `DoSomethingElse` remains available to all callers.
 
-You can also use the **`AllowAnonymous`** attribute to allow access by non-authenticated users to individual actions. For example:
+You can also use `AllowAnonymous` to allow access by unauthenticated users to specific methods. For example:
 
 ```csharp
 [Authorize]
@@ -41,8 +41,8 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-This would allow only authenticated users to the **`UserGrain`**, except for the **`DoSomething`** method, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.
+This configuration allows only authenticated users to access the grain, except for `DoSomething`, which is accessible to anonymous callers.
 
 ### Warning
 
-**`[AllowAnonymous]` bypasses all authorization statements. If you combine `[AllowAnonymous]` and any `[Authorize]` attribute, the `[Authorize]` attributes are ignored. For example if you apply `[AllowAnonymous]` at the grain level, any `[Authorize]` attributes on the same grain (or on any method within it) is ignored.**
+**`[AllowAnonymous]` bypasses authorization checks. If you combine `[AllowAnonymous]` with `[Authorize]`, the authorization attributes are ignored for that scope. For example, if you apply `[AllowAnonymous]` at the grain level, any `[Authorize]` attributes on the same grain (or on methods within it) are ignored.**
