@@ -4,6 +4,8 @@
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2B1.azcli" />
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.azcli" />
     <File Path="deploy/MicrosoftEntra/AzureActiveDirectoryB2C1.json" />
+    <Project Path="deploy/MicrosoftEntra/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp.csproj" />
+    <Project Path="deploy/MicrosoftEntra/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.FSharp/AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.FSharp.fsproj" />
     <Project Path="deploy/MicrosoftEntra/Configuration.App/AuthZI.Deploy.MicrosoftEntra.Configuration.App.fsproj" />
     <Project Path="deploy/MicrosoftEntra/Configuration/AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
   </Folder>
@@ -53,8 +55,11 @@
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/AzureActiveDirectoryB2C.NET8.0/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.AzureActiveDirectoryB2C.NET8.0.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp.csproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.fsproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.CSharp.csproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp.csproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.fsproj" />
   </Folder>
 </Solution>
