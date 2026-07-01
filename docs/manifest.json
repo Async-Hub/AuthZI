@@ -12,10 +12,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documents/Introduction.md",
+      "source_relative_path": "documents/introduction.md",
       "output": {
         ".html": {
-          "relative_path": "documents/Introduction.html"
+          "relative_path": "documents/introduction.html"
         }
       },
       "version": ""

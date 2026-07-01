@@ -3,5 +3,5 @@
 - name: Microsoft Identity
   href: microsoft-identity.md
   items:
-    - name: How To Do?
+    - name: How To Do
       href: microsoft-identity/how-to-do.md

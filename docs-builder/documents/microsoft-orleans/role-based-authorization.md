@@ -1,10 +1,10 @@
 ﻿# Role-based authorization
 
-When an identity is created it may belong to one or more roles. For example, Alice may belong to the Administrator and User roles whilst Bob may only belong to the User role. How these roles are created and managed depends on the IdentityServer4 of the authorization process.
+When an identity is created, it may belong to one or more roles. For example, Alice may belong to the Administrator and User roles while Bob may only belong to the User role. How roles are created and managed depends on your identity provider configuration.
 
-Role-based authorization checks are declarative—the developer embeds them within their code, against a grain interface or an method within a grain interface, specifying roles which the current *user* or *client* (please [see](http://docs.identityserver.io/en/latest/intro/terminology.html) IdentityServer4 terminology) must be a member of to access the requested resource.
+Role-based authorization checks are declarative. The developer adds attributes to a grain interface or interface method, specifying the roles that the current user or client must have to access the resource.
 
-For example, the following code limits access to any methods on the implementation of **`IUserGrain`** to users/clients who are a member of the Administrator role:
+For example, the following code limits access to all methods on `IUserGrain` to users or clients in the `Administrator` role:
 
 ```csharp
 [Authorize(Roles = "Administrator")]
@@ -16,7 +16,7 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-You can specify multiple roles as a comma separated list:
+You can specify multiple roles as a comma-separated list:
 
 ```csharp
 [Authorize(Roles = "Administrator, Manager")]
@@ -28,9 +28,9 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-This grain would be only accessible by users/clients who are members of the `Administrator` role or the `Manager` role.
+This grain is accessible only to users or clients who are members of either the `Administrator` role or the `Manager` role.
 
-If you apply multiple attributes then an accessing user/client must be a member of all the roles specified; the following sample requires that a user must be a member of both the `Developer` and `Manager` role.
+If you apply multiple role attributes, the caller must satisfy all specified role checks. The following sample requires membership in both `Developer` and `Manager`.
 
 ```csharp
 [Authorize(Roles = "Developer")]
@@ -57,7 +57,7 @@ public interface IUserGrain : IGrainWithStringKey
 }
 ```
 
-In the previous code snippet members of the `Developer` role or the `Manager` role can access the grain and the **`DoSomething`** method, but only members of the `Manager` role can access the **`DoSomethingElse`** method.
+In the previous example, members of either `Developer` or `Manager` can access the grain and `DoSomething`, but only members of `Manager` can access `DoSomethingElse`.
 
 You can also lock down a grain but allow anonymous, unauthenticated access to individual methods.
 

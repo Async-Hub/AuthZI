@@ -1,20 +1,23 @@
 # Policy-based authorization
 
-An authorization policy consists of one or more requirements. It’s registered as part of **`ClientBuilder.ConfigureServices`** and **`SiloHostBuilder.ConfigureServices`**, in the **`AddOrleansClusteringAuthorization`** method:
+An authorization policy consists of one or more requirements. In AuthZI, policies are configured through the Orleans registration extensions and `AuthorizationOptions`.
 
 ```csharp
-.ConfigureServices(services =>
-{
-    services.AddOrleansClusteringAuthorization(identityServer4Info, options =>
+services.AddOrleansAuthorization(
+    identityServerConfig,
+    config =>
     {
-        options.AddPolicy("AdminPolicy", poliScy=> policy.RequireRole("Admin"));
-    });
-})
+        config.ConfigureAuthorizationOptions = options =>
+        {
+            options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+        };
+    },
+    new AuthorizationConfiguration(isCoHostingEnabled: true));
 ```
 
 In the preceding example, an "AdminPolicy" policy is created.
 
-Policies are applied by using the **`[Authorize]`** attribute with the policy name. For example:
+Policies are applied using the `[Authorize]` attribute with the policy name. For example:
 
 ```csharp
 [Authorize(Policy = "AdminPolicy")]
@@ -26,14 +29,14 @@ public interface IUserGrain : IGrainWithStringKey
 
 ## Requirements
 
-An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user/client principal. In our "EmailVerified" policy, the requirement is a single parameter—the email verified. A requirement implements IAuthorizationRequirement, which is an empty marker interface. A parameterized email verified requirement could be implemented as follows:
+An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user/client principal. A requirement implements `IAuthorizationRequirement`, which is an empty marker interface.
 
 ```csharp
-using Orleans.Security.Clustering.Authorization;
+using AuthZI.Security.Authorization;
 
 public class EmailVerifiedRequirement : IAuthorizationRequirement
 {
-    public bool IsEmailVerified { get; private set; }
+    public bool IsEmailVerified { get; }
 
     public EmailVerifiedRequirement(bool isEmailVerified)
     {
@@ -42,30 +45,30 @@ public class EmailVerifiedRequirement : IAuthorizationRequirement
 }
 ```
 
-Note: *a requirement doesn't need to have data or properties.*
+Note: a requirement does not need to have data or properties.
 
 ## Authorization handlers
 
-An authorization handler is responsible for the evaluation of a requirement's properties. The authorization handler evaluates the requirements against a provided AuthorizationHandlerContext to determine if access is allowed.
+An authorization handler evaluates a requirement against an `AuthorizationHandlerContext` to determine whether access should be granted.
 
-A requirement can have multiple handlers. A handler may inherit `AuthorizationHandler<TRequirement>`, where **`TRequirement`** is the requirement to be handled. Alternatively, a handler may implement `IAuthorizationHandler` to handle more than one type of requirement.
+A requirement can have multiple handlers. A handler can inherit `AuthorizationHandler<TRequirement>`, where `TRequirement` is the requirement type, or implement `IAuthorizationHandler` to handle multiple requirement types.
 
 ### **Use a handler for one requirement**
 
-The following is an example of a one-to-one relationship in which a email verified handler utilizes a single requirement:
+The following is an example of a one-to-one relationship in which an email verified handler uses a single requirement:
 
 ```csharp
 public class EmailVerifiedHandler : AuthorizationHandler<EmailVerifiedRequirement>
 {
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, 
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
         EmailVerifiedRequirement requirement)
     {
-        if (context.User.HasClaim(c => c.Type == JwtClaimTypes.EmailVerified))
+        if (context.User.HasClaim(c => c.Type == "email_verified"))
         {
-            var claim = context.User.FindFirst(c => c.Type == JwtClaimTypes.EmailVerified);
+            var claim = context.User.FindFirst(c => c.Type == "email_verified");
             var isEmailVerified = Convert.ToBoolean(claim.Value);
 
-            if (isEmailVerified)
+            if (isEmailVerified == requirement.IsEmailVerified)
             {
                 context.Succeed(requirement);
             }
@@ -76,11 +79,11 @@ public class EmailVerifiedHandler : AuthorizationHandler<EmailVerifiedRequiremen
 }
 ```
 
-The preceding code determines if the current user/client principal has an EmailVerified claim. Authorization can't occur when the claim is missing, in which case a completed task is returned. When a claim is present, the email verified flag is checked. If the user meets the minimum age defined by the requirement, authorization is deemed successful. When authorization is successful, context. Succeed is invoked with the satisfied requirement as its sole parameter.
+The preceding code checks whether the current principal has an `email_verified` claim and whether it satisfies the requirement. When successful, `context.Succeed` is invoked.
 
 ### **Use a handler for multiple requirements**
 
-The following is an example of a one-to-many relationship in which a permission handler utilizes two requirements:
+The following is an example of a one-to-many relationship in which a handler evaluates two requirement types:
 
 ```csharp
 public class LocationRequirement : IAuthorizationRequirement
@@ -124,9 +127,9 @@ public class RoleAndLocationCombinationHandler : IAuthorizationHandler
                 }
                 case LocationRequirement locationRequirement:
                 {
-                    if (context.User.HasClaim(c => c.Type == JwtClaimTypes.Location))
+                    if (context.User.HasClaim(c => c.Type == "location"))
                     {
-                        var claim = context.User.FindFirst(c => c.Type == JwtClaimTypes.Location)
+                        var claim = context.User.FindFirst(c => c.Type == "location");
                         if (claim.Value == locationRequirement.Location)
                         {
                             context.Succeed(requirement);
@@ -143,19 +146,20 @@ public class RoleAndLocationCombinationHandler : IAuthorizationHandler
 }
 ```
 
-The preceding code traverses PendingRequirements—a property containing requirements not marked as successful. When authorization is successful **`context.Succeed`** is invoked with the satisfied requirement as its sole parameter.
+The preceding code traverses `PendingRequirements` and calls `context.Succeed` when each requirement is met.
 
 ### Handler registration
 
-Handlers are registered in the services collection during configuration. For example:
+Handlers are registered in the service collection during configuration. For example:
 
 ```csharp
 .ConfigureServices(services =>
 {
-    services.AddOrleansClusteringAuthorization(identityServer4Info, options =>
+    services.AddOrleansAuthorization(identityServerConfig, config =>
     {
-        options.AddPolicy("AdminPolicy", policy=> policy.RequireRole("Admin"));
-    });
+        config.ConfigureAuthorizationOptions = options =>
+            options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    }, new AuthorizationConfiguration(isCoHostingEnabled: true));
 
     services.AddSingleton<IAuthorizationHandler, EmailVerifiedHandler>();
     services.AddSingleton<IAuthorizationHandler, RoleAndLocationCombinationHandler>();
@@ -164,14 +168,14 @@ Handlers are registered in the services collection during configuration. For exa
 
 ### What should a handler return?
 
-Note that the **`Handle`** method in the handler example returns no value. How is a status of either success or failure indicated?
+Note that the `Handle` method in the handler example returns no value. Status is indicated through the context.
 
-- A handler indicates success by calling **`context.Succeed(IAuthorizationRequirement requirement)`**, passing the requirement that has been successfully validated.
-- A handler doesn't need to handle failures generally, as other handlers for the same requirement may succeed.
-- To guarantee failure, even if other requirement handlers succeed, call **`context.Fail`**.
+- A handler indicates success by calling `context.Succeed(requirement)`.
+- A handler can leave a requirement unresolved if it does not apply.
+- To guarantee failure, call `context.Fail()`.
 
 ### Why would I want multiple handlers for a requirement?
 
-In cases where you want evaluation to be on an **OR** basis, implement multiple handlers for a single requirement.
+If you want OR-style behavior, implement multiple handlers for a single requirement.
 
-For the additional information please [see ASP.NET Core documentation](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-9.0)
+For additional information, see the [ASP.NET Core policy-based authorization documentation](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies).

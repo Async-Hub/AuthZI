@@ -4,11 +4,10 @@
 
 ---
 
-The security packages for Microsoft Orleans 8.\*/9.\* enable the use of authorization functionality similar to what is available in ASP.NET Core. These packages allow seamless integration with Microsoft Entra and Duende IdentityServer for securing Microsoft Orleans grains and any ASP.NET Core 8.\*/9.\* application.
+The security packages for Microsoft Orleans 8.\*/9.\*/10.\* enable authorization functionality similar to ASP.NET Core authorization. These packages support integration with Microsoft Entra and Duende IdentityServer for securing Orleans grains and ASP.NET Core applications.
 
 >[!NOTE]
->Authorization in Microsoft Orleans is mainly the same ASP.NET Core authorization. You can read more about 
->ASP.NET Core authorization **[here](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-8.0).**
+>Authorization behavior in Orleans follows the same core concepts as ASP.NET Core authorization. Read more in the [ASP.NET Core authorization documentation](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction).
 
 ![Image 1](authzi-for-microsoft-orleans.svg)
 
@@ -17,7 +16,7 @@ The image below shows a round trip to the protected grain.
 ![Image 2](round-trip-to-the-protected-grain.png)
 
 ## Getting started
-Below is a simple example of using Duende IdentityServer with Microsoft Orleans 9. For more details, [please visit the repository](https://github.com/Async-Hub/AuthZI/tree/master/samples/microsoft-orleans/IdentityServer) link.
+Below is a simple example of using Duende IdentityServer with Microsoft Orleans. For more details, visit the [sample repository path](https://github.com/Async-Hub/AuthZI/tree/master/samples/microsoft-orleans/IdentityServer).
 
 ### IdentityServer
 
@@ -50,7 +49,7 @@ app.MapGet("/", () => "IdentityServer is running...");
 await app.RunAsync();
 ```
 
-### Microsoft Orleans 9.*
+### Microsoft Orleans
 
 ```csharp
 using AuthZI.MicrosoftOrleans.Authorization;
@@ -132,7 +131,7 @@ await app.RunAsync();
 ### Sample Client
 ```csharp
 using AuthZI.MicrosoftOrleans.IdentityServer.SampleWebClient;
-using IdentityModel.Client;
+using Duende.IdentityModel.Client;
 
 Console.Title = "WebClient";
 
@@ -169,4 +168,4 @@ await app.RunAsync();
 
 ### Quick start
 
-Please [see sample](https://github.com/Async-Hub/AuthZI-Samples) solutions for more details.
+See [AuthZI sample solutions](https://github.com/Async-Hub/AuthZI-Samples) for more end-to-end scenarios.
