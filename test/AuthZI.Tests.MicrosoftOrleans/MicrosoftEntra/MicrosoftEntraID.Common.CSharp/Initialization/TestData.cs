@@ -7,11 +7,11 @@ namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.I
 
 public class TestData
 {
-  public static IEnumerable<object[]> UserWithScopeAdeleV { get; set; } = Array.Empty<object[]>();
+  public static IEnumerable<object[]> UserWithScopeAdeleV { get; set; } = [];
 
-  public static IEnumerable<object[]> UserWithScopeAlexW { get; set; } = Array.Empty<object[]>();
+  public static IEnumerable<object[]> UserWithScopeAlexW { get; set; } = [];
 
-  public static IEnumerable<object[]> Users { get; set; } = Array.Empty<object[]>();
+  public static IEnumerable<object[]> Users { get; set; } = [];
 
   public static IReadOnlyDictionary<string, string> UserPasswords { get; set; } =
     new Dictionary<string, string>();

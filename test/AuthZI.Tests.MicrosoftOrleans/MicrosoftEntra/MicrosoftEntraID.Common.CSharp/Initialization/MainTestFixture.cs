@@ -19,6 +19,9 @@ namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.I
 
 public class MainTestFixture : IAsyncLifetime
 {
+  private const string RefreshTokensEnvironmentVariableName = "microsoftEntraRefreshTokens";
+  private const string RefreshTokensPathEnvironmentVariableName = "microsoftEntraRefreshTokensPath";
+
   private readonly ConfigurableAccessTokenProvider _accessTokenProvider = new();
   private readonly string _credentialsEnvironmentVariableName;
   private readonly string _fallbackCredentialsJson;
@@ -127,8 +130,32 @@ public class MainTestFixture : IAsyncLifetime
 
     TestData.Web1ClientApp = web1ClientApp;
     TestData.Web2ClientApp = web2ClientApp;
-    TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync =
-      AccessTokenRetriever.getTokenByUserNameAndPasswordForEntraIDTenant;
+
+    var refreshTokenStore = LoadRefreshTokenStore();
+
+    TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync = refreshTokenStore is null
+      ? AccessTokenRetriever.GetTokenByUserNameAndPasswordForEntraIdTenant
+      : (entraIdApp, userName, _) =>
+        AccessTokenRetriever.GetTokenByRefreshTokenForEntraIdTenant(entraIdApp, userName, refreshTokenStore);
+  }
+
+  private static MicrosoftEntraRefreshTokenStore LoadRefreshTokenStore()
+  {
+    var refreshTokenStoreJson = Environment.GetEnvironmentVariable(RefreshTokensEnvironmentVariableName);
+
+    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
+    {
+      refreshTokenStoreJson = RefreshTokenStore.MicrosoftEntraID1;
+    }
+
+    var refreshTokenStore = JsonSerializer.Deserialize<MicrosoftEntraRefreshTokenStore>(refreshTokenStoreJson);
+
+    if (refreshTokenStore?.Tokens is not { Length: > 0 })
+    {
+      throw new InvalidOperationException("Refresh token store does not contain any tokens.");
+    }
+
+    return refreshTokenStore;
   }
 
   private static void ConfigureSiloHost(IServiceCollection services)

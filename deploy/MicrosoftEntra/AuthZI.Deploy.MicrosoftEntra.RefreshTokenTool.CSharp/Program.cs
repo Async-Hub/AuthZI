@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+using Microsoft.Identity.Client;
+using AuthZI.Deploy.MicrosoftEntra.Configuration;
 using System.Text.Json;
 using static AuthZI.Deploy.MicrosoftEntra.Configuration.Credentials;
 
@@ -9,25 +10,45 @@ static class Program
   static async Task Main(string[] args)
   {
     // Refresh tokens for MicrosoftEntraID1.
-    // Print refresh tokens for AdeleV,
-    // who are both in the same tenant and have the same client app registration.
-    await PrintRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
-      MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraID1.AdeleV.Password);
+    // Capture refresh tokens for users in the same tenant across both client app registrations.
+    var refreshTokens = new[]
+    {
+      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
+        MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraExternalID1.AdeleV.Password, MicrosoftEntraID1.WebClient1.AllowedScopes),
 
-    await PrintRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
-      MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraID1.AdeleV.Password);
+      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
+        MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraExternalID1.AdeleV.Password, MicrosoftEntraID1.WebClient2.AllowedScopes),
 
-    await PrintRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
-      MicrosoftEntraID1.AlexW.Name, MicrosoftEntraID1.AlexW.Password);
+      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
+        MicrosoftEntraID1.AlexW.Name, MicrosoftEntraExternalID1.AlexW.Password, MicrosoftEntraID1.WebClient1.AllowedScopes),
 
-    await PrintRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
-      MicrosoftEntraID1.AlexW.Name, MicrosoftEntraID1.AlexW.Password);
+      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
+        MicrosoftEntraID1.AlexW.Name, MicrosoftEntraExternalID1.AlexW.Password, MicrosoftEntraID1.WebClient2.AllowedScopes)
+    };
+
+    var refreshTokenStore = new MicrosoftEntraRefreshTokenStore
+    {
+      Tokens = refreshTokens
+    };
+
+    var refreshTokenStoreJson = JsonSerializer.Serialize(
+      refreshTokenStore, new JsonSerializerOptions { WriteIndented = true });
+
+    Console.WriteLine("\n=== REFRESH TOKEN STORE JSON ===");
+    Console.WriteLine(refreshTokenStoreJson);
+    Console.WriteLine("================================\n");
   }
 
-  private static async Task PrintRefreshToken(string tenantId, string clientId,
-    string userName, string userPassword)
+  private static async Task<MicrosoftEntraRefreshToken> AcquireRefreshToken(
+    string tenantId,
+    string clientId,
+    string userName,
+    string password,
+    IEnumerable<string> scopes)
   {
-    Console.WriteLine($"{userName} {userPassword}");
+    var requestedScopes = scopes.ToArray();
+
+    Console.WriteLine($"Acquiring refresh token for {userName} {password} on client {clientId}.");
 
     var app = PublicClientApplicationBuilder.Create(clientId)
       .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
@@ -59,17 +80,16 @@ static class Program
         {
           if (property.Value.TryGetProperty("secret", out JsonElement secretNode))
           {
-            rawRefreshToken = secretNode.GetString();
+            rawRefreshToken = secretNode.GetString() ?? string.Empty;
           }
         }
       }
     });
 
     // Prompt the flow
-    var scopes = new[] { "User.Read" };
     Console.WriteLine("Initializing Device Code Flow...");
 
-    var result = await app.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
+    var result = await app.AcquireTokenWithDeviceCode(requestedScopes, deviceCodeResult =>
     {
       Console.WriteLine(deviceCodeResult.Message);
       return Task.CompletedTask;
@@ -78,13 +98,19 @@ static class Program
     // Output results to the terminal window
     if (!string.IsNullOrEmpty(rawRefreshToken))
     {
-      Console.WriteLine("\n=== SUCCESS: COPY YOUR RAW REFRESH TOKEN ===");
-      Console.WriteLine(rawRefreshToken);
-      Console.WriteLine("============================================\n");
+      Console.WriteLine($"Captured refresh token for {result.Account.Username} on client {clientId}.");
+
+      return new MicrosoftEntraRefreshToken
+      {
+        DirectoryId = tenantId,
+        ClientId = clientId,
+        UserName = userName,
+        RefreshToken = rawRefreshToken,
+        Scopes = requestedScopes,
+        CreatedAtUtc = DateTimeOffset.UtcNow
+      };
     }
-    else
-    {
-      Console.WriteLine("\n[Error] Authorization finished but cache processing failed.");
-    }
+
+    throw new InvalidOperationException("Authorization finished but cache processing failed.");
   }
 }
