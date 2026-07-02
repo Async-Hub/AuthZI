@@ -7,59 +7,153 @@ namespace AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp;
 
 static class Program
 {
+  private const string EntraIdTarget = "entra-id";
+  private const string EntraExternalIdTarget = "entra-external-id";
+
   static async Task Main(string[] args)
   {
-    // Refresh tokens for MicrosoftEntraID1.
-    // Capture refresh tokens for users in the same tenant across both client app registrations.
-    var refreshTokens = new[]
+    var targets = args.Length == 0
+      ? [EntraExternalIdTarget]
+      : args.Select(arg => arg.Trim().ToLowerInvariant()).ToArray();
+
+    if (targets.Contains(EntraIdTarget) || targets.Contains("all"))
     {
-      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
-        MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraExternalID1.AdeleV.Password, MicrosoftEntraID1.WebClient1.AllowedScopes),
+      await WriteRefreshTokenStore(
+        "MicrosoftEntraID1",
+        GetMicrosoftEntraIdRefreshTokenRequests(),
+        BuildMicrosoftEntraIdApp);
+    }
 
-      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
-        MicrosoftEntraID1.AdeleV.Name, MicrosoftEntraExternalID1.AdeleV.Password, MicrosoftEntraID1.WebClient2.AllowedScopes),
+    if (targets.Contains(EntraExternalIdTarget) || targets.Contains("external-id") || targets.Contains("all"))
+    {
+      await WriteRefreshTokenStore(
+        "MicrosoftEntraExternalID1",
+        GetMicrosoftEntraExternalIdRefreshTokenRequests(),
+        BuildMicrosoftEntraExternalIdApp);
+    }
+  }
 
-      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient1.Id,
-        MicrosoftEntraID1.AlexW.Name, MicrosoftEntraExternalID1.AlexW.Password, MicrosoftEntraID1.WebClient1.AllowedScopes),
+  private static IEnumerable<RefreshTokenRequest> GetMicrosoftEntraIdRefreshTokenRequests() =>
+  [
+    new(
+      MicrosoftEntraID1.DirectoryId,
+      MicrosoftEntraID1.WebClient1.Id,
+      MicrosoftEntraID1.AdeleV.Name,
+      MicrosoftEntraID1.AdeleV.Password,
+      MicrosoftEntraID1.WebClient1.AllowedScopes),
 
-      await AcquireRefreshToken(MicrosoftEntraID1.DirectoryId, MicrosoftEntraID1.WebClient2.Id,
-        MicrosoftEntraID1.AlexW.Name, MicrosoftEntraExternalID1.AlexW.Password, MicrosoftEntraID1.WebClient2.AllowedScopes)
-    };
+    new(
+      MicrosoftEntraID1.DirectoryId,
+      MicrosoftEntraID1.WebClient2.Id,
+      MicrosoftEntraID1.AdeleV.Name,
+      MicrosoftEntraID1.AdeleV.Password,
+      MicrosoftEntraID1.WebClient2.AllowedScopes),
+
+    new(
+      MicrosoftEntraID1.DirectoryId,
+      MicrosoftEntraID1.WebClient1.Id,
+      MicrosoftEntraID1.AlexW.Name,
+      MicrosoftEntraID1.AlexW.Password,
+      MicrosoftEntraID1.WebClient1.AllowedScopes),
+
+    new(
+      MicrosoftEntraID1.DirectoryId,
+      MicrosoftEntraID1.WebClient2.Id,
+      MicrosoftEntraID1.AlexW.Name,
+      MicrosoftEntraID1.AlexW.Password,
+      MicrosoftEntraID1.WebClient2.AllowedScopes)
+  ];
+
+  private static IEnumerable<RefreshTokenRequest> GetMicrosoftEntraExternalIdRefreshTokenRequests() =>
+  [
+    //new(
+    //  MicrosoftEntraExternalID1.DirectoryId,
+    //  MicrosoftEntraExternalID1.WebClient1.Id,
+    //  MicrosoftEntraExternalID1.AdeleV.Name,
+    //  MicrosoftEntraExternalID1.AdeleV.Password,
+    //  MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
+
+    new(
+      MicrosoftEntraExternalID1.DirectoryId,
+      MicrosoftEntraExternalID1.WebClient2.Id,
+      MicrosoftEntraExternalID1.AdeleV.Name,
+      MicrosoftEntraExternalID1.AdeleV.Password,
+      MicrosoftEntraExternalID1.WebClient2.AllowedScopes),
+
+    //new(
+      //MicrosoftEntraExternalID1.DirectoryId,
+      //MicrosoftEntraExternalID1.WebClient1.Id,
+      //MicrosoftEntraExternalID1.AlexW.Name,
+      //MicrosoftEntraExternalID1.AlexW.Password,
+      //MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
+
+    new(
+      MicrosoftEntraExternalID1.DirectoryId,
+      MicrosoftEntraExternalID1.WebClient2.Id,
+      MicrosoftEntraExternalID1.AlexW.Name,
+      MicrosoftEntraExternalID1.AlexW.Password,
+      MicrosoftEntraExternalID1.WebClient2.AllowedScopes)
+  ];
+
+  private static async Task WriteRefreshTokenStore(
+    string storeName,
+    IEnumerable<RefreshTokenRequest> requests,
+    Func<string, string, IPublicClientApplication> buildPublicClientApplication)
+  {
+    var refreshTokens = new List<MicrosoftEntraRefreshToken>();
+
+    foreach (var request in requests)
+    {
+      var requestedScopes = request.Scopes.ToArray();
+
+      if (requestedScopes.Length == 0)
+      {
+        Console.WriteLine(
+          $"Skipping refresh token for {request.UserName} on client {request.ClientId}; no scopes are configured.");
+
+        continue;
+      }
+
+      refreshTokens.Add(await AcquireRefreshToken(request, requestedScopes, buildPublicClientApplication));
+    }
 
     var refreshTokenStore = new MicrosoftEntraRefreshTokenStore
     {
-      Tokens = refreshTokens
+      Tokens = refreshTokens.ToArray()
     };
 
     var refreshTokenStoreJson = JsonSerializer.Serialize(
       refreshTokenStore, new JsonSerializerOptions { WriteIndented = true });
 
-    Console.WriteLine("\n=== REFRESH TOKEN STORE JSON ===");
+    Console.WriteLine($"\n=== {storeName} REFRESH TOKEN STORE JSON ===");
     Console.WriteLine(refreshTokenStoreJson);
-    Console.WriteLine("================================\n");
+    Console.WriteLine("================================================\n");
   }
 
-  private static async Task<MicrosoftEntraRefreshToken> AcquireRefreshToken(
-    string tenantId,
-    string clientId,
-    string userName,
-    string password,
-    IEnumerable<string> scopes)
-  {
-    var requestedScopes = scopes.ToArray();
-
-    Console.WriteLine($"Acquiring refresh token for {userName} {password} on client {clientId}.");
-
-    var app = PublicClientApplicationBuilder.Create(clientId)
+  private static IPublicClientApplication BuildMicrosoftEntraIdApp(string tenantId, string clientId) =>
+    PublicClientApplicationBuilder.Create(clientId)
       .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
       .Build();
 
+  private static IPublicClientApplication BuildMicrosoftEntraExternalIdApp(string tenantId, string clientId) =>
+    PublicClientApplicationBuilder.Create(clientId)
+      .WithAuthority($"https://{tenantId}.ciamlogin.com/{tenantId}")
+      .Build();
+
+  private static async Task<MicrosoftEntraRefreshToken> AcquireRefreshToken(
+    RefreshTokenRequest request,
+    string[] requestedScopes,
+    Func<string, string, IPublicClientApplication> buildPublicClientApplication)
+  {
+    Console.WriteLine(
+      $"Acquiring refresh token for {request.UserName} with password {request.Password} on client {request.ClientId}.");
+
+    var app = buildPublicClientApplication(request.TenantId, request.ClientId);
+
     string rawRefreshToken = string.Empty;
 
-    // FIX: Changed from SetBeforeAccess to SetAfterAccess
     app.UserTokenCache.SetAfterAccess(args =>
     {
-      // Only process if the cache state has changed (tokens were successfully fetched)
       if (!args.HasStateChanged)
       {
         return;
@@ -73,7 +167,6 @@ static class Program
 
       using var jsonDoc = JsonDocument.Parse(cacheBytes);
 
-      // Dig into the schema dictionary to grab individual refresh tokens
       if (jsonDoc.RootElement.TryGetProperty("RefreshToken", out JsonElement rtNode))
       {
         foreach (var property in rtNode.EnumerateObject())
@@ -86,7 +179,6 @@ static class Program
       }
     });
 
-    // Prompt the flow
     Console.WriteLine("Initializing Device Code Flow...");
 
     var result = await app.AcquireTokenWithDeviceCode(requestedScopes, deviceCodeResult =>
@@ -95,16 +187,15 @@ static class Program
       return Task.CompletedTask;
     }).ExecuteAsync();
 
-    // Output results to the terminal window
     if (!string.IsNullOrEmpty(rawRefreshToken))
     {
-      Console.WriteLine($"Captured refresh token for {result.Account.Username} on client {clientId}.");
+      Console.WriteLine($"Captured refresh token for {result.Account.Username} on client {request.ClientId}.");
 
       return new MicrosoftEntraRefreshToken
       {
-        DirectoryId = tenantId,
-        ClientId = clientId,
-        UserName = userName,
+        DirectoryId = request.TenantId,
+        ClientId = request.ClientId,
+        UserName = request.UserName,
         RefreshToken = rawRefreshToken,
         Scopes = requestedScopes,
         CreatedAtUtc = DateTimeOffset.UtcNow
@@ -113,4 +204,11 @@ static class Program
 
     throw new InvalidOperationException("Authorization finished but cache processing failed.");
   }
+
+  private sealed record RefreshTokenRequest(
+    string TenantId,
+    string ClientId,
+    string UserName,
+    string Password,
+    IEnumerable<string> Scopes);
 }

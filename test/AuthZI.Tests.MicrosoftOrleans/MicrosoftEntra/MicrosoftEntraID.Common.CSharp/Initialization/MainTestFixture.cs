@@ -11,6 +11,7 @@ using Microsoft.Identity.Client;
 using Orleans;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
@@ -24,22 +25,36 @@ public class MainTestFixture : IAsyncLifetime
 
   private readonly ConfigurableAccessTokenProvider _accessTokenProvider = new();
   private readonly string _credentialsEnvironmentVariableName;
+  private readonly string _fallbackRefreshTokenStoreJson;
   private readonly string _fallbackCredentialsJson;
+  private readonly string _refreshTokensEnvironmentVariableName;
+  private readonly string _refreshTokensPathEnvironmentVariableName;
 
   private IHost _siloHost = null!;
   private IHost _siloClientHost = null!;
 
   public MainTestFixture()
-    : this("microsoftEntraIdCredentials", Literals.microsoftEntraCredentialsJson)
+    : this(
+      "microsoftEntraIdCredentials",
+      Literals.microsoftEntraCredentialsJson,
+      RefreshTokensEnvironmentVariableName,
+      RefreshTokensPathEnvironmentVariableName,
+      RefreshTokenStore.MicrosoftEntraID1)
   {
   }
 
   protected MainTestFixture(
     string credentialsEnvironmentVariableName,
-    string fallbackCredentialsJson)
+    string fallbackCredentialsJson,
+    string refreshTokensEnvironmentVariableName,
+    string refreshTokensPathEnvironmentVariableName,
+    string fallbackRefreshTokenStoreJson)
   {
     _credentialsEnvironmentVariableName = credentialsEnvironmentVariableName;
     _fallbackCredentialsJson = fallbackCredentialsJson;
+    _refreshTokensEnvironmentVariableName = refreshTokensEnvironmentVariableName;
+    _refreshTokensPathEnvironmentVariableName = refreshTokensPathEnvironmentVariableName;
+    _fallbackRefreshTokenStoreJson = fallbackRefreshTokenStoreJson;
   }
 
   private IClusterClient ClusterClient { get; set; } = null!;
@@ -92,19 +107,8 @@ public class MainTestFixture : IAsyncLifetime
 
     var credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)!;
 
-    var web1ClientApp = new MicrosoftEntraIDApp(
-      credentials.DirectoryId,
-      credentials.WebClient1.Id,
-      credentials.WebClient1.Secret,
-      credentials.WebClient1.AllowedScopes,
-      AadAuthorityAudience.AzureAdMyOrg);
-
-    var web2ClientApp = new MicrosoftEntraIDApp(
-      credentials.DirectoryId,
-      credentials.WebClient2.Id,
-      credentials.WebClient2.Secret,
-      credentials.WebClient2.AllowedScopes,
-      AadAuthorityAudience.AzureAdMyOrg);
+    var web1ClientApp = CreateMicrosoftEntraApp(credentials, credentials.WebClient1);
+    var web2ClientApp = CreateMicrosoftEntraApp(credentials, credentials.WebClient2);
 
     TestData.UserWithScopeAdeleV =
     [
@@ -134,18 +138,55 @@ public class MainTestFixture : IAsyncLifetime
     var refreshTokenStore = LoadRefreshTokenStore();
 
     TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync = refreshTokenStore is null
-      ? AccessTokenRetriever.GetTokenByUserNameAndPasswordForEntraIdTenant
+      ? GetTokenByUserNameAndPassword
       : (entraIdApp, userName, _) =>
-        AccessTokenRetriever.GetTokenByRefreshTokenForEntraIdTenant(entraIdApp, userName, refreshTokenStore);
+        GetTokenByRefreshToken(entraIdApp, userName, refreshTokenStore);
   }
 
-  private static MicrosoftEntraRefreshTokenStore LoadRefreshTokenStore()
+  protected virtual MicrosoftEntraApp CreateMicrosoftEntraApp(
+    MicrosoftEntraCredentials credentials,
+    Client client) =>
+    new MicrosoftEntraIDApp(
+      credentials.DirectoryId,
+      client.Id,
+      client.Secret,
+      client.AllowedScopes,
+      AadAuthorityAudience.AzureAdMyOrg);
+
+  protected virtual string GetTokenByUserNameAndPassword(
+    MicrosoftEntraApp entraIdApp,
+    string userName,
+    string password) =>
+    AccessTokenRetriever.GetTokenByUserNameAndPasswordForEntraIdTenant(entraIdApp, userName, password);
+
+  protected virtual string GetTokenByRefreshToken(
+    MicrosoftEntraApp entraIdApp,
+    string userName,
+    MicrosoftEntraRefreshTokenStore refreshTokenStore) =>
+    AccessTokenRetriever.GetTokenByRefreshTokenForEntraIdTenant(entraIdApp, userName, refreshTokenStore);
+
+  private MicrosoftEntraRefreshTokenStore LoadRefreshTokenStore()
   {
-    var refreshTokenStoreJson = Environment.GetEnvironmentVariable(RefreshTokensEnvironmentVariableName);
+    var refreshTokenStoreJson = Environment.GetEnvironmentVariable(_refreshTokensEnvironmentVariableName);
 
     if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
     {
-      refreshTokenStoreJson = RefreshTokenStore.MicrosoftEntraID1;
+      var refreshTokenStorePath = Environment.GetEnvironmentVariable(_refreshTokensPathEnvironmentVariableName);
+
+      if (!string.IsNullOrWhiteSpace(refreshTokenStorePath))
+      {
+        refreshTokenStoreJson = File.ReadAllText(refreshTokenStorePath);
+      }
+    }
+
+    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
+    {
+      refreshTokenStoreJson = _fallbackRefreshTokenStoreJson;
+    }
+
+    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
+    {
+      return null;
     }
 
     var refreshTokenStore = JsonSerializer.Deserialize<MicrosoftEntraRefreshTokenStore>(refreshTokenStoreJson);

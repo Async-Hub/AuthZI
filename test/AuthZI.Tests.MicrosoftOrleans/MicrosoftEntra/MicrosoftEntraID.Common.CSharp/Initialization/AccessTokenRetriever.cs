@@ -62,9 +62,30 @@ public static class AccessTokenRetriever
     string userName,
     MicrosoftEntraRefreshTokenStore refreshTokenStore)
   {
+    var tokenEndpoint = $"https://login.microsoftonline.com/{entraIdApp.DirectoryId}/oauth2/v2.0/token";
+
+    return GetTokenByRefreshToken(entraIdApp, userName, refreshTokenStore, tokenEndpoint);
+  }
+
+  public static string GetTokenByRefreshTokenForEntraExternalIdTenant(
+    MicrosoftEntraApp entraExternalIdApp,
+    string userName,
+    MicrosoftEntraRefreshTokenStore refreshTokenStore)
+  {
+    var tokenEndpoint =
+      $"https://{entraExternalIdApp.DirectoryId}.ciamlogin.com/{entraExternalIdApp.DirectoryId}/oauth2/v2.0/token";
+
+    return GetTokenByRefreshToken(entraExternalIdApp, userName, refreshTokenStore, tokenEndpoint);
+  }
+
+  private static string GetTokenByRefreshToken(
+    MicrosoftEntraApp entraIdApp,
+    string userName,
+    MicrosoftEntraRefreshTokenStore refreshTokenStore,
+    string tokenEndpoint)
+  {
     var refreshToken = FindRefreshToken(entraIdApp, userName, refreshTokenStore);
 
-    var tokenEndpoint = $"https://login.microsoftonline.com/{entraIdApp.DirectoryId}/oauth2/v2.0/token";
     var tokenRequest = new Dictionary<string, string>
     {
       ["client_id"] = entraIdApp.ClientId,
