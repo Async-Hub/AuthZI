@@ -6,7 +6,9 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
 
-public class AudienceValidationTestsBase(ITestOutputHelper output)
+public class AudienceValidationTestsBase(
+  ITestOutputHelper output,
+  IAccessTokenRetriever accessTokenProvider)
 {
   private static string[] GetAudienceClaimValues(string accessToken)
   {
@@ -22,11 +24,11 @@ public class AudienceValidationTestsBase(ITestOutputHelper output)
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task RealAccessTokenAudienceIsIncludedInExpectedAudiencesForConfiguredApp(string userName)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
     output.WriteLine(accessToken);
 
     var audienceClaims = GetAudienceClaimValues(accessToken);
-    var expectedAudiences = TestData.Web1ClientApp.ValidAudiences.ToArray();
+    var expectedAudiences = TestData.WebClient1.ValidAudiences.ToArray();
     var hasExpectedAudience = audienceClaims.Any(expectedAudiences.Contains);
 
     Assert.True(hasExpectedAudience);
@@ -36,11 +38,11 @@ public class AudienceValidationTestsBase(ITestOutputHelper output)
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task RealAccessTokenFromAnotherAppHasAudienceOutsideConfiguredExpectedAudiences(string userName)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient2), userName);
     output.WriteLine(accessToken);
 
     var audienceClaims = GetAudienceClaimValues(accessToken);
-    var expectedAudiences = TestData.Web1ClientApp.ValidAudiences.ToArray();
+    var expectedAudiences = TestData.WebClient1.ValidAudiences.ToArray();
     var hasUnexpectedAudience = audienceClaims.Any(audience => !expectedAudiences.Contains(audience));
 
     Assert.True(hasUnexpectedAudience);

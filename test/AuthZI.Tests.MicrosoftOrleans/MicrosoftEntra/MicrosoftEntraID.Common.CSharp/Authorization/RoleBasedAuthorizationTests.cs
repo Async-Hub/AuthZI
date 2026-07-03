@@ -7,7 +7,9 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
+public class RoleBasedAuthorizationTestsBase(
+  MainTestFixture fixture,
+  IAccessTokenRetriever accessTokenProvider)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), 
@@ -16,7 +18,7 @@ public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -32,7 +34,7 @@ public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -47,7 +49,7 @@ public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);
@@ -63,7 +65,7 @@ public class RoleBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IManagerGrain>(userName);

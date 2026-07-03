@@ -9,7 +9,9 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class SimpleAuthorizationTestsBase(MainTestFixture fixture)
+public class SimpleAuthorizationTestsBase(
+  MainTestFixture fixture,
+  IAccessTokenRetriever accessTokenProvider)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
@@ -17,7 +19,7 @@ public class SimpleAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());
@@ -32,7 +34,7 @@ public class SimpleAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient2), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var simpleGrain = clusterClient.GetGrain<ISimpleGrain>(Guid.NewGuid());

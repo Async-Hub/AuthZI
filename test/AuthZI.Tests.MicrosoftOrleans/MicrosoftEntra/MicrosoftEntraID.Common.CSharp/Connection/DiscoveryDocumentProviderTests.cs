@@ -11,7 +11,7 @@ public class DiscoveryDocumentProviderTestsBase(ITestOutputHelper output)
   [Fact]
   public async Task TheSystemCanObtainDiscoveryDocumentFromMicrosoftEntraIdEndpoint()
   {
-    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
+    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.WebClient1.DiscoveryEndpointUrl);
 
     var discoveryDocument = await discoveryDocumentProvider.GetDiscoveryDocumentAsync();
     var hasDiscoveryDocument = FSharpOption<DiscoveryDocument>.get_IsSome(discoveryDocument);

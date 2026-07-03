@@ -8,7 +8,9 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
 
-public class ClaimsBasedAuthorizationTestsBase(MainTestFixture fixture)
+public class ClaimsBasedAuthorizationTestsBase(
+  MainTestFixture fixture,
+  IAccessTokenRetriever accessTokenProvider)
 {
   [Theory]
   [MemberData(nameof(TestData.UserWithScopeAdeleV), 
@@ -17,7 +19,7 @@ public class ClaimsBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var claimGrain = clusterClient.GetGrain<IClaimGrain>(userName);
@@ -33,7 +35,7 @@ public class ClaimsBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var userGrain = clusterClient.GetGrain<IPolicyGrain>(userName);
@@ -48,7 +50,7 @@ public class ClaimsBasedAuthorizationTestsBase(MainTestFixture fixture)
     string userName,
     IEnumerable<string> scope)
   {
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await accessTokenProvider.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
 
     var clusterClient = fixture.GetClusterClient(accessToken);
     var claimGrain = clusterClient.GetGrain<IClaimGrain>(userName);

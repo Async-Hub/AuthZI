@@ -6,12 +6,90 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 
-public static class AccessTokenRetriever
+public sealed class AccessTokenRetriever : IAccessTokenRetriever
 {
-  public static string GetTokenByUserNameAndPasswordForEntraIdTenant(
+  private readonly bool _isExternalId;
+  private readonly MicrosoftEntraRefreshTokenStore _refreshTokenStore;
+
+  public AccessTokenRetriever(bool isExternalId)
+  {
+    _isExternalId = isExternalId;
+    string refreshTokensEnvironmentVariableName = isExternalId
+      ? "MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE"
+      : "MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE";
+
+    string refreshTokenStoreJson = Environment.GetEnvironmentVariable(refreshTokensEnvironmentVariableName);
+
+    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
+    {
+      if (!isExternalId)
+      {
+        refreshTokenStoreJson = RefreshTokenStore.MicrosoftEntraID1;
+      }
+      else
+      {
+        refreshTokenStoreJson = RefreshTokenStore.MicrosoftEntraExternalID1;
+      }
+    }
+
+    _refreshTokenStore = LoadRefreshTokenStore(refreshTokenStoreJson);
+  }
+
+  public Task<string> GetAccessTokenForUserAsync(string appName, string userName)
+  {
+    var entraIdApp = GetMicrosoftEntraApp(appName);
+
+    if (!TestData.UserPasswords.TryGetValue(userName, out var password))
+    {
+      throw new InvalidOperationException($"Password for test user '{userName}' is not configured.");
+    }
+
+    if(_isExternalId)
+    {
+      var accessToken = GetTokenByRefreshTokenForEntraExternalIdTenant(entraIdApp, userName, _refreshTokenStore);
+      return Task.FromResult(accessToken);
+    }
+
+    return Task.FromResult(GetTokenByRefreshTokenForEntraIdTenant(entraIdApp, userName, _refreshTokenStore));
+  }
+
+  private static MicrosoftEntraApp GetMicrosoftEntraApp(string appName)
+  {
+    if (string.Equals(appName, nameof(TestData.WebClient1), StringComparison.OrdinalIgnoreCase))
+    {
+      return TestData.WebClient1;
+    }
+
+    if (string.Equals(appName, nameof(TestData.WebClient2), StringComparison.OrdinalIgnoreCase))
+    {
+      return TestData.WebClient2;
+    }
+
+    throw new InvalidOperationException($"Microsoft Entra app '{appName}' is not configured.");
+  }
+
+  private MicrosoftEntraRefreshTokenStore LoadRefreshTokenStore(string refreshTokenStoreJson)
+  {
+    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
+    {
+      return null;
+    }
+
+    var refreshTokenStore = JsonSerializer.Deserialize<MicrosoftEntraRefreshTokenStore>(refreshTokenStoreJson);
+
+    if (refreshTokenStore?.Tokens is not { Length: > 0 })
+    {
+      throw new InvalidOperationException("Refresh token store does not contain any tokens.");
+    }
+
+    return refreshTokenStore;
+  }
+  
+  public string GetTokenByUserNameAndPasswordForEntraIdTenant(
     MicrosoftEntraApp entraIdApp,
     string userName,
     string password)
@@ -27,14 +105,14 @@ public static class AccessTokenRetriever
     var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(appConfig).Build();
 
     var result = app
-      .AcquireTokenByUsernamePassword(entraIdApp.AllowedScopes, userName, password.ToString())
+      .AcquireTokenByUsernamePassword(entraIdApp.AllowedScopes, userName, password)
       .ExecuteAsync()
       .Result;
 
     return result.AccessToken;
   }
-
-  public static string GetTokenByUserNameAndPasswordForEntraExternalIdTenant(
+  
+  public string GetTokenByUserNameAndPasswordForEntraExternalIdTenant(
     MicrosoftEntraApp entraExternalIdApp,
     string userName,
     string password)
@@ -50,14 +128,14 @@ public static class AccessTokenRetriever
     var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(appConfig).Build();
 
     var result = app
-      .AcquireTokenByUsernamePassword(entraExternalIdApp.AllowedScopes, userName, password.ToString())
+      .AcquireTokenByUsernamePassword(entraExternalIdApp.AllowedScopes, userName, password)
       .ExecuteAsync()
       .Result;
 
     return result.AccessToken;
   }
 
-  public static string GetTokenByRefreshTokenForEntraIdTenant(
+  private string GetTokenByRefreshTokenForEntraIdTenant(
     MicrosoftEntraApp entraIdApp,
     string userName,
     MicrosoftEntraRefreshTokenStore refreshTokenStore)
@@ -67,7 +145,7 @@ public static class AccessTokenRetriever
     return GetTokenByRefreshToken(entraIdApp, userName, refreshTokenStore, tokenEndpoint);
   }
 
-  public static string GetTokenByRefreshTokenForEntraExternalIdTenant(
+  private string GetTokenByRefreshTokenForEntraExternalIdTenant(
     MicrosoftEntraApp entraExternalIdApp,
     string userName,
     MicrosoftEntraRefreshTokenStore refreshTokenStore)

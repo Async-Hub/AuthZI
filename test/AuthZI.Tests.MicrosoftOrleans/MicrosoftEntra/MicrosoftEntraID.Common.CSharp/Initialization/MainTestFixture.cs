@@ -3,16 +3,12 @@ using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.MicrosoftOrleans.Authorization;
 using AuthZI.MicrosoftOrleans.MicrosoftEntra;
 using AuthZI.Security;
-using AuthZI.Security.Authorization;
 using AuthZI.Tests.MicrosoftOrleans.Grains;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Client;
 using Orleans;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,42 +16,12 @@ namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.I
 
 public class MainTestFixture : IAsyncLifetime
 {
-  private const string RefreshTokensEnvironmentVariableName = "microsoftEntraRefreshTokens";
-  private const string RefreshTokensPathEnvironmentVariableName = "microsoftEntraRefreshTokensPath";
+  private readonly AccessTokenProvider _accessTokenProvider = new();
+  protected MicrosoftEntraCredentials Credentials;
 
-  private readonly ConfigurableAccessTokenProvider _accessTokenProvider = new();
-  private readonly string _credentialsEnvironmentVariableName;
-  private readonly string _fallbackRefreshTokenStoreJson;
-  private readonly string _fallbackCredentialsJson;
-  private readonly string _refreshTokensEnvironmentVariableName;
-  private readonly string _refreshTokensPathEnvironmentVariableName;
-
+  public IAccessTokenRetriever AccessTokenRetriever { get; protected set; }
   private IHost _siloHost = null!;
   private IHost _siloClientHost = null!;
-
-  public MainTestFixture()
-    : this(
-      "microsoftEntraIdCredentials",
-      Literals.microsoftEntraCredentialsJson,
-      RefreshTokensEnvironmentVariableName,
-      RefreshTokensPathEnvironmentVariableName,
-      RefreshTokenStore.MicrosoftEntraID1)
-  {
-  }
-
-  protected MainTestFixture(
-    string credentialsEnvironmentVariableName,
-    string fallbackCredentialsJson,
-    string refreshTokensEnvironmentVariableName,
-    string refreshTokensPathEnvironmentVariableName,
-    string fallbackRefreshTokenStoreJson)
-  {
-    _credentialsEnvironmentVariableName = credentialsEnvironmentVariableName;
-    _fallbackCredentialsJson = fallbackCredentialsJson;
-    _refreshTokensEnvironmentVariableName = refreshTokensEnvironmentVariableName;
-    _refreshTokensPathEnvironmentVariableName = refreshTokensPathEnvironmentVariableName;
-    _fallbackRefreshTokenStoreJson = fallbackRefreshTokenStoreJson;
-  }
 
   private IClusterClient ClusterClient { get; set; } = null!;
 
@@ -97,50 +63,34 @@ public class MainTestFixture : IAsyncLifetime
 
   private void ConfigureTestData()
   {
-    var microsoftEntraIdCredentialsJson = 
-      Environment.GetEnvironmentVariable(_credentialsEnvironmentVariableName);
-
-    if (string.IsNullOrWhiteSpace(microsoftEntraIdCredentialsJson))
-    {
-      microsoftEntraIdCredentialsJson = _fallbackCredentialsJson;
-    }
-
-    var credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)!;
-
-    var web1ClientApp = CreateMicrosoftEntraApp(credentials, credentials.WebClient1);
-    var web2ClientApp = CreateMicrosoftEntraApp(credentials, credentials.WebClient2);
+    var web1ClientApp = CreateMicrosoftEntraApp(Credentials, Credentials.WebClient1);
+    var web2ClientApp = CreateMicrosoftEntraApp(Credentials, Credentials.WebClient2);
 
     TestData.UserWithScopeAdeleV =
     [
-      [credentials.AdeleV.Name, new[] { "Api1", "Orleans" }]
+      [Credentials.AdeleV.Name, new[] { "Api1", "Orleans" }]
     ];
 
     TestData.UserWithScopeAlexW =
     [
-      [credentials.AlexW.Name, new[] { "Api1", "Orleans" }]
+      [Credentials.AlexW.Name, new[] { "Api1", "Orleans" }]
     ];
 
     TestData.Users =
     [
-      [credentials.AdeleV.Name]
+      [Credentials.AdeleV.Name]
     ];
 
     TestData.UserPasswords = new Dictionary<string, string>
     {
-      [credentials.AdeleV.Name] = credentials.AdeleV.Password,
-      [credentials.AlexW.Name] = credentials.AlexW.Password,
-      [Credentials.AzureActiveDirectoryB2C1.AdeleV.Name] = Credentials.AzureActiveDirectoryB2C1.AdeleV.Password
+      [Credentials.AdeleV.Name] = Credentials.AdeleV.Password,
+      [Credentials.AlexW.Name] = Credentials.AlexW.Password,
+      [Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2C1.AdeleV.Name] = 
+        Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2C1.AdeleV.Password
     };
 
-    TestData.Web1ClientApp = web1ClientApp;
-    TestData.Web2ClientApp = web2ClientApp;
-
-    var refreshTokenStore = LoadRefreshTokenStore();
-
-    TestData.GetAccessTokenForUserOnMicrosoftEntraAppAsync = refreshTokenStore is null
-      ? GetTokenByUserNameAndPassword
-      : (entraIdApp, userName, _) =>
-        GetTokenByRefreshToken(entraIdApp, userName, refreshTokenStore);
+    TestData.WebClient1 = web1ClientApp;
+    TestData.WebClient2 = web2ClientApp;
   }
 
   protected virtual MicrosoftEntraApp CreateMicrosoftEntraApp(
@@ -153,57 +103,12 @@ public class MainTestFixture : IAsyncLifetime
       client.AllowedScopes,
       AadAuthorityAudience.AzureAdMyOrg);
 
-  protected virtual string GetTokenByUserNameAndPassword(
-    MicrosoftEntraApp entraIdApp,
-    string userName,
-    string password) =>
-    AccessTokenRetriever.GetTokenByUserNameAndPasswordForEntraIdTenant(entraIdApp, userName, password);
-
-  protected virtual string GetTokenByRefreshToken(
-    MicrosoftEntraApp entraIdApp,
-    string userName,
-    MicrosoftEntraRefreshTokenStore refreshTokenStore) =>
-    AccessTokenRetriever.GetTokenByRefreshTokenForEntraIdTenant(entraIdApp, userName, refreshTokenStore);
-
-  private MicrosoftEntraRefreshTokenStore LoadRefreshTokenStore()
-  {
-    var refreshTokenStoreJson = Environment.GetEnvironmentVariable(_refreshTokensEnvironmentVariableName);
-
-    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
-    {
-      var refreshTokenStorePath = Environment.GetEnvironmentVariable(_refreshTokensPathEnvironmentVariableName);
-
-      if (!string.IsNullOrWhiteSpace(refreshTokenStorePath))
-      {
-        refreshTokenStoreJson = File.ReadAllText(refreshTokenStorePath);
-      }
-    }
-
-    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
-    {
-      refreshTokenStoreJson = _fallbackRefreshTokenStoreJson;
-    }
-
-    if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
-    {
-      return null;
-    }
-
-    var refreshTokenStore = JsonSerializer.Deserialize<MicrosoftEntraRefreshTokenStore>(refreshTokenStoreJson);
-
-    if (refreshTokenStore?.Tokens is not { Length: > 0 })
-    {
-      throw new InvalidOperationException("Refresh token store does not contain any tokens.");
-    }
-
-    return refreshTokenStore;
-  }
-
   private static void ConfigureSiloHost(IServiceCollection services)
   {
     services.AddOrleansAuthorization(
-      TestData.Web1ClientApp,
-      config => config.ConfigureAuthorizationOptions = new Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions),
+      TestData.WebClient1,
+      config => config.ConfigureAuthorizationOptions = 
+        AuthorizationConfig.ConfigureOptions,
       new AuthorizationConfiguration(false));
 
     AuthorizationConfig.ConfigureServices(services);
@@ -214,11 +119,11 @@ public class MainTestFixture : IAsyncLifetime
     AuthorizationConfig.ConfigureServices(services);
     services.AddSingleton<IAccessTokenProvider>(_ => _accessTokenProvider);
     services.AddOrleansClientAuthorization(
-      TestData.Web1ClientApp,
-      config => config.ConfigureAuthorizationOptions = new Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions));
+      TestData.WebClient1,
+      config => config.ConfigureAuthorizationOptions = AuthorizationConfig.ConfigureOptions);
   }
 
-  private sealed class ConfigurableAccessTokenProvider : IAccessTokenProvider
+  private sealed class AccessTokenProvider : IAccessTokenProvider
   {
     public string AccessToken { private get; set; } = string.Empty;
 

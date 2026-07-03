@@ -8,21 +8,23 @@ using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
 
-public class AccessTokenVerificationTestsBase(ITestOutputHelper output)
+public class AccessTokenVerificationTestsBase(MainTestFixture fixture, ITestOutputHelper output)
 {
+  private readonly IAccessTokenRetriever _accessTokenRetriever = fixture.AccessTokenRetriever;
+
   [Theory]
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task TheSystemCanVerifyJwtTokenFromAzureAdEndpoint(string userName)
   {
-    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
+    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.WebClient1.DiscoveryEndpointUrl);
 
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient1Async(userName);
+    var accessToken = await _accessTokenRetriever.GetAccessTokenForUserAsync(nameof(TestData.WebClient1), userName);
     output.WriteLine(accessToken);
 
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);
     IAccessTokenIntrospectionService accessTokenIntrospectionService =
       new AccessTokenIntrospectionService(
-        TestData.Web1ClientApp,
+        TestData.WebClient1,
         discoveryDocumentProvider,
         new ClaimTypeResolverDefault(),
         logger);
@@ -36,15 +38,15 @@ public class AccessTokenVerificationTestsBase(ITestOutputHelper output)
   [MemberData(nameof(TestData.Users), MemberType = typeof(TestData), DisableDiscoveryEnumeration = true)]
   public async Task TheSystemRejectsJwtTokenWithInvalidAudience(string userName)
   {
-    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.Web1ClientApp.DiscoveryEndpointUrl);
+    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.WebClient1.DiscoveryEndpointUrl);
 
-    var accessToken = await AccessTokenProvider.GetAccessTokenForUserOnWebClient2Async(userName);
+    var accessToken = await _accessTokenRetriever.GetAccessTokenForUserAsync(nameof(TestData.WebClient2), userName);
     output.WriteLine(accessToken);
 
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);
     IAccessTokenIntrospectionService accessTokenIntrospectionService =
       new AccessTokenIntrospectionService(
-        TestData.Web1ClientApp,
+        TestData.WebClient1,
         discoveryDocumentProvider,
         new ClaimTypeResolverDefault(),
         logger);
