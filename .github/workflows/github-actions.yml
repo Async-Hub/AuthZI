@@ -32,9 +32,9 @@ jobs:
       - name: Run Tests
         run: |
           dotnet run --project test/AuthZI.Tests.Security
-          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 -f --framework net8.0
-          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f --framework net8.0
-          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f --framework net8.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-24.04
