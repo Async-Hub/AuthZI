@@ -4,10 +4,12 @@ using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initi
 using Orleans;
 using System.Text.Json;
 using Xunit;
+using Xunit.Sdk;
+using Xunit.v3;
 
 [assembly: ApplicationPart("AuthZI.Tests.MicrosoftOrleans.Grains")]
 [assembly: AssemblyFixture(typeof(ExternalIdMainTestFixture))]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+[assembly: Parallelization(Mode = ParallelMode.None)]
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp;
 

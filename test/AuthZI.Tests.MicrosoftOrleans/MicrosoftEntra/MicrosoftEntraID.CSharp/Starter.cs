@@ -1,13 +1,15 @@
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp;
 using Orleans;
 using System.Text.Json;
 using Xunit;
+using Xunit.Sdk;
+using Xunit.v3;
 
 [assembly: ApplicationPart("AuthZI.Tests.MicrosoftOrleans.Grains")]
-[assembly: AssemblyFixture(
-  typeof(AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp.EntraIdMainTestFixture))]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+[assembly: AssemblyFixture(typeof(EntraIdMainTestFixture))]
+[assembly: Parallelization(Mode = ParallelMode.None)]
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp;
 
