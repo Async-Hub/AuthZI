@@ -31,10 +31,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Tests
         run: |
-          dotnet run test/AuthZI.Tests.Security
-          dotnet run test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net8.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net8.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net8.0
+          dotnet run --project test/AuthZI.Tests.Security
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-24.04
@@ -51,9 +51,9 @@ jobs:
           dotnet-version: '9.0.x'
       - name: Run Tests on .NET 9.0.x
         run: |
-          dotnet run test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net9.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net9.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net9.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net9.0
 
   Integration_Testing_DotNet10:
     runs-on: ubuntu-24.04
@@ -72,9 +72,9 @@ jobs:
           dotnet-version: '10.0.x'
       - name: Run Tests on .NET 10.0.x
         run: |
-          dotnet run test/AuthZI.Tests.Security -f net10.0
-          dotnet run test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net10.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net10.0
-          dotnet run test/AuthZI.Tests.Duende.IdentityServer.8.0 -f net10.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 -f net10.0
-          dotnet run test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net10.0
+          dotnet run --project test/AuthZI.Tests.Security -f net10.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net10.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.8.0 -f net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 -f net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net10.0
