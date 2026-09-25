@@ -27,6 +27,8 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Run Tests
@@ -45,6 +47,8 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET SDK 9.0.x
@@ -68,6 +72,8 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET SDK 10.0.x
