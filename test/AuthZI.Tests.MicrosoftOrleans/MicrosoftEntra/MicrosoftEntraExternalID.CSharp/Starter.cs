@@ -4,6 +4,7 @@ using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSha
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using Microsoft.Identity.Client;
 using Orleans;
+using System;
 using System.Text.Json;
 using Xunit;
 using Xunit.Sdk;
@@ -19,8 +20,15 @@ public class ExternalIdMainTestFixture : MainTestFixture
 {
   public ExternalIdMainTestFixture()
   {
-    var microsoftEntraIdCredentialsJson = Literals.microsoftEntraExternalIDCredentialsJson;
-    var credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)!;
+    var microsoftEntraExternalIdCredentialsJson =
+      Environment.GetEnvironmentVariable("microsoftEntraExternalIdCredentials");
+
+    if (string.IsNullOrWhiteSpace(microsoftEntraExternalIdCredentialsJson))
+    {
+      microsoftEntraExternalIdCredentialsJson = Literals.microsoftEntraExternalIDCredentialsJson;
+    }
+
+    var credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraExternalIdCredentialsJson)!;
     Credentials = credentials;
     AccessTokenRetriever = new AccessTokenRetriever(true);
   }
