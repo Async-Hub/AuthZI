@@ -1,6 +1,8 @@
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
+using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+using Microsoft.Identity.Client;
 using Orleans;
 using System.Text.Json;
 using Xunit;
@@ -22,4 +24,15 @@ public class ExternalIdMainTestFixture : MainTestFixture
     Credentials = credentials;
     AccessTokenRetriever = new AccessTokenRetriever(true);
   }
+
+  protected override MicrosoftEntraApp CreateMicrosoftEntraApp(
+    MicrosoftEntraCredentials credentials,
+    Client client) =>
+    new MicrosoftEntraExternalIDApp(
+      credentials.DirectoryId,
+      client.Id,
+      client.Secret,
+      client.AllowedScopes,
+      AadAuthorityAudience.AzureAdMyOrg,
+      credentials.Api1.Id);
 }

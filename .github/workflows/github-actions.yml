@@ -35,6 +35,8 @@ jobs:
           dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net8.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net8.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-24.04
@@ -54,6 +56,8 @@ jobs:
           dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net9.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net9.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net9.0
 
   Integration_Testing_DotNet10:
     runs-on: ubuntu-24.04
@@ -74,7 +78,9 @@ jobs:
         run: |
           dotnet run --project test/AuthZI.Tests.Security --framework net10.0
           dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net10.0
-          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net10.0
           dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.8.0 --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net10.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 --framework net10.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net10.0
