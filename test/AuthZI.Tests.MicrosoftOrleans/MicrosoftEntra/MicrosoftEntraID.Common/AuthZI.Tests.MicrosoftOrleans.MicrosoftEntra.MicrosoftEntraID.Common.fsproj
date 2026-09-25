@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.84.1" />
-		<PackageReference Include="xunit.v3.extensibility.core" Version="3.2.2" />
-		<PackageReference Include="xunit.v3.assert" Version="3.2.2" />
+		<PackageReference Include="xunit.v3.extensibility.core" Version="4.0.1" />
+		<PackageReference Include="xunit.v3.assert" Version="4.0.1" />
 	</ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">

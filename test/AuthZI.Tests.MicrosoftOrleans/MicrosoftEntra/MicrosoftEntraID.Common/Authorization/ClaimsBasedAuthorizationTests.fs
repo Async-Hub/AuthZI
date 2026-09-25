@@ -44,7 +44,10 @@ type ClaimsBasedAuthorizationTestsBase() =
                 async {
                     let! value = userGrain.GetWithMangerPolicy(String.Empty) |> Async.AwaitTask
                     return value } |> Async.StartAsTask :> Task
-
+            
+            // TODO: Fix this.
+            // let! _ = Assert.ThrowsAsync<SecurityException>(fun () -> action ())
+            // return ()
             Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
         }
 
