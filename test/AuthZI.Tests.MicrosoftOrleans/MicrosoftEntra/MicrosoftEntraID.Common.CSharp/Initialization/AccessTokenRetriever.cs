@@ -76,7 +76,7 @@ public sealed class AccessTokenRetriever : IAccessTokenRetriever
   {
     if (string.IsNullOrWhiteSpace(refreshTokenStoreJson))
     {
-      return null;
+      throw new InvalidOperationException("Refresh token store JSON is null or empty.");
     }
 
     var refreshTokenStore = JsonSerializer.Deserialize<MicrosoftEntraRefreshTokenStore>(refreshTokenStoreJson);
