@@ -89,4 +89,4 @@ jobs:
           # dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 --framework net10.0
           # dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net10.0
           dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net10.0
-          # dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net10.0
