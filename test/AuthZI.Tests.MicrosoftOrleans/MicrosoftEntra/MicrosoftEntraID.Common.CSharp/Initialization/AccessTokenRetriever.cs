@@ -197,9 +197,7 @@ public sealed class AccessTokenRetriever : IAccessTokenRetriever
     string userName,
     MicrosoftEntraRefreshTokenStore refreshTokenStore)
   {
-    var tokens = refreshTokenStore.Tokens ?? Array.Empty<MicrosoftEntraRefreshToken>();
-
-    var refreshToken = tokens.FirstOrDefault(token =>
+    var refreshToken = refreshTokenStore.Tokens.FirstOrDefault(token =>
       string.Equals(token.DirectoryId, entraIdApp.DirectoryId, StringComparison.OrdinalIgnoreCase) &&
       string.Equals(token.ClientId, entraIdApp.ClientId, StringComparison.OrdinalIgnoreCase) &&
       string.Equals(token.UserName, userName, StringComparison.OrdinalIgnoreCase));
