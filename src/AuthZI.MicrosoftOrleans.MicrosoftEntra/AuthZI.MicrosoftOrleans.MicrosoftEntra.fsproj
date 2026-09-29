@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AuthZI.Identity.MicrosoftEntra\AuthZI.Identity.MicrosoftEntra.fsproj" />
     <ProjectReference Include="..\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
   </ItemGroup>
