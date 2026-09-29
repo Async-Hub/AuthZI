@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 
@@ -197,6 +198,22 @@ public sealed class AccessTokenRetriever : IAccessTokenRetriever
     string userName,
     MicrosoftEntraRefreshTokenStore refreshTokenStore)
   {
+    TestContext.Current.TestOutputHelper?.WriteLine(
+    $"Looking for refresh token: DirectoryId='{entraIdApp.DirectoryId}', " +
+    $"ClientId='{entraIdApp.ClientId}', UserName='{userName}'");
+
+    TestContext.Current.TestOutputHelper?.WriteLine(
+      $"Refresh token store contains {refreshTokenStore.Tokens.Length} token(s):");
+
+    foreach (var token in refreshTokenStore.Tokens)
+    {
+      TestContext.Current.TestOutputHelper?.WriteLine(
+        $"  DirectoryId='{token.DirectoryId}', " +
+        $"ClientId='{token.ClientId}', " +
+        $"UserName='{token.UserName}', " +
+        $"HasRefreshToken={!string.IsNullOrWhiteSpace(token.RefreshToken)}");
+    }
+
     var refreshToken = refreshTokenStore.Tokens.FirstOrDefault(token =>
       string.Equals(token.DirectoryId, entraIdApp.DirectoryId, StringComparison.OrdinalIgnoreCase) &&
       string.Equals(token.ClientId, entraIdApp.ClientId, StringComparison.OrdinalIgnoreCase) &&
