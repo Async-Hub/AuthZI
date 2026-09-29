@@ -37,6 +37,9 @@
     <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\ClaimsBasedAuthorizationTests.fs" Link="AuthorizationTests\ClaimsBasedAuthorizationTests.fs" />
     <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\PolicyBasedAuthorizationTests.fs" Link="AuthorizationTests\PolicyBasedAuthorizationTests.fs" />
     <Compile Include="..\Duende.IdentityServer.7.4\AuthorizationTests\ResourceBasedAuthorizationTests.fs" Link="AuthorizationTests\ResourceBasedAuthorizationTests.fs" />
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
