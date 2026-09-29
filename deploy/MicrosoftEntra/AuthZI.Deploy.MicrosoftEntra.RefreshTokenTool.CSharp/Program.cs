@@ -66,12 +66,12 @@ static class Program
 
   private static IEnumerable<RefreshTokenRequest> GetMicrosoftEntraExternalIdRefreshTokenRequests() =>
   [
-    //new(
-    //  MicrosoftEntraExternalID1.DirectoryId,
-    //  MicrosoftEntraExternalID1.WebClient1.Id,
-    //  MicrosoftEntraExternalID1.AdeleV.Name,
-    //  MicrosoftEntraExternalID1.AdeleV.Password,
-    //  MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
+    new(
+      MicrosoftEntraExternalID1.DirectoryId,
+      MicrosoftEntraExternalID1.WebClient1.Id,
+      MicrosoftEntraExternalID1.AdeleV.Name,
+      MicrosoftEntraExternalID1.AdeleV.Password,
+      MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
 
     new(
       MicrosoftEntraExternalID1.DirectoryId,
@@ -80,12 +80,12 @@ static class Program
       MicrosoftEntraExternalID1.AdeleV.Password,
       MicrosoftEntraExternalID1.WebClient2.AllowedScopes),
 
-    //new(
-      //MicrosoftEntraExternalID1.DirectoryId,
-      //MicrosoftEntraExternalID1.WebClient1.Id,
-      //MicrosoftEntraExternalID1.AlexW.Name,
-      //MicrosoftEntraExternalID1.AlexW.Password,
-      //MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
+    new(
+      MicrosoftEntraExternalID1.DirectoryId,
+      MicrosoftEntraExternalID1.WebClient1.Id,
+      MicrosoftEntraExternalID1.AlexW.Name,
+      MicrosoftEntraExternalID1.AlexW.Password,
+      MicrosoftEntraExternalID1.WebClient1.AllowedScopes),
 
     new(
       MicrosoftEntraExternalID1.DirectoryId,

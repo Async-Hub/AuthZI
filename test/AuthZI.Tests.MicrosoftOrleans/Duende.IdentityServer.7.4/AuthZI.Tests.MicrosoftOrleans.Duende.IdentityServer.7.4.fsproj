@@ -59,7 +59,10 @@
     <Compile Include="AuthorizationTests\ClaimsBasedAuthorizationTests.fs" />
     <Compile Include="AuthorizationTests\PolicyBasedAuthorizationTests.fs" />
     <Compile Include="AuthorizationTests\ResourceBasedAuthorizationTests.fs" />
+    <Content Include="appsettings.json" />
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\AuthZI.MicrosoftOrleans\AuthZI.MicrosoftOrleans.fsproj" />
