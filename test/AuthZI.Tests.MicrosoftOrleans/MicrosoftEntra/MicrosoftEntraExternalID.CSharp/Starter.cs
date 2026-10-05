@@ -41,6 +41,5 @@ public class ExternalIdMainTestFixture : MainTestFixture
       client.Id,
       client.Secret,
       client.AllowedScopes,
-      AadAuthorityAudience.AzureAdMyOrg,
-      credentials.Api1.Id);
+      AadAuthorityAudience.AzureAdMyOrg);
 }

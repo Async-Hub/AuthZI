@@ -34,6 +34,15 @@ type Starter() =
     let credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)
 
     // Initialize the test data.
+    let api1App =
+      MicrosoftEntraIDApp(
+        credentials.DirectoryId,
+        credentials.Api1.Id,
+        credentials.Api1.Secret,
+        credentials.Api1.AllowedScopes,
+        AadAuthorityAudience.AzureAdMyOrg
+      )
+
     let web1ClientApp =
       MicrosoftEntraIDApp(
         credentials.DirectoryId,
@@ -57,6 +66,7 @@ type Starter() =
 
     TestData.UserWithScopeAlexW <- [ [| credentials.AlexW.Name; credentials.AlexW.Password; [ "Api1"; "Orleans" ] |] ]
     TestData.Users <- [ [| credentials.AdeleV.Name; credentials.AdeleV.Password |] ]
+    TestData.Api1 <- api1App
     TestData.Web1ClientApp <- web1ClientApp
     TestData.Web2ClientApp <- web2ClientApp
 
@@ -67,7 +77,7 @@ type Starter() =
       fun (services: IServiceCollection) ->
         // Add Azure Active Directory authorization.
         services.AddOrleansAuthorization(
-          TestData.Web1ClientApp,
+          TestData.Api1,
           (fun (config: AuthZI.Security.Configuration) ->
             config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)),
           AuthorizationConfiguration(false)
@@ -88,7 +98,7 @@ type Starter() =
         AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>(fun _ -> accessTokenProvider) |> ignore
         // Add Azure Active Directory authorization.
-        services.AddOrleansClientAuthorization(TestData.Web1ClientApp, fun config -> configureCluster (config))
+        services.AddOrleansClientAuthorization(TestData.Api1, fun config -> configureCluster (config))
         |> ignore
 
     let siloClientHost = SiloClientBuilder.Build(configureSiloClient)

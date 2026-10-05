@@ -21,7 +21,7 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
       let logger = TestLogger<AccessTokenIntrospectionService>(output)
       let accessTokenIntrospectionService =
-        AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
+        AccessTokenIntrospectionService(TestData.Api1, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
         :> IAccessTokenIntrospectionService
 
       let! result = accessTokenIntrospectionService.IntrospectTokenAsync accessToken
@@ -47,7 +47,7 @@ type AccessTokenVerificationTestsBase(output: ITestOutputHelper) =
 
       let logger = TestLogger<AccessTokenIntrospectionService>(output)
       let accessTokenIntrospectionService =
-        AccessTokenIntrospectionService(TestData.Web1ClientApp, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
+        AccessTokenIntrospectionService(TestData.Api1, discoveryDocumentProvider, ClaimTypeResolverDefault(), logger)
         :> IAccessTokenIntrospectionService
 
       // Act

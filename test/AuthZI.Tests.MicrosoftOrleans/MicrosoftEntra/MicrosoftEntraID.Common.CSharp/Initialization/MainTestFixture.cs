@@ -63,6 +63,7 @@ public class MainTestFixture : IAsyncLifetime
 
   private void ConfigureTestData()
   {
+    var api1App = CreateMicrosoftEntraApp(Credentials, Credentials.Api1);
     var web1ClientApp = CreateMicrosoftEntraApp(Credentials, Credentials.WebClient1);
     var web2ClientApp = CreateMicrosoftEntraApp(Credentials, Credentials.WebClient2);
 
@@ -89,6 +90,7 @@ public class MainTestFixture : IAsyncLifetime
         Deploy.MicrosoftEntra.Configuration.Credentials.AzureActiveDirectoryB2C1.AdeleV.Password
     };
 
+    TestData.Api1 = api1App;
     TestData.WebClient1 = web1ClientApp;
     TestData.WebClient2 = web2ClientApp;
   }
@@ -106,7 +108,7 @@ public class MainTestFixture : IAsyncLifetime
   private static void ConfigureSiloHost(IServiceCollection services)
   {
     services.AddOrleansAuthorization(
-      TestData.WebClient1,
+      TestData.Api1,
       config => config.ConfigureAuthorizationOptions = 
         AuthorizationConfig.ConfigureOptions,
       new AuthorizationConfiguration(false));
@@ -119,7 +121,7 @@ public class MainTestFixture : IAsyncLifetime
     AuthorizationConfig.ConfigureServices(services);
     services.AddSingleton<IAccessTokenProvider>(_ => _accessTokenProvider);
     services.AddOrleansClientAuthorization(
-      TestData.WebClient1,
+      TestData.Api1,
       config => config.ConfigureAuthorizationOptions = AuthorizationConfig.ConfigureOptions);
   }
 

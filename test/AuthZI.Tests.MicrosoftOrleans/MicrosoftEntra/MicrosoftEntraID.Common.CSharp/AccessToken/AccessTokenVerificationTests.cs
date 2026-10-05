@@ -24,7 +24,7 @@ public class AccessTokenVerificationTestsBase(MainTestFixture fixture, ITestOutp
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);
     IAccessTokenIntrospectionService accessTokenIntrospectionService =
       new AccessTokenIntrospectionService(
-        TestData.WebClient1,
+        TestData.Api1,
         discoveryDocumentProvider,
         new ClaimTypeResolverDefault(),
         logger);
@@ -46,7 +46,7 @@ public class AccessTokenVerificationTestsBase(MainTestFixture fixture, ITestOutp
     var logger = new TestLogger<AccessTokenIntrospectionService>(output);
     IAccessTokenIntrospectionService accessTokenIntrospectionService =
       new AccessTokenIntrospectionService(
-        TestData.WebClient1,
+        TestData.Api1,
         discoveryDocumentProvider,
         new ClaimTypeResolverDefault(),
         logger);

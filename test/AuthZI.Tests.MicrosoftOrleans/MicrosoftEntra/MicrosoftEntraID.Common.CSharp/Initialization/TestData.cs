@@ -15,6 +15,8 @@ public class TestData
   public static IReadOnlyDictionary<string, string> UserPasswords { get; set; } =
     new Dictionary<string, string>();
 
+  public static MicrosoftEntraApp Api1 { get; set; } = MicrosoftEntraIDApp.EmptyApp;
+
   public static MicrosoftEntraApp WebClient1 { get; set; } = MicrosoftEntraIDApp.EmptyApp;
 
   public static MicrosoftEntraApp WebClient2 { get; set; } = MicrosoftEntraIDApp.EmptyApp;

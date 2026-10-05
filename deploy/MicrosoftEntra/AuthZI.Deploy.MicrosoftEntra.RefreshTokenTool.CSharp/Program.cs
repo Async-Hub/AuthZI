@@ -1,36 +1,23 @@
-using Microsoft.Identity.Client;
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
+using Microsoft.Identity.Client;
 using System.Text.Json;
 using static AuthZI.Deploy.MicrosoftEntra.Configuration.Credentials;
 
 namespace AuthZI.Deploy.MicrosoftEntra.RefreshTokenTool.CSharp;
 
-static class Program
+internal static class Program
 {
-  private const string EntraIdTarget = "entra-id";
-  private const string EntraExternalIdTarget = "entra-external-id";
-
-  static async Task Main(string[] args)
+  private static async Task Main(string[] args)
   {
-    var targets = args.Length == 0
-      ? [EntraExternalIdTarget]
-      : args.Select(arg => arg.Trim().ToLowerInvariant()).ToArray();
+    await WriteRefreshTokenStore(
+      nameof(MicrosoftEntraID1),
+      GetMicrosoftEntraIdRefreshTokenRequests(),
+      BuildMicrosoftEntraIdApp);
 
-    if (targets.Contains(EntraIdTarget) || targets.Contains("all"))
-    {
-      await WriteRefreshTokenStore(
-        "MicrosoftEntraID1",
-        GetMicrosoftEntraIdRefreshTokenRequests(),
-        BuildMicrosoftEntraIdApp);
-    }
-
-    if (targets.Contains(EntraExternalIdTarget) || targets.Contains("external-id") || targets.Contains("all"))
-    {
-      await WriteRefreshTokenStore(
-        "MicrosoftEntraExternalID1",
-        GetMicrosoftEntraExternalIdRefreshTokenRequests(),
-        BuildMicrosoftEntraExternalIdApp);
-    }
+    await WriteRefreshTokenStore(
+      nameof(MicrosoftEntraExternalID1),
+      GetMicrosoftEntraExternalIdRefreshTokenRequests(),
+      BuildMicrosoftEntraExternalIdApp);
   }
 
   private static IEnumerable<RefreshTokenRequest> GetMicrosoftEntraIdRefreshTokenRequests() =>
@@ -137,7 +124,7 @@ static class Program
 
   private static IPublicClientApplication BuildMicrosoftEntraExternalIdApp(string tenantId, string clientId) =>
     PublicClientApplicationBuilder.Create(clientId)
-      .WithAuthority($"https://{tenantId}.ciamlogin.com/{tenantId}")
+      .WithAuthority($"https://{entraExternalIDName}.ciamlogin.com/{tenantId}")
       .Build();
 
   private static async Task<MicrosoftEntraRefreshToken> AcquireRefreshToken(
