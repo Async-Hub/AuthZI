@@ -11,6 +11,8 @@ type public TestData() =
 
   static member val public Users: obj[] list = [] with get, set
 
+  static member val public Api1: MicrosoftEntraApp = MicrosoftEntraIDApp.EmptyApp with get, set
+
   static member val public Web1ClientApp: MicrosoftEntraApp = MicrosoftEntraIDApp.EmptyApp with get, set
 
   static member val public Web2ClientApp: MicrosoftEntraApp = MicrosoftEntraIDApp.EmptyApp with get, set

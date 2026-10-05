@@ -23,7 +23,7 @@ type public AccessTokenIntrospectionService
     =
     let parameters = TokenValidationParameters()
     parameters.ValidIssuer <- app.IssuerUrl
-    parameters.ValidAudiences <- app.ValidAudiences
+    parameters.ValidAudiences <- [app.ClientId]
     parameters.IssuerSigningKeys <- discoveryDocument.SigningKeys
     parameters.NameClaimType <- claimTypeResolver.Resolve ClaimType.Name
     parameters.RoleClaimType <- claimTypeResolver.Resolve ClaimType.Role

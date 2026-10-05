@@ -1,10 +1,10 @@
 ﻿namespace AuthZI.Identity.MicrosoftEntra
 
+open CSharpFunctionalExtensions
 open Microsoft.Identity.Client
 open System
 open System.Collections.Generic
 open System.Linq
-open CSharpFunctionalExtensions
 
 /// <summary>
 /// Configuration constants for Microsoft Entra discovery endpoints and URLs.
@@ -21,27 +21,6 @@ type Configuration =
     static member Url: string = UrlValue
 
 /// <summary>
-/// Extracts the audience (origin) from a scope URI string.
-/// For example, from "https://graph.microsoft.com/.default" returns "https://graph.microsoft.com"
-/// </summary>
-[<AbstractClass; Sealed>]
-type AudienceExtractor =
-    /// <summary>
-    /// Tries to extract the audience from a scope. Returns a Maybe that contains the audience if valid.
-    /// </summary>
-    static member TryExtractAudienceFromScope(scope: string): Maybe<string> =
-        if String.IsNullOrWhiteSpace(scope) then
-            Maybe<string>.None
-        else
-            let delimiterIndex = scope.LastIndexOf('/')
-            let schemeIndex = scope.IndexOf("://")
-
-            if delimiterIndex > schemeIndex + 2 then
-                Maybe.From(scope.Substring(0, delimiterIndex))
-            else
-                Maybe<string>.None
-
-/// <summary>
 /// Base class for Microsoft Entra applications. Provides configuration and discovery.
 /// </summary>
 [<AbstractClass>]
@@ -50,19 +29,7 @@ type MicrosoftEntraApp(
     clientId: string,
     clientSecret: string,
     allowedScopes: IEnumerable<string>,
-    aadAuthorityAudience: AadAuthorityAudience,
-    [<ParamArray>] validAudiences: string array) =
-
-    let validAudiences: IEnumerable<string> =
-        seq {
-            yield clientId
-            yield! validAudiences
-            yield! allowedScopes
-                |> Seq.map AudienceExtractor.TryExtractAudienceFromScope
-                |> Seq.filter (fun maybe -> maybe.HasValue)
-                |> Seq.map (fun maybe -> maybe.Value)
-        }
-        |> Seq.distinct
+    aadAuthorityAudience: AadAuthorityAudience) =
 
     /// <summary>Gets the directory (tenant) ID.</summary>
     member _.DirectoryId: string = directoryId
@@ -79,8 +46,8 @@ type MicrosoftEntraApp(
     /// <summary>Gets the AAD authority audience type.</summary>
     member _.AadAuthorityAudience: AadAuthorityAudience = aadAuthorityAudience
 
-    /// <summary>Gets the valid audiences for token validation.</summary>
-    member _.ValidAudiences: IEnumerable<string> = validAudiences
+    ///// <summary>Gets the valid audiences for token validation.</summary>
+    //member _.ValidAudiences: IEnumerable<string> = validAudiences
 
     /// <summary>Gets the token issuer URL for this application.</summary>
     abstract member IssuerUrl: string with get
@@ -96,20 +63,18 @@ type MicrosoftEntraIDApp(
     clientId: string,
     clientSecret: string,
     allowedScopes: IEnumerable<string>,
-    aadAuthorityAudience: AadAuthorityAudience,
-    [<ParamArray>] validAudiences: string array) =
+    aadAuthorityAudience: AadAuthorityAudience) =
 
     inherit MicrosoftEntraApp(
         directoryId,
         clientId,
         clientSecret,
         allowedScopes,
-        aadAuthorityAudience,
-        validAudiences)
+        aadAuthorityAudience)
 
     /// <summary>Gets the token issuer URL.</summary>
     override _.IssuerUrl: string =
-        String.Format("https://sts.windows.net/{0}/", directoryId)
+        String.Format("https://login.microsoftonline.com/{0}/v2.0", directoryId)
 
     /// <summary>Gets the OpenID Connect discovery endpoint URL.</summary>
     override _.DiscoveryEndpointUrl: string =
@@ -130,16 +95,14 @@ type MicrosoftEntraExternalIDApp(
     clientId: string,
     clientSecret: string,
     allowedScopes: IEnumerable<string>,
-    aadAuthorityAudience: AadAuthorityAudience,
-    [<ParamArray>] validAudiences: string array) =
+    aadAuthorityAudience: AadAuthorityAudience) =
 
     inherit MicrosoftEntraApp(
         directoryId,
         clientId,
         clientSecret,
         allowedScopes,
-        aadAuthorityAudience,
-        validAudiences)
+        aadAuthorityAudience)
 
     /// <summary>Gets the token issuer URL.</summary>
     override _.IssuerUrl: string =

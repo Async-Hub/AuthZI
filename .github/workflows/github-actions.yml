@@ -27,14 +27,18 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Run Tests
         run: |
-          dotnet test test/AuthZI.Tests.Security
-          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net8.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net8.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net8.0
+          dotnet run --project test/AuthZI.Tests.Security --framework net8.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net8.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net8.0
 
   Integration_Testing_DotNet9:
     runs-on: ubuntu-24.04
@@ -43,6 +47,8 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET SDK 9.0.x
@@ -51,9 +57,11 @@ jobs:
           dotnet-version: '9.0.x'
       - name: Run Tests on .NET 9.0.x
         run: |
-          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net9.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net9.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net9.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net9.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net9.0
 
   Integration_Testing_DotNet10:
     runs-on: ubuntu-24.04
@@ -64,6 +72,8 @@ jobs:
       microsoftEntraIdCredentials: '${{ secrets.MICROSOFT_ENTRA_ID_CREDENTIALS }}'
       microsoftEntraExternalIdCredentials: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_CREDENTIALS }}'
       microsoftAzureADB2CCredentials: '${{ secrets.MICROSOFT_AZURE_ADB2C_CREDENTIALS }}'
+      MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_ID_REFRESH_TOKENS_STORE }}'
+      MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE: '${{ secrets.MICROSOFT_ENTRA_EXTERNAL_ID_REFRESH_TOKENS_STORE }}'
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET SDK 10.0.x
@@ -72,9 +82,11 @@ jobs:
           dotnet-version: '10.0.x'
       - name: Run Tests on .NET 10.0.x
         run: |
-          dotnet test test/AuthZI.Tests.Security -f net10.0
-          dotnet test test/AuthZI.Tests.Duende.IdentityServer.7.4 -f net10.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 -f net10.0
-          dotnet test test/AuthZI.Tests.Duende.IdentityServer.8.0 -f net10.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 -f net10.0
-          dotnet test test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID -f net10.0
+          dotnet run --project test/AuthZI.Tests.Security --framework net10.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.7.4 --framework net10.0
+          dotnet run --project test/AuthZI.Tests.Duende.IdentityServer.8.0 --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.7.4 --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/Duende.IdentityServer.8.0 --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp --framework net10.0
+          dotnet run --project test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp --framework net10.0

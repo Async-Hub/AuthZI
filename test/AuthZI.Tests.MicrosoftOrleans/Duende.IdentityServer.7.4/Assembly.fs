@@ -1,8 +1,9 @@
 ﻿module Assembly
 
-open Xunit
+open Xunit.v3
+open Xunit.Sdk
 
-[<assembly: CollectionBehavior(DisableTestParallelization = true)>]
+[<assembly: Parallelization(Mode = ParallelMode.None)>]
 do()
 
 [<assembly: Orleans.ApplicationPartAttribute("Orleans.Persistence.Memory")>]

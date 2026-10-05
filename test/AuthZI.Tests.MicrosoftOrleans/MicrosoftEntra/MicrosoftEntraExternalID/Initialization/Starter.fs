@@ -16,6 +16,8 @@ open RootConfiguration
 open System
 open System.Text.Json
 open AuthZI.MicrosoftOrleans.Authorization
+open Xunit.v3
+open Xunit.Sdk
 
 [<assembly: Orleans.ApplicationPartAttribute("AuthZI.Tests.MicrosoftOrleans.Grains")>]
 ()
@@ -33,6 +35,15 @@ type Starter() =
     let credentials = JsonSerializer.Deserialize<MicrosoftEntraCredentials>(microsoftEntraIdCredentialsJson)
 
     // Initialize the test data.
+    let api1App =
+      MicrosoftEntraExternalIDApp(
+        credentials.DirectoryId,
+        credentials.Api1.Id,
+        credentials.Api1.Secret,
+        credentials.Api1.AllowedScopes,
+        AadAuthorityAudience.AzureAdMyOrg
+      )
+
     let web1ClientApp =
       MicrosoftEntraExternalIDApp(
         credentials.DirectoryId,
@@ -56,6 +67,7 @@ type Starter() =
 
     TestData.UserWithScopeAlexW <- [ [| credentials.AlexW.Name; credentials.AlexW.Password; [ "Api1"; "Orleans" ] |] ]
     TestData.Users <- [ [| credentials.AdeleV.Name; credentials.AdeleV.Password |] ]
+    TestData.Api1 <- api1App
     TestData.Web1ClientApp <- web1ClientApp
     TestData.Web2ClientApp <- web2ClientApp
 
@@ -95,4 +107,5 @@ type Starter() =
     TestData.IClusterClient <- siloClientHost.Services.GetService<IClusterClient>()
 
 [<assembly: Xunit.AssemblyFixture(typeof<Starter>)>]
+[<assembly: Parallelization(Mode = ParallelMode.None)>]
 ()
