@@ -78,7 +78,7 @@ type Starter() =
       fun (services: IServiceCollection) ->
         // Add Azure Active Directory authorization.
         services.AddOrleansAuthorization(
-          TestData.Web1ClientApp,
+          TestData.Api1,
           (fun (config: AuthZI.Security.Configuration) ->
             config.ConfigureAuthorizationOptions <- Action<AuthorizationOptions>(AuthorizationConfig.ConfigureOptions)),
           AuthorizationConfiguration(false)
@@ -99,7 +99,7 @@ type Starter() =
         AuthorizationConfig.ConfigureServices(services)
         services.AddSingleton<IAccessTokenProvider>(fun _ -> accessTokenProvider) |> ignore
         // Add Azure Active Directory authorization.
-        services.AddOrleansClientAuthorization(TestData.Web1ClientApp, fun config -> configureCluster (config))
+        services.AddOrleansClientAuthorization(TestData.Api1, fun config -> configureCluster (config))
         |> ignore
 
     let siloClientHost = SiloClientBuilder.Build(configureSiloClient)
