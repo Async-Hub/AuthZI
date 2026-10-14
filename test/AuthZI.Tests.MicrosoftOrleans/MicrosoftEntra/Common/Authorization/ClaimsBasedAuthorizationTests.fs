@@ -1,13 +1,14 @@
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization
 
+open AuthZI.Security
 open AuthZI.Tests.MicrosoftOrleans.Grains.ClaimsBasedAuthorization
 open AuthZI.Tests.MicrosoftOrleans.Grains.PolicyBasedAuthorization
-open AuthZI.Security
+open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 open RootConfiguration
 open System
+open System.Security
 open System.Threading.Tasks
 open Xunit
-open AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common
 
 type ClaimsBasedAuthorizationTestsBase() =
     [<Theory>]
@@ -38,14 +39,12 @@ type ClaimsBasedAuthorizationTestsBase() =
 
             let clusterClient = getClusterClient accessToken
             let userGrain = clusterClient.GetGrain<IPolicyGrain>(userName)
-
-            // Act
-            let action =
-                async {
-                    let! value = userGrain.GetWithMangerPolicy(String.Empty) |> Async.AwaitTask
-                    return value } |> Async.StartAsTask :> Task
-
-            Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
+           
+           // Act and Assert
+            do! Assert.ThrowsAsync<SecurityException>(fun () ->
+                          userGrain.GetWithMangerPolicy(String.Empty) :> Task)
+                      |> Async.AwaitTask 
+                      |> Async.Ignore
         }
 
     [<Theory>]
@@ -59,13 +58,11 @@ type ClaimsBasedAuthorizationTestsBase() =
 
             // Act
             let action =
-                async {
                     let clusterClient = getClusterClient accessToken
                     let claimGrain = clusterClient.GetGrain<IClaimGrain>(userName)
-                    let! value = claimGrain.DoSomething("Secret") |> Async.AwaitTask
-                    return value
-                } |> Async.StartAsTask :> Task
+                    claimGrain.DoSomething("Secret")
 
 
-            Assert.ThrowsAsync<AuthorizationException>(fun () -> action) |> ignore
+            do! Assert.ThrowsAsync<SecurityException>(fun () -> action) 
+              |> Async.AwaitTask |> Async.Ignore
         }

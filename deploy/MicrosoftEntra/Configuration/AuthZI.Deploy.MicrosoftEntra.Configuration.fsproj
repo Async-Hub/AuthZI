@@ -8,7 +8,9 @@
   <ItemGroup>
     <Compile Include="MicrosoftEntraUsers.fs" />
     <Compile Include="Main.fs" />
+    <Compile Include="RefreshTokens.fs" />
     <Compile Include="Connections.fs" />
+    <Compile Include="RefreshTokenStore.fs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,15 @@
+### Variables Definition
+@tenantId = YOUR_TENANT_ID
+@clientId = YOUR_CLIENT_ID
+
+# Paste your massive, raw refresh token string here (keep it on one line)
+@refreshToken = 0.ARwA_PASTE_YOUR_REFRESH_TOKEN_HERE
+
+### Request: Exchange Refresh Token for Access Token
+POST https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id={{clientId}}
+&grant_type=refresh_token
+&refresh_token={{refreshToken}}
+&scope=User.Read

@@ -1,0 +1,28 @@
+using System.Threading.Tasks;
+using AuthZI.MicrosoftEntra;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
+using Microsoft.FSharp.Core;
+using Xunit;
+
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Connection;
+
+public class DiscoveryDocumentProviderTestsBase(ITestOutputHelper output)
+{
+  [Fact]
+  public async Task TheSystemCanObtainDiscoveryDocumentFromMicrosoftEntraIdEndpoint()
+  {
+    var discoveryDocumentProvider = new DiscoveryDocumentProvider(TestData.WebClient1.DiscoveryEndpointUrl);
+
+    var discoveryDocument = await discoveryDocumentProvider.GetDiscoveryDocumentAsync();
+    var hasDiscoveryDocument = FSharpOption<DiscoveryDocument>.get_IsSome(discoveryDocument);
+
+    if (hasDiscoveryDocument)
+    {
+#if DEBUG
+      output.WriteLine(discoveryDocument.Value.DiscoveryEndpoint);
+#endif
+    }
+
+    Assert.True(hasDiscoveryDocument);
+  }
+}
