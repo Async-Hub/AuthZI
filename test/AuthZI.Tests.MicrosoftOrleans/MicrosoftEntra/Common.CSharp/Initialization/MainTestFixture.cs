@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
 using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.MicrosoftOrleans.Authorization;
@@ -8,11 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Client;
 using Orleans;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 
 public class MainTestFixture : IAsyncLifetime
 {

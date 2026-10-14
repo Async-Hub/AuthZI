@@ -1,13 +1,13 @@
-using AuthZI.MicrosoftOrleans.Authorization;
-using AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Threading.Tasks;
+using AuthZI.MicrosoftOrleans.Authorization;
+using AuthZI.Tests.MicrosoftOrleans.Grains.SimpleAuthorization;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Authorization;
 
 public class SimpleAuthorizationTestsBase(
   MainTestFixture fixture,

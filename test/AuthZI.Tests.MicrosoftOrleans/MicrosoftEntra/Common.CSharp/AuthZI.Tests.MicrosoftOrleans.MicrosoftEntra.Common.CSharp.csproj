@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
-    <RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common</RootNamespace>
+    <RootNamespace>AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);0618;1591</NoWarn>
   </PropertyGroup>

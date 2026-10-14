@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 
 public interface IAccessTokenRetriever
 {

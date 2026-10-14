@@ -58,7 +58,7 @@
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/CSharp/">
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraExternalID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp.csproj" />
-    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.Common.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.CSharp.csproj" />
+    <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/Common.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.CSharp.csproj" />
     <Project Path="test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/MicrosoftEntraID.CSharp/AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp.csproj" />
   </Folder>
   <Folder Name="/test/AuthZI.Tests.MicrosoftOrleans/MicrosoftEntra/FSharp/">

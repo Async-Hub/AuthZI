@@ -1,10 +1,7 @@
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.AccessToken;
 
 public class AudienceValidationTestsBase(
   ITestOutputHelper output,

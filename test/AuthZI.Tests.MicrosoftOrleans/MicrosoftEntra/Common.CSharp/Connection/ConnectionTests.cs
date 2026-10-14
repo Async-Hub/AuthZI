@@ -1,10 +1,10 @@
-using AuthZI.Deploy.MicrosoftEntra.Configuration;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AuthZI.Deploy.MicrosoftEntra.Configuration;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Connection;
 
 public class MicrosoftEntraIdTestsBase(
   ITestOutputHelper output,

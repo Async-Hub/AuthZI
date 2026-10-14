@@ -1,10 +1,10 @@
-using AuthZI.MicrosoftEntra;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
-using Microsoft.FSharp.Core;
 using System.Threading.Tasks;
+using AuthZI.MicrosoftEntra;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
+using Microsoft.FSharp.Core;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Connection;
 
 public class DiscoveryDocumentProviderTestsBase(ITestOutputHelper output)
 {

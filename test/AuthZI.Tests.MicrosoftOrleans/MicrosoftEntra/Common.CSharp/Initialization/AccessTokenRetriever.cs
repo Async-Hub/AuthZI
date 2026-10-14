@@ -1,14 +1,14 @@
-using AuthZI.Deploy.MicrosoftEntra.Configuration;
-using AuthZI.Identity.MicrosoftEntra;
-using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AuthZI.Deploy.MicrosoftEntra.Configuration;
+using AuthZI.Identity.MicrosoftEntra;
+using Microsoft.Identity.Client;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 
 public sealed class AccessTokenRetriever : IAccessTokenRetriever
 {

@@ -1,10 +1,10 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.Configuration;
 using Orleans.Hosting;
-using System;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 
 public static class SiloClientBuilder
 {

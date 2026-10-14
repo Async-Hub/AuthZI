@@ -1,9 +1,9 @@
 using AuthZI.Deploy.MicrosoftEntra.Configuration;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
 using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.CSharp;
 using Orleans;
 using System;
 using System.Text.Json;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 using Xunit;
 using Xunit.Sdk;
 using Xunit.v3;

@@ -40,7 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\src\AuthZI.MicrosoftOrleans.MicrosoftEntra\AuthZI.MicrosoftOrleans.MicrosoftEntra.fsproj" />
-    <ProjectReference Include="..\MicrosoftEntraID.Common.CSharp\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Common.CSharp\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.CSharp.csproj" />
   </ItemGroup>
 
 </Project>

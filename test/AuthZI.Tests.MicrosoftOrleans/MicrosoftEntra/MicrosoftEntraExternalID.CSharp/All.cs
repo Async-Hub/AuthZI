@@ -1,6 +1,6 @@
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Authorization;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Connection;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.AccessToken;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Authorization;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Connection;
 using Xunit;
 
 namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraExternalID.CSharp;

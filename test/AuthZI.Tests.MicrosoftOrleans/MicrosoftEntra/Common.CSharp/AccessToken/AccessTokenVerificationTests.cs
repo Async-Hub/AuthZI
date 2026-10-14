@@ -1,12 +1,12 @@
+using System.Threading.Tasks;
 using AuthZI.Identity.MicrosoftEntra;
 using AuthZI.MicrosoftEntra;
 using AuthZI.Security.AccessToken;
 using AuthZI.Tests.Common.Xunit;
-using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
-using System.Threading.Tasks;
+using AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 using Xunit;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.AccessToken;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.AccessToken;
 
 public class AccessTokenVerificationTestsBase(MainTestFixture fixture, ITestOutputHelper output)
 {

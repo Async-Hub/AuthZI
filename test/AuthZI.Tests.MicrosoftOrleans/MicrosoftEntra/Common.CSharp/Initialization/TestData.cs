@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using AuthZI.Identity.MicrosoftEntra;
 using Orleans;
-using System.Collections.Generic;
 
-namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.Initialization;
+namespace AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.Initialization;
 
 public class TestData
 {
