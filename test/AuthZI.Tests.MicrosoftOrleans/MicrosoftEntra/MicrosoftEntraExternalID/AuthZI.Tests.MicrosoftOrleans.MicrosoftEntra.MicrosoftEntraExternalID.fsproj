@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\deploy\MicrosoftEntra\Configuration\AuthZI.Deploy.MicrosoftEntra.Configuration.fsproj" />
-    <ProjectReference Include="..\MicrosoftEntraID.Common\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.MicrosoftEntraID.Common.fsproj" />
+    <ProjectReference Include="..\Common\AuthZI.Tests.MicrosoftOrleans.MicrosoftEntra.Common.fsproj" />
   </ItemGroup>
 
 </Project>
