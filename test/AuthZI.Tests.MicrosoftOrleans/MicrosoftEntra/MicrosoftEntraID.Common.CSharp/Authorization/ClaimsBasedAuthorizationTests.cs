@@ -55,8 +55,6 @@ public class ClaimsBasedAuthorizationTestsBase(
     var clusterClient = fixture.GetClusterClient(accessToken);
     var claimGrain = clusterClient.GetGrain<IClaimGrain>(userName);
 
-    Assert.True(true);
-    //TODO: Fix this test.
-    //await Assert.ThrowsAsync<SecurityException>(() => claimGrain.DoSomething("Secret"));
+    await Assert.ThrowsAsync<SecurityException>(() => claimGrain.DoSomething("Secret"));
   }
 }
